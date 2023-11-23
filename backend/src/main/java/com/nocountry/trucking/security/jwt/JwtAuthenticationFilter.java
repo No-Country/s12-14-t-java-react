@@ -1,6 +1,5 @@
-package com.trucking.Security.config;
+package com.nocountry.trucking.security.jwt;
 
-import com.trucking.Security.config.JwtService;
 import jakarta.servlet.FilterChain;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServletRequest;

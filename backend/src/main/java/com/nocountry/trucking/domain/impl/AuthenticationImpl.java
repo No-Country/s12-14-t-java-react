@@ -1,8 +1,13 @@
-package com.trucking.Security.Auth;
+package com.nocountry.trucking.domain.impl;
 
-import com.trucking.Security.Entity.*;
-import com.trucking.Security.Repository.UserRepository;
-import com.trucking.Security.config.JwtService;
+import com.nocountry.trucking.controller.dto.request.LoginUser;
+import com.nocountry.trucking.controller.dto.request.NewUser;
+import com.nocountry.trucking.controller.dto.response.AuthenticationResponse;
+import com.nocountry.trucking.domain.service.AuthenticationService;
+import com.nocountry.trucking.enums.RoleName;
+import com.nocountry.trucking.persitence.entity.User;
+import com.nocountry.trucking.persitence.repository.UserRepository;
+import com.nocountry.trucking.security.jwt.JwtService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
@@ -15,7 +20,7 @@ import org.springframework.stereotype.Service;
  */
 @Service
 @RequiredArgsConstructor
-public class AuthenticationService {
+public class AuthenticationImpl implements AuthenticationService{
 
     private final UserRepository userRepository;
     private final PasswordEncoder passwordEncoder;
@@ -65,6 +70,6 @@ public class AuthenticationService {
 
         var token = jwtService.generateToken(user);
 
-        return  AuthenticationResponse.builder().token(token).build();
+        return AuthenticationResponse.builder().token(token).build();
     }
 }

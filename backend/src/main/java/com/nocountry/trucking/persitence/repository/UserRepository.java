@@ -1,6 +1,6 @@
-package com.trucking.Security.Repository;
+package com.nocountry.trucking.persitence.repository;
 
-import com.trucking.Security.Entity.User;
+import com.nocountry.trucking.persitence.entity.User;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 

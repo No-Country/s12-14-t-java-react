@@ -1,5 +1,6 @@
-package com.trucking.Security.Entity;
+package com.nocountry.trucking.persitence.entity;
 
+import com.nocountry.trucking.enums.RoleName;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Builder;

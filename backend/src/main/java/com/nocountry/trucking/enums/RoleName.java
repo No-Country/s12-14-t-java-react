@@ -1,4 +1,4 @@
-package com.trucking.Security.Entity;
+package com.nocountry.trucking.enums;
 
 /**
  * Enumeración que representa los roles disponibles en la aplicación.

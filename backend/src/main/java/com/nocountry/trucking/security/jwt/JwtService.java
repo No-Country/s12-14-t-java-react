@@ -1,4 +1,4 @@
-package com.trucking.Security.config;
+package com.nocountry.trucking.security.jwt;
 
 import io.jsonwebtoken.Claims;
 import io.jsonwebtoken.Jwts;

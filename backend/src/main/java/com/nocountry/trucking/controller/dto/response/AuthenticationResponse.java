@@ -1,4 +1,4 @@
-package com.trucking.Security.Entity;
+package com.nocountry.trucking.controller.dto.response;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;

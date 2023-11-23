@@ -1,5 +1,7 @@
-package com.trucking.Security.config;
+package com.nocountry.trucking.security.config;
 
+import com.nocountry.trucking.security.jwt.JwtAuthenticationFilter;
+import org.springframework.http.HttpMethod;
 import org.springframework.security.config.annotation.web.configurers.AbstractHttpConfigurer;
 import lombok.RequiredArgsConstructor;
 import org.springframework.context.annotation.Bean;
@@ -37,7 +39,7 @@ public class SecurityConfig {
                 .authorizeHttpRequests(
                         auth -> {
                             auth
-                                    .requestMatchers("/api/v1/auth/**").permitAll()
+                                    .requestMatchers("/auth/**").permitAll()
                                     .requestMatchers("/swagger-ui.html", "/v3/api-docs/**", "/swagger-ui/**").permitAll()
                                     .anyRequest().authenticated();
                         }
