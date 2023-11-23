@@ -17,4 +17,8 @@ public class AuthenticationResponse {
      * Token de acceso.
      */
     private String token;
+    /**
+     * Token que tiene acceso al toker.
+     */
+    private ShowDataUser user;
 }

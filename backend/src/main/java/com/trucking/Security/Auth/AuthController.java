@@ -3,8 +3,11 @@ package com.trucking.Security.Auth;
 import com.trucking.Security.Entity.AuthenticationResponse;
 import com.trucking.Security.Entity.LoginUser;
 import com.trucking.Security.Entity.NewUser;
+import com.trucking.Security.HandlerError.ValidationIntegrity;
+import com.trucking.Security.Repository.UserRepository;
+import io.swagger.v3.oas.annotations.Operation;
+import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
-
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -21,7 +24,6 @@ import org.springframework.web.bind.annotation.RestController;
 public class AuthController {
 
     private final AuthenticationService authenticationService;
-
     /**
      * Maneja las solicitudes de registro de nuevos usuarios.
      *
@@ -29,11 +31,17 @@ public class AuthController {
      * @return ResponseEntity con el resultado de la operación y detalles de autenticación.
      */
     @PostMapping("/register")
-    public ResponseEntity<AuthenticationResponse> register(@RequestBody NewUser newUser) {
+    @Operation(
+            summary = "Controller para registrar un usuario",
+            description = "Todos pueden generar un registro"
+    )
+    public ResponseEntity<?> register(@Valid @RequestBody  NewUser newUser) {
         try {
-            return ResponseEntity.ok(authenticationService.register(newUser));
+            AuthenticationResponse response = authenticationService.register(newUser);
+            return ResponseEntity.status(HttpStatus.CREATED).body(response);
         } catch (RuntimeException e) {
-            return ResponseEntity.internalServerError().build();
+            return ResponseEntity.internalServerError().body(new ValidationIntegrity(
+                    "Error del servidor al registrar el usuario " + e.getMessage()));
         }
     }
 
@@ -44,11 +52,18 @@ public class AuthController {
      * @return ResponseEntity con el resultado de la operación y detalles de autenticación.
      */
     @PostMapping("/login")
-    public ResponseEntity<AuthenticationResponse> login(@RequestBody LoginUser login) {
+    @Operation(
+            summary = "Controller para loggin de un usuario",
+            description = "Todos pueden realizar la autenticación del registro"
+    )
+    public ResponseEntity<?> login(@Valid@RequestBody  LoginUser login) {
         try {
-            return ResponseEntity.ok(authenticationService.login(login));
+            AuthenticationResponse response = authenticationService.login(login);
+            return ResponseEntity.status(HttpStatus.OK).body(response);
         }catch (RuntimeException e) {
-            return ResponseEntity.internalServerError().build();
+            return ResponseEntity.internalServerError().body(new ValidationIntegrity(
+                    "Error del servidor al autenticar el usuario " + e.getMessage()));
+
         }
     }
 
