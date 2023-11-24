@@ -110,6 +110,7 @@
                 </configuration>
             </plugin>
         </plugins>
+        <finalName>spring-trucking</finalName>
     </build>
 
 </project>
