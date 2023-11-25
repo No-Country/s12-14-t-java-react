@@ -8,6 +8,11 @@ import org.springframework.web.bind.MethodArgumentNotValidException;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.RestControllerAdvice;
 
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+
 @RestControllerAdvice
 public class HandlerErrors extends Throwable {
 
@@ -18,20 +23,37 @@ public class HandlerErrors extends Throwable {
         return ResponseEntity.notFound().build();
     }
 
+
     @ExceptionHandler(MethodArgumentNotValidException.class)
     public ResponseEntity tratarError400(MethodArgumentNotValidException e){
-        var errores = e.getFieldErrors().stream().map(ErrorValidationData::new).toList();
-        return ResponseEntity.badRequest().body(errores);
+        Map<String,Object> response= new HashMap<>();
+        response.put("Error", "Validation error");
+        var errores = e.getFieldErrors().stream().map((a)->a.getDefaultMessage()).toList();
+        response.put("Details", errores);
+        return ResponseEntity.badRequest().body(response);
     }
-
     @ExceptionHandler(ValidationIntegrity.class)
     public ResponseEntity errorHandlerValidacionesIntegridad(Exception e){
-        return ResponseEntity.badRequest().body(e.getMessage());
+        Map<String, Object> response = new HashMap<>();
+        response.put("Error", "Validation error");
+
+        List<String> errores = new ArrayList<>();
+        errores.add(e.getMessage());
+        response.put("Details", errores);
+
+        return ResponseEntity.badRequest().body(response);
     }
 
     @ExceptionHandler(ValidationException.class)
     public ResponseEntity errorHandlerValidacionesDeNegocio(Exception e){
-        return ResponseEntity.badRequest().body(e.getMessage());
+        Map<String, Object> response = new HashMap<>();
+        response.put("Error", "Validation error");
+
+        List<String> errores = new ArrayList<>();
+        errores.add(e.getMessage());
+        response.put("Details", errores);
+
+        return ResponseEntity.badRequest().body(response);
     }
 
     private record ErrorValidationData(String campo, String error){
