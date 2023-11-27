@@ -1,17 +1,16 @@
-package com.trucking.Security.Entity;
+package com.trucking.Security.Dto;
 
+import com.trucking.Security.Entity.RoleName;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-import java.util.Optional;
-
 @Data
 @Builder
 @AllArgsConstructor
 @NoArgsConstructor
-public class ShowDataUser {
+public class ShowDataUserDto {
 
     /**
      * Id del nuevo usuario.

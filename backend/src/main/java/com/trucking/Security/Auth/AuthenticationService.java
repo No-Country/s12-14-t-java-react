@@ -1,12 +1,16 @@
 package com.trucking.Security.Auth;
 
+import com.trucking.Security.Dto.AuthenticationResponseDto;
+import com.trucking.Security.Dto.LoginUserDto;
+import com.trucking.Security.Dto.NewUserDto;
+import com.trucking.Security.Dto.ShowDataUserDto;
 import com.trucking.Security.Entity.*;
+import com.trucking.Security.HandlerError.ValidationIntegrity;
 import com.trucking.Security.Repository.UserRepository;
 import com.trucking.Security.config.JwtService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
-import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
@@ -25,15 +29,19 @@ public class AuthenticationService {
     /**
      * Registra un nuevo usuario en el sistema.
      *
-     * @param newUser Datos del nuevo usuario a registrar.
+     * @param newUserDto Datos del nuevo usuario a registrar.
      * @return Respuesta de autenticación que incluye el token JWT generado.
+     * @throws ValidationIntegrity Si el email ya se encuentra registrado.
      */
-    public AuthenticationResponse register(NewUser newUser) {
+    public AuthenticationResponseDto register(NewUserDto newUserDto) {
 
+        if (userRepository.findByEmail(newUserDto.getEmail()).isPresent()){
+            throw new ValidationIntegrity("Email ya registrado");
+        }
         var user = User.builder()
-                .name(newUser.getName())
-                .email(newUser.getEmail())
-                .password(passwordEncoder.encode(newUser.getPassword()))
+                .name(newUserDto.getName())
+                .email(newUserDto.getEmail())
+                .password(passwordEncoder.encode(newUserDto.getPassword()))
                 .role(RoleName.ADMIN)
                 .build();
 
@@ -41,10 +49,10 @@ public class AuthenticationService {
 
         var jwtToken = jwtService.generateToken(user);
 
-        return AuthenticationResponse
+        return AuthenticationResponseDto
                 .builder()
                 .token(jwtToken)
-                .user(ShowDataUser.builder()
+                .user(ShowDataUserDto.builder()
                         .id(user.getId())
                         .name(user.getName())
                         .email(user.getEmail())
@@ -58,9 +66,11 @@ public class AuthenticationService {
      *
      * @param login Datos del usuario para iniciar sesión.
      * @return Respuesta de autenticación que incluye el token JWT generado.
-     * @throws UsernameNotFoundException Si el correo electrónico no se encuentra en la base de datos.
+     * @throws ValidationIntegrity Si el correo electrónico no se encuentra en la base de datos.
      */
-    public AuthenticationResponse login(LoginUser login) {
+    public AuthenticationResponseDto login(LoginUserDto login) {
+
+        var user = userRepository.findByEmail(login.getEmail()).orElseThrow(() -> new ValidationIntegrity("Usuario o contraseña invalidos"));
 
         authenticationManager.authenticate(
                 new UsernamePasswordAuthenticationToken(
@@ -69,11 +79,9 @@ public class AuthenticationService {
                 )
         );
 
-        var user = userRepository.findByEmail(login.getEmail()).orElseThrow(() -> new UsernameNotFoundException("Email not found"));
-
         var token = jwtService.generateToken(user);
 
-        return AuthenticationResponse.builder().token(token).user(ShowDataUser.builder()
+        return AuthenticationResponseDto.builder().token(token).user(ShowDataUserDto.builder()
                 .id(user.getId())
                 .name(user.getName())
                 .email(user.getEmail())

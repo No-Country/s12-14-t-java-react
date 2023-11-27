@@ -1,17 +1,16 @@
 package com.trucking.Security.HandlerError;
 
+import com.trucking.Security.Dto.ErrorMsgDto;
 import jakarta.persistence.EntityNotFoundException;
 import jakarta.validation.ValidationException;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.validation.FieldError;
 import org.springframework.web.bind.MethodArgumentNotValidException;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.RestControllerAdvice;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 @RestControllerAdvice
 public class HandlerErrors extends Throwable {
@@ -26,22 +25,25 @@ public class HandlerErrors extends Throwable {
 
     @ExceptionHandler(MethodArgumentNotValidException.class)
     public ResponseEntity tratarError400(MethodArgumentNotValidException e){
-        Map<String,Object> response= new HashMap<>();
-        response.put("Error", "Validation error");
-        var errores = e.getFieldErrors().stream().map((a)->a.getDefaultMessage()).toList();
-        response.put("Details", errores);
+        ErrorMsgDto response = new ErrorMsgDto();
+        response.setError("Error de validacion de DTO");
+        response.setDetails(e.getFieldErrors().stream().map((a)->a.getDefaultMessage()).toList());
         return ResponseEntity.badRequest().body(response);
     }
     @ExceptionHandler(ValidationIntegrity.class)
     public ResponseEntity errorHandlerValidacionesIntegridad(Exception e){
-        Map<String, Object> response = new HashMap<>();
-        response.put("Error", "Validation error");
+//        Map<String, Object> response = new HashMap<>();
+//        response.put("Error", "Validation error");
+//
+//        List<String> errores = new ArrayList<>();
+//        errores.add(e.getMessage());
+//        response.put("Details", errores);
 
-        List<String> errores = new ArrayList<>();
-        errores.add(e.getMessage());
-        response.put("Details", errores);
+        ErrorMsgDto response = new ErrorMsgDto();
+        response.setError("Validation error");
+        response.setDetails(Arrays.asList(e.getMessage()));
 
-        return ResponseEntity.badRequest().body(response);
+        return new ResponseEntity(response, HttpStatus.BAD_REQUEST);
     }
 
     @ExceptionHandler(ValidationException.class)

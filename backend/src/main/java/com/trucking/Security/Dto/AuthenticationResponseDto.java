@@ -1,4 +1,4 @@
-package com.trucking.Security.Entity;
+package com.trucking.Security.Dto;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -12,7 +12,7 @@ import lombok.NoArgsConstructor;
 @Builder
 @AllArgsConstructor
 @NoArgsConstructor
-public class AuthenticationResponse {
+public class AuthenticationResponseDto {
     /**
      * Token de acceso.
      */
@@ -20,5 +20,5 @@ public class AuthenticationResponse {
     /**
      * Token que tiene acceso al toker.
      */
-    private ShowDataUser user;
+    private ShowDataUserDto user;
 }
