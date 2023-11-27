@@ -2,10 +2,22 @@
 @import 'tailwindcss/components';
 @import 'tailwindcss/utilities';
 
-:root {
-  font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
-  font-synthesis: none;
-  text-rendering: optimizeLegibility;
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,300;0,400;0,600;0,700;1,300;1,400;1,600;1,700&display=swap');
+
+html,
+body {
+  font-family: 'Popins', sans-serif;
+  background-color: #8b9eff;
+}
+
+@layer components {
+  .btn {
+    @apply block p-3 mb-3 text-center text-white rounded-[15px] transition-colors;
+  }
+
+  .btn-template-1 {
+    @apply text-3xl bg-blue hover:bg-dark-blue;
+  }
 }
 
 [multiple],

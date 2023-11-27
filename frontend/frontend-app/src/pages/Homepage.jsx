@@ -1,9 +1,24 @@
+import { Logo } from '../components/Logo'
+import { Link } from 'react-router-dom'
+
 export const Homepage = () => {
   return (
-    <section className='flex items-center justify-center min-h-screen bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500'>
-      <div className='container flex items-center justify-center w-full h-full px-8 mx-auto'>
-        <div className='max-w-2xl text-center'>
-          <h1 className='font-mono text-3xl text-white capitalize sm:text-5xl lg:text-7xl'>Comming Soon</h1>
+    <section className='min-h-screen'>
+      <div className='grid grid-cols-2 gap-4'>
+        <div className='h-screen col-auto px-3 py-5'>
+          <Link to='/' className='inline-block'>
+            <Logo />
+          </Link>
+        </div>
+        <div className='h-screen col-auto px-3 py-5'>
+          <code className='block py-5 text-center'>{'<Form>'}</code>
+          <a href='#' className='btn btn-template-1'>
+            Ingresar
+          </a>
+
+          <a href='#' className='btn btn-template-1'>
+            Registrarse
+          </a>
         </div>
       </div>
     </section>
