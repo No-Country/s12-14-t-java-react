@@ -11,7 +11,7 @@ public enum RoleName {
     /**
      * Rol de propietario (dueño) en el contexto de la aplicación.
      */
-    OUNER,
+    OWNER,
     /**
      * Rol de conductor en el contexto de la aplicación.
      */

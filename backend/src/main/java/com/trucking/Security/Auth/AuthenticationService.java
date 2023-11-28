@@ -1,5 +1,7 @@
 package com.trucking.Security.Auth;
 
+import com.trucking.Entity.Company;
+import com.trucking.Repository.CompanyRepository;
 import com.trucking.Security.Dto.AuthenticationResponseDto;
 import com.trucking.Security.Dto.LoginUserDto;
 import com.trucking.Security.Dto.NewUserDto;
@@ -22,6 +24,7 @@ import org.springframework.stereotype.Service;
 public class AuthenticationService {
 
     private final UserRepository userRepository;
+    private final CompanyRepository companyRepository;
     private final PasswordEncoder passwordEncoder;
     private final JwtService jwtService;
     private final AuthenticationManager authenticationManager;
@@ -38,11 +41,22 @@ public class AuthenticationService {
         if (userRepository.findByEmail(newUserDto.getEmail()).isPresent()){
             throw new ValidationIntegrity("Email ya registrado");
         }
+        Company company = new Company();
+        if (companyRepository.findByName(newUserDto.getCompanyName()).isPresent()){
+            company = companyRepository.findByName(newUserDto.getCompanyName()).get();
+        } else {
+            company = companyRepository.save(new Company(
+                    null,
+                    newUserDto.getCompanyName(),
+                    null));
+        }
+
         var user = User.builder()
                 .name(newUserDto.getName())
                 .email(newUserDto.getEmail())
                 .password(passwordEncoder.encode(newUserDto.getPassword()))
-                .role(RoleName.ADMIN)
+                .role(RoleName.OWNER)
+                .company(company)
                 .build();
 
         userRepository.save(user);
