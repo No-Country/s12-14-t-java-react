@@ -63,6 +63,6 @@ public class NewUserDto {
     @NotEmpty
     @Pattern(regexp = "^(?=.*[a-z])(?=.*[A-Z])(?=.*\\d)(?=.*[@#$%^&+=])[a-zA-Z0-9@#$%^&+=]{8,12}$",
             message = "The password must be between 8 and 12 characters and have at least one uppercase letter, one lowercase letter, one number, and one special character.")
-    @Schema(description = "Password", defaultValue = "123456")
+    @Schema(description = "Password", defaultValue = "123456An")
     private String password;
 }
