@@ -1,5 +1,6 @@
 package com.trucking.Security.Dto;
 
+import io.swagger.v3.oas.annotations.media.Schema;
 import jakarta.persistence.Column;
 import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotBlank;
@@ -29,7 +30,8 @@ public class NewUserDto {
     /**
      * Nombre del nuevo usuario.
      */
-    @NotBlank(message = "Name can't be null or empty") @NotEmpty
+    @NotBlank(message = "Name can't be null or empty")
+    @NotEmpty
     @Pattern(regexp = "^[A-Za-zÁÉÍÓÚÜÑáéíóúüñ\\- ]{2,20}$", message = "The name is invalid")
     @Schema(description = "name user", example = "Maria angela")
     private String name;
@@ -38,7 +40,8 @@ public class NewUserDto {
      * Apellido del nuevo usuario.
      */
     @Column(name = "last_name")
-    @NotBlank(message = "last name can't be null or empty") @NotEmpty
+    @NotBlank(message = "last name can't be null or empty")
+    @NotEmpty
     @Pattern(regexp = "^[A-Za-zÁÉÍÓÚÜÑáéíóúüñ\\- ]{2,20}$", message = "The last name is invalid")
     @Schema(description = "last name user", example = "Peña")
     private String lastName;
@@ -46,7 +49,8 @@ public class NewUserDto {
     /**
      * Correo electrónico del nuevo usuario.
      */
-    @NotBlank(message = "Email can't be null or empty") @NotEmpty
+    @NotBlank(message = "Email can't be null or empty")
+    @NotEmpty
     @Pattern(regexp = "^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\\.[a-zA-Z]{2,}$", message = "The email is invalid")
     @Email
     @Schema(description = "Email user", example = "a@b.com")
@@ -55,7 +59,8 @@ public class NewUserDto {
     /**
      * Contraseña del nuevo usuario.
      */
-    @NotBlank(message = "Password can't be null or empty") @NotEmpty
+    @NotBlank(message = "Password can't be null or empty")
+    @NotEmpty
     @Pattern(regexp = "^(?=.*[a-z])(?=.*[A-Z])(?=.*\\d)(?=.*[@#$%^&+=])[a-zA-Z0-9@#$%^&+=]{8,12}$",
             message = "The password must be between 8 and 12 characters and have at least one uppercase letter, one lowercase letter, one number, and one special character.")
     @Schema(description = "Password", defaultValue = "123456")

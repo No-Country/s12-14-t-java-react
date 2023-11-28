@@ -1,4 +1,4 @@
-package com.nocountry.trucking.config;
+package com.trucking.Security.config;
 
 import io.swagger.v3.oas.annotations.OpenAPIDefinition;
 import io.swagger.v3.oas.annotations.enums.SecuritySchemeIn;
