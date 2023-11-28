@@ -18,8 +18,10 @@ import org.springframework.web.bind.annotation.RestController;
  * Controlador para la gestión de autenticación y autorización de usuarios.
  */
 @RestController
-@RequestMapping("/api/v1/auth")
+@RequestMapping("/auth")
 @RequiredArgsConstructor
+@SecurityRequirement(name = "bearerAuth")
+@Tag(name = "Management Auth User", description = "Client authentication and registration management")
 public class AuthController {
 
     private final AuthenticationService authenticationService;
@@ -35,6 +37,19 @@ public class AuthController {
     @Operation(
             summary = "Controller para registrar un usuario",
             description = "Todos pueden generar un registro"
+    )
+     @Operation(
+            summary = "Controller para registrar un usuario",
+            description = "Todos pueden generar un registro",
+            responses = {
+                    @ApiResponse(
+                            responseCode = "200",
+                            description = "Success",
+                            content = {
+                                    @Content(mediaType = "application/json",
+                                            schema = @Schema(implementation = AuthenticationResponseDto.class))}
+                    )
+            }
     )
     public ResponseEntity<?> register(@Valid @RequestBody NewUserDto newUserDto) {
 
