@@ -2,10 +2,7 @@ package com.trucking.Security.Auth;
 
 import com.trucking.Entity.Company;
 import com.trucking.Repository.CompanyRepository;
-import com.trucking.Security.Dto.AuthenticationResponseDto;
-import com.trucking.Security.Dto.LoginUserDto;
-import com.trucking.Security.Dto.NewUserDto;
-import com.trucking.Security.Dto.ShowDataUserDto;
+import com.trucking.Security.Dto.*;
 import com.trucking.Security.Entity.*;
 import com.trucking.Security.HandlerError.ValidationIntegrity;
 import com.trucking.Security.Repository.UserRepository;
@@ -15,6 +12,8 @@ import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
+
+import java.util.Optional;
 
 /**
  * Servicio que gestiona la autenticación de usuarios, incluyendo el registro y inicio de sesión.
@@ -38,11 +37,11 @@ public class AuthenticationService {
      */
     public AuthenticationResponseDto register(NewUserDto newUserDto) {
 
-        if (userRepository.findByEmail(newUserDto.getEmail()).isPresent()){
+        if (userRepository.findByEmail(newUserDto.getEmail()).isPresent()) {
             throw new ValidationIntegrity("Email ya registrado");
         }
         Company company = new Company();
-        if (companyRepository.findByName(newUserDto.getCompanyName()).isPresent()){
+        if (companyRepository.findByName(newUserDto.getCompanyName()).isPresent()) {
             company = companyRepository.findByName(newUserDto.getCompanyName()).get();
         } else {
             company = companyRepository.save(new Company(
@@ -70,7 +69,9 @@ public class AuthenticationService {
                         .id(user.getId())
                         .name(user.getName())
                         .email(user.getEmail())
+                        .companyName(company.getName())
                         .role(RoleName.valueOf(String.valueOf(user.getRole()))).build()
+
                 ).build();
 
     }
@@ -95,11 +96,47 @@ public class AuthenticationService {
 
         var token = jwtService.generateToken(user);
 
+        var company = companyRepository.findById(user.getCompany().getId());
+
         return AuthenticationResponseDto.builder().token(token).user(ShowDataUserDto.builder()
                 .id(user.getId())
                 .name(user.getName())
                 .email(user.getEmail())
+                .companyName(company.get().getName())
                 .role(RoleName.valueOf(String.valueOf(user.getRole()))).build()
         ).build();
     }
+
+    public MsgChangePasswordDto changePassword(ChangePasswordDto changePasswordDto) {
+        String email = changePasswordDto.getEmail();
+        Optional<User> userByEmail = userRepository.findByEmail(email);
+
+        if (userByEmail.isEmpty()) {
+            // El usuario no existe
+            return new MsgChangePasswordDto("Usuario no encontrado");
+        }
+
+        User user = userByEmail.get();
+
+        // Verificar la contraseña antigua
+        if (!passwordEncoder.matches(changePasswordDto.getOldPassword(), user.getPassword())) {
+            // La contraseña antigua no es válida
+            return new MsgChangePasswordDto("Contraseña antigua incorrecta");
+        }
+        System.out.println(user.getRole());
+        // Verificar el rol antes de permitir el cambio de contraseña
+        var rol =user.getRole().toString();
+        if (rol.equals("ADMIN")) {
+            // Actualizar la contraseña con la nueva
+            user.setPassword(passwordEncoder.encode(changePasswordDto.getNewPassword()));
+            userRepository.save(user);
+
+            return new MsgChangePasswordDto("Contraseña cambiada exitosamente");
+        } else {
+            return new MsgChangePasswordDto("Usuario no tiene permisos para este cambio");
+        }
+    }
+
 }
+
+
