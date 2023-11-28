@@ -41,24 +41,31 @@ jobs:
   deploy:
     name: Deploy to DonWeb
     needs: build-docker
-    runs-on: ubuntu-latest
-    steps:
-      - name: Install sshpass
-        run: sudo apt-get install -y sshpass
+    runs-on: self-hosted #ubuntu-latest 
 
-      - name: SSH INTO IBM4 - DEPLOY
+    steps:
+      - name: Create directory work
+        run: mkdir -p backend/app
+
+      - name: Enter to the directory
+        run: cd /home/lrpa/backend/app
+
+      - name: Permises docker 
+        run: sudo chmod 666 /var/run/docker.sock
+
+      - name: Docker Instance Stop and remove
+        run: sudo docker rm -f s12-14-t-java-react
+
+      - name: Docker pull image
+        run: sudo docker pull ${{ secrets.DOCKERHUB_USERNAME }}/spring-trucking:latest  
+
+      - name: Docker run image
         run: |
-          sshpass -p ${{ secrets.VPS_PASSWORD }} ssh -o StrictHostKeyChecking=no ${{ secrets.VPS_USER }}@${{ secrets.VPS_HOST }} << EOF
-              cd /home/lrpa/backend/app
-              docker rm -f s12-14-t-java-react
-              
-              docker login -u ${{ secrets.DOCKERHUB_USERNAME }} -p ${{ secrets.DOCKERHUB_TOKEN }}
-              docker pull ${{ secrets.DOCKERHUB_USERNAME }}/spring-trucking:latest
-              docker run -d \
-                --restart always \
-                --name s12-14-t-java-react \
-                -p9896:9896 \
-                ${{ secrets.DOCKERHUB_USERNAME }}/spring-trucking:latest
-          EOF
+          sudo docker run -d \
+            --restart always \
+            --name s12-14-t-java-react \
+            -p9896:9896 \
+            ${{ secrets.DOCKERHUB_USERNAME }}/spring-trucking:latest    
+
       
 #docker run -p 3323:3306 --name mysql_trucking --network spring-mysql-network --restart always -v /root/backend/app:/var/lib/mysql -e  MYSQL_DATABASE=db_trucking -e MYSQL_ROOT_PASSWORD=trucking2023  -d  mysql:8.0.33
