@@ -57,20 +57,46 @@ export const Homepage = () => {
         </div>
         <div className="col-auto px-3 py-5 md:h-screen">
           <img src="/img/img_vehicle.svg" alt="" />
-          <form className="block py-5 text-center">
-            <input type="text" placeholder="Ingrese su correo" />
-            <input type="password" placeholder="Ingrese su contraseña" />
-          </form>
-          <a href="#" className="btn btn-template-1">
-            Ingresar
-          </a>
+          <form className="block py-5 text-center space-y-3">
+            <div className="flex flex-col gap-5">
+              <input
+                type="text"
+                placeholder="Ingrese su correo"
+                className="rounded-lg border-none"
+              />
+              <input
+                type="password"
+                placeholder="Ingrese su contraseña"
+                className="rounded-lg border-none"
+              />
+            </div>
 
-          <a href="#" className="btn btn-template-1">
-            Registrarse
-          </a>
-          <a href="#" className="btn text-blue text-lg">
-            Olvidé mi contraseña
-          </a>
+            <a href="#" className="btn btn-template-1">
+              Ingresar
+            </a>
+
+            <a href="#" className="btn btn-template-1">
+              Registrarse
+            </a>
+            <a href="#" className="btn text-blue text-lg">
+              Olvidé mi contraseña
+            </a>
+            <div className="flex gap-5 justify-center">
+              <img
+                src="/img/gmail.svg"
+                alt="gmail"
+                className="hover:cursor-pointer"
+              />
+              <img
+                src="/img/outlook.svg"
+                alt="outlook"
+                className="hover:cursor-pointer"
+              />
+            </div>
+            <a href="#" className="btn text-blue text-lg">
+              Ingresar con email
+            </a>
+          </form>
         </div>
       </div>
     </section>
