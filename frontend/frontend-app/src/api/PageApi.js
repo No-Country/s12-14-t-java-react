@@ -7,6 +7,7 @@ export const pageApi = axios.create({
     baseURL: VITE_API_URL
 });
 
+
 // configurar interceptores
 pageApi.interceptors.request.use(config => {
 

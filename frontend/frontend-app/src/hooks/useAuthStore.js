@@ -17,6 +17,8 @@ export const useAuthStore = () => {
    
 
     const startRegister = async (User) => {
+
+        console.log( pageApi )
         dispatch(onChecking());
         try {
             const { data } = await pageApi.post('/auth/register', { ...User });
