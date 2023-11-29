@@ -126,15 +126,13 @@ public class AuthenticationService {
         System.out.println(user.getRole());
         // Verificar el rol antes de permitir el cambio de contraseña
         var rol =user.getRole().toString();
-        if (rol.equals("ADMIN")) {
+
             // Actualizar la contraseña con la nueva
             user.setPassword(passwordEncoder.encode(changePasswordDto.getNewPassword()));
             userRepository.save(user);
 
             return new MsgChangePasswordDto("Contraseña cambiada exitosamente");
-        } else {
-            return new MsgChangePasswordDto("Usuario no tiene permisos para este cambio");
-        }
+
     }
 
 }
