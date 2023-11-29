@@ -1,12 +1,7 @@
 package com.trucking.Security.Dto;
 
-import lombok.Data;
 
-import java.util.Date;
-import java.util.List;
-
-
-public class MsgChangePasswordDto {
+public class MsgDto {
 
 
 
@@ -14,7 +9,7 @@ public class MsgChangePasswordDto {
 
 
 
-    public MsgChangePasswordDto(String msg) {
+    public MsgDto(String msg) {
         this.mensaje= msg;
     }
 

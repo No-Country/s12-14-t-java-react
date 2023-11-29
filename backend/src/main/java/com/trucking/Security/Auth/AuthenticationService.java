@@ -107,31 +107,33 @@ public class AuthenticationService {
         ).build();
     }
 
-    public MsgChangePasswordDto changePassword(String tokenJwt ,ChangePasswordDto changePasswordDto) {
+    public MsgDto changePassword(String tokenJwt, ChangePasswordDto changePasswordDto) {
+        if (changePasswordDto.getOldPassword().equals(changePasswordDto.getNewPassword())) {
+            // La contraseña nueva no puede se la antigua
+            return new MsgDto("La Contraseña nueva no puede ser la anterior ");
+        }
         var token = tokenJwt.replace("Bearer ", "");
-        String email= jwtService.extractUsername(token);
+        String email = jwtService.extractUsername(token);
         Optional<User> userByEmail = userRepository.findByEmail(email);
 
         if (userByEmail.isEmpty()) {
             // El usuario no existe
-            return new MsgChangePasswordDto("Usuario no encontrado");
+            return new MsgDto("Usuario no encontrado");
         }
-
         User user = userByEmail.get();
 
         // Verificar la contraseña antigua
         if (!passwordEncoder.matches(changePasswordDto.getOldPassword(), user.getPassword())) {
             // La contraseña antigua no es válida
-            return new MsgChangePasswordDto("Contraseña antigua incorrecta");
+            return new MsgDto("Contraseña anterior incorrecta");
         }
-        // Verificar el rol antes de permitir el cambio de contraseña
-        var rol =user.getRole().toString();
 
-            // Actualizar la contraseña con la nueva
-            user.setPassword(passwordEncoder.encode(changePasswordDto.getNewPassword()));
-            userRepository.save(user);
 
-            return new MsgChangePasswordDto("Contraseña cambiada exitosamente");
+        // Actualizar la contraseña con la nueva
+        user.setPassword(passwordEncoder.encode(changePasswordDto.getNewPassword()));
+        userRepository.save(user);
+
+        return new MsgDto("Contraseña cambiada exitosamente");
 
     }
 
