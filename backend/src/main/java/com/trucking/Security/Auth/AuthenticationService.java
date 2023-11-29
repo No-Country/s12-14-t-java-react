@@ -6,7 +6,8 @@ import com.trucking.Security.Dto.AuthenticationResponseDto;
 import com.trucking.Security.Dto.LoginUserDto;
 import com.trucking.Security.Dto.NewUserDto;
 import com.trucking.Security.Dto.ShowDataUserDto;
-import com.trucking.Security.Entity.*;
+import com.trucking.Security.Entity.RoleName;
+import com.trucking.Security.Entity.User;
 import com.trucking.Security.HandlerError.ValidationIntegrity;
 import com.trucking.Security.Repository.UserRepository;
 import com.trucking.Security.config.JwtService;
@@ -38,7 +39,7 @@ public class AuthenticationService {
      */
     public AuthenticationResponseDto register(NewUserDto newUserDto) {
 
-        if (userRepository.findByEmail(newUserDto.getEmail()).isPresent()){
+        if (userRepository.findByEmail(newUserDto.getEmail()).isPresent()) {
             throw new ValidationIntegrity("Email ya registrado");
         }
         Company company = new Company();

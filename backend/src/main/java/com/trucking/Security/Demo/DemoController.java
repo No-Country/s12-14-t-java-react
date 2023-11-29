@@ -12,7 +12,7 @@ import org.springframework.web.bind.annotation.RestController;
 public class DemoController {
 
     @GetMapping
-    public ResponseEntity<String> hello(){
+    public ResponseEntity<String> hello() {
         return ResponseEntity.ok("Hello from demo controller");
     }
 }

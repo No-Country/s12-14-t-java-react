@@ -2,11 +2,11 @@ name: Build and Deploy Spring boot app
 
 on:
   push:
-    branches: [develop]
+    branches: [develop,dev]
 
 jobs:
   build-docker:
-    name: Buil and deploy spring proyect
+    name: Build and deploy spring proyect
     runs-on: ubuntu-latest
     steps:
       - name: Checkout code
