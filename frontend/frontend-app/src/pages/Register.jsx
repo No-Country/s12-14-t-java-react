@@ -1,6 +1,52 @@
 import { Link } from 'react-router-dom'
+import { useEffect } from 'react';
+import { useAuthStore } from '../hooks/useAuthStore';
+import { useForm } from '../hooks/useForm';
+
+
+const registerFormFields = {
+  companyName: "",
+  name: "",
+  lastName: "",
+  email: "",
+  password: "",
+
+};
+
 
 export const Register = () => {
+
+  const { errorMessage, startRegister } = useAuthStore();
+
+  const {
+    companyName,
+    name,
+    lastName,
+    email,
+    password,
+    onInputChange: onRegisterInputChange } = useForm( registerFormFields );
+
+
+    const registerSubmit = (event) => {
+
+      event.preventDefault();
+  
+      startRegister({
+        companyName: companyName,
+        name: name,
+        lastName: lastName,
+        email: email,
+        password: password,
+      });
+  
+    };
+  
+    useEffect(() => {
+      if (errorMessage !== undefined) {
+        console.log("Error en la autenticación", errorMessage, "error");
+      }
+    }, [errorMessage]);
+  
   return (
     <>
       <section className='bg-white'>
@@ -37,13 +83,20 @@ export const Register = () => {
                 <p className='mt-4 leading-relaxed text-gray-500'>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Eligendi nam dolorum aliquam, quibusdam aperiam voluptatum.</p>
               </div>
 
-              <form action='#' className='grid grid-cols-6 gap-6 mt-8'>
+              <form onSubmit={registerSubmit} className='grid grid-cols-6 gap-6 mt-8'>
+              <div className='col-span-6 sm:col-span-3'>
+                  <label htmlFor='companyName' className='block text-sm font-medium text-gray-700'>
+                  Company Name
+                  </label>
+
+                  <input value={companyName} onChange={onRegisterInputChange} type='text' id='companyName' name='companyName' className='w-full mt-1 text-sm text-gray-700 bg-white border-gray-200 rounded-md shadow-sm' />
+                </div>
                 <div className='col-span-6 sm:col-span-3'>
-                  <label htmlFor='FirstName' className='block text-sm font-medium text-gray-700'>
+                  <label htmlFor='name' className='block text-sm font-medium text-gray-700'>
                     First Name
                   </label>
 
-                  <input type='text' id='FirstName' name='first_name' className='w-full mt-1 text-sm text-gray-700 bg-white border-gray-200 rounded-md shadow-sm' />
+                  <input value={name} onChange={onRegisterInputChange} type='text' id='name' name='name' className='w-full mt-1 text-sm text-gray-700 bg-white border-gray-200 rounded-md shadow-sm' />
                 </div>
 
                 <div className='col-span-6 sm:col-span-3'>
@@ -51,7 +104,7 @@ export const Register = () => {
                     Last Name
                   </label>
 
-                  <input type='text' id='LastName' name='last_name' className='w-full mt-1 text-sm text-gray-700 bg-white border-gray-200 rounded-md shadow-sm' />
+                  <input value={lastName} onChange={onRegisterInputChange} type='text' id='LastName' name='lastName' className='w-full mt-1 text-sm text-gray-700 bg-white border-gray-200 rounded-md shadow-sm' />
                 </div>
 
                 <div className='col-span-6'>
@@ -59,7 +112,7 @@ export const Register = () => {
                     Email
                   </label>
 
-                  <input type='email' id='Email' name='email' className='w-full mt-1 text-sm text-gray-700 bg-white border-gray-200 rounded-md shadow-sm' />
+                  <input  value={email} onChange={onRegisterInputChange} type='email' id='Email' name='email' className='w-full mt-1 text-sm text-gray-700 bg-white border-gray-200 rounded-md shadow-sm' />
                 </div>
 
                 <div className='col-span-6 sm:col-span-3'>
@@ -67,24 +120,27 @@ export const Register = () => {
                     Password
                   </label>
 
-                  <input type='password' id='Password' name='password' className='w-full mt-1 text-sm text-gray-700 bg-white border-gray-200 rounded-md shadow-sm' />
+                  <input  value={password}  onChange={onRegisterInputChange} type='password' id='Password' name='password' className='w-full mt-1 text-sm text-gray-700 bg-white border-gray-200 rounded-md shadow-sm' />
                 </div>
 
-                <div className='col-span-6 sm:col-span-3'>
+                {/* <div className='col-span-6 sm:col-span-3'>
                   <label htmlFor='PasswordConfirmation' className='block text-sm font-medium text-gray-700'>
                     Password Confirmation
                   </label>
 
                   <input type='password' id='PasswordConfirmation' name='password_confirmation' className='w-full mt-1 text-sm text-gray-700 bg-white border-gray-200 rounded-md shadow-sm' />
-                </div>
+                </div> */}
 
-                <div className='col-span-6'>
+                {/* <div className='col-span-6'>
                   <label htmlFor='MarketingAccept' className='flex gap-4'>
                     <input type='checkbox' id='MarketingAccept' name='marketing_accept' className='w-5 h-5 bg-white border-gray-200 rounded-md shadow-sm' />
 
                     <span className='text-sm text-gray-700'>I want to receive emails about events, product updates and company announcements.</span>
                   </label>
-                </div>
+                </div> */}
+                 <button type="submit">
+            Registrarse
+          </button>
 
                 <div className='col-span-6 sm:flex sm:items-center sm:gap-4'>
                   <button className='inline-block px-12 py-3 text-sm font-medium text-white transition bg-blue-600 border border-blue-600 rounded-md shrink-0 hover:bg-transparent hover:text-blue-600 focus:outline-none focus:ring active:text-blue-500'>Create an account</button>
