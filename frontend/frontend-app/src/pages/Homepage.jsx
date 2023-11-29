@@ -67,7 +67,7 @@ export const Homepage = () => {
               <input
                 type="password"
                 placeholder="Ingrese su contraseña"
-                className="rounded-lg border-none"
+                className="rounded-lg border-none "
               />
             </div>
 
