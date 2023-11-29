@@ -63,7 +63,5 @@ jobs:
             --restart always \
             --name s12-14-t-java-react \
             -p9896:9896 \
-            ${{ secrets.DOCKERHUB_USERNAME }}/spring-trucking:latest    
-
-      
+            ${{ secrets.DOCKERHUB_USERNAME }}/spring-trucking:latest          
 #docker run -p 3323:3306 --name mysql_trucking --network spring-mysql-network --restart always -v /root/backend/app:/var/lib/mysql -e  MYSQL_DATABASE=db_trucking -e MYSQL_ROOT_PASSWORD=trucking2023  -d  mysql:8.0.33
