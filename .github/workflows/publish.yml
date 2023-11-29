@@ -3,8 +3,6 @@ name: Build and Deploy Spring boot app
 on:
   push:
     branches: [develop,dev]
-  pull_request:
-    branches: [develop]
 
 jobs:
   build-docker:
