@@ -2,6 +2,10 @@ package com.trucking.Security.Repository;
 
 import com.trucking.Security.Entity.User;
 import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.jpa.repository.Modifying;
+import org.springframework.data.jpa.repository.Query;
+import org.springframework.data.repository.query.Param;
+import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Repository;
 
 import java.util.Optional;
@@ -19,4 +23,5 @@ public interface UserRepository extends JpaRepository<User, Long> {
      * @return Una instancia de {@link Optional} que contiene el usuario si se encuentra, o vacío si no se encuentra.
      */
     Optional<User> findByEmail(String email);
+
 }
