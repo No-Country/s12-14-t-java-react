@@ -12,9 +12,7 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @NoArgsConstructor
 public class ChangePasswordDto {
-    @NotBlank(message = "Email can't be empty or null")
-    @Email
-    private String email;
+
     @NotBlank(message = "Password can't be empty or null")
     private String oldPassword;
     @NotBlank(message = "Password can't be empty or null")

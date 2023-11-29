@@ -107,8 +107,9 @@ public class AuthenticationService {
         ).build();
     }
 
-    public MsgChangePasswordDto changePassword(ChangePasswordDto changePasswordDto) {
-        String email = changePasswordDto.getEmail();
+    public MsgChangePasswordDto changePassword(String tokenJwt ,ChangePasswordDto changePasswordDto) {
+        var token = tokenJwt.replace("Bearer ", "");
+        String email= jwtService.extractUsername(token);
         Optional<User> userByEmail = userRepository.findByEmail(email);
 
         if (userByEmail.isEmpty()) {
@@ -123,7 +124,6 @@ public class AuthenticationService {
             // La contraseña antigua no es válida
             return new MsgChangePasswordDto("Contraseña antigua incorrecta");
         }
-        System.out.println(user.getRole());
         // Verificar el rol antes de permitir el cambio de contraseña
         var rol =user.getRole().toString();
 

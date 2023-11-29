@@ -57,9 +57,9 @@ public class AuthController {
     @Operation(
             summary = "Controller para cambiar password de un usuario con rol MANAGER"
     )
-    public ResponseEntity<MsgChangePasswordDto> changePass(@Valid @RequestBody ChangePasswordDto changePasswordDto) {
+    public ResponseEntity<MsgChangePasswordDto> changePass( @RequestHeader("Authorization") String token , @Valid @RequestBody ChangePasswordDto changePasswordDto) {
 
-        MsgChangePasswordDto changePasswordMsg = authenticationService.changePassword(changePasswordDto);
+        MsgChangePasswordDto changePasswordMsg = authenticationService.changePassword(token,changePasswordDto);
 
         return ResponseEntity.status(HttpStatus.OK).body(changePasswordMsg);
     }
