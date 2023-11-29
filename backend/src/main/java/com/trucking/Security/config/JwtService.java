@@ -23,6 +23,7 @@ public class JwtService {
 
     @Value("${api.security.secret}")
     String SECRET_KEY;
+
     /**
      * Genera un token JWT con reclamaciones adicionales y detalles de usuario.
      *
@@ -38,7 +39,7 @@ public class JwtService {
                 .setClaims(extraClaims)
                 .setSubject(userDetails.getUsername())
                 .setIssuedAt(new Date(System.currentTimeMillis()))
-                .setExpiration(new Date(System.currentTimeMillis()+ 1000 * 60 * 60)) //se vence en 1 h
+                .setExpiration(new Date(System.currentTimeMillis() + 1000 * 60 * 60)) //se vence en 1 h
                 .signWith(getSignIngKey(), SignatureAlgorithm.HS256)
                 .compact();
 
@@ -50,7 +51,7 @@ public class JwtService {
      * @param userDetails Detalles del usuario para incluir en el token.
      * @return Token JWT generado.
      */
-    public String generateToken(UserDetails userDetails){
+    public String generateToken(UserDetails userDetails) {
         return generateToken(new HashMap<>(), userDetails);
     }
 
@@ -61,10 +62,11 @@ public class JwtService {
      * @param userDetails Detalles del usuario para comparar con el token.
      * @return `true` si el token es válido, `false` en caso contrario.
      */
-    public boolean isTokenValid(String token, UserDetails userDetails){
+    public boolean isTokenValid(String token, UserDetails userDetails) {
         final String username = extractUsername(token);
-        return (username.equals(userDetails.getUsername()))&& !isTokenExpired(token);
+        return (username.equals(userDetails.getUsername())) && !isTokenExpired(token);
     }
+
     /**
      * Verifica si un token JWT ha expirado.
      *
@@ -99,12 +101,12 @@ public class JwtService {
     /**
      * Extrae una reclamación específica de un token JWT.
      *
-     * @param token           Token JWT del cual extraer la reclamación.
-     * @param claimsResolver  Función que resuelve la reclamación específica.
-     * @param <T>             Tipo de dato de la reclamación.
+     * @param token          Token JWT del cual extraer la reclamación.
+     * @param claimsResolver Función que resuelve la reclamación específica.
+     * @param <T>            Tipo de dato de la reclamación.
      * @return Reclamación específica extraída del token.
      */
-    private <T> T extractClaim(String token, Function<Claims, T> claimsResolver){
+    private <T> T extractClaim(String token, Function<Claims, T> claimsResolver) {
         final Claims claims = extractAllClaims(token);
         return claimsResolver.apply(claims);
     }

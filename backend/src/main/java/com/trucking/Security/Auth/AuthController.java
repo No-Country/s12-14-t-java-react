@@ -3,6 +3,11 @@ package com.trucking.Security.Auth;
 import com.trucking.Security.Dto.*;
 import com.trucking.Security.Repository.UserRepository;
 import io.swagger.v3.oas.annotations.Operation;
+import io.swagger.v3.oas.annotations.media.Content;
+import io.swagger.v3.oas.annotations.media.Schema;
+import io.swagger.v3.oas.annotations.responses.ApiResponse;
+import io.swagger.v3.oas.annotations.security.SecurityRequirement;
+import io.swagger.v3.oas.annotations.tags.Tag;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
@@ -13,8 +18,10 @@ import org.springframework.web.bind.annotation.*;
  * Controlador para la gestión de autenticación y autorización de usuarios.
  */
 @RestController
-@RequestMapping("/api/v1/auth")
+@RequestMapping("/auth")
 @RequiredArgsConstructor
+@SecurityRequirement(name = "bearerAuth")
+@Tag(name = "Management Auth User", description = "Client authentication and registration management")
 public class AuthController {
 
     private final AuthenticationService authenticationService;
@@ -29,7 +36,16 @@ public class AuthController {
     @PostMapping("/register")
     @Operation(
             summary = "Controller para registrar un usuario",
-            description = "Todos pueden generar un registro"
+            description = "Todos pueden generar un registro",
+            responses = {
+                    @ApiResponse(
+                            responseCode = "200",
+                            description = "Success",
+                            content = {
+                                    @Content(mediaType = "application/json",
+                                            schema = @Schema(implementation = AuthenticationResponseDto.class))}
+                    )
+            }
     )
     public ResponseEntity<?> register(@Valid @RequestBody NewUserDto newUserDto) {
 

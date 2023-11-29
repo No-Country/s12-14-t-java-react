@@ -1,6 +1,5 @@
 package com.trucking.Security.config;
 
-import com.trucking.Security.config.JwtService;
 import jakarta.servlet.FilterChain;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServletRequest;
@@ -16,6 +15,7 @@ import org.springframework.stereotype.Component;
 import org.springframework.web.filter.OncePerRequestFilter;
 
 import java.io.IOException;
+
 /**
  * Filtro que maneja la autenticación mediante tokens JWT en las solicitudes HTTP.
  */
@@ -37,8 +37,8 @@ public class JwtAuthenticationFilter extends OncePerRequestFilter {
      * @throws IOException      Si hay un error de entrada/salida.
      */
     @Override
-    protected void doFilterInternal( @NotNull HttpServletRequest request, @NotNull HttpServletResponse response,
-            @NotNull FilterChain filterChain ) throws ServletException, IOException {
+    protected void doFilterInternal(@NotNull HttpServletRequest request, @NotNull HttpServletResponse response,
+                                    @NotNull FilterChain filterChain) throws ServletException, IOException {
 
         final String authHeader = request.getHeader("Authorization");
         final String jwtToken;
