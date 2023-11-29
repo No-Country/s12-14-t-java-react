@@ -1,5 +1,6 @@
 package com.trucking.Security.Entity;
 
+import com.trucking.Entity.Company;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -28,6 +29,8 @@ public class User implements UserDetails {
     private String name;
     private String email;
     private String password;
+    @ManyToOne
+    private Company company;
     @Enumerated(EnumType.STRING)
     private RoleName role;
 
