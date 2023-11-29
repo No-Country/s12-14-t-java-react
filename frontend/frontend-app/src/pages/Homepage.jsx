@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 
 export const Homepage = () => {
   return (
-    <section className="min-h-screen">
+    <section className="min-h-screen bg-purple">
       <div className="grid gap-4 md:grid-cols-2">
         <div className="col-auto px-3 py-5 text-center md:text-left md:h-screen">
           <Link to="/" className="inline-block">
