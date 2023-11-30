@@ -3,7 +3,8 @@ package com.trucking.Security.Auth;
 import com.trucking.Entity.Company;
 import com.trucking.Repository.CompanyRepository;
 import com.trucking.Security.Dto.*;
-import com.trucking.Security.Entity.*;
+import com.trucking.Security.Entity.RoleName;
+import com.trucking.Security.Entity.User;
 import com.trucking.Security.HandlerError.ValidationIntegrity;
 import com.trucking.Security.Repository.UserRepository;
 import com.trucking.Security.Service.EmailService;
@@ -23,6 +24,8 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import java.util.Optional;
+
+import java.util.Optional;
 import java.util.UUID;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
@@ -39,12 +42,6 @@ public class AuthenticationService {
     private final PasswordEncoder passwordEncoder;
     private final JwtService jwtService;
     private final AuthenticationManager authenticationManager;
-    private final EmailService emailService;
-    private final UserServiceImplement userServiceImplement;
-
-    @Value("${api.security.secret}")
-    String SECRET_KEY;
-
 
     /**
      * Registra un nuevo usuario en el sistema.
@@ -59,7 +56,7 @@ public class AuthenticationService {
             throw new ValidationIntegrity("Email ya registrado");
         }
         Company company = new Company();
-        if (companyRepository.findByName(newUserDto.getCompanyName()).isPresent()){
+        if (companyRepository.findByName(newUserDto.getCompanyName()).isPresent()) {
             company = companyRepository.findByName(newUserDto.getCompanyName()).get();
         } else {
             company = companyRepository.save(new Company(
@@ -87,11 +84,12 @@ public class AuthenticationService {
                         .id(user.getId())
                         .name(user.getName())
                         .email(user.getEmail())
+                        .companyName(company.getName())
                         .role(RoleName.valueOf(String.valueOf(user.getRole()))).build()
+
                 ).build();
 
     }
-
 
     /**
      * Inicia sesión con las credenciales proporcionadas.
@@ -113,10 +111,13 @@ public class AuthenticationService {
 
         var token = jwtService.generateToken(user);
 
+        var company = companyRepository.findById(user.getCompany().getId());
+
         return AuthenticationResponseDto.builder().token(token).user(ShowDataUserDto.builder()
                 .id(user.getId())
                 .name(user.getName())
                 .email(user.getEmail())
+                .companyName(company.get().getName())
                 .role(RoleName.valueOf(String.valueOf(user.getRole()))).build()
         ).build();
     }
@@ -185,3 +186,37 @@ public class AuthenticationService {
     }
 
 }
+
+    public MsgDto changePassword(String tokenJwt, ChangePasswordDto changePasswordDto) {
+        if (changePasswordDto.getOldPassword().equals(changePasswordDto.getNewPassword())) {
+            // La contraseña nueva no puede se la antigua
+            return new MsgDto("La Contraseña nueva no puede ser la anterior ");
+        }
+        var token = tokenJwt.replace("Bearer ", "");
+        String email = jwtService.extractUsername(token);
+        Optional<User> userByEmail = userRepository.findByEmail(email);
+
+        if (userByEmail.isEmpty()) {
+            // El usuario no existe
+            return new MsgDto("Usuario no encontrado");
+        }
+        User user = userByEmail.get();
+
+        // Verificar la contraseña antigua
+        if (!passwordEncoder.matches(changePasswordDto.getOldPassword(), user.getPassword())) {
+            // La contraseña antigua no es válida
+            return new MsgDto("Contraseña anterior incorrecta");
+        }
+
+
+        // Actualizar la contraseña con la nueva
+        user.setPassword(passwordEncoder.encode(changePasswordDto.getNewPassword()));
+        userRepository.save(user);
+
+        return new MsgDto("Contraseña cambiada exitosamente");
+
+    }
+
+}
+
+

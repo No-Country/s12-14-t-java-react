@@ -1,26 +1,34 @@
 package com.trucking.Security.Auth;
 
 import com.trucking.Security.Dto.*;
+import com.trucking.Security.Repository.UserRepository;
 import io.swagger.v3.oas.annotations.Operation;
-import jakarta.mail.MessagingException;
+import io.swagger.v3.oas.annotations.media.Content;
+import io.swagger.v3.oas.annotations.media.Schema;
+import io.swagger.v3.oas.annotations.responses.ApiResponse;
+import io.swagger.v3.oas.annotations.security.SecurityRequirement;
+import io.swagger.v3.oas.annotations.tags.Tag;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.*;
-
-
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
 
 /**
  * Controlador para la gestión de autenticación y autorización de usuarios.
  */
 @RestController
-@RequestMapping("/api/v1/auth")
+@RequestMapping("/auth")
 @RequiredArgsConstructor
+//@SecurityRequirement(name = "bearerAuth")
+@Tag(name = "Management Auth User", description = "Client authentication and registration management")
 public class AuthController {
 
     private final AuthenticationService authenticationService;
-
+    private final UserRepository userRepository;
 
     /**
      * Maneja las solicitudes de registro de nuevos usuarios.
@@ -31,12 +39,21 @@ public class AuthController {
     @PostMapping("/register")
     @Operation(
             summary = "Controller para registrar un usuario",
-            description = "Todos pueden generar un registro"
+            description = "Todos pueden generar un registro",
+            responses = {
+                    @ApiResponse(
+                            responseCode = "200",
+                            description = "Success",
+                            content = {
+                                    @Content(mediaType = "application/json",
+                                            schema = @Schema(implementation = AuthenticationResponseDto.class))}
+                    )
+            }
     )
     public ResponseEntity<?> register(@Valid @RequestBody NewUserDto newUserDto) {
 
-        AuthenticationResponseDto response = authenticationService.register(newUserDto);
-        return ResponseEntity.status(HttpStatus.CREATED).body(response);
+                AuthenticationResponseDto response = authenticationService.register(newUserDto);
+                return ResponseEntity.status(HttpStatus.CREATED).body(response);
     }
 
     /**
@@ -52,8 +69,18 @@ public class AuthController {
     )
     public ResponseEntity<?> login(@Valid @RequestBody LoginUserDto login) {
 
-        AuthenticationResponseDto response = authenticationService.login(login);
-        return ResponseEntity.status(HttpStatus.OK).body(response);
+                AuthenticationResponseDto response = authenticationService.login(login);
+                return ResponseEntity.status(HttpStatus.OK).body(response);
+    }
+    @PutMapping("/changePassword")
+    @Operation(
+            summary = "Controller para cambiar password de un usuario con rol MANAGER"
+    )
+    public ResponseEntity<MsgDto> changePass(@RequestHeader("Authorization") String token , @Valid @RequestBody ChangePasswordDto changePasswordDto) {
+
+        MsgDto changePasswordMsg = authenticationService.changePassword(token,changePasswordDto);
+
+        return ResponseEntity.status(HttpStatus.OK).body(changePasswordMsg);
     }
 
     /**
