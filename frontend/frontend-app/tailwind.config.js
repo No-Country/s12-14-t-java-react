@@ -9,10 +9,10 @@ export default {
       current: 'currentColor',
       white: '#ffffff',
       black: '#000000',
-      'light-blue': '#E1F1FF',
+      'light-blue': '#8B9EFF',
       blue: '#2E4BDF',
       'dark-blue': '#051A88',
-      purple: '#8B9EFF',
+      purple: '#BDC4E7',
       'dark-purple': '#6C63FF',
       gray: '#CACACA',
       'light-gray': '#DFE6EC'
