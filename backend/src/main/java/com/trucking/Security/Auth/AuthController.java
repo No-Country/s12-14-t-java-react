@@ -1,8 +1,6 @@
 package com.trucking.Security.Auth;
 
-import com.trucking.Security.Dto.AuthenticationResponseDto;
-import com.trucking.Security.Dto.LoginUserDto;
-import com.trucking.Security.Dto.NewUserDto;
+import com.trucking.Security.Dto.*;
 import com.trucking.Security.Repository.UserRepository;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.media.Content;
@@ -14,10 +12,7 @@ import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 /**
  * Controlador para la gestión de autenticación y autorización de usuarios.
@@ -73,6 +68,16 @@ public class AuthController {
 
                 AuthenticationResponseDto response = authenticationService.login(login);
                 return ResponseEntity.status(HttpStatus.OK).body(response);
+    }
+    @PutMapping("/changePassword")
+    @Operation(
+            summary = "Controller para cambiar password de un usuario con rol MANAGER"
+    )
+    public ResponseEntity<MsgDto> changePass(@RequestHeader("Authorization") String token , @Valid @RequestBody ChangePasswordDto changePasswordDto) {
+
+        MsgDto changePasswordMsg = authenticationService.changePassword(token,changePasswordDto);
+
+        return ResponseEntity.status(HttpStatus.OK).body(changePasswordMsg);
     }
 
 
