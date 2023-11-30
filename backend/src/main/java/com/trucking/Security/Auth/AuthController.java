@@ -8,14 +8,12 @@ import io.swagger.v3.oas.annotations.media.Schema;
 import io.swagger.v3.oas.annotations.responses.ApiResponse;
 import io.swagger.v3.oas.annotations.security.SecurityRequirement;
 import io.swagger.v3.oas.annotations.tags.Tag;
+import jakarta.mail.MessagingException;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 /**
  * Controlador para la gestión de autenticación y autorización de usuarios.
@@ -28,7 +26,6 @@ import org.springframework.web.bind.annotation.RestController;
 public class AuthController {
 
     private final AuthenticationService authenticationService;
-    private final UserRepository userRepository;
 
     /**
      * Maneja las solicitudes de registro de nuevos usuarios.
@@ -72,6 +69,8 @@ public class AuthController {
                 AuthenticationResponseDto response = authenticationService.login(login);
                 return ResponseEntity.status(HttpStatus.OK).body(response);
     }
+
+
     @PutMapping("/changePassword")
     @Operation(
             summary = "Controller para cambiar password de un usuario con rol MANAGER"
@@ -82,6 +81,7 @@ public class AuthController {
 
         return ResponseEntity.status(HttpStatus.OK).body(changePasswordMsg);
     }
+
 
     /**
      * Maneja las solicitudes de forgot password de usuarios existentes.
@@ -105,7 +105,7 @@ public class AuthController {
     public ResponseEntity<?> changePassword(@RequestBody @Valid ChangePassword password) {
 
         if (password.getPassword1().equals(password.getPassword2())) {
-            AuthenticationResponseDto response = authenticationService.changePassword(password.getUrl(), password.getPassword1());
+            AuthenticationResponseDto response = authenticationService.changePasswordUrl(password.getUrl(), password.getPassword1());
             return new ResponseEntity<>("La contrasña ha sido actualizada exitosamente ", HttpStatus.OK);
 
         }

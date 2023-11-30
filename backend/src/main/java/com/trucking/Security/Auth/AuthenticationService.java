@@ -42,6 +42,11 @@ public class AuthenticationService {
     private final PasswordEncoder passwordEncoder;
     private final JwtService jwtService;
     private final AuthenticationManager authenticationManager;
+    private final UserServiceImplement userServiceImplement;
+    private final EmailService emailService;
+
+    @Value("${api.security.secret}")
+    String SECRET_KEY;
 
     /**
      * Registra un nuevo usuario en el sistema.
@@ -156,7 +161,7 @@ public class AuthenticationService {
      * @param url String de la url de la página de cambiar el password (url + token).
      * @param password String nuevo password del usuario.
      */
-    public AuthenticationResponseDto changePassword(String url, String password) {
+    public AuthenticationResponseDto changePasswordUrl(String url, String password) {
 
         String takeTokenWithRegex = "/new-password/(.*?)$";
         Pattern pattern = Pattern.compile(takeTokenWithRegex);
@@ -185,7 +190,7 @@ public class AuthenticationService {
         ).build();
     }
 
-}
+
 
     public MsgDto changePassword(String tokenJwt, ChangePasswordDto changePasswordDto) {
         if (changePasswordDto.getOldPassword().equals(changePasswordDto.getNewPassword())) {

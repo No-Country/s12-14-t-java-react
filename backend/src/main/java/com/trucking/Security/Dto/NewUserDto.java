@@ -22,17 +22,17 @@ public class NewUserDto {
      * Nombre de la compañia del nuevo usuario.
      */
     @Column(name = "company_name")
-    @NotBlank(message = "Company name can't be null or empty")
-    @Pattern(regexp = "^[a-zA-Z0-9!#$%&()*+\\-/?@\\[\\]^_{|}]{2,20}$", message = "The company name is invalid")
+    @NotBlank(message = "Company name no puede estar en blanco o null")
+    @Pattern(regexp = "^[a-zA-Z0-9!#$%&()*+\\-/?@\\[\\]^_{|}]{2,20}$", message = "Company name es invalido")
     @Schema(description = "Company name", example = "Vehicle ORG")
     private String companyName;
 
     /**
      * Nombre del nuevo usuario.
      */
-    @NotBlank(message = "Name can't be null or empty")
+    @NotBlank(message = "Name no puede estar en blanco o null")
     @NotEmpty
-    @Pattern(regexp = "^[A-Za-zÁÉÍÓÚÜÑáéíóúüñ\\- ]{2,20}$", message = "The name is invalid")
+    @Pattern(regexp = "^[A-Za-zÁÉÍÓÚÜÑáéíóúüñ\\- ]{2,20}$", message = "Name es invalido")
     @Schema(description = "name user", example = "Maria angela")
     private String name;
 
@@ -40,18 +40,18 @@ public class NewUserDto {
      * Apellido del nuevo usuario.
      */
     @Column(name = "last_name")
-    @NotBlank(message = "last name can't be null or empty")
+    @NotBlank(message = "last name no puede estar en blanco o null")
     @NotEmpty
-    @Pattern(regexp = "^[A-Za-zÁÉÍÓÚÜÑáéíóúüñ\\- ]{2,20}$", message = "The last name is invalid")
+    @Pattern(regexp = "^[A-Za-zÁÉÍÓÚÜÑáéíóúüñ\\- ]{2,20}$", message = "Last name es invalido")
     @Schema(description = "last name user", example = "Peña")
     private String lastName;
 
     /**
      * Correo electrónico del nuevo usuario.
      */
-    @NotBlank(message = "Email can't be null or empty")
+    @NotBlank(message = "Email no puede estar en blanco o null")
     @NotEmpty
-    @Pattern(regexp = "^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\\.[a-zA-Z]{2,}$", message = "The email is invalid")
+    @Pattern(regexp = "^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\\.[a-zA-Z]{2,}$", message = "El email es invalido")
     @Email
     @Schema(description = "Email user", example = "a@b.com")
     private String email;
@@ -59,10 +59,10 @@ public class NewUserDto {
     /**
      * Contraseña del nuevo usuario.
      */
-    @NotBlank(message = "Password can't be null or empty")
+    @NotBlank(message = "Password no puede estar en blanco o null")
     @NotEmpty
-    @Pattern(regexp = "^(?=.*[a-z])(?=.*[A-Z])(?=.*\\d)(?=.*[@#$%^&+=])[a-zA-Z0-9@#$%^&+=]{8,12}$",
-            message = "The password must be between 8 and 12 characters and have at least one uppercase letter, one lowercase letter, one number, and one special character.")
+    @Pattern(regexp = "^(?=.*[a-z])(?=.*[A-Z])(?=.*\\d)(?=.*[!#$%&()*+\\-/?@\\[\\]^_{\\\\|}])[a-zA-Z0-9!#$%&()*+\\-/?@\\[\\]^_{\\\\|}]{8,12}$",
+            message = "La contraseña debe tener entre 8 y 12 caracteres y tener al menos una letra mayúscula, una letra minúscula, un número y un carácter especial.")
     @Schema(description = "Password", defaultValue = "123456An")
     private String password;
 }

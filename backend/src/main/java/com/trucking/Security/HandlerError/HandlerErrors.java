@@ -28,14 +28,14 @@ public class HandlerErrors extends Throwable {
     @ExceptionHandler(ValidationIntegrity.class)
     public ResponseEntity errorHandlerValidacionesIntegridad(Exception e){
         ErrorMsgDto response = new ErrorMsgDto();
-        response.setError("Validation error");
+        response.setError("Error de validación");
         response.setDetails(Arrays.asList(e.getMessage()));
         return new ResponseEntity(response, HttpStatus.BAD_REQUEST);
     }
     @ExceptionHandler(ValidationException.class)
     public ResponseEntity errorHandlerValidacionesDeNegocio(Exception e){
         Map<String, Object> response = new HashMap<>();
-        response.put("Error", "Validation error");
+        response.put("Error", "Error de validación");
 
         List<String> errores = new ArrayList<>();
         errores.add(e.getMessage());

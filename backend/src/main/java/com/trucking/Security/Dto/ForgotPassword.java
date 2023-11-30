@@ -10,7 +10,7 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @NoArgsConstructor
 public class ForgotPassword {
-    @NotBlank(message = "Email can't be empty or null")
+    @NotBlank(message = "Email no puede estar vacio o null")
     @Email
     private String email;
 }
