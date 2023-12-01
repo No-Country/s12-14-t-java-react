@@ -17,6 +17,8 @@ public class RegMaint {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+    @ManyToOne
+    private Vehicle vehicle;
     private LocalDate date;
     private String description;
     @ManyToOne
