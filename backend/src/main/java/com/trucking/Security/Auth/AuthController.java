@@ -108,12 +108,7 @@ public class AuthController {
     )
     public ResponseEntity<?> changePassword(@RequestBody @Valid RecoverPasswordDto password) {
 
-        if (password.getPassword1().equals(password.getPassword2())) {
-            AuthenticationResponseDto response = authenticationService.changePasswordUrl(password.getUrl(), password.getPassword1());
-            return new ResponseEntity<>("La contrasña ha sido actualizada exitosamente ", HttpStatus.OK);
-
-        }
-        return new ResponseEntity("Las contraseñas deben ser iguales", HttpStatus.BAD_REQUEST);
-
+        AuthenticationResponseDto response = authenticationService.changePasswordUrl(password.getUrl(), password.getPassword());
+        return new ResponseEntity<>("La contrasña ha sido actualizada exitosamente ", HttpStatus.OK);
     }
 }
