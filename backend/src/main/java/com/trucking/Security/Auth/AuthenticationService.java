@@ -6,7 +6,8 @@ import com.trucking.Security.Dto.AuthenticationResponseDto;
 import com.trucking.Security.Dto.LoginUserDto;
 import com.trucking.Security.Dto.NewUserDto;
 import com.trucking.Security.Dto.ShowDataUserDto;
-import com.trucking.Security.Entity.*;
+import com.trucking.Security.Entity.RoleName;
+import com.trucking.Security.Entity.User;
 import com.trucking.Security.HandlerError.ValidationIntegrity;
 import com.trucking.Security.Repository.UserRepository;
 import com.trucking.Security.config.JwtService;
@@ -51,27 +52,27 @@ public class AuthenticationService {
                     null));
         }
 
-        var user = User.builder()
-                .name(newUserDto.getName())
-                .email(newUserDto.getEmail())
-                .password(passwordEncoder.encode(newUserDto.getPassword()))
-                .role(RoleName.OWNER)
-                .company(company)
-                .build();
+            var user = User.builder()
+                    .name(newUserDto.getName())
+                    .email(newUserDto.getEmail())
+                    .password(passwordEncoder.encode(newUserDto.getPassword()))
+                    .role(RoleName.OWNER)
+                    .company(company)
+                    .build();
 
-        userRepository.save(user);
+            userRepository.save(user);
 
-        var jwtToken = jwtService.generateToken(user);
+            var jwtToken = jwtService.generateToken(user);
 
-        return AuthenticationResponseDto
-                .builder()
-                .token(jwtToken)
-                .user(ShowDataUserDto.builder()
-                        .id(user.getId())
-                        .name(user.getName())
-                        .email(user.getEmail())
-                        .role(RoleName.valueOf(String.valueOf(user.getRole()))).build()
-                ).build();
+            return AuthenticationResponseDto
+                    .builder()
+                    .token(jwtToken)
+                    .user(ShowDataUserDto.builder()
+                            .id(user.getId())
+                            .name(user.getName())
+                            .email(user.getEmail())
+                            .role(RoleName.valueOf(String.valueOf(user.getRole()))).build()
+                    ).build();
 
     }
 

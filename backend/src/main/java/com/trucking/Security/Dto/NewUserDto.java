@@ -22,37 +22,37 @@ public class NewUserDto {
      */
     @Column(name = "company_name")
     @NotBlank(message = "Company name can't be null or empty")
-    @Pattern(regexp = "^[a-zA-Z0-9!#$%&()*+\\-/?@\\[\\]^_{|}]{2,20}$", message = "The company name is invalid")
+    @Pattern(regexp = "^[a-zA-Z0-9!#$%&()*+\\-/?@\\[\\]^_{|}]{2,20}$", message = "El nombre de la compañia no es valido")
     private String companyName;
 
     /**
      * Nombre del nuevo usuario.
      */
-    @NotBlank(message = "Name can't be null or empty") @NotEmpty
-    @Pattern(regexp = "^[A-Za-zÁÉÍÓÚÜÑáéíóúüñ\\- ]{2,20}$", message = "The name is invalid")
+    @NotBlank(message = "Nombre no puede ser nulo o vacio") @NotEmpty
+    @Pattern(regexp = "^[A-Za-zÁÉÍÓÚÜÑáéíóúüñ\\- ]{2,20}$", message = "El nombre no es valido")
     private String name;
 
     /**
      * Apellido del nuevo usuario.
      */
     @Column(name = "last_name")
-    @NotBlank(message = "last name can't be null or empty") @NotEmpty
-    @Pattern(regexp = "^[A-Za-zÁÉÍÓÚÜÑáéíóúüñ\\- ]{2,20}$", message = "The last name is invalid")
+    @NotBlank(message = "Apellido no puede ser nulo o vacio") @NotEmpty
+    @Pattern(regexp = "^[A-Za-zÁÉÍÓÚÜÑáéíóúüñ\\- ]{2,20}$", message = "El apellido no es valido")
     private String lastName;
 
     /**
      * Correo electrónico del nuevo usuario.
      */
-    @NotBlank(message = "Email can't be null or empty") @NotEmpty
-    @Pattern(regexp = "^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\\.[a-zA-Z]{2,}$", message = "The email is invalid")
+    @NotBlank(message = "Email no puede ser nulo o vacio") @NotEmpty
+    @Pattern(regexp = "^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\\.[a-zA-Z]{2,}$", message = "El email no es valido")
     @Email
     private String email;
 
     /**
      * Contraseña del nuevo usuario.
      */
-    @NotBlank(message = "Password can't be null or empty") @NotEmpty
-    @Pattern(regexp = "^(?=.*[a-z])(?=.*[A-Z])(?=.*\\d)(?=.*[@#$%^&+=])[a-zA-Z0-9@#$%^&+=]{8,12}$",
-            message = "The password must be between 8 and 12 characters and have at least one uppercase letter, one lowercase letter, one number, and one special character.")
+    @NotBlank(message = "Password no puede ser nulo o vacio") @NotEmpty
+    @Pattern(regexp = "^(?=.*[a-z])(?=.*[A-Z])(?=.*\\d)(?=.*[!#$%&()*+\\-/?@\\[\\]^_{\\\\|}])[a-zA-Z0-9!#$%&()*+\\-/?@\\[\\]^_{\\\\|}]{8,12}$",
+            message = "La contraseña debe tener entre 8 y 12 caracteres y una letra mayúscula, una minúscula, un número y un caracter especial.")
     private String password;
 }
