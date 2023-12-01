@@ -1,12 +1,10 @@
 package com.trucking.Security.Auth;
 
 import com.trucking.Security.Dto.*;
-import com.trucking.Security.Repository.UserRepository;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.media.Content;
 import io.swagger.v3.oas.annotations.media.Schema;
 import io.swagger.v3.oas.annotations.responses.ApiResponse;
-import io.swagger.v3.oas.annotations.security.SecurityRequirement;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import jakarta.mail.MessagingException;
 import jakarta.validation.Valid;
@@ -73,7 +71,7 @@ public class AuthController {
 
     @PutMapping("/changePassword")
     @Operation(
-            summary = "Controller para cambiar password de un usuario con rol MANAGER"
+            summary = "Controller para cambiar password de un usuario"
     )
     public ResponseEntity<MsgDto> changePass(@RequestHeader("Authorization") String token , @Valid @RequestBody ChangePasswordDto changePasswordDto) {
 
@@ -90,7 +88,10 @@ public class AuthController {
      * @return ResponseEntity con el ok en caso de enciar el email al usuario para hacer el cambio de contraseña.
      */
     @PostMapping("/forgot-password")
-    public ResponseEntity<?> forgotPassword(@RequestBody @Valid ForgotPassword email) throws MessagingException {
+    @Operation(
+            summary = "Controller para enviar un mail de recuperacion de password de un usuario"
+    )
+    public ResponseEntity<?> forgotPassword(@RequestBody @Valid ForgotPasswordDto email) throws MessagingException {
         AuthenticationResponseDto response = authenticationService.forgotPassword(email);
         return new ResponseEntity<>("Email enviado al correo " + email.getEmail(), HttpStatus.OK);
     }
@@ -101,8 +102,11 @@ public class AuthController {
      * @param password nuevo password del usuario
      * @return ResponseEntity ok con el nuevo password del usuario.
      */
-    @PostMapping("/change-password")
-    public ResponseEntity<?> changePassword(@RequestBody @Valid ChangePassword password) {
+    @PostMapping("/recover-password")
+    @Operation(
+            summary = "Controller para recuperar el password de un usuario"
+    )
+    public ResponseEntity<?> changePassword(@RequestBody @Valid RecoverPasswordDto password) {
 
         if (password.getPassword1().equals(password.getPassword2())) {
             AuthenticationResponseDto response = authenticationService.changePasswordUrl(password.getUrl(), password.getPassword1());

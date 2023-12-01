@@ -11,7 +11,7 @@ import lombok.NoArgsConstructor;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-public class ChangePassword {
+public class RecoverPasswordDto {
 
     @NotBlank(message = "Password1 no puede estar en blanco o null")
     @NotEmpty
