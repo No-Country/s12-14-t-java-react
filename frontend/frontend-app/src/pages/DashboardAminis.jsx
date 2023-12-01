@@ -44,7 +44,7 @@ function DashboardAdmi() {
 
             <div className="flex gap-3 mt-3 ml-5">
                 <h4>Identidad validada</h4>
-                <input size={30} type="checkbox" class="checkbox-input" id="checkbox1" />
+                <input size={30} type="checkbox" className="checkbox-input" id="checkbox1" />
 
             </div>
             <div className="flex items-center gap-5 mt-10">
@@ -65,6 +65,6 @@ function DashboardAdmi() {
 
         </section>
     );
-};
+}
 
 export default DashboardAdmi

@@ -9,7 +9,17 @@ body {
   font-family: 'Popins', sans-serif;
   /* background-color: #8b9eff; */
 }
-
+html, body{
+  height: 100%;
+}
+html{
+   box-sizing: border-box;
+}
+*, *:before, *:after {
+  box-sizing: inherit;
+  margin: 0;
+  padding: 0;
+}
 @layer components {
   .btn {
     @apply block p-3 mb-3 text-center text-white rounded-[15px] transition-colors;

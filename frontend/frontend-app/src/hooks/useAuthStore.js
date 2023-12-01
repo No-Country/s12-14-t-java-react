@@ -1,4 +1,5 @@
 import { useDispatch, useSelector } from 'react-redux';
+import Swal from 'sweetalert2';
 // import { useNavigate } from 'react-router-dom';
 
 
@@ -26,12 +27,17 @@ export const useAuthStore = () => {
             localStorage.setItem('token', data.token);
             localStorage.setItem('token-init-date', new Date().getTime());
             dispatch(onLogin({ name: data.name, uid: data.uid }));
-            console.log('Usuario creado correctamente', 'Por favor complete su perfil', 'success');
+            console.log('Usuario creado correctamente', 'success');
+            Swal.fire('Usuario correctamente registrado!');
             // navigateTo( `/profile/${ data.uid }` );
 
         } catch (error) {
-            // console.log( error )
-            console.log('Error al crear usuario', error.response.data?.msg, 'error');
+            Swal.fire({
+                icon: "error",
+                title: "Oops...",
+                text: error.response.data?.details,
+              });
+            console.log('Error al crear usuario', error.response.data?.details, 'error');
             dispatch(onLogout(error.response.data?.msg || 'add valid email or password'));
             setTimeout(() => {
                 dispatch(clearErrorMessage());
