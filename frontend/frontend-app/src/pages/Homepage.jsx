@@ -1,7 +1,44 @@
 import { Logo } from "../components/Logo";
 import { Link } from "react-router-dom";
+import { useEffect} from 'react';
+import { useAuthStore } from '../hooks/useAuthStore';
+import { useForm } from '../hooks/useForm';
 
+
+
+
+const loginFormFields = {
+  email: "",
+  password: "",
+}
 export const Homepage = () => {
+  
+  const { errorMessage, startLogin } = useAuthStore();
+
+  const { email, 
+          password, 
+          onInputChange: onLoginInputChange } = useForm( loginFormFields );
+  
+
+
+  const loginSubmit = (event) => {
+
+    event.preventDefault();
+
+    startLogin({
+        email: email,
+        password: password,
+    });
+};
+
+useEffect(() => {
+    if (errorMessage !== undefined) {
+
+        console.log("Mensaje de error (LoginPage, linea 60) " + errorMessage )
+    }
+}, [ errorMessage ])
+
+
   return (
     <section className="min-h-screen">
       <div className="grid gap-4 md:grid-cols-2">
@@ -57,23 +94,29 @@ export const Homepage = () => {
         </div>
         <div className="col-auto px-3 py-5 md:h-screen">
           <img src="/img/img_vehicle.svg" alt="" />
-          <form className="block py-5 text-center space-y-3">
+          <form onSubmit={loginSubmit} className="block py-5 text-center space-y-3">
             <div className="flex flex-col gap-5">
               <input
                 type="text"
                 placeholder="Ingrese su correo"
                 className="rounded-lg border-none"
+                name="email"
+                value={email}
+                onChange={onLoginInputChange}
               />
               <input
                 type="password"
                 placeholder="Ingrese su contraseña"
                 className="rounded-lg border-none"
+                name="password"
+                value={password}
+                onChange={onLoginInputChange}
               />
             </div>
 
-            <a href="#" className="btn btn-template-1">
+            <button className="btn btn-template-1 w-[100]" type="submit" >
               Ingresar
-            </a>
+            </button>
 
             <a href="#" className="btn btn-template-1">
               Registrarse
