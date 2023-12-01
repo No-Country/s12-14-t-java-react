@@ -33,6 +33,7 @@ public class User implements UserDetails {
     private Company company;
     @Enumerated(EnumType.STRING)
     private RoleName role;
+    private String tokenPassword;
 
     /**
      * Obtiene la colección de autoridades (roles) del usuario.

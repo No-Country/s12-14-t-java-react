@@ -1,13 +1,12 @@
 package com.trucking.Security.Auth;
 
 import com.trucking.Security.Dto.*;
-import com.trucking.Security.Repository.UserRepository;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.media.Content;
 import io.swagger.v3.oas.annotations.media.Schema;
 import io.swagger.v3.oas.annotations.responses.ApiResponse;
-import io.swagger.v3.oas.annotations.security.SecurityRequirement;
 import io.swagger.v3.oas.annotations.tags.Tag;
+import jakarta.mail.MessagingException;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
@@ -25,7 +24,6 @@ import org.springframework.web.bind.annotation.*;
 public class AuthController {
 
     private final AuthenticationService authenticationService;
-    private final UserRepository userRepository;
 
     /**
      * Maneja las solicitudes de registro de nuevos usuarios.
@@ -69,9 +67,11 @@ public class AuthController {
                 AuthenticationResponseDto response = authenticationService.login(login);
                 return ResponseEntity.status(HttpStatus.OK).body(response);
     }
+
+
     @PutMapping("/changePassword")
     @Operation(
-            summary = "Controller para cambiar password de un usuario con rol MANAGER"
+            summary = "Controller para cambiar password de un usuario"
     )
     public ResponseEntity<MsgDto> changePass(@RequestHeader("Authorization") String token , @Valid @RequestBody ChangePasswordDto changePasswordDto) {
 
@@ -81,4 +81,39 @@ public class AuthController {
     }
 
 
+    /**
+     * Maneja las solicitudes de forgot password de usuarios existentes.
+     *
+     * @param email Data del usuario que olvidó el password de su usuario
+     * @return ResponseEntity con el ok en caso de enciar el email al usuario para hacer el cambio de contraseña.
+     */
+    @PostMapping("/forgot-password")
+    @Operation(
+            summary = "Controller para enviar un mail de recuperacion de password de un usuario"
+    )
+    public ResponseEntity<?> forgotPassword(@RequestBody @Valid ForgotPasswordDto email) throws MessagingException {
+        AuthenticationResponseDto response = authenticationService.forgotPassword(email);
+        return new ResponseEntity<>("Email enviado al correo " + email.getEmail(), HttpStatus.OK);
+    }
+
+    /**
+     * Maneja las solicitudes de forgot password de usuarios existentes.
+     *
+     * @param password nuevo password del usuario
+     * @return ResponseEntity ok con el nuevo password del usuario.
+     */
+    @PostMapping("/recover-password")
+    @Operation(
+            summary = "Controller para recuperar el password de un usuario"
+    )
+    public ResponseEntity<?> changePassword(@RequestBody @Valid RecoverPasswordDto password) {
+
+        if (password.getPassword1().equals(password.getPassword2())) {
+            AuthenticationResponseDto response = authenticationService.changePasswordUrl(password.getUrl(), password.getPassword1());
+            return new ResponseEntity<>("La contrasña ha sido actualizada exitosamente ", HttpStatus.OK);
+
+        }
+        return new ResponseEntity("Las contraseñas deben ser iguales", HttpStatus.BAD_REQUEST);
+
+    }
 }

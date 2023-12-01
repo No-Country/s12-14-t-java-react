@@ -7,14 +7,23 @@ import com.trucking.Security.Entity.RoleName;
 import com.trucking.Security.Entity.User;
 import com.trucking.Security.HandlerError.ValidationIntegrity;
 import com.trucking.Security.Repository.UserRepository;
+import com.trucking.Security.Service.EmailService;
+import com.trucking.Security.Service.UserServiceImplement;
 import com.trucking.Security.config.JwtService;
+import io.jsonwebtoken.Claims;
+import io.jsonwebtoken.Jwts;
+import jakarta.mail.MessagingException;
 import lombok.RequiredArgsConstructor;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import java.util.Optional;
+
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 /**
  * Servicio que gestiona la autenticación de usuarios, incluyendo el registro y inicio de sesión.
@@ -28,6 +37,11 @@ public class AuthenticationService {
     private final PasswordEncoder passwordEncoder;
     private final JwtService jwtService;
     private final AuthenticationManager authenticationManager;
+    private final UserServiceImplement userServiceImplement;
+    private final EmailService emailService;
+
+    @Value("${api.security.secret}")
+    String SECRET_KEY;
 
     /**
      * Registra un nuevo usuario en el sistema.
@@ -107,6 +121,71 @@ public class AuthenticationService {
                 .role(RoleName.valueOf(String.valueOf(user.getRole()))).build()
         ).build();
     }
+
+
+    /**
+     * Enviar email para cambio de password.
+     *
+     * @param email email del usuario que requiere cambio de contraseña.
+     * @return Envia un email para acceder a la ruta del front para cambio de contraseña.
+     * @throws MessagingException Si no se puede hacer el envio del mail al email del usuario.
+     */
+    public AuthenticationResponseDto forgotPassword(ForgotPasswordDto email) throws MessagingException {
+
+        var user = userRepository.findByEmail(email.getEmail()).orElseThrow(() -> new ValidationIntegrity("Usuario no fue encontrado con el email " + email));
+
+        String tokenPassword = jwtService.generateToken(user);
+
+        DataForgotPasswordDto userForgot = new DataForgotPasswordDto();
+        userForgot.setEmail(email.getEmail());
+        userForgot.setName(user.getName());
+        userForgot.setToken(tokenPassword);
+
+        emailService.setEmail(userForgot);
+        return AuthenticationResponseDto.builder().token(tokenPassword).user(ShowDataUserDto.builder()
+                .id(user.getId())
+                .name(user.getName())
+                .email(user.getEmail())
+                .role(RoleName.valueOf(String.valueOf(user.getRole()))).build()
+        ).build();
+    }
+
+    /**
+     * Cambio de contraseña para los usuarios.
+     *
+     * @param url String de la url de la página de cambiar el password (url + token).
+     * @param password String nuevo password del usuario.
+     */
+    public AuthenticationResponseDto changePasswordUrl(String url, String password) {
+
+        String takeTokenWithRegex = "/new-password/(.*?)$";
+        Pattern pattern = Pattern.compile(takeTokenWithRegex);
+        Matcher matcher = pattern.matcher(url);
+        String token = null;
+        String emailUser = null;
+        if(matcher.find()) {
+            token = matcher.group(1);
+        }
+
+        if(token != null) {
+            Claims claims = Jwts.parser().setSigningKey(SECRET_KEY).parseClaimsJws(token).getBody();
+            emailUser = claims.getSubject();
+            userServiceImplement.updateUserByEmail(emailUser, passwordEncoder.encode(password));
+
+        }
+        var user = userRepository.
+                findByEmail(emailUser).
+                orElseThrow(() -> new ValidationIntegrity("Usuario no fue encontrado con el email "));
+
+        return AuthenticationResponseDto.builder().user(ShowDataUserDto.builder()
+                .id(user.getId())
+                .name(user.getName())
+                .email(user.getEmail())
+                .role(RoleName.valueOf(String.valueOf(user.getRole()))).build()
+        ).build();
+    }
+
+
 
     public MsgDto changePassword(String tokenJwt, ChangePasswordDto changePasswordDto) {
         if (changePasswordDto.getOldPassword().equals(changePasswordDto.getNewPassword())) {
