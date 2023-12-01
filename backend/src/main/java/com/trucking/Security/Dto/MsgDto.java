@@ -2,25 +2,25 @@ package com.trucking.Security.Dto;
 
 
 import java.time.LocalDate;
+import java.util.Date;
 
 public class MsgDto {
 
 
 
     private String message;
-    private LocalDate dateupdate ;
+    private Date date;
 
 
     public MsgDto(String msg) {
-
         this.message= msg;
-        this.dateupdate = LocalDate.now();
+        this.date = new Date();
     }
 
     public  String getMessage(){
         return this.message;
     }
-    public LocalDate getApplicationDate() {
-        return this.dateupdate;
+    public Date getDate() {
+        return this.date;
     }
 }

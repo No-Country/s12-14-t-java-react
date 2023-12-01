@@ -42,7 +42,7 @@ public class NewUserDto {
     /**
      * Correo electrónico del nuevo usuario.
      */
-    @Pattern(regexp = "^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\\.[a-zA-Z]{2,}$", message = "El email es invalido")
+    //@Pattern(regexp = "^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\\.[a-zA-Z]{2,}$", message = "El email es invalido")
     @Email
     @Schema(description = "Email user", example = "a@b.com")
     private String email;
