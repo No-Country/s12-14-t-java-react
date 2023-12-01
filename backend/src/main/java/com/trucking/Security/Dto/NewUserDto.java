@@ -23,7 +23,7 @@ public class NewUserDto {
      */
     @Column(name = "company_name")
     @NotBlank(message = "Company name no puede estar en blanco o null")
-    @Pattern(regexp = "^[a-zA-Z0-9!#$%&()*+\\-/?@\\[\\]^_{|}]{2,20}$", message = "Company name es invalido")
+    @Pattern(regexp = "^[a-zA-Z0-9!#$%&()*+\\-/?@\\[\\]^_{|} ]{2,20}$", message = "Company name es invalido")
     @Schema(description = "Company name", example = "Vehicle ORG")
     private String companyName;
 
