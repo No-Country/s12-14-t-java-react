@@ -61,12 +61,18 @@ export const useAuthStore = () => {
             localStorage.setItem('token-init-date', new Date().getTime());
             dispatch(onLogin({ name: data.name, uid: data.uid }));
 
-            console.log('Bienvenido!');
+            console.log(data.user.name);
+            Swal.fire(`Bienvenido! ${data.user.name} me debes Dinero`);
             // navigateTo( `/profile` );
 
         } catch (error) {
             console.log( error )
-            console.log('Error en la autenticación', error.response.data?.msg, 'error');
+            Swal.fire({
+                icon: "error",
+                title: "Oops...",
+                text: error.response.data?.details,
+              });
+            console.log('Error en la autenticación', error.response.data?.details, 'error');
             dispatch(onLogout('Credenciales incorrectas'));
             setTimeout(() => {
                 dispatch(clearErrorMessage());
