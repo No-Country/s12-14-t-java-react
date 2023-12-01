@@ -143,7 +143,7 @@ const FormRegister=()=>{
             src={iconError}/>:<img className='icon-input w-6 h-6 ' src={iconCheck}/>):<></>}
 
                 <input
-                onClick={()=>setSelected('apellido')}
+                onFocus={()=>setSelected('apellido')}
                 onBlur={()=>setSelected('')}
                 className="textField"
                 type="text"
@@ -192,7 +192,7 @@ const FormRegister=()=>{
             className='icon-input w-8 h-8'
             src={iconError}/> :<img className='icon-input w-6 h-6 ' src={iconCheck}/>):<></>}
                 <input
-                onClick={()=>setSelected('correo')}
+                onFocus={()=>setSelected('correo')}
                 onBlur={()=>setSelected('')}
                 className="textField"
                 style={{ outline: errors.correo? '2px solid #6a3838': `none`, border: `none`}}
@@ -233,7 +233,7 @@ const FormRegister=()=>{
             className='icon-input w-8 h-8'
             src={iconError}/> :<img className='icon-input w-6 h-6 ' src={iconCheck}/>):<></>}
                 <input
-                onClick={()=>setSelected('password')}
+                onFocus={()=>setSelected('password')}
                 onBlur={()=>setSelected('')}
                 className="textField"
                 type="password"
@@ -280,7 +280,7 @@ const FormRegister=()=>{
             className='icon-input w-8 h-8'
             src={iconError}/> :<img className='icon-input w-6 h-6 ' src={iconCheck}/>):<></>}
                 <input
-                onClick={()=>setSelected('confirmPassword')}
+                onFocus={()=>setSelected('confirmPassword')}
                 onBlur={()=>setSelected('')}
                 className="textField"
                 type="password"
