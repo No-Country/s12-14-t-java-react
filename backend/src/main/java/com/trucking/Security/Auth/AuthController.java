@@ -147,8 +147,8 @@ public class AuthController {
     @PostMapping("/change-password")
     @Operation(
             summary = "Controller para realizar el cambio de contraseña de cualquier usuario",
-            description = "Se realiza el cambio de contraseña, si las dos contraseñas cumplen con el regex y son iguales, y " +
-                    "el token es valido el token tiene una duración de 1 hora",
+            description = "Se realiza el cambio de contraseña validando la condición regex y " +
+                    "si el token es valido (tiene una duración de 1 hora)",
             responses = {
                     @ApiResponse(
                             responseCode = "200",
@@ -168,12 +168,8 @@ public class AuthController {
     )
     public ResponseEntity<?> changePassword(@RequestBody @Valid ChangePassword password) {
 
-        if (password.getPassword1().equals(password.getPassword2())) {
-            AuthenticationResponseDto response = authenticationService.changePasswordUrl(password.getUrl(), password.getPassword1());
+            AuthenticationResponseDto response = authenticationService.changePasswordUrl(password.getUrl(), password.getPassword());
             return new ResponseEntity<>("La contrasña ha sido actualizada exitosamente ", HttpStatus.OK);
-
-        }
-        return new ResponseEntity("Las contraseñas deben ser iguales", HttpStatus.BAD_REQUEST);
 
     }
 }
