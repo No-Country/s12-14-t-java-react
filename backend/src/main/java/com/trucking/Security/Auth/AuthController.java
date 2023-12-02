@@ -1,6 +1,7 @@
 package com.trucking.Security.Auth;
 
 import com.trucking.Security.Dto.*;
+import io.jsonwebtoken.ExpiredJwtException;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.media.Content;
 import io.swagger.v3.oas.annotations.media.Schema;
@@ -73,7 +74,7 @@ public class AuthController {
     @Operation(
             summary = "Controller para cambiar password de un usuario"
     )
-    public ResponseEntity<MsgDto> changePass(@RequestHeader("Authorization") String token , @Valid @RequestBody ChangePasswordDto changePasswordDto) {
+    public ResponseEntity<MsgDto> changePass(@RequestHeader("Authorization") String token , @Valid @RequestBody ChangePasswordDto changePasswordDto){
 
         MsgDto changePasswordMsg = authenticationService.changePassword(token,changePasswordDto);
 
@@ -93,7 +94,7 @@ public class AuthController {
     )
     public ResponseEntity<?> forgotPassword(@RequestBody @Valid ForgotPasswordDto email) throws MessagingException {
         AuthenticationResponseDto response = authenticationService.forgotPassword(email);
-        return new ResponseEntity<>("Email enviado al correo " + email.getEmail(), HttpStatus.OK);
+        return new ResponseEntity<>(new MsgDto("Email enviado al correo " + email.getEmail()), HttpStatus.OK);
     }
 
     /**
@@ -108,7 +109,11 @@ public class AuthController {
     )
     public ResponseEntity<?> changePassword(@RequestBody @Valid RecoverPasswordDto password) {
 
-        AuthenticationResponseDto response = authenticationService.changePasswordUrl(password.getUrl(), password.getPassword());
-        return new ResponseEntity<>("La contrasña ha sido actualizada exitosamente ", HttpStatus.OK);
+        try {
+            AuthenticationResponseDto response = authenticationService.changePasswordUrl(password.getUrl(), password.getPassword());
+        } catch (ExpiredJwtException e) {
+            return new ResponseEntity<>(new MsgDto("El token de recuperacion ya expiro"), HttpStatus.BAD_REQUEST);
+        }
+        return new ResponseEntity<>(new MsgDto("La contrasña ha sido actualizada exitosamente"), HttpStatus.OK);
     }
 }
