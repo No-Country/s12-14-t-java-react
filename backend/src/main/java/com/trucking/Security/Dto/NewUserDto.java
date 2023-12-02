@@ -21,14 +21,14 @@ public class NewUserDto {
     /**
      * Nombre de la compañia del nuevo usuario.
      */
-    @Pattern(regexp = "^[a-zA-Z0-9!#$%&()*+\\-/?@\\[\\]^_{|} ]{2,20}$", message = "Company name es invalido")
+    @Pattern(regexp = "^[a-zA-Z0-9!#$%&()*+\\-/?@\\[\\]^_{|} ]{2,50}$", message = "Company name es invalido")
     @Schema(description = "Company name", example = "Vehicle ORG")
     private String companyName;
 
     /**
      * Nombre del nuevo usuario.
      */
-    @Pattern(regexp = "^[A-Za-zÁÉÍÓÚÜÑáéíóúüñ\\- ]{2,20}$", message = "Name es invalido")
+    @Pattern(regexp = "^[A-Za-zÁÉÍÓÚÜÑáéíóúüñ\\- ]{2,50}$", message = "Name es invalido")
     @Schema(description = "name user", example = "Maria angela")
     private String name;
 
