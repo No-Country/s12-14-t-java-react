@@ -24,7 +24,7 @@ public class NewUserDto {
     @Column(name = "company_name")
     @NotBlank(message = "Company name can't be null or empty")
     @Pattern(regexp = "^[a-zA-Z0-9!#$%&()*+\\-/?@\\[\\]^_{|}]{2,20}$", message = "The company name is invalid")
-    @Schema(description = "Company name", example = "Vehicle ORG")
+    @Schema(description = "Company name", example = "Vehicle org")
     private String companyName;
 
     /**
@@ -53,7 +53,7 @@ public class NewUserDto {
     @NotEmpty
     @Pattern(regexp = "^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\\.[a-zA-Z]{2,}$", message = "The email is invalid")
     @Email
-    @Schema(description = "Email user", example = "a@b.com")
+    @Schema(description = "Email user", example = "mangela@example.com")
     private String email;
 
     /**
@@ -63,6 +63,6 @@ public class NewUserDto {
     @NotEmpty
     @Pattern(regexp = "^(?=.*[a-z])(?=.*[A-Z])(?=.*\\d)(?=.*[@#$%^&+=])[a-zA-Z0-9@#$%^&+=]{8,12}$",
             message = "The password must be between 8 and 12 characters and have at least one uppercase letter, one lowercase letter, one number, and one special character.")
-    @Schema(description = "Password", defaultValue = "123456An")
+    @Schema(description = "Password", defaultValue = "123456An@")
     private String password;
 }
