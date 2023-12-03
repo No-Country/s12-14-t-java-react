@@ -1,121 +1,160 @@
-import { Logo } from "../components/Logo";
-import { Link } from "react-router-dom";
-import { useEffect} from 'react';
-import { useAuthStore } from '../hooks/useAuthStore';
-import { useForm } from '../hooks/useForm';
-
-
-
+import { Logo } from '../components/Logo'
+import { Link } from 'react-router-dom'
+import { useEffect } from 'react'
+import { useAuthStore } from '../hooks/useAuthStore'
+import { useForm } from 'react-hook-form'
+import { HomeSlider } from '../components/HomeSlider/HomeSlider'
 
 const loginFormFields = {
-  email: "",
-  password: "",
+  defaultValues: {
+    email: '',
+    password: ''
+  }
 }
+
+const emailRegex = /^[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Z|a-z]{2,}$/
+
 export const Homepage = () => {
-  
-  const { errorMessage, startLogin } = useAuthStore();
+  const { errorMessage, startLogin } = useAuthStore()
 
-  const { email, 
-          password, 
-          onInputChange: onLoginInputChange } = useForm( loginFormFields );
-  
+  const {
+    register,
+    handleSubmit,
+    email,
+    password,
+    onInputChange: onLoginInputChange,
+    formState: { errors }
+  } = useForm(loginFormFields)
 
-
-  const loginSubmit = (event) => {
-
-    event.preventDefault();
-
+  const loginSubmit = handleSubmit(data => {
     startLogin({
-        email: email,
-        password: password,
-    });
-};
+      email: data.email,
+      password: data.password
+    })
+  })
 
-useEffect(() => {
+  useEffect(() => {
     if (errorMessage !== undefined) {
-
-        console.log("Mensaje de error (LoginPage, linea 60) " + errorMessage )
+      console.log('Mensaje de error (LoginPage, linea 60) ' + errorMessage)
     }
-}, [ errorMessage ])
-
+  }, [errorMessage])
 
   return (
-    <section className='min-h-screen bg-purple'>
-      <div className='grid gap-4 md:grid-cols-2'>
-        <div className='col-auto px-4 py-5 text-left md:h-screen'>
-          <Link to='/' className='inline-block'>
-            <Logo />
-          </Link>
-          <section className='relative flex flex-col gap-2 text-3xl text-white'>
-            <div className='absolute w-[5px] h-[90%] opacity-50 bg-red top-[5%] left-[38px] bg-light-blue z-0 hidden md:block'></div>
-            <div className='static flex items-center z-[1]'>
-              <img src='/img/img_seguimiento.svg' alt='Seguimiento en tiempo real' className='w-20 h-24 md:mr-2' />
-              <div className='ml-2'>Seguimiento en tiempo real</div>
-            </div>
-            <div className='static flex items-center z-[1]'>
-              <img src='/img/img_seguridad.svg' alt='Seguridad en tu mantenimiento' className='w-20 h-24 md:mr-2' />
-              <div className='ml-2'>Seguridad en tu mantenimiento</div>
-            </div>
-
-            <div className='static flex items-center z-[1]'>
-              <img src='/img/img_presupuesto.svg' alt='Presupuestos mensuales' className='w-20 h-24 md:mr-2' />
-              <div className='ml-2'>Presupuestos mensuales</div>
-            </div>
-
-            <div className='static flex items-center z-[1]'>
-              <img src='/img/img_estado.svg' alt='Estado de tus vehículos' className='w-20 h-24 md:mr-2' />
-              <div className='ml-2'>Estado de tus vehículos</div>
-            </div>
-
-            <div className='static flex items-center z-[1]'>
-              <img src='/img/img_ayuda.svg' alt='Ayuda y soporte 24 horas' className='w-20 h-24 md:mr-2' />
-              <div className='ml-2'>Ayuda y soporte 24 horas</div>
-            </div>
-          </section>
-        </div>
-        <div className="col-auto px-3 py-5 md:h-screen">
-          <img src="/img/img_vehicle.svg" alt="" />
-          <form onSubmit={loginSubmit} className="block py-5 text-center space-y-3">
-            <div className="flex flex-col gap-5">
-              <input
-                type="text"
-                placeholder="Ingrese su correo"
-                className="rounded-lg border-none"
-                name="email"
-                value={email}
-                onChange={onLoginInputChange}
+    <section className='h-auto bg-purple'>
+      <div className='mx-auto xl:container'>
+        <div className='grid gap-4 md:grid-cols-2 lg:min-h-screen'>
+          <div className='hidden col-auto px-4 py-5 md:block'>
+            <section className='relative flex flex-col'>
+              <img
+                src='./img/auto.svg'
+                className='w-4/5 pt-6 mx-auto 2xl:w-3/5 d-none md:inline-block '
+                alt='Ilustración de coche'
               />
-              <input
-                type="password"
-                placeholder="Ingrese su contraseña"
-                className="rounded-lg border-none"
-                name="password"
-                value={password}
-                onChange={onLoginInputChange}
+            </section>
+          </div>
+          <div className='order-2 col-span-2 px-4 py-5 md:col-auto'>
+            <div className='text-center'>
+              <Link to='/' className='inline-block'>
+                <Logo />
+              </Link>
+            </div>
+
+            <form onSubmit={loginSubmit} className='block py-5 text-center'>
+              <div className='flex flex-col'>
+                <input
+                  {...register('email', {
+                    required: {
+                      value: true,
+                      message: 'Correo electrónico es requerido'
+                    },
+
+                    pattern: {
+                      value: emailRegex,
+                      message: 'El correo electrónico no es válido'
+                    }
+                  })}
+                  type='text'
+                  placeholder='Correo electrónico...'
+                  className='mb-4 border-none rounded-lg'
+                  name='email'
+                  value={email}
+                  onChange={onLoginInputChange}
+                />
+                {errors.email && (
+                  <span className='pl-2 mb-4 -mt-2 text-left text-white'>
+                    {errors.email.message}
+                  </span>
+                )}
+                <input
+                  type='password'
+                  placeholder='Contraseña...'
+                  className='mb-4 border-none rounded-lg'
+                  name='password'
+                  value={password}
+                  onChange={onLoginInputChange}
+                  {...register('password', {
+                    required: {
+                      value: true,
+                      message: 'Contraseña es requerida'
+                    }
+                  })}
+                />
+                {errors.email && (
+                  <span className='pl-2 mb-4 -mt-2 text-left text-white'>
+                    {errors.password.message}
+                  </span>
+                )}
+              </div>
+
+              <button className='block w-full mt-0 mb-4 btn btn-template-1' type='submit'>
+                Ingresar
+              </button>
+
+              <Link to='/register' className='btn btn-template-1'>
+                Registrarse
+              </Link>
+              <div className='pt-2 md:flex'>
+                <div className='flex-1 text-left'>
+                  <a href='#' className='flex-1 text-blue'>
+                    Olvidé mi contraseña
+                  </a>
+                </div>
+                <div className='flex flex-col justify-center flex-auto gap-5 grow-0'>
+                  <p className='order-2 text-blue md:order-1'>Ingresar con email</p>
+                  <div className='flex justify-center order-1 mt-5 md:mt-0 md:justify-between md:order-2'>
+                    <a className='inline-block p-3 mx-4 md:p-2 md:mx-0' href='#'>
+                      <img
+                        src='/img/gmail.svg'
+                        alt='gmail'
+                        className='w-[36px] h-[23px] inline-block'
+                      />
+                    </a>
+                    <a className='inline-block p-3 mx-4 md:p-2 md:mx-0' href='#'>
+                      <img
+                        src='/img/outlook.svg'
+                        alt='outlook'
+                        className='w-[43px] h-[29px] inline-block'
+                      />
+                    </a>
+                  </div>
+                </div>
+              </div>
+            </form>
+          </div>
+
+          <div className='relative order-1 col-span-2 px-6 pt-5 md:mb-10 md:pt-0 md:px-4 md:order-3 swiper-container lg:container'>
+            <div className='text-center'>
+              <img
+                src='./img/auto.svg'
+                className='inline-block w-1/2 pt-5 md:hidden'
+                alt='Ilustración de coche'
               />
             </div>
 
-            <button className="btn btn-template-1 w-[100]" type="submit" >
-              Ingresar
-            </button>
-
-            <a href='#' className='btn btn-template-1'>
-              Registrarse
-            </a>
-            <a href='#' className='text-lg btn text-blue'>
-              Olvidé mi contraseña
-            </a>
-            <div className='flex justify-center gap-5'>
-              <img src='/img/gmail.svg' alt='gmail' className='hover:cursor-pointer' />
-              <img src='/img/outlook.svg' alt='outlook' className='hover:cursor-pointer' />
-            </div>
-            <a href='#' className='text-lg btn text-blue'>
-              Ingresar con email
-            </a>
-          </form>
+            <HomeSlider />
+          </div>
         </div>
       </div>
     </section>
   )
 }
-
