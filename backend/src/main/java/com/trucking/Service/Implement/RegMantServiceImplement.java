@@ -2,23 +2,20 @@ package com.trucking.Service.Implement;
 
 import com.trucking.Dto.RegMant.NewRegMantDto;
 import com.trucking.Dto.RegMant.UpdateRegMant;
-import com.trucking.Entity.ManType;
 import com.trucking.Entity.RegMaint;
-import com.trucking.Repository.ManTypeRepository;
 import com.trucking.Security.Repository.RegMantRepository;
 import com.trucking.Service.RegMantService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
-import java.time.LocalDate;
 import java.util.List;
-import java.util.Optional;
 
 @Service
 @RequiredArgsConstructor
 public class RegMantServiceImplement implements RegMantService {
     private final RegMantRepository regMantRepository;
-    private final ManTypeRepository manTypeRepository;
+    private final ManTypeServiceImplement manTypeService;
+
     @Override
     public RegMaint save(NewRegMantDto newRegMantDto) {
 
@@ -30,8 +27,11 @@ public class RegMantServiceImplement implements RegMantService {
         newRegMaint.setDate(newRegMantDto.getDate());
         newRegMaint.setDescription(newRegMantDto.getDescription());
         newRegMaint.setKm(Integer.valueOf(newRegMantDto.getKm()));
-        newRegMaint.setManType(manTypeRepository.findByName(newRegMantDto.getManType()).get());
+        newRegMaint.setManType(manTypeService.findByName(newRegMantDto.getManType()).get());
         newRegMaint.setCost(Double.valueOf(cost));
+
+        //TODO: Adds regMant to vehicle when vehicle entity were ready.
+
         return regMantRepository.save(newRegMaint);
     }
 
