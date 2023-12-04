@@ -2,7 +2,7 @@ name: Build and Deploy Spring boot app
 
 on:
   push:
-    branches: [develop]
+    branches: [develop,dev]
 
 jobs:
   build-docker:
@@ -52,14 +52,14 @@ jobs:
         run: sudo chmod 666 /var/run/docker.sock
 
       - name: Docker Instance Stop and remove
-        run: docker rm -f s12-14-t-java-react
+        run: sudo docker rm -f s12-14-t-java-react
 
       - name: Docker pull image
-        run:  docker pull ${{ secrets.DOCKERHUB_USERNAME }}/spring-trucking:latest  
+        run: sudo docker pull ${{ secrets.DOCKERHUB_USERNAME }}/spring-trucking:latest  
 
       - name: Docker run image
         run: |
-           docker run -d \
+          sudo docker run -d \
             --restart always \
             --name s12-14-t-java-react \
             -p9896:9896 \
