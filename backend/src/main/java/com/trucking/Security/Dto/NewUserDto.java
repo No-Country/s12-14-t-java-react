@@ -1,5 +1,6 @@
 package com.trucking.Security.Dto;
 
+import io.swagger.v3.oas.annotations.media.Schema;
 import jakarta.persistence.Column;
 import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotBlank;
@@ -20,39 +21,37 @@ public class NewUserDto {
     /**
      * Nombre de la compañia del nuevo usuario.
      */
-    @Column(name = "company_name")
-    @NotBlank(message = "Company name can't be null or empty")
-    @Pattern(regexp = "^[a-zA-Z0-9!#$%&()*+\\-/?@\\[\\]^_{|}]{2,20}$", message = "El nombre de la compañia no es valido")
+    @Pattern(regexp = "^[a-zA-Z0-9!#$%&()*+\\-/?@\\[\\]^_{|} ]{2,50}$", message = "Company name es invalido")
+    @Schema(description = "Company name", example = "Vehicle ORG")
     private String companyName;
 
     /**
      * Nombre del nuevo usuario.
      */
-    @NotBlank(message = "Nombre no puede ser nulo o vacio") @NotEmpty
-    @Pattern(regexp = "^[A-Za-zÁÉÍÓÚÜÑáéíóúüñ\\- ]{2,20}$", message = "El nombre no es valido")
+    @Pattern(regexp = "^[A-Za-zÁÉÍÓÚÜÑáéíóúüñ\\- ]{2,50}$", message = "Name es invalido")
+    @Schema(description = "name user", example = "Maria angela")
     private String name;
 
     /**
      * Apellido del nuevo usuario.
      */
-    @Column(name = "last_name")
-    @NotBlank(message = "Apellido no puede ser nulo o vacio") @NotEmpty
-    @Pattern(regexp = "^[A-Za-zÁÉÍÓÚÜÑáéíóúüñ\\- ]{2,20}$", message = "El apellido no es valido")
+    @Pattern(regexp = "^[A-Za-zÁÉÍÓÚÜÑáéíóúüñ\\- ]{2,20}$", message = "Last name es invalido")
+    @Schema(description = "last name user", example = "Peña")
     private String lastName;
 
     /**
      * Correo electrónico del nuevo usuario.
      */
-    @NotBlank(message = "Email no puede ser nulo o vacio") @NotEmpty
-    @Pattern(regexp = "^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\\.[a-zA-Z]{2,}$", message = "El email no es valido")
+    //@Pattern(regexp = "^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\\.[a-zA-Z]{2,}$", message = "El email es invalido")
     @Email
+    @Schema(description = "Email user", example = "a@b.com")
     private String email;
 
     /**
      * Contraseña del nuevo usuario.
      */
-    @NotBlank(message = "Password no puede ser nulo o vacio") @NotEmpty
     @Pattern(regexp = "^(?=.*[a-z])(?=.*[A-Z])(?=.*\\d)(?=.*[!#$%&()*+\\-/?@\\[\\]^_{\\\\|}])[a-zA-Z0-9!#$%&()*+\\-/?@\\[\\]^_{\\\\|}]{8,12}$",
-            message = "La contraseña debe tener entre 8 y 12 caracteres y una letra mayúscula, una minúscula, un número y un caracter especial.")
+            message = "La contraseña debe tener entre 8 y 12 caracteres y tener al menos una letra mayúscula, una letra minúscula, un número y un carácter especial.")
+    @Schema(description = "Password", defaultValue = "123456An")
     private String password;
 }

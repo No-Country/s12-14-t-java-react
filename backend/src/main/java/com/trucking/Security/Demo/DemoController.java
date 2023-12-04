@@ -1,5 +1,6 @@
 package com.trucking.Security.Demo;
 
+import io.swagger.v3.oas.annotations.Operation;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -12,7 +13,10 @@ import org.springframework.web.bind.annotation.RestController;
 public class DemoController {
 
     @GetMapping
-    public ResponseEntity<String> hello(){
+    @Operation(
+            summary = "Controller de prueba"
+    )
+    public ResponseEntity<String> hello() {
         return ResponseEntity.ok("Hello from demo controller");
     }
 }
