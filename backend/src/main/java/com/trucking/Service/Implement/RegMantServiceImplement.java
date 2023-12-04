@@ -2,6 +2,7 @@ package com.trucking.Service.Implement;
 
 import com.trucking.Dto.RegMant.NewRegMantDto;
 import com.trucking.Dto.RegMant.UpdateRegMant;
+import com.trucking.Entity.ManType;
 import com.trucking.Entity.RegMaint;
 import com.trucking.Security.Repository.RegMantRepository;
 import com.trucking.Service.RegMantService;
@@ -22,7 +23,9 @@ public class RegMantServiceImplement implements RegMantService {
         newRegMaint.setVehicle(newRegMantDto.getVehicule());
         newRegMaint.setDate(newRegMantDto.getDate());
         newRegMaint.setDescription(newRegMantDto.getDescription());
-        newRegMaint.setResponsible(newRegMantDto.getResponsible());
+        newRegMaint.setKm(newRegMantDto.getKm());
+        newRegMaint.setManType((List<ManType>) newRegMantDto.getManType());
+        newRegMaint.setCost(newRegMaint.getCost());
         return newRegMaint;
     }
 
@@ -32,7 +35,9 @@ public class RegMantServiceImplement implements RegMantService {
                 "no encontrado con el id: "+ id));
         if(regById != null){
             regById.setDate(updateRegMant.getDate());
-            regById.setResponsible(updateRegMant.getResponsable());
+            regById.setBill(updateRegMant.getBill());
+            regById.setKm(updateRegMant.getKm());
+            regById.setCost(updateRegMant.getCost());
         }
         return regById;
     }

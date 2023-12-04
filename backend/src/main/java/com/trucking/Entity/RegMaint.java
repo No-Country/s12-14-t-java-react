@@ -7,6 +7,7 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import java.time.LocalDate;
+import java.util.List;
 
 @Entity
 @Data
@@ -17,11 +18,13 @@ public class RegMaint {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    @ManyToOne
-    private Vehicle vehicle;
     private LocalDate date;
     private String description;
     @ManyToOne
-    private User responsible;
-
+    private Vehicle vehicle;
+    private Integer km;
+    @OneToMany
+    private List<ManType> manType;
+    private byte[] bill;
+    private Double cost;
 }
