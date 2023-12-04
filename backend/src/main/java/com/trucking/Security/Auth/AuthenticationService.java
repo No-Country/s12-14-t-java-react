@@ -15,18 +15,13 @@ import io.jsonwebtoken.Jwts;
 import jakarta.mail.MessagingException;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Value;
-import org.springframework.http.HttpStatus;
-import org.springframework.http.ResponseEntity;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
-import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import java.util.Optional;
 
-import java.util.Optional;
-import java.util.UUID;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -135,13 +130,13 @@ public class AuthenticationService {
      * @return Envia un email para acceder a la ruta del front para cambio de contraseña.
      * @throws MessagingException Si no se puede hacer el envio del mail al email del usuario.
      */
-    public AuthenticationResponseDto forgotPassword(ForgotPassword email) throws MessagingException {
+    public AuthenticationResponseDto forgotPassword(ForgotPasswordDto email) throws MessagingException {
 
         var user = userRepository.findByEmail(email.getEmail()).orElseThrow(() -> new ValidationIntegrity("Usuario no fue encontrado con el email " + email));
 
         String tokenPassword = jwtService.generateToken(user);
 
-        DataForgotPassword userForgot = new DataForgotPassword();
+        DataForgotPasswordDto userForgot = new DataForgotPasswordDto();
         userForgot.setEmail(email.getEmail());
         userForgot.setName(user.getName());
         userForgot.setToken(tokenPassword);

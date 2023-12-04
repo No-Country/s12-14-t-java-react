@@ -1,12 +1,11 @@
 package com.trucking.Security.Auth;
 
 import com.trucking.Security.Dto.*;
-import com.trucking.Security.Repository.UserRepository;
+import io.jsonwebtoken.ExpiredJwtException;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.media.Content;
 import io.swagger.v3.oas.annotations.media.Schema;
 import io.swagger.v3.oas.annotations.responses.ApiResponse;
-import io.swagger.v3.oas.annotations.security.SecurityRequirement;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import jakarta.mail.MessagingException;
 import jakarta.validation.Valid;
@@ -96,9 +95,9 @@ public class AuthController {
 
     @PutMapping("/changePassword")
     @Operation(
-            summary = "Controller para cambiar password de un usuario con rol MANAGER"
+            summary = "Controller para cambiar password de un usuario"
     )
-    public ResponseEntity<MsgDto> changePass(@RequestHeader("Authorization") String token , @Valid @RequestBody ChangePasswordDto changePasswordDto) {
+    public ResponseEntity<MsgDto> changePass(@RequestHeader("Authorization") String token , @Valid @RequestBody ChangePasswordDto changePasswordDto){
 
         MsgDto changePasswordMsg = authenticationService.changePassword(token,changePasswordDto);
 
@@ -133,9 +132,9 @@ public class AuthController {
                     )
             }
     )
-    public ResponseEntity<?> forgotPassword(@RequestBody @Valid ForgotPassword email) throws MessagingException {
+    public ResponseEntity<?> forgotPassword(@RequestBody @Valid ForgotPasswordDto email) throws MessagingException {
         AuthenticationResponseDto response = authenticationService.forgotPassword(email);
-        return new ResponseEntity<>("Email enviado al correo " + email.getEmail(), HttpStatus.OK);
+        return new ResponseEntity<>(new MsgDto("Email enviado al correo " + email.getEmail()), HttpStatus.OK);
     }
 
     /**
@@ -144,11 +143,11 @@ public class AuthController {
      * @param password nuevo password del usuario
      * @return ResponseEntity ok con el nuevo password del usuario.
      */
-    @PostMapping("/change-password")
+    @PostMapping("/recover-password")
     @Operation(
             summary = "Controller para realizar el cambio de contraseña de cualquier usuario",
-            description = "Se realiza el cambio de contraseña, si las dos contraseñas cumplen con el regex y son iguales, y " +
-                    "el token es valido el token tiene una duración de 1 hora",
+            description = "Se realiza el cambio de contraseña, si " +
+                    "el token es valido y no esta expirado. El token tiene una duración de 1 hora",
             responses = {
                     @ApiResponse(
                             responseCode = "200",
@@ -166,14 +165,13 @@ public class AuthController {
                     )
             }
     )
-    public ResponseEntity<?> changePassword(@RequestBody @Valid ChangePassword password) {
+    public ResponseEntity<?> changePassword(@RequestBody @Valid RecoverPasswordDto password) {
 
-        if (password.getPassword1().equals(password.getPassword2())) {
-            AuthenticationResponseDto response = authenticationService.changePasswordUrl(password.getUrl(), password.getPassword1());
-            return new ResponseEntity<>("La contrasña ha sido actualizada exitosamente ", HttpStatus.OK);
-
+        try {
+            AuthenticationResponseDto response = authenticationService.changePasswordUrl(password.getUrl(), password.getPassword());
+            return new ResponseEntity<>(new MsgDto("La contraseña ha sido actualizada exitosamente"), HttpStatus.OK);
+        } catch (ExpiredJwtException e) {
+            return new ResponseEntity<>(new MsgDto("El token de recuperacion ya expiro"), HttpStatus.BAD_REQUEST);
         }
-        return new ResponseEntity("Las contraseñas deben ser iguales", HttpStatus.BAD_REQUEST);
-
     }
 }
