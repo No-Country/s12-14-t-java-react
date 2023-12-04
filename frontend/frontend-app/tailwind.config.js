@@ -17,13 +17,22 @@ export default {
       gray: '#CACACA',
       'light-gray': '#DFE6EC'
     },
+    dropShadow: {
+      purple: '0px 2px 4px rgba(46, 75, 223, 0.50)'
+    },
     screens: {
-      'sm': '480px',
+      sm: '480px',
       // => @media (min-width: 480px) { ... }
-      'md': '768px',
+      md: '768px',
       // => @media (min-width: 768px) { ... }
-      'lg': '1024px',
+      lg: '1024px',
       // => @media (min-width: 1024px) { ... }
+      xl: '1280px',
+      '2xl': '1600px'
+    },
+    container: {
+      padding: '1.5rem',
+      center: true
     }
   },
   plugins: []

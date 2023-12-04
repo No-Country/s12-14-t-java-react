@@ -1,0 +1,72 @@
+.title {
+  color: #DFE6EC;
+  text-align: center;
+  text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+  font-size: 35px;
+  font-style: normal;
+  font-weight: 600;
+  line-height: normal;
+}
+
+.textField {
+  color:  #2E4BDF;
+  font-size: 25px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 20px;
+  border-radius: 10px;
+  width: 772px;
+  height: 46px;
+  letter-spacing: 0.1px;
+}
+
+.labelInput{
+  margin-top: 12px;
+  color: #DFE6EC;
+  width: 772px;
+  font-size: 1.25rem;
+  text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+
+}
+.appear{
+  visibility: visible;
+}
+.none-appear{
+  visibility: hidden;
+}
+.textField::placeholder{
+  color: #2E4BDF;
+  opacity: 0.5;
+}
+.main-button{
+  border-radius: 15px;
+  background-color: #2E4BDF;
+  color: #E1F1FF;
+  font-size: 30px;
+  font-weight: 500;
+  line-height: 20px;
+  letter-spacing: 0.1px;
+  width: 577px;
+  height: 67px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transition: all 500ms;
+  transition-timing-function: ease;
+}
+.main-button:hover{
+  background: #152da8;
+  color: #b9c6d1;
+  transform: scale(103%);
+}
+.error{
+   outline: 2px solid #6a3838;
+}
+.input-container{
+  position: relative;
+}
+.icon-input{
+  position: absolute;
+  right: 1.5%;
+  transform: translateY(27%);
+}
