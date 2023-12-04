@@ -21,7 +21,7 @@ import org.springframework.context.annotation.Configuration;
 @Configuration
 @OpenAPIDefinition(
         servers = {@Server(
-                url = "http://200.45.208.45:9896/api/v1/",
+                url = "https://trucking-jebius.koyeb.app/api/v1/",
                 description = "production server"),
                 @Server(
                         url = "http://127.0.0.1:8080/api/v1/",
