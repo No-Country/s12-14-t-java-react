@@ -1,5 +1,5 @@
 import DashboardAdmi from './pages/DashboardAminis'
-import DashboardGerente from './pages/DashboardGerente'
+import { DashboardGerente } from './pages/DashboardGerente'
 import { Homepage } from './pages/Homepage'
 import { Login } from './pages/Login'
 import { Register } from './pages/Register'
