@@ -40,7 +40,7 @@ function DashboardAdmi() {
 
           </section>
 
-            <h3 className="text-center text-lg mt-5">Iniciar manteniemiento diario</h3>
+            <button className="text-center text-lg mt-5">Iniciar manteniemiento diario</button>
 
             <div className="flex gap-3 mt-3 ml-5">
                 <h4>Identidad validada</h4>
