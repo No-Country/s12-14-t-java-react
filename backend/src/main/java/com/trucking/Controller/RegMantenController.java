@@ -5,6 +5,8 @@ import com.trucking.Dto.RegMant.NewRegMantDto;
 import com.trucking.Dto.RegMant.UpdateRegMant;
 import com.trucking.Entity.RegMaint;
 import com.trucking.Security.Dto.AuthenticationResponseDto;
+import com.trucking.Security.Dto.ErrorMsgDto;
+import com.trucking.Security.Dto.MsgDto;
 import com.trucking.Service.Implement.RegMantServiceImplement;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.media.Content;
@@ -21,7 +23,7 @@ import java.util.List;
 
 @RequiredArgsConstructor
 @RestController
-@RequestMapping("/req-mant")
+@RequestMapping("/reg-mant")
 @Tag(name="registro mantenimiento", description = "Registro de mantenimiento de vehiculo")
 public class RegMantenController {
 
@@ -34,7 +36,7 @@ public class RegMantenController {
      * @return RegMaint registrado exitosamente
      *
      */
-    @PostMapping("/new")
+    @PostMapping("")
     @Operation(
             summary = "Controller para crear un registro mantenimineto",
             description = "creación de registro de mantenimiento para un vehiculo",
@@ -58,9 +60,9 @@ public class RegMantenController {
     public ResponseEntity<?> createRegMaint(@RequestBody @Valid NewRegMantDto newRegMantDto){
         try{
             RegMaint newReg = regMantServiceImplement.save(newRegMantDto);
-            return new ResponseEntity<>("Registro de mantenimiento creado exitosamente "+ newReg, HttpStatus.CREATED);
+            return new ResponseEntity<>(new MsgDto("Registro de mantenimiento creado exitosamente"), HttpStatus.CREATED);
         }catch (Exception e){
-            return new ResponseEntity<>("Error al generar registro de mantenimiento ", HttpStatus.BAD_REQUEST);
+            return new ResponseEntity<>(new MsgDto("Error al generar registro de mantenimiento "), HttpStatus.BAD_REQUEST);
         }
     }
 

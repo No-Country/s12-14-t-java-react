@@ -19,7 +19,7 @@ public class UpdateRegMant {
     private LocalDate date;
 
     @NotNull(message = "Bill no puede ser null ni estar vacio")
-    private byte[] bill;
+    private String bill;
 
     @NotBlank(message ="Km no puede ser alfabetico, vacio o null")
     @Pattern(regexp = "^.{2,}$")

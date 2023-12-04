@@ -19,12 +19,11 @@ public class RegMaint {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private LocalDate date;
+    @Column(length = 2000)
     private String description;
-    @ManyToOne
-    private Vehicle vehicle;
     private Integer km;
-    @OneToMany
-    private List<ManType> manType;
-    private byte[] bill;
+    @ManyToOne
+    private ManType manType;
+    private String bill;
     private Double cost;
 }

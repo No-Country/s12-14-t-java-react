@@ -4,6 +4,7 @@ import com.trucking.Dto.RegMant.NewRegMantDto;
 import com.trucking.Dto.RegMant.UpdateRegMant;
 import com.trucking.Entity.ManType;
 import com.trucking.Entity.RegMaint;
+import com.trucking.Repository.ManTypeRepository;
 import com.trucking.Security.Repository.RegMantRepository;
 import com.trucking.Service.RegMantService;
 import lombok.RequiredArgsConstructor;
@@ -17,16 +18,21 @@ import java.util.Optional;
 @RequiredArgsConstructor
 public class RegMantServiceImplement implements RegMantService {
     private final RegMantRepository regMantRepository;
+    private final ManTypeRepository manTypeRepository;
     @Override
     public RegMaint save(NewRegMantDto newRegMantDto) {
+
+        String cost = newRegMantDto.getCost();
+        cost = cost.replace(".", "");
+        cost = cost.replace(",",".");
+
         RegMaint newRegMaint = new RegMaint();
-        newRegMaint.setVehicle(newRegMantDto.getVehicule());
         newRegMaint.setDate(newRegMantDto.getDate());
         newRegMaint.setDescription(newRegMantDto.getDescription());
-        newRegMaint.setKm(newRegMantDto.getKm());
-        newRegMaint.setManType((List<ManType>) newRegMantDto.getManType());
-        newRegMaint.setCost(newRegMaint.getCost());
-        return newRegMaint;
+        newRegMaint.setKm(Integer.valueOf(newRegMantDto.getKm()));
+        newRegMaint.setManType(manTypeRepository.findByName(newRegMantDto.getManType()).get());
+        newRegMaint.setCost(Double.valueOf(cost));
+        return regMantRepository.save(newRegMaint);
     }
 
     @Override
@@ -61,4 +67,5 @@ public class RegMantServiceImplement implements RegMantService {
     public List<RegMaint> getAllRegMaints() {
         return regMantRepository.findAll();
     }
+
 }

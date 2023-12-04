@@ -25,16 +25,19 @@ public class NewRegMantDto {
     private String description;
 
     @NotNull(message ="Vehiculo no puede estar vacio o ser null")
-    private Vehicle vehicule;
+    private Long vehicle;
 
-    @NotBlank(message ="Km no puede ser alfabetico, vacio o null")
-    @Pattern(regexp = "^.{2,}$")
-    private Integer km;
+    @NotNull(message ="El kilometraje es obligatorio")
+    @Pattern(regexp = "^[0-9]{1,6}$", message = "El kilometraje no es válido")
+    private String km;
 
     @NotNull(message = "ManType no puede ser null ni estar vacio")
-    private ManType manType;
+    private String manType;
 
     @NotNull(message = "Bill no puede ser null ni estar vacio")
-    private byte[] bill;
+    private String bill;
 
+    @NotNull
+    @Pattern(regexp = "^[0-9,.]{1,10}$", message = "El monto ingresado no es válido")
+    private String cost;
 }

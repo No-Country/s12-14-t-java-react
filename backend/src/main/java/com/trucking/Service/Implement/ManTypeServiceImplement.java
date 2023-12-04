@@ -8,6 +8,7 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
 
 @Service
 @RequiredArgsConstructor
@@ -52,5 +53,10 @@ public class ManTypeServiceImplement implements ManTypeService {
                 new IllegalArgumentException("Error al encontrar el mantenimieto con el id " + id));
         manTypeRepository.deleteById(id);
         return typeById;
+    }
+
+    @Override
+    public Optional<ManType> findByName(String name) {
+        return manTypeRepository.findByName(name);
     }
 }

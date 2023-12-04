@@ -5,6 +5,7 @@ import jakarta.persistence.EntityNotFoundException;
 import jakarta.validation.ValidationException;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.http.converter.HttpMessageNotReadableException;
 import org.springframework.validation.FieldError;
 import org.springframework.web.bind.MethodArgumentNotValidException;
 import org.springframework.web.bind.annotation.ExceptionHandler;
@@ -43,6 +44,7 @@ public class HandlerErrors extends Throwable {
 
         return ResponseEntity.badRequest().body(response);
     }
+
     private record ErrorValidationData(String campo, String error){
         public ErrorValidationData(FieldError error) {
             this(error.getField(), error.getDefaultMessage());
