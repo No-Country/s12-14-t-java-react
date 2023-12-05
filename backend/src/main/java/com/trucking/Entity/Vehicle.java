@@ -1,7 +1,9 @@
 package com.trucking.Entity;
 
+import com.trucking.Entity.Enum.VehicleType;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
@@ -11,6 +13,7 @@ import java.util.List;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
+@Builder
 public class Vehicle {
 
     @Id
@@ -21,8 +24,15 @@ public class Vehicle {
     private Integer year;
     private String patent;
     private Integer axle;
-    private String color;
-    private Integer km;
+    @Column(name = "date_vtv")
+    //@Temporal(TemporalType.TIMESTAMP)
+    private String dateVtv;
+
+    @Enumerated(EnumType.STRING)
+    private VehicleType vehicleType;
+
+    //private String color;
+    //private Integer km;
     @ManyToOne
     private Fuel fuel;
     private String motor;
