@@ -2,6 +2,7 @@ package com.trucking.Controller;
 
 import com.trucking.Dto.VehicleDto;
 import com.trucking.Service.VehicleService;
+import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -11,7 +12,7 @@ import java.util.List;
 import java.util.Optional;
 
 @RestController
-@RequestMapping("api/v1/vehicle")
+@RequestMapping("/vehicle")
 @RequiredArgsConstructor
 public class VehicleController {
 
@@ -29,7 +30,11 @@ public class VehicleController {
     }
     @PostMapping(value = "/save")
     @ResponseStatus(HttpStatus.CREATED)
-    public VehicleDto saveVehicle(@RequestBody VehicleDto newVehicleDto){
+    public VehicleDto saveVehicle(@Valid @RequestBody VehicleDto newVehicleDto){
         return vehicleService.save(newVehicleDto);
+    }
+    @DeleteMapping(path = "/{id}")
+    public ResponseEntity<Boolean> delete(@PathVariable Long id) {
+        return new ResponseEntity<>(this.vehicleService.delete(id) ? HttpStatus.OK : HttpStatus.NOT_FOUND);
     }
 }

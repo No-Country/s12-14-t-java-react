@@ -7,6 +7,7 @@ import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import java.util.Date;
 import java.util.List;
 
 @Entity
@@ -24,19 +25,20 @@ public class Vehicle {
     private Integer year;
     private String patent;
     private Integer axle;
+
     @Column(name = "date_vtv")
-    //@Temporal(TemporalType.TIMESTAMP)
-    private String dateVtv;
+    @Temporal(TemporalType.DATE)
+    private Date dateVtv;
 
     @Enumerated(EnumType.STRING)
     private VehicleType vehicleType;
 
-    //private String color;
-    //private Integer km;
     @ManyToOne
     private Fuel fuel;
-    private String motor;
-    private String chassis;
+    private String brandMotor;
+    private String numberMotor;
+    private String brandChassis;
+    private String numberChassis;
     @OneToMany
     private List<RegMaint> maintenance;
     @OneToMany

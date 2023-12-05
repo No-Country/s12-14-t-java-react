@@ -56,4 +56,13 @@ public class VehicleServiceImpl implements VehicleService {
 
         return vehicleMapper.toDto(vehicleRepository.save(vehicle));
     }
+
+    @Override
+    public boolean delete(Long id) {
+        if(vehicleRepository.findById(id).isEmpty()){
+            return false;
+        }
+        vehicleRepository.deleteById(id);
+        return true;
+    }
 }

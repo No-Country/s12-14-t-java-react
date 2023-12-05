@@ -10,4 +10,5 @@ public interface VehicleService {
     List<VehicleDto> getAll();
     VehicleDto getVehicle(Long idVehicle);
     VehicleDto save(VehicleDto newVehicleDto);
+    boolean delete(Long id);
 }
