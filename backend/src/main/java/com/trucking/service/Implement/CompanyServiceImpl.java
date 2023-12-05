@@ -1,4 +1,4 @@
-package com.trucking.service;
+package com.trucking.service.implement;
 
 import com.trucking.entity.Company;
 import com.trucking.repository.CompanyRepository;

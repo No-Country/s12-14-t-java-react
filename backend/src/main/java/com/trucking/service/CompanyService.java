@@ -6,5 +6,5 @@ import java.util.Optional;
 
 public interface CompanyService {
 
-    public Optional<Company> findByName(String name);
+    Optional<Company> findByName(String name);
 }

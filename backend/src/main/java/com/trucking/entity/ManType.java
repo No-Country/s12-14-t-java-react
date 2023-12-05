@@ -1,28 +1,22 @@
 package com.trucking.entity;
 
-
 import jakarta.persistence.*;
+import jakarta.validation.constraints.Pattern;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-import java.time.LocalDate;
-
 
 @Entity
-@Data
+@Table(name = "manTypes")
 @AllArgsConstructor
 @NoArgsConstructor
-public class RegMaint {
+@Data
+public class ManType {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    private LocalDate date;
-    @Column(length = 2000)
-    private String description;
-    private Integer km;
-    @ManyToOne
-    private ManType  manType;
-    private String bill;
-    private Double cost;
+    @Pattern(regexp = "^.{2,}$")
+    private String name;
+
 }

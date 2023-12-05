@@ -1,5 +1,6 @@
 package com.trucking.security.config;
 
+import com.trucking.security.entity.RoleName;
 import lombok.RequiredArgsConstructor;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -38,6 +39,11 @@ public class SecurityConfig {
                         auth -> {
                             auth
                                     .requestMatchers("/auth/**").permitAll()
+                                    .requestMatchers("/reg-mant/**").hasAnyAuthority(
+                                            RoleName.ADMIN.name(),
+                                            RoleName.OWNER.name(),
+                                            RoleName.MAINTENANCE.name()
+                                    )
                                     .requestMatchers("/swagger-ui.html", "/v3/api-docs/**", "/swagger-ui/**").permitAll()
                                     .anyRequest().authenticated();
                         }

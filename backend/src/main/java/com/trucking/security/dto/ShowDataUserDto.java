@@ -31,5 +31,10 @@ public class ShowDataUserDto {
      * Role del nuevo usuario.
      */
     private RoleName role;
+    /**
+     * Compañia del nuevo usuario.
+     */
+    private String companyName;
+
 
 }
