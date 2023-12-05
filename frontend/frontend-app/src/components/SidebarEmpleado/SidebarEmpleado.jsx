@@ -1,3 +1,9 @@
+import Empleado from "../Empleado/Empleado";
+
 export const SidebarEmpleado = () => {
-  return <>SidebarEmpleado</>
-}
+  return (
+    <>
+      <Empleado />
+    </>
+  );
+};
