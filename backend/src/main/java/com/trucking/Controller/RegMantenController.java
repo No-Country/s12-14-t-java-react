@@ -4,6 +4,8 @@ package com.trucking.Controller;
 import com.trucking.Dto.RegMant.NewRegMantDto;
 import com.trucking.Dto.RegMant.UpdateRegMant;
 import com.trucking.Entity.RegMaint;
+import com.trucking.Exception.ManTypeNotFound;
+import com.trucking.Exception.NotFoundVehicle;
 import com.trucking.Security.Dto.AuthenticationResponseDto;
 import com.trucking.Security.Dto.ErrorMsgDto;
 import com.trucking.Security.Dto.MsgDto;
@@ -58,10 +60,12 @@ public class RegMantenController {
             }
     )
     public ResponseEntity<?> createRegMaint(@RequestBody @Valid NewRegMantDto newRegMantDto){
-        try{
+        try {
             RegMaint newReg = regMantServiceImplement.save(newRegMantDto);
             return new ResponseEntity<>(new MsgDto("Registro de mantenimiento creado exitosamente"), HttpStatus.CREATED);
-        }catch (Exception e){
+        }catch (NotFoundVehicle e){
+            return new ResponseEntity<>(new MsgDto(e.getMessage()), HttpStatus.BAD_REQUEST);
+        } catch (Exception e){
             return new ResponseEntity<>(new MsgDto("Error al generar registro de mantenimiento "), HttpStatus.BAD_REQUEST);
         }
     }
