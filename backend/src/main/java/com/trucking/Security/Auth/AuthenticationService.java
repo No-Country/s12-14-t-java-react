@@ -100,7 +100,7 @@ public class AuthenticationService {
      */
     public AuthenticationResponseDto login(LoginUserDto login) {
 
-        var user = userRepository.findByEmail(login.getEmail()).orElseThrow(() -> new ValidationIntegrity("Usuario o contraseña invalidos"));
+        var user = userRepository.findByEmail(login.getEmail()).orElseThrow(() -> new ValidationIntegrity("El correo electrónico no está registrado"));
 
         authenticationManager.authenticate(
                 new UsernamePasswordAuthenticationToken(
