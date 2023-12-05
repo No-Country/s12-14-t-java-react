@@ -9,7 +9,7 @@ import { useState } from 'react';
 
 function DashboardAdmi() {
 
-    const [opcionElegida, setOpcionElegida] = useState('');
+    const [opcionElegida, setOpcionElegida] = useState('Sin Vehiculo');
 
     return (
         <section>
@@ -61,7 +61,7 @@ function DashboardAdmi() {
                     <p className="items-center">{opcionElegida}</p>
                 </div>
                     <div>
-                        <div className="ml-24 mt-10 " id="miElemento"><Switch/>
+                        <div className="ml-4 mt-10" id="miElemento"><Switch/>
                         </div>
                     </div>
             </div>
