@@ -21,23 +21,23 @@ public class NewRegMantDto {
     @NotNull(message = "Date no puede ser null ni estar vacio")
     private LocalDate date;
 
-    @NotBlank(message = "Description no puede ser null ni estar vacio")
+    @Pattern(regexp = "^[a-zA-Z0-9!#$%&()*+\\-/?@\\[\\]^_{\\\\| }]{2,2000}$|^$",message = "La descripción no es válida")
     private String description;
 
-    @NotNull(message ="Vehiculo no puede estar vacio o ser null")
+    @NotNull(message ="El id del vehiculo es obligatorio")
     private Long vehicle;
 
-    @NotNull(message ="El kilometraje es obligatorio")
-    @Pattern(regexp = "^[0-9]{1,6}$", message = "El kilometraje no es válido")
+    @NotBlank(message ="El kilometraje es obligatorio")
+    @Pattern(regexp = "^[0-9]{1,6}$|^$", message = "El kilometraje no es válido")
     private String km;
 
-    @NotNull(message = "ManType no puede ser null ni estar vacio")
+    @NotBlank(message = "Tipo de mantenimiento es obligatorio")
+    @Pattern(regexp = "^[A-Za-zÁÉÍÓÚÜÑáéíóúüñ\\- ]{2,40}$|^$", message = "El tipo de mantenimiento no es válido")
     private String manType;
 
-    @NotNull(message = "Bill no puede ser null ni estar vacio")
     private String bill;
 
-    @NotNull
+    @NotBlank(message = "El costo es obligatorio")
     @Pattern(regexp = "^[0-9,.]{1,10}$", message = "El monto ingresado no es válido")
     private String cost;
 }

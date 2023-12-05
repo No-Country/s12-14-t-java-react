@@ -22,8 +22,7 @@ public class RegMaint {
     @Column(length = 2000)
     private String description;
     private Integer km;
-    @ManyToOne
-    private ManType manType;
+    private String manType;
     private String bill;
     private Double cost;
 }
