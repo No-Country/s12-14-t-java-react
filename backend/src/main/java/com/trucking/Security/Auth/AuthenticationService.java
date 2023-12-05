@@ -195,7 +195,7 @@ public class AuthenticationService {
     public MsgDto changePassword(String tokenJwt, ChangePasswordDto changePasswordDto) {
         if (changePasswordDto.getOldPassword().equals(changePasswordDto.getNewPassword())) {
             // La contraseña nueva no puede se la antigua
-            return new MsgDto("La Contraseña nueva no puede ser la anterior ");
+            throw new ValidationIntegrity("La Contraseña nueva no puede ser la anterior ");
         }
         var token = tokenJwt.replace("Bearer ", "");
         String email = jwtService.extractUsername(token);
@@ -210,7 +210,7 @@ public class AuthenticationService {
         // Verificar la contraseña antigua
         if (!passwordEncoder.matches(changePasswordDto.getOldPassword(), user.getPassword())) {
             // La contraseña antigua no es válida
-            return new MsgDto("Contraseña anterior incorrecta");
+            throw new ValidationIntegrity("Contraseña anterior incorrecta");
         }
 
 
