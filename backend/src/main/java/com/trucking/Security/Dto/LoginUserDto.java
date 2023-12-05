@@ -24,7 +24,7 @@ public class LoginUserDto {
     /**
      * Contraseña del nuevo usuario.
      */
-    @NotBlank(message = "Password no puede estar vacio o null")
+    @NotBlank(message = "La contraseña es obligatoria")
     @Schema(description = "Password", example = "asas@*78Ad")
     private String password;
 }
