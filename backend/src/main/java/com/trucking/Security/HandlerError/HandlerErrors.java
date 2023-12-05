@@ -1,6 +1,7 @@
 package com.trucking.Security.HandlerError;
 
 import com.trucking.Security.Dto.ErrorMsgDto;
+import jakarta.mail.AuthenticationFailedException;
 import jakarta.persistence.EntityNotFoundException;
 import jakarta.validation.ValidationException;
 import org.springframework.http.HttpStatus;
@@ -43,6 +44,14 @@ public class HandlerErrors extends Throwable {
         response.put("Details", errores);
 
         return ResponseEntity.badRequest().body(response);
+    }
+
+    @ExceptionHandler(AuthenticationFailedException.class)
+    public ResponseEntity errorHandlerMailAuthentication(Exception e){
+        ErrorMsgDto response = new ErrorMsgDto();
+        response.setError("Error de autenticacion en servidor de correo");
+        response.setDetails(Arrays.asList(e.getMessage()));
+        return new ResponseEntity(response, HttpStatus.BAD_REQUEST);
     }
 
     private record ErrorValidationData(String campo, String error){
