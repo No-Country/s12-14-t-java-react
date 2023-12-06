@@ -59,7 +59,7 @@ jobs:
 
       - name: Docker run image
         run: |
-          sudo docker run -d \
+          sudo docker run --rm -it -d \
             --restart always \
             --name s12-14-t-java-react \
             -p9896:9896 \
