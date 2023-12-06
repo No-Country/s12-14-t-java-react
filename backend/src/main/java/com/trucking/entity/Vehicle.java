@@ -1,6 +1,6 @@
 package com.trucking.entity;
 
-import com.trucking.Entity.Enum.VehicleType;
+import com.trucking.entity.enums.VehicleType;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Builder;

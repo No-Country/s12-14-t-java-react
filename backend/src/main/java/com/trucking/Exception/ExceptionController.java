@@ -1,4 +1,4 @@
-package com.trucking.Exception;
+package com.trucking.exception;
 
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ProblemDetail;
