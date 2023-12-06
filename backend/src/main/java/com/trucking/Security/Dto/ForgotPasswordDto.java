@@ -12,6 +12,7 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 public class ForgotPasswordDto {
 //    @Pattern(regexp = "^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\\.[a-zA-Z]{2,}$", message = "El email es invalido")
+    @NotBlank
     @Email(message = "El email es invalido")
     private String email;
 }
