@@ -5,7 +5,6 @@ import com.trucking.dto.regmant.NewRegMantDto;
 import com.trucking.dto.regmant.UpdateRegMant;
 import com.trucking.entity.RegMaint;
 import com.trucking.security.dto.AuthenticationResponseDto;
-import com.trucking.security.dto.ErrorMsgDto;
 import com.trucking.security.dto.MsgDto;
 import com.trucking.service.implement.RegMantServiceImplement;
 import io.swagger.v3.oas.annotations.Operation;

@@ -41,13 +41,6 @@ public class AuthController {
             description = "Todos pueden generar un registro",
             responses = {
                     @ApiResponse(
-                            responseCode = "200",
-                            description = "Success",
-                            content = {
-                                    @Content(mediaType = "application/json",
-                                            schema = @Schema(implementation = AuthenticationResponseDto.class))}
-                    ),
-                    @ApiResponse(
                             responseCode = "201",
                             description = "Created",
                             content = {

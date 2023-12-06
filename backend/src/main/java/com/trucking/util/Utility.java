@@ -13,7 +13,7 @@ import java.util.Objects;
 
 /**
  * @author ROMULO
- * @package com.nocountry.cashier.util
+ * @package com.nocountry.trucking.util
  * @license Lrpa, zephyr cygnus
  * @since 10/10/2023
  */

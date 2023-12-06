@@ -25,8 +25,8 @@ import java.util.Objects;
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
-@SQLDelete(sql = "UPDATE route SET isDeleted = true WHERE id = ?")
-@Where(clause = "isDeleted = false")
+@SQLDelete(sql = "UPDATE route SET is_deleted = true WHERE id = ?")
+@Where(clause = "is_deleted = false")
 public class Route extends Auditable<LocalDateTime, String> {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -44,7 +44,7 @@ public class Route extends Auditable<LocalDateTime, String> {
 
     private LocalDate expirationDate;
 
-    @Column(name = "isDeleted")
+    @Column(name = "is_deleted")
     private boolean deleted;
 
     public Route updateRoute(RouteRequestDto data) {

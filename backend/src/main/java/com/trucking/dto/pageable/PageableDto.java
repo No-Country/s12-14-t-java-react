@@ -14,7 +14,7 @@ import java.io.Serializable;
 
 /**
  * @author ROMULO
- * @package com.nocountry.cashier.controller.dto.request
+ * @package com.nocountry.trucking.controller.dto.request
  * @license Lrpa, zephyr cygnus
  * @since 10/10/2023
  */

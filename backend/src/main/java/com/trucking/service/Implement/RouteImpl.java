@@ -4,6 +4,9 @@ import com.trucking.dto.pageable.PageableDto;
 import com.trucking.dto.route.request.RouteRequestDto;
 import com.trucking.dto.route.response.RouteResponseDto;
 import com.trucking.entity.Route;
+import com.trucking.exception.DuplicateEntityException;
+import com.trucking.exception.InputNotValidException;
+import com.trucking.exception.ResourceNotFoundException;
 import com.trucking.mapper.RouteMapper;
 import com.trucking.repository.RouteRepository;
 import com.trucking.service.RouteService;
@@ -33,10 +36,9 @@ public class RouteImpl implements RouteService {
 
     @Override
     public RouteResponseDto create(RouteRequestDto data) {
-        String[] ruta = {};
         routeRepository.findByRegister(data.register())
                 .ifPresent(route -> {
-                    throw new IllegalArgumentException("Ya existe una ruta con ese numero de registro");
+                    throw new DuplicateEntityException("Ya existe una ruta con ese numero de registro");
                 });
         return routeMapper.toDto(routeRepository.save(routeMapper.toEntity(data)));
     }
@@ -52,17 +54,17 @@ public class RouteImpl implements RouteService {
     }
 
     @Override
-    public Optional<RouteResponseDto> getById(Long id) {
+    public RouteResponseDto getById(Long id) {
         if (Objects.isNull(id)) throw new IllegalArgumentException("El id no puede ser nulo");
         Route route = routeRepository.findById(id).orElse(null);
-        if (Objects.isNull(route)) throw new IllegalArgumentException("No existe una ruta con ese id");
-        return Optional.of(routeMapper.toDto(route));
+        if (Objects.isNull(route)) throw new ResourceNotFoundException("No existe una ruta con ese id");
+        return routeMapper.toDto(route);
 
     }
 
     @Override
     public RouteResponseDto update(Long id, RouteRequestDto data) {
-        if (Objects.isNull(id)) throw new IllegalArgumentException("El id no puede ser nulo");
+        if (Objects.isNull(id)) throw new InputNotValidException("El id no puede ser nulo");
         boolean exists = routeRepository.existsById(id);
         if (!exists) throw new IllegalArgumentException("No existe una ruta con ese id, no se puede actualizar");
         Optional<Route> route = routeRepository.findById(id);
@@ -72,7 +74,7 @@ public class RouteImpl implements RouteService {
 
     @Override
     public void delete(Long id) {
-        if (Objects.isNull(id)) throw new IllegalArgumentException("El id no puede ser nulo");
+        if (Objects.isNull(id)) throw new InputNotValidException("El id no puede ser nulo");
         Route route = routeRepository.findById(id).orElseThrow(() -> new IllegalArgumentException("No existe una ruta con ese id"));
         routeRepository.delete(route);
     }

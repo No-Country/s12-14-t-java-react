@@ -1,8 +1,10 @@
 package com.trucking.dto.route.response;
 
-import com.trucking.entity.enums.RouteCategory;
 import lombok.Getter;
 import lombok.Setter;
+
+import java.io.Serial;
+import java.io.Serializable;
 
 /**
  * @author ROMULO
@@ -12,7 +14,10 @@ import lombok.Setter;
  */
 @Getter
 @Setter
-public class RouteResponseDto {
+public class RouteResponseDto implements Serializable {
+
+    @Serial
+    private static final long serialVersionUID = 1L;
     private String category;
     private String image;
 
