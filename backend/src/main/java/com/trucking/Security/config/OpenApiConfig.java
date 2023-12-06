@@ -25,7 +25,9 @@ import org.springframework.context.annotation.Configuration;
                 description = "production server"),
                 @Server(
                         url = "http://127.0.0.1:8080/api/v1/",
-                        description = "development server")
+                        description = "development server"),
+                   @Server(url="http://149.50.132.123/api/v1/",
+                          description= "dev server don web")
         })
 @SecurityScheme(
         name = "bearerAuth",
