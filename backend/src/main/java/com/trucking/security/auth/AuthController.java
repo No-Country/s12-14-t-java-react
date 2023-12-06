@@ -3,6 +3,8 @@ package com.trucking.security.auth;
 
 import com.trucking.security.dto.*;
 
+
+import com.trucking.security.exception.ValidationIntegrity;
 import io.jsonwebtoken.ExpiredJwtException;
 
 import io.swagger.v3.oas.annotations.Operation;
@@ -95,9 +97,11 @@ public class AuthController {
     )
     public ResponseEntity<MsgDto> changePass(@RequestHeader("Authorization") String token , @Valid @RequestBody ChangePasswordDto changePasswordDto){
 
-        MsgDto changePasswordMsg = authenticationService.changePassword(token,changePasswordDto);
-
-        return ResponseEntity.status(HttpStatus.OK).body(changePasswordMsg);
+        try {
+            return ResponseEntity.status(HttpStatus.OK).body(authenticationService.changePassword(token,changePasswordDto));
+        } catch (ValidationIntegrity e) {
+            return new ResponseEntity<>(new MsgDto(e.getMessage()), HttpStatus.BAD_REQUEST);
+        }
     }
 
 

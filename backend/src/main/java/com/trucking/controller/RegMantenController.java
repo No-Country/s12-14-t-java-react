@@ -7,6 +7,7 @@ import com.trucking.entity.RegMaint;
 import com.trucking.security.dto.AuthenticationResponseDto;
 import com.trucking.security.dto.MsgDto;
 import com.trucking.service.implement.RegMantServiceImplement;
+
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.media.Content;
 import io.swagger.v3.oas.annotations.media.Schema;
@@ -57,10 +58,12 @@ public class RegMantenController {
             }
     )
     public ResponseEntity<?> createRegMaint(@RequestBody @Valid NewRegMantDto newRegMantDto){
-        try{
+        try {
             RegMaint newReg = regMantServiceImplement.save(newRegMantDto);
             return new ResponseEntity<>(new MsgDto("Registro de mantenimiento creado exitosamente"), HttpStatus.CREATED);
-        }catch (Exception e){
+        }catch (com.trucking.Exception.NotFoundVehicle e){
+            return new ResponseEntity<>(new MsgDto(e.getMessage()), HttpStatus.BAD_REQUEST);
+        } catch (Exception e){
             return new ResponseEntity<>(new MsgDto("Error al generar registro de mantenimiento "), HttpStatus.BAD_REQUEST);
         }
     }

@@ -16,15 +16,15 @@ public class LoginUserDto {
     /**
      * Correo electrónico del nuevo usuario.
      */
-    @NotBlank(message = "Email no puede estar vacio o null")
-    @Email
+    @NotBlank(message = "El correo electrónico es obligatorio")
+    @Email (message = "El correo electrónico no es válido")
     @Schema(description = "Email", example = "exampe@email.com")
     private String email;
 
     /**
      * Contraseña del nuevo usuario.
      */
-    @NotBlank(message = "Password no puede estar vacio o null")
+    @NotBlank(message = "La contraseña es obligatoria")
     @Schema(description = "Password", example = "asas@*78Ad")
     private String password;
 }

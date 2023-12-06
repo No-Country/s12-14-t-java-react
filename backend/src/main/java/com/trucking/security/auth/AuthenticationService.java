@@ -18,6 +18,7 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
+import org.springframework.security.core.AuthenticationException;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
@@ -101,14 +102,18 @@ public class AuthenticationService {
      */
     public AuthenticationResponseDto login(LoginUserDto login) {
 
-        var user = userRepository.findByEmail(login.getEmail()).orElseThrow(() -> new ValidationIntegrity("Usuario o contraseña invalidos"));
+        var user = userRepository.findByEmail(login.getEmail()).orElseThrow(() -> new ValidationIntegrity("El correo electrónico no está registrado"));
 
-        authenticationManager.authenticate(
-                new UsernamePasswordAuthenticationToken(
-                        login.getEmail(),
-                        login.getPassword()
-                )
-        );
+        try {
+            authenticationManager.authenticate(
+                    new UsernamePasswordAuthenticationToken(
+                            login.getEmail(),
+                            login.getPassword()
+                    )
+            );
+        } catch (AuthenticationException e) {
+            throw new ValidationIntegrity("El nombre de usuario o la contraseña no son validos");
+        }
 
         var token = jwtService.generateToken(user);
 
@@ -190,7 +195,7 @@ public class AuthenticationService {
     public MsgDto changePassword(String tokenJwt, ChangePasswordDto changePasswordDto) {
         if (changePasswordDto.getOldPassword().equals(changePasswordDto.getNewPassword())) {
             // La contraseña nueva no puede se la antigua
-            return new MsgDto("La Contraseña nueva no puede ser la anterior ");
+            throw new ValidationIntegrity("La Contraseña nueva no puede ser la anterior ");
         }
         var token = tokenJwt.replace("Bearer ", "");
         String email = jwtService.extractUsername(token);
@@ -205,7 +210,7 @@ public class AuthenticationService {
         // Verificar la contraseña antigua
         if (!passwordEncoder.matches(changePasswordDto.getOldPassword(), user.getPassword())) {
             // La contraseña antigua no es válida
-            return new MsgDto("Contraseña anterior incorrecta");
+            throw new ValidationIntegrity("Contraseña anterior incorrecta");
         }
 
 

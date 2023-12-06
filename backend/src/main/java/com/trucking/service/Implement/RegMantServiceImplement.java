@@ -1,10 +1,22 @@
 package com.trucking.service.implement;
 
+<<<<<<< HEAD:backend/src/main/java/com/trucking/service/Implement/RegMantServiceImplement.java
 import com.trucking.dto.regmant.NewRegMantDto;
 import com.trucking.dto.regmant.UpdateRegMant;
 import com.trucking.entity.RegMaint;
 import com.trucking.security.repository.RegMantRepository;
 import com.trucking.service.RegMantService;
+=======
+import com.trucking.Dto.RegMant.NewRegMantDto;
+import com.trucking.Dto.RegMant.UpdateRegMant;
+import com.trucking.Entity.RegMaint;
+import com.trucking.Entity.Vehicle;
+import com.trucking.Exception.ManTypeNotFound;
+import com.trucking.Exception.NotFoundVehicle;
+import com.trucking.Repository.VehicleRepository;
+import com.trucking.Security.Repository.RegMantRepository;
+import com.trucking.Service.RegMantService;
+>>>>>>> 868d811796f940104dd4a6d6179a6f3371aabae1:backend/src/main/java/com/trucking/Service/Implement/RegMantServiceImplement.java
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
@@ -14,6 +26,7 @@ import java.util.List;
 @RequiredArgsConstructor
 public class RegMantServiceImplement implements RegMantService {
     private final RegMantRepository regMantRepository;
+    private final VehicleRepository vehicleRepository;
     private final ManTypeServiceImplement manTypeService;
 
     @Override
@@ -27,12 +40,15 @@ public class RegMantServiceImplement implements RegMantService {
         newRegMaint.setDate(newRegMantDto.getDate());
         newRegMaint.setDescription(newRegMantDto.getDescription());
         newRegMaint.setKm(Integer.valueOf(newRegMantDto.getKm()));
-        newRegMaint.setManType(manTypeService.findByName(newRegMantDto.getManType()).get());
+        newRegMaint.setManType(newRegMaint.getManType());
         newRegMaint.setCost(Double.valueOf(cost));
 
-        //TODO: Adds regMant to vehicle when vehicle entity were ready.
+        RegMaint regMaint = regMantRepository.save(newRegMaint);
+        Vehicle actualVehicle = vehicleRepository.findById(newRegMantDto.getVehicle()).orElseThrow(NotFoundVehicle::new);
+        actualVehicle.getMaintenance().add(regMaint);
+        vehicleRepository.save(actualVehicle);
 
-        return regMantRepository.save(newRegMaint);
+        return regMaint;
     }
 
     @Override
