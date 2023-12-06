@@ -46,7 +46,7 @@ jobs:
         run: mkdir -p backend/app
 
       - name: Enter to the directory
-        run: cd /home/lrpa/backend/app
+        run: cd /home/maipevi/backend/app
 
       - name: Permises docker 
         run: sudo chmod 666 /var/run/docker.sock
