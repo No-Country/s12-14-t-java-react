@@ -7,6 +7,7 @@ import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import java.time.LocalDate;
 import java.util.Date;
 import java.util.List;
 
@@ -28,7 +29,7 @@ public class Vehicle {
 
     @Column(name = "date_vtv")
     @Temporal(TemporalType.DATE)
-    private Date dateVtv;
+    private LocalDate dateVtv;
 
     @Enumerated(EnumType.STRING)
     private VehicleType vehicleType;

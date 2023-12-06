@@ -39,6 +39,7 @@ public class SecurityConfig {
                         auth -> {
                             auth
                                     .requestMatchers("/auth/**").permitAll()
+                                    .requestMatchers("/vehicle/**").permitAll()
                                     .requestMatchers("/reg-mant/**").hasAnyAuthority(
                                             RoleName.ADMIN.name(),
                                             RoleName.OWNER.name(),

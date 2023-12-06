@@ -8,9 +8,16 @@ import com.trucking.Exception.NotFoundVehicle;
 import com.trucking.Mapper.VehicleMapper;
 import com.trucking.Repository.FuelRepository;
 import com.trucking.Repository.VehicleRepository;
+import com.trucking.Security.HandlerError.ValidationIntegrity;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
+import java.text.SimpleDateFormat;
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
+import java.time.format.DateTimeFormatterBuilder;
+import java.time.format.DateTimeParseException;
+import java.time.temporal.ChronoField;
 import java.util.List;
 import java.util.Objects;
 import java.util.Optional;
@@ -36,6 +43,13 @@ public class VehicleServiceImpl implements VehicleService {
 
     @Override
     public VehicleDto save(VehicleDto newVehicleDto) {
+
+        try {
+            LocalDate.parse(newVehicleDto.getDateVtv(),DateTimeFormatter.ISO_LOCAL_DATE);
+        } catch (DateTimeParseException e) {
+            throw new ValidationIntegrity("Error en la fecha");
+        }
+
 
         if (Objects.isNull(newVehicleDto))
             throw new RuntimeException("El Vehiculo no puede ser nulo.");

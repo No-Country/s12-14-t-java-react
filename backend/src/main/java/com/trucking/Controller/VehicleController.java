@@ -1,6 +1,8 @@
 package com.trucking.Controller;
 
 import com.trucking.Dto.VehicleDto;
+import com.trucking.Security.Dto.MsgDto;
+import com.trucking.Security.HandlerError.ValidationIntegrity;
 import com.trucking.Service.VehicleService;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
@@ -30,8 +32,12 @@ public class VehicleController {
     }
     @PostMapping(value = "/save")
     @ResponseStatus(HttpStatus.CREATED)
-    public VehicleDto saveVehicle(@Valid @RequestBody VehicleDto newVehicleDto){
-        return vehicleService.save(newVehicleDto);
+    public ResponseEntity<?> saveVehicle(@Valid @RequestBody VehicleDto newVehicleDto){
+        try {
+            return new ResponseEntity<>(vehicleService.save(newVehicleDto), HttpStatus.OK);
+        } catch (ValidationIntegrity e) {
+            return new ResponseEntity<>(new MsgDto(e.getMessage()), HttpStatus.BAD_REQUEST);
+        }
     }
     @DeleteMapping(path = "/{id}")
     public ResponseEntity<Boolean> delete(@PathVariable Long id) {

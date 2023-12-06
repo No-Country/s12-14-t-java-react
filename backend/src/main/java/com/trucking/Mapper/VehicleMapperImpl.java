@@ -8,6 +8,7 @@ import org.springframework.stereotype.Component;
 
 import java.text.SimpleDateFormat;
 import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -18,14 +19,13 @@ public class VehicleMapperImpl implements VehicleMapper{
     @Override
     public Vehicle toEntity(VehicleDto vehicleDto){
 
-        SimpleDateFormat formato = new SimpleDateFormat("dd-MM-yyyy");
         return Vehicle.builder()
                 .brand(vehicleDto.getBrand())
                 .model(vehicleDto.getModel())
                 .year(Integer.parseInt(vehicleDto.getYear()))
                 .patent(vehicleDto.getPatent())
                 .axle(Integer.parseInt(vehicleDto.getAxle()))
-                .dateVtv(formato.parse(vehicleDto.getDateVtv()))
+                .dateVtv(LocalDate.parse(vehicleDto.getDateVtv(),DateTimeFormatter.ISO_LOCAL_DATE))
                 .vehicleType(VehicleType.valueOf(vehicleDto.getVehicleType().toUpperCase()))
                 .brandMotor(vehicleDto.getBrandMotor())
                 .numberMotor(vehicleDto.getNumberMotor())

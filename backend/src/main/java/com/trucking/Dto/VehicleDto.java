@@ -5,6 +5,8 @@ import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Pattern;
 import lombok.*;
 
+import java.time.LocalDate;
+
 @Getter @Setter
 @AllArgsConstructor
 @NoArgsConstructor
@@ -32,7 +34,7 @@ public class VehicleDto {
     @NotBlank(message = "La cantidad de ejes es obligatoria")
     private String axle;
 
-    @NotBlank(message = "La fecha de la VTV es obligatoria")
+    @NotNull(message = "La fecha de la VTV es obligatoria")
     //@Pattern(regexp = "", message = "La fecha de la VTV no es válida")
     private String dateVtv;
 
