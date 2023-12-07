@@ -1,30 +1,36 @@
 package com.trucking.mapper;
 
+import lombok.SneakyThrows;
 import com.trucking.dto.VehicleDto;
 import com.trucking.entity.Vehicle;
-import com.trucking.entity.enums.VehicleType;
+import com.trucking.entity.VehicleType;
 import org.springframework.stereotype.Component;
 
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 import java.util.List;
 import java.util.stream.Collectors;
 
 
 @Component
 public class VehicleMapperImpl implements VehicleMapper{
+    @SneakyThrows
     @Override
     public Vehicle toEntity(VehicleDto vehicleDto){
+
         return Vehicle.builder()
                 .brand(vehicleDto.getBrand())
                 .model(vehicleDto.getModel())
-                .year(vehicleDto.getYear())
+                .year(Integer.parseInt(vehicleDto.getYear()))
                 .patent(vehicleDto.getPatent())
-                .axle(vehicleDto.getAxle())
-                .dateVtv(vehicleDto.getDateVtv())
-                .vehicleType(VehicleType.valueOf(vehicleDto.getVehicleType().toUpperCase()))
-                //.color(vehicleDto.getColor())
-                //.km(vehicleDto.getKm())
-                .motor(vehicleDto.getMotor())
-                .chassis(vehicleDto.getChassis())
+                .axle(Integer.parseInt(vehicleDto.getAxle()))
+                .dateVtv(LocalDate.parse(vehicleDto.getDateVtv(),DateTimeFormatter.ISO_LOCAL_DATE))
+//                .vehicleType(vehicleDto.getVehicleType())
+                .brandMotor(vehicleDto.getBrandMotor())
+                .numberMotor(vehicleDto.getNumberMotor())
+                .brandChassis(vehicleDto.getBrandChassis())
+                .numberChassis(vehicleDto.getNumberChassis())
+                .available(true)
                 .build();
     }
 
@@ -34,16 +40,16 @@ public class VehicleMapperImpl implements VehicleMapper{
                 .id(vehicleEntity.getId())
                 .brand(vehicleEntity.getBrand())
                 .model(vehicleEntity.getModel())
-                .year(vehicleEntity.getYear())
+                .year(String.valueOf(vehicleEntity.getYear()))
                 .patent(vehicleEntity.getPatent())
-                .axle(vehicleEntity.getAxle())
-                .dateVtv(vehicleEntity.getDateVtv())
-                .vehicleType(String.valueOf(vehicleEntity.getVehicleType()))
+                .axle(String.valueOf(vehicleEntity.getAxle()))
+                .dateVtv(String.valueOf(vehicleEntity.getDateVtv()))
+                .vehicleType(vehicleEntity.getVehicleType().getType())
                 .fuelType(vehicleEntity.getFuel().getType())
-                //.color(vehicleEntity.getColor())
-                //.km(vehicleEntity.getKm())
-                .motor(vehicleEntity.getMotor())
-                .chassis(vehicleEntity.getChassis())
+                .brandMotor(vehicleEntity.getBrandMotor())
+                .numberMotor(vehicleEntity.getNumberMotor())
+                .brandChassis(vehicleEntity.getBrandChassis())
+                .numberChassis(vehicleEntity.getNumberChassis())
                 .build();
     }
 

@@ -1,9 +1,13 @@
 package com.trucking.controller;
 
 import com.trucking.dto.VehicleDto;
+import com.trucking.security.dto.MsgDto;
+import com.trucking.security.exception.ValidationIntegrity;
 import com.trucking.service.VehicleService;
+import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -27,7 +31,15 @@ public class VehicleController {
     }
     @PostMapping(value = "/save")
     @ResponseStatus(HttpStatus.CREATED)
-    public VehicleDto saveVehicle(@RequestBody VehicleDto newVehicleDto){
-        return vehicleService.save(newVehicleDto);
+    public ResponseEntity<?> saveVehicle(@Valid @RequestBody VehicleDto newVehicleDto){
+        try {
+            return new ResponseEntity<>(vehicleService.save(newVehicleDto), HttpStatus.OK);
+        } catch (ValidationIntegrity e) {
+            return new ResponseEntity<>(new MsgDto(e.getMessage()), HttpStatus.BAD_REQUEST);
+        }
+    }
+    @DeleteMapping(path = "/{id}")
+    public ResponseEntity<Boolean> delete(@PathVariable Long id) {
+        return new ResponseEntity<>(this.vehicleService.delete(id) ? HttpStatus.OK : HttpStatus.NOT_FOUND);
     }
 }

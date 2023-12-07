@@ -1,12 +1,12 @@
 package com.trucking.entity;
 
-import com.trucking.entity.enums.VehicleType;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import java.time.LocalDate;
 import java.util.List;
 
 @Entity
@@ -24,19 +24,20 @@ public class Vehicle {
     private Integer year;
     private String patent;
     private Integer axle;
-    @Column(name = "date_vtv")
-    //@Temporal(TemporalType.TIMESTAMP)
-    private String dateVtv;
 
-    @Enumerated(EnumType.STRING)
+    @Column(name = "date_vtv")
+    @Temporal(TemporalType.DATE)
+    private LocalDate dateVtv;
+
+    @ManyToOne
     private VehicleType vehicleType;
 
-    //private String color;
-    //private Integer km;
     @ManyToOne
     private Fuel fuel;
-    private String motor;
-    private String chassis;
+    private String brandMotor;
+    private String numberMotor;
+    private String brandChassis;
+    private String numberChassis;
     @OneToMany
     private List<RegMaint> maintenance;
     @OneToMany
@@ -45,5 +46,6 @@ public class Vehicle {
     @OneToOne(cascade = CascadeType.MERGE)
     @JoinColumn(name = "idRoute")
     private Route route;
+    private Boolean available;
 
 }
