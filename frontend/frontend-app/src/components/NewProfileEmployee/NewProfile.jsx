@@ -2,12 +2,12 @@
 import "../../styles/NewProfile.css";
 import Empleado from "../Empleado/Empleado";
 import PanelVehiclesNotWorking from "../FleetVehicles/PanelVehiclesNotWorking";
-// import SideMenu from "../SideMenu/SideMenu";
+import SideMenu from "../SideMenu/SideMenu";
 
 const NewProfile = () => {
   return (
     <div className="container-profile">
-      {/* <SideMenu /> */}
+      <SideMenu />
       <section className="new-profile-continer">
       <div className="continer-empleado-vehiculooff  text-[#0D1544]">
         <form className="form">
