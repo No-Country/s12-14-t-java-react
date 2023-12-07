@@ -1,5 +1,6 @@
 import DashboardAdmi from './pages/DashboardAminis'
 import { DashboardGerente } from './pages/DashboardGerente'
+import DashboardVehicles from './pages/DashboardVehicles'
 import { Homepage } from './pages/Homepage'
 import { Login } from './pages/Login'
 import { Register } from './pages/Register'
@@ -15,6 +16,7 @@ function App() {
           <Route path='/register' element={<Register />} />
           <Route path='/Dashboard' element={<DashboardAdmi />} />
           <Route path='/dashboard-v2' element={<DashboardGerente />} />
+          <Route path='/dashboard-fleet-vehicles' element={<DashboardVehicles />} />
         </Routes>
       </Router>
     </>
