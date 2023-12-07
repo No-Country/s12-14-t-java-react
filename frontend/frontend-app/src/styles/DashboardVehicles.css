@@ -12,15 +12,14 @@
   height: 450px ;
 }
 .section-vehicles-nw{
-  height: 450px;
+  height: 400px;
 }
 .section-vehicles__container {
     width: 300px;
     display: flex;
     flex-direction: column;
-    justify-content: center;
     align-items: center;
-    gap: 30px;
+    justify-content: center;
 }
 
 .section-vehicles__title {
@@ -29,7 +28,7 @@
     font-style: normal;
     font-weight: 700;
     line-height: normal;
-    text-align: left;
+    text-align: center;
 }
 .cards-container{
     width: 300px;
@@ -112,36 +111,39 @@
     width: 100%;
   }
   .section-vehicles-ow{
-    height: 610px ;
+    height: 480px ;
   }
   .section-vehicles-nw{
-    height: 510px;
+    height: 410px;
   }
   .cards-carrusel{
-    width: 60%;
+    width: 90%;
     gap: 20px;
   }
   .cards-carrusel_nw{
-    height: 276px;
+    height: 300px;
   }
   .cards-carrusel_wo{
-    height: 470px;
+    height: 380px;
+  }
+  .section-vehicles-nw{
+    height: 380px;
   }
 }
 @media screen and (min-width:1024px) {
   .cards-carrusel{
-    width: 80%;
+    width: 95%;
   }
   .section-vehicles-ow{
-    height: 660px ;
+    height: 500px ;
   }
   .section-vehicles-nw{
-    height: 560px;
+    height: 380px;
   }
   .cards-carrusel_nw{
-    height: 276px;
+    height: 300px;
   }
   .cards-carrusel_wo{
-    height: 470px;
+    height: 380px;
   }
 }

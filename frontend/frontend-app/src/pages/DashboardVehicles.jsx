@@ -8,7 +8,7 @@ const DashboardVehicles = () => {
         <main className="flex flex-col gap-4 justify-center items-center p-4">
         <PanelVehiclesOnWorking />
         <PanelVehiclesNotWorking />
-            </main>
+        </main>
       </div>
   </>
     
