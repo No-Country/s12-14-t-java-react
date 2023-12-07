@@ -1,4 +1,4 @@
-// import ModificarContrasena from './components/ModificarContrasena/ModificarContrasena'
+
 import DashboardAdmi from './pages/DashboardAminis'
 import { DashboardGerente } from './pages/DashboardGerente'
 import { Homepage } from './pages/Homepage'
@@ -16,7 +16,7 @@ function App() {
           <Route path='/register' element={<Register />} />
           <Route path='/Dashboard' element={<DashboardAdmi />} />
           <Route path='/dashboard-v2' element={<DashboardGerente />} />
-          {/* <Route path='/modificar' element={<ModificarContrasena />} /> */}
+          
         </Routes>
       </Router>
     </>
