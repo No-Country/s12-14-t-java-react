@@ -20,7 +20,8 @@
     "react-router-dom": "^6.20.0",
     "rollup": "^4.6.1",
     "sweetalert2": "^11.10.1",
-    "swiper": "^11.0.5"
+    "swiper": "^11.0.5",
+    "uuid": "^9.0.1"
   },
   "devDependencies": {
     "@types/react": "^18.2.37",
