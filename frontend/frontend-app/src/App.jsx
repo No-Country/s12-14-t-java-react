@@ -1,3 +1,4 @@
+// import NewProfile from './components/NewProfileEmployee/NewProfile'
 import DashboardAdmi from './pages/DashboardAminis'
 import { DashboardGerente } from './pages/DashboardGerente'
 import { Homepage } from './pages/Homepage'
