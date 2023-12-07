@@ -38,8 +38,8 @@ public class VehicleController {
             return new ResponseEntity<>(new MsgDto(e.getMessage()), HttpStatus.BAD_REQUEST);
         }
     }
-//    @DeleteMapping(path = "/{id}")
-//    public ResponseEntity<Boolean> delete(@PathVariable Long id) {
-//        return new ResponseEntity<>(this.vehicleService.delete(id) ? HttpStatus.OK : HttpStatus.NOT_FOUND);
-//    }
+    @DeleteMapping(path = "/{id}")
+    public ResponseEntity<Boolean> delete(@PathVariable Long id) {
+        return new ResponseEntity<>(this.vehicleService.delete(id) ? HttpStatus.OK : HttpStatus.NOT_FOUND);
+    }
 }

@@ -3,10 +3,9 @@ package com.trucking.mapper;
 import lombok.SneakyThrows;
 import com.trucking.dto.VehicleDto;
 import com.trucking.entity.Vehicle;
-import com.trucking.entity.enums.VehicleType;
+import com.trucking.entity.VehicleType;
 import org.springframework.stereotype.Component;
 
-import java.text.SimpleDateFormat;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.util.List;
@@ -26,11 +25,12 @@ public class VehicleMapperImpl implements VehicleMapper{
                 .patent(vehicleDto.getPatent())
                 .axle(Integer.parseInt(vehicleDto.getAxle()))
                 .dateVtv(LocalDate.parse(vehicleDto.getDateVtv(),DateTimeFormatter.ISO_LOCAL_DATE))
-                .vehicleType(VehicleType.valueOf(vehicleDto.getVehicleType().toUpperCase()))
+//                .vehicleType(vehicleDto.getVehicleType())
                 .brandMotor(vehicleDto.getBrandMotor())
                 .numberMotor(vehicleDto.getNumberMotor())
                 .brandChassis(vehicleDto.getBrandChassis())
                 .numberChassis(vehicleDto.getNumberChassis())
+                .available(true)
                 .build();
     }
 
@@ -44,7 +44,7 @@ public class VehicleMapperImpl implements VehicleMapper{
                 .patent(vehicleEntity.getPatent())
                 .axle(String.valueOf(vehicleEntity.getAxle()))
                 .dateVtv(String.valueOf(vehicleEntity.getDateVtv()))
-                .vehicleType(String.valueOf(vehicleEntity.getVehicleType()))
+                .vehicleType(vehicleEntity.getVehicleType().getType())
                 .fuelType(vehicleEntity.getFuel().getType())
                 .brandMotor(vehicleEntity.getBrandMotor())
                 .numberMotor(vehicleEntity.getNumberMotor())

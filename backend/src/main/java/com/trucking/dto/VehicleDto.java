@@ -38,8 +38,9 @@ public class VehicleDto {
     //@Pattern(regexp = "", message = "La fecha de la VTV no es válida")
     private String dateVtv;
 
-    @NotNull @NotBlank(message = "El tipo de vehiculo es obligatorio")
+    @NotBlank(message = "El tipo de vehiculo es obligatorio")
     private String vehicleType;
+    @NotBlank(message = "El tipo de combustible es obligatorio")
     private String fuelType;
 
     @NotBlank(message = "La marca del motor es obligatoria")

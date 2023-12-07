@@ -1,6 +1,5 @@
 package com.trucking.entity;
 
-import com.trucking.entity.enums.VehicleType;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -8,7 +7,6 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import java.time.LocalDate;
-import java.util.Date;
 import java.util.List;
 
 @Entity
@@ -31,7 +29,7 @@ public class Vehicle {
     @Temporal(TemporalType.DATE)
     private LocalDate dateVtv;
 
-    @Enumerated(EnumType.STRING)
+    @ManyToOne
     private VehicleType vehicleType;
 
     @ManyToOne
@@ -48,5 +46,6 @@ public class Vehicle {
     @OneToOne(cascade = CascadeType.MERGE)
     @JoinColumn(name = "idRoute")
     private Route route;
+    private Boolean available;
 
 }
