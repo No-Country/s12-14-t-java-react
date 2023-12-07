@@ -28,3 +28,8 @@ margin-left: 7rem;
 
 }
 
+.container-gerente{
+    display: flex;
+    justify-content: space-around;
+    margin-left: 25rem;
+}

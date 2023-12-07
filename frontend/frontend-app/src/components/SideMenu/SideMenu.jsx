@@ -19,7 +19,7 @@ const SideMenu = () => {
         { name: 'Modificar contraseña', icon: <BsShieldLock />, size: 'text-base', spacing: 'mb-10', isClickable: true, height: 'h-10' , Link: '/dashboard-v2' }, // 40px height
         { name: 'Panel de control', icon: <LuPanelLeftOpen />, size: 'text-base', spacing: 'mb-2', isClickable: true, height: 'h-15', Link:'/dashboard-fleet-vehicles' }, // 60px height
         { name: 'Crear perfiles', icon: <FaUserPlus />, size: 'text-base', spacing: 'mb-2', isClickable: true, height: 'h-15' , Link:'/NewProfile' },
-        { name: 'Agregar vehículos', icon: <TbCar />, size: 'text-base', spacing: 'mb-2', isClickable: true, height: 'h-15' , Link:'/dashboard-fleet-vehicles'},
+        { name: 'Agregar vehículos', icon: <TbCar />, size: 'text-base', spacing: 'mb-2', isClickable: true, height: 'h-15' , Link:'/AddVehicle'},
         { name: 'Eliminar vehículos', icon: <TbCarOff />, size: 'text-base', spacing: 'mb-2', isClickable: true, height: 'h-15' , Link:'/dashboard-fleet-vehicles' },
         { name: 'Registro mantenimiento', icon: <LiaNotesMedicalSolid />, size: 'text-base', spacing: 'mb-20', isClickable: true, height: 'h-15' , Link:'/dashboard-fleet-vehicles'},
         { name: 'Cerrar sesión', icon: <IoIosLogOut />, size: 'text-sm', spacing: 'mb-5', isClickable: true, height: 'h-10' , Link:'/dashboard-fleet-vehicles'},
@@ -32,7 +32,7 @@ const SideMenu = () => {
     }; 
 
     return (
-        <div className="h-screen w-[239px] bg-[#31429B] text-white font-poppins fixed left-0 top-0">
+        <div className="h-screen w-[15%] bg-[#31429B] fixed text-white font-poppins  left-0 top-0">
             <div className="flex flex-col py-6">
                 <h1 className="text-3xl font-semibold mb-16 leading-5 text-center">Trucking</h1>
                 {menuItems.map((item, index) => (

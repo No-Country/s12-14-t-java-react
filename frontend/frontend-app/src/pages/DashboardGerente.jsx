@@ -6,12 +6,12 @@ import Empleado from '../components/Empleado/Empleado'
 
 export const DashboardGerente = () => {
   return (
-    <>
+    <div className='container-gerente'>
     <SideMenu />
   
       <ModificarContrasena />
 
       <Empleado />
-    </>
+    </div>
   )
 }

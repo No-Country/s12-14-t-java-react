@@ -7,7 +7,7 @@
     border: 1px solid rgba(41, 44, 44, 0.144) ;
     border-radius: 1rem;
     box-shadow: 0px 0px 4px 0px rgba(108, 99, 255, 0.20);
-
+    margin-left: 20rem;
 }
 .container-profile{
     display: flex;
