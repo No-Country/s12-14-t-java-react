@@ -30,7 +30,19 @@ export const EmpleadosLista = [
     status: "En actividad",
   },
   {
-    id: 26,
+    id: 10,
+    name: "Nombre del chofer 6",
+    rol: "Rol 2",
+    status: "En actividad",
+  },
+  {
+    id: 11,
+    name: "Nombre del chofer 6",
+    rol: "Rol 2",
+    status: "En actividad",
+  },
+  {
+    id: 12,
     name: "Nombre del chofer 6",
     rol: "Rol 2",
     status: "En actividad",
@@ -42,7 +54,10 @@ const Empleado = () => {
     <>
       <section className="flex flex-col justify-center  gap-5">
         <h2 className="text-[#0D1544] font-bold text-xl m-6 ">Empleados</h2>
-        <div className="grid grid-cols-1 gap-4 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 mx-auto ">
+        <div className="grid grid-cols-1 gap-4 
+        md:grid-cols-2 lg:grid lg:grid-cols-1 lg:gap-4
+        lg:h-[600px] overflow-hidden overflow-y-scroll
+        ">
           {EmpleadosLista.map((empleado) => (
             <article
               key={empleado.id}
@@ -69,7 +84,7 @@ const Empleado = () => {
           ))}
         </div>
 
-        <button className="rounded-md bg-dark-blue text-white w-72 h-10 md:w-96 lg:w-[635px] mx-auto">
+        <button className="rounded-md bg-dark-blue text-white w-full mx-auto">
           Eliminar selección
         </button>
       </section>

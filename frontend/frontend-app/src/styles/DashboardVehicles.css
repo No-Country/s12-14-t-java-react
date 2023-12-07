@@ -102,7 +102,7 @@
 }
 @media screen and (min-width:768px){
   .section-vehicles{
-    width: calc(100vw - 239px);
+    width: calc(100vw - 280px );
   }
   .section-vehicles__container{
     width: 100%;
@@ -131,6 +131,9 @@
   }
 }
 @media screen and (min-width:1024px) {
+  .section-vehicles{
+    width: calc(100vw - 280px - 400px);
+  }
   .cards-carrusel{
     width: 95%;
   }
