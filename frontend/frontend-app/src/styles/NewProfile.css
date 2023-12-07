@@ -3,7 +3,6 @@
     justify-content: center;
     min-width: 60%;
     min-height: 20rem;
-    /* background-color: rgb(53, 153, 153); */
     margin-top: 2rem;
     border: 1px solid rgba(41, 44, 44, 0.144) ;
     border-radius: 1rem;
@@ -12,14 +11,18 @@
 }
 .container-profile{
     display: flex;
-    justify-content: center;
+    /* flex-direction: column; */
+   
+
 
 }
 .form{
     display: flex;
-    flex-direction: column; 
+    flex-direction: column;
+    justify-content: space-between;
     padding: 1rem;
     width: 100%;
+    min-height: 20rem;
 
 }
 .container-form{
@@ -35,4 +38,8 @@
     width: 50%;
     padding: 1rem;
 
+}
+.continer-empleado-vehiculooff{
+    display: flex;
+    flex-direction: column;
 }

@@ -1,15 +1,21 @@
+
 import "../../styles/NewProfile.css";
+import Empleado from "../Empleado/Empleado";
+import PanelVehiclesNotWorking from "../FleetVehicles/PanelVehiclesNotWorking";
+import SideMenu from "../SideMenu/SideMenu";
 
 const NewProfile = () => {
   return (
     <div className="container-profile">
+      <SideMenu />
       <section className="new-profile-continer">
+      <div className="continer-empleado-vehiculooff  text-[#0D1544]">
         <form className="form">
           <div className="container-form">
 
          
           <div className="section-1-form">
-              <h2 className="text-3xl mb-4">Nuevo empleado</h2>
+              <h2 className="font-bold text-[#0D1544] lg:text-2xl md:text-2xl text-lg">Nuevo empleado</h2>
             <div className="relative mt-3">
               <input
                 className="block w-[85%] h-[56px]  cursor-pointer px-2.5 pb-2.5 pt-4 w text-lg text-gray-900 bg-transparent rounded-lg border-1 border-[#0D1544] appearance-none dark:text-white dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-[#0D1544] peer"
@@ -134,7 +140,11 @@ const NewProfile = () => {
           </div>
           <button type="button" className="rounded-lg border bg-dark-blue border-bg-blue-500 bg-blue-500 px-5 py-2.5 text-center text-sm font-medium text-white shadow-sm transition-all hover:border-blue-700 hover:bg-blue-700 focus:ring focus:ring-blue-200 disabled:cursor-not-allowed disabled:border-blue-300 disabled:bg-blue-300">Confirmar</button>
           </form>
+          <PanelVehiclesNotWorking />
+          
+      </div>
       </section>
+      <Empleado />
     </div>
   );
 };
