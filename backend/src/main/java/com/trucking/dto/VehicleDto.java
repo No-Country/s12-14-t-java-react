@@ -5,8 +5,6 @@ import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Pattern;
 import lombok.*;
 
-import java.time.LocalDate;
-
 @Getter @Setter
 @AllArgsConstructor
 @NoArgsConstructor
@@ -24,7 +22,7 @@ public class VehicleDto {
     private String model;
 
     @NotBlank(message = "La marca es obligatoria")
-    //@Pattern(regexp = "", message = "El año no es válido")
+    @Pattern(regexp = "^[a-zA-Z0-9]{3,15}$|^$", message = "La marca no es válido")
     private String year;
 
     @NotBlank(message = "La patente es obligatoria")
@@ -35,7 +33,6 @@ public class VehicleDto {
     private String axle;
 
     @NotNull(message = "La fecha de la VTV es obligatoria")
-    //@Pattern(regexp = "", message = "La fecha de la VTV no es válida")
     private String dateVtv;
 
     @NotBlank(message = "El tipo de vehiculo es obligatorio")
