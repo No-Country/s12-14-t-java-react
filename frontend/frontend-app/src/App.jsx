@@ -8,6 +8,7 @@ import { Register } from "./pages/Register";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import Empleado from "./components/Empleado/Empleado";
 import DashboardVehicles from './pages/DashboardVehicles'
+import NewProfile from "./components/NewProfileEmployee/NewProfile";
 
 function App() {
   return (
@@ -20,6 +21,7 @@ function App() {
           <Route path='/Dashboard' element={<DashboardAdmi />} />
           <Route path="/AddVehicle" element={<AddVehicle />} />
           <Route path="/Empleado" element={<Empleado />} />
+          <Route path="/NewProfile" element={<NewProfile />} />
           <Route path='/dashboard-v2' element={<DashboardGerente />} />
           <Route path='/dashboard-fleet-vehicles' element={<DashboardVehicles />} />
         </Routes>
