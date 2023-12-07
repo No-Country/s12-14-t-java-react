@@ -47,15 +47,33 @@ function ModificarContrasena() {
 
         const regex = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,12}$/;
 
+        // Validación para Nueva Contraseña
         if (!regex.test(nuevaContrasena)) {
             setErrorNuevaContrasena('La contraseña debe tener entre 8 y 12 caracteres, una letra mayúscula, una minúscula, un número y un caracter especial');
             return false;
         }
-
-
-        setErrorNuevaContrasena('');
+        
+        // Validación para Contraseña Actual
+        if (!regex.test(contrasenaActual)) {
+            setErrorContrasenaActual('La contraseña actual debe tener entre 8 y 12 caracteres, una letra mayúscula, una minúscula, un número y un caracter especial');
+            return false;
+        }
+        
+        // Validación para Confirmar Contraseña
+        if (!regex.test(confirmarContrasena)) {
+            setErrorConfirmarContrasena('La contraseña de confirmación debe tener entre 8 y 12 caracteres, una letra mayúscula, una minúscula, un número y un caracter especial');
+            return false;
+        }
+        
+        // Validación adicional para asegurar que Nueva Contraseña y Confirmar Contraseña coincidan
+        if (nuevaContrasena !== confirmarContrasena) {
+            setErrorConfirmarContrasena('Las contraseñas no coinciden');
+            return false;
+        }
+        
+        // Si todas las validaciones son exitosas, retorna true o realiza acciones adicionales
         return true;
-    };
+         }
 
     const validarConfirmarContrasena = () => {
         if (confirmarContrasena.trim() === '') {
