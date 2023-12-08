@@ -24,6 +24,12 @@ public class JwtService {
     @Value("${api.security.secret}")
     private String SECRET_KEY;
 
+//    @Value("${jwt_private_key_path}")
+//    private Resource privateKeyResource;
+//
+//    @Value("${jwt_public_key_path}")
+//    private Resource publicKeyResource;
+
     /**
      * Genera un token JWT con reclamaciones adicionales y detalles de usuario.
      *
@@ -118,6 +124,7 @@ public class JwtService {
      * @return Todas las reclamaciones extraídas del token.
      */
     private Claims extractAllClaims(String token) {
+
         return Jwts
                 .parserBuilder()
                 .setSigningKey(getSignIngKey()) //traer la firma del token para verificar que sea el mismo que lo genera
@@ -135,5 +142,27 @@ public class JwtService {
         byte[] keyBytes = Decoders.BASE64.decode(SECRET_KEY);
         return Keys.hmacShaKeyFor(keyBytes);
     }
+
+    /*private PrivateKey privateKey(Resource resource) throws IOException, NoSuchAlgorithmException, InvalidKeySpecException {
+        byte [] keyBytes = Files.readAllBytes(Paths.get(resource.getURI()));
+        String privateKeyPem= new String(keyBytes, StandardCharsets.UTF_8)
+                .replace("-----BEGIN RSA PRIVATE KEY-----", "")
+                .replace("-----END RSA PRIVATE KEY-----", "")
+                .replaceAll("\\s", "");
+        byte[] privateKeyBytes = Base64.getDecoder().decode(privateKeyPem);
+        KeyFactory keyFactory = KeyFactory.getInstance("RSA");
+        return keyFactory.generatePrivate(new PKCS8EncodedKeySpec(privateKeyBytes));
+    }
+
+    private PublicKey publicKey(Resource resource) throws IOException, NoSuchAlgorithmException, InvalidKeySpecException {
+        byte [] keyBytes = Files.readAllBytes(Paths.get(resource.getURI()));
+        String privateKeyPem= new String(keyBytes, StandardCharsets.UTF_8)
+                .replace("-----BEGIN PUBLIC KEY-----", "")
+                .replace("-----END PUBLIC KEY-----", "")
+                .replaceAll("\\s", "");
+        byte[] privateKeyBytes = Base64.getDecoder().decode(privateKeyPem);
+        KeyFactory keyFactory = KeyFactory.getInstance("RSA");
+        return keyFactory.generatePublic(new PKCS8EncodedKeySpec(privateKeyBytes));
+    }*/
 
 }
