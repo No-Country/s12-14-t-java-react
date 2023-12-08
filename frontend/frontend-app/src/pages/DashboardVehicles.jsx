@@ -4,23 +4,17 @@ import SideMenu from "../components/SideMenu/SideMenu";
 import "./../styles/DashboardVehicles.css";
 import Empleado from "../components/Empleado/Empleado";
 const DashboardVehicles = () => {
-  return (<>
-      <div>
+  return (
+    <>
+      <div className="container-gerente">
         <SideMenu />
-        <main className="flex flex-col gap-4 justify-center items-center
-        md:ml-[239px] lg:ml-[239px] 
-        lg:mr-[380px] p-5">
-        <PanelVehiclesOnWorking />
-        <PanelVehiclesNotWorking />
-        </main>
-        <div className=" fixed right-0 top-0 md:invisible
-        lg:visible h-[733px]">
-            <Empleado />
+        <div className="w-[60%] flex flex-col justify-between h-[100vh] items-center">
+          <PanelVehiclesOnWorking />
+          <PanelVehiclesNotWorking />
         </div>
-        
+        <Empleado />
       </div>
-  </>
-    
+    </>
   );
 };
 export default DashboardVehicles;

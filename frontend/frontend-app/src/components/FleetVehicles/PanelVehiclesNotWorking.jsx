@@ -2,7 +2,7 @@ import CardVehicleNotWorking from "./CardVehicleNotWorking";
 
 const PanelVehiclesNotWorking =()=>{
     return (
-        <section className="section-vehicles  section-vehicles-nw">
+        <section className="section-vehicles mt-[3rem]  w-[90%]  section-vehicles-nw">
         <div className="section-vehicles__container ">
           <h2 className="section-vehicles__title">
             Vehículos fuera de servicio

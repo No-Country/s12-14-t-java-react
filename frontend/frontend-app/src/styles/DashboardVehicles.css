@@ -1,5 +1,5 @@
 .section-vehicles {
-    width: 328px;
+    width:90%;
     border-radius: 15px;
     background-color: white;
     box-shadow: 0px 0px 4px 0px rgba(108, 99, 255, 0.20);
@@ -15,7 +15,7 @@
   height: 400px;
 }
 .section-vehicles__container {
-    width: 300px;
+    width: 90%;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -101,9 +101,7 @@
   background-color: #2d376b;
 }
 @media screen and (min-width:768px){
-  .section-vehicles{
-    width: calc(100vw - 280px );
-  }
+  
   .section-vehicles__container{
     width: 100%;
   }
@@ -131,9 +129,7 @@
   }
 }
 @media screen and (min-width:1024px) {
-  .section-vehicles{
-    width: calc(100vw - 280px - 400px);
-  }
+
   .cards-carrusel{
     width: 95%;
   }

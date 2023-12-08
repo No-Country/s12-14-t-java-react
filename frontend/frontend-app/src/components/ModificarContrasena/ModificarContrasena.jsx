@@ -2,7 +2,7 @@
 import "./ModificarContrasena.css"
 import { useState } from "react";
 import { IoMdEye, IoIosEyeOff } from "react-icons/io";
-import PanelVehiclesNotWorking from "../FleetVehicles/PanelVehiclesNotWorking";
+
 
 function ModificarContrasena() {
     const [contrasenaActual, setContrasenaActual] = useState('');
@@ -85,7 +85,7 @@ function ModificarContrasena() {
     return (
 
 
-        <section  className="flex flex-col w-[60%] ml-5 items-center mt-5">
+        <section  className="flex flex-col w-[100%] ml-5 items-center mt-5 ">
 
             <h1 className="Mostrar-title font-bold text-[#0D1544] lg:text-2xl md:text-2xl text-lg ml-0">Modificar la Contraseña</h1>
             <div className="Mostrar-container flex items-center lg:justify-center    mt-10">
@@ -167,7 +167,7 @@ function ModificarContrasena() {
                     </form>
                 </div>
             </div>
-            <PanelVehiclesNotWorking />
+         
         </section>
     );
 }

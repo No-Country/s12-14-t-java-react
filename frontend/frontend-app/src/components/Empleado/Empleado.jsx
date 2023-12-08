@@ -52,13 +52,13 @@ export const EmpleadosLista = [
 const Empleado = () => {
   return (
     <>
-      <section className="flex flex-col justify-start text-lg mt-5 gap-5">
-        <h2 className="text-[#0D1544] font-bold text-xl lg:text-2xl md:text-2xl m-6 ">Empleados</h2>
-        <div className="grid grid-cols-1 gap-4 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-1 mx-auto w-[30%]">
+      <section className="flex  w-[30%]    flex-col justify-start text-lg  gap-5 max-h-screen min-h-screen h-[90vh]">
+        <h2 className="text-[#0D1544] mt-10 font-bold text-xl lg:text-2xl md:text-2xl m-6 max-h-screen">Empleados</h2>
+        <div className="grid grid-cols-1 gap-4 md:grid-cols-1 lg:grid-cols-1  xl:grid-cols-1 mx-auto  overflow-y-scroll  max-h-[70vh] min-h-[30vh]">
           {EmpleadosLista.map((empleado) => (
             <article
               key={empleado.id}
-              className="flex rounded-xl shadow-md space-x-4 pr-2 w-80"
+              className="flex rounded-xl shadow-md space-x-4 pr-2 max-h-screen mr-5 "
             >
               <img
                 src="/img/chofer.png"
@@ -81,7 +81,7 @@ const Empleado = () => {
           ))}
         </div>
 
-        <button className="rounded-md bg-dark-blue text-white w-72 h-10 md:w-96 lg:w-[100%] mx-auto">
+        <button className="rounded-md bg-dark-blue text-white w-[90%] h-10 md:max-w-[90%] lg:max-w-[60%] mx-auto">
           Eliminar selección
         </button>
       </section>
