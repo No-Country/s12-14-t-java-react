@@ -48,7 +48,7 @@ public class Route extends Auditable<LocalDateTime, String> {
     private boolean deleted;
 
     public Route updateRoute(RouteRequestDto data) {
-        if (Objects.nonNull(data.register())) this.setRegister(data.register());
+        if (Objects.nonNull(data.register())) this.setRegister(Integer.valueOf(data.register()));
         if (Objects.nonNull(data.expirationDate())) this.setExpirationDate(data.expirationDate());
         if (StringUtils.hasText(data.category())) this.setCategory(RouteCategory.valueOf(data.category().strip()));
         if (StringUtils.hasText(data.image())) this.setImage(data.image().strip());

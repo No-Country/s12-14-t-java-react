@@ -4,6 +4,7 @@ import com.trucking.dto.pageable.PageableDto;
 import com.trucking.dto.route.request.RouteRequestDto;
 import com.trucking.dto.route.response.RouteResponseDto;
 import com.trucking.entity.Route;
+import com.trucking.entity.enums.RouteCategory;
 import com.trucking.exception.DuplicateEntityException;
 import com.trucking.exception.InputNotValidException;
 import com.trucking.exception.ResourceNotFoundException;
@@ -11,11 +12,14 @@ import com.trucking.mapper.RouteMapper;
 import com.trucking.repository.RouteRepository;
 import com.trucking.service.RouteService;
 import com.trucking.util.Utility;
+import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageImpl;
 import org.springframework.data.domain.Pageable;
+import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
+import org.springframework.web.bind.annotation.RequestBody;
 
 import java.util.List;
 import java.util.Objects;
@@ -35,8 +39,13 @@ public class RouteImpl implements RouteService {
     private final RouteMapper routeMapper;
 
     @Override
-    public RouteResponseDto create(RouteRequestDto data) {
-        routeRepository.findByRegister(data.register())
+    public RouteResponseDto create( RouteRequestDto data) {
+        List<RouteCategory> routeCategories = List.of(RouteCategory.values());
+        var routeCtg = routeCategories.stream()
+                .filter(routeCategory -> routeCategory.name().equals(data.category().strip()))
+                .findFirst();
+        if (routeCtg.isEmpty()) throw new InputNotValidException(HttpStatus.BAD_REQUEST,"La categoria no es valida. \n\n Las categorias validas son: \n" + routeCategories);
+        routeRepository.findByRegister(Integer.valueOf(data.register()))
                 .ifPresent(route -> {
                     throw new DuplicateEntityException("Ya existe una ruta con ese numero de registro");
                 });
