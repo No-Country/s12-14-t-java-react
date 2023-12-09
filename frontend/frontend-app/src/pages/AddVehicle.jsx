@@ -7,7 +7,7 @@ const AddVehicle = () => {
 
     return (
 
-        <div className="w-[95%] h-full my-10%">
+        <div className="w-[95%] h-full md:h-[90%] my-10%  md:w-[50%] md:ml-[35%]">
             
             <h1 className="ml-[10%] mt-16 text-[#0D1444] text-[22px] font-bold font-['Poppins']">
             Agregar vehículo
@@ -70,7 +70,7 @@ const AddVehicle = () => {
                         <input type="text" 
                         id="inputField" 
                         name="inputField" 
-                        className="border border-[#0D1444] py-2 px-4 w-[85%] h-14 mx-[10%] my-[2.5%] rounded"/>
+                        className="border border-[#0D1444] py-2 px-4 w-[85%] h-14 mx-[10%] my-4 rounded"/>
                     </div>
                     <div className="relative mb-[5%]">
                         <label htmlFor="inputField" className="absolute bg-white px-1 -top-[5%] md:top-[8%] lg:top-[19%] left-[12%] text-[#0D1444] text-sm">
@@ -79,7 +79,7 @@ const AddVehicle = () => {
                         <input type="text" 
                         id="inputField" 
                         name="inputField" 
-                        className="border border-[#0D1444] py-2 px-4 w-[85%] h-14 mx-[10%] my-[2.5%]  rounded"/>
+                        className="border border-[#0D1444] py-2 px-4 w-[85%] h-14 mx-[10%] my-4  rounded"/>
                     </div>
                     <div className="relative mb-[5%]">
                         <label htmlFor="inputField" className="absolute bg-white px-1 -top-[5%] md:top-[8%] lg:top-[19%] left-[12%] z-10 text-[#0D1444] text-sm">
@@ -89,7 +89,7 @@ const AddVehicle = () => {
                         <input type="text" 
                         id="yearField" 
                         name="yearField" 
-                        className="border border-[#0D1444] py-2 px-4 w-[85%] h-14 mx-[10%] my-[2.5%]  rounded "
+                        className="border border-[#0D1444] py-2 px-4 w-[85%] h-14 mx-[10%] my-4  rounded "
                         placeholder="aaaa"
                         />
                         <select id="yearSelect" 
@@ -135,7 +135,7 @@ const AddVehicle = () => {
                         <input type="text" 
                         id="inputField" 
                         name="inputField" 
-                        className="border border-[#0D1444] py-2 px-4 w-[85%] h-14 mx-[10%] my-[2.5%]  rounded"/>
+                        className="border border-[#0D1444] py-2 px-4 w-[85%] h-14 mx-[10%] my-4  rounded"/>
                     </div>
                 </section>
             </div>
@@ -185,7 +185,7 @@ const AddVehicle = () => {
                         <input type="text" 
                         id="inputField" 
                         name="inputField" 
-                        className="border border-[#0D1444] py-2 px-4 w-[85%] h-14 mx-[10%] my-[2.5%] rounded"/>
+                        className="border border-[#0D1444] py-2 px-4 w-[85%] h-14 mx-[10%] my-4 rounded"/>
                     </div>
                     <div className="relative mb-[5%]">
                         <label htmlFor="inputField" className="absolute bg-white px-1 -top-[5%] md:top-[8%] lg:top-[19%] left-[12%] text-[#0D1444] text-sm">
@@ -194,7 +194,7 @@ const AddVehicle = () => {
                         <input type="text" 
                         id="inputField" 
                         name="inputField" 
-                        className="border border-[#0D1444] py-2 px-4 w-[85%] h-14 mx-[10%] my-[2.5%] rounded"/>
+                        className="border border-[#0D1444] py-2 px-4 w-[85%] h-14 mx-[10%] my-4 rounded"/>
                     </div>
                     <div className="relative mb-[5%]">
                         <label htmlFor="inputField" className="absolute bg-white px-1 -top-[5%] md:top-[8%] lg:top-[19%] left-[12%] z-10 text-[#0D1444] text-sm">
@@ -204,7 +204,7 @@ const AddVehicle = () => {
                         <input type="text" 
                         id="yearField" 
                         name="yearField" 
-                        className="border border-[#0D1444] py-2 px-4 w-[85%] h-14 mx-[10%] my-[2.5%] rounded "/>
+                        className="border border-[#0D1444] py-2 px-4 w-[85%] h-14 mx-[10%] my-4 rounded "/>
                         </div>
                     </div>
                     
@@ -215,7 +215,7 @@ const AddVehicle = () => {
                         <input type="text" 
                         id="inputField" 
                         name="inputField" 
-                        className="border border-[#0D1444] py-2 px-4 w-[85%] h-14 mx-[10%] my-[2.5%] rounded"/>
+                        className="border border-[#0D1444] py-2 px-4 w-[85%] h-14 mx-[10%] my-4 rounded"/>
                     </div>
                     <div className="relative mb-[5%]">
                         <label htmlFor="inputField" className="absolute bg-white px-1 -top-[5%] md:top-[8%] lg:top-[19%] left-[12%] text-[#0D1444] text-sm">
@@ -224,7 +224,7 @@ const AddVehicle = () => {
                         <input type="text" 
                         id="inputField" 
                         name="inputField" 
-                        className="border border-[#0D1444] py-2 px-4 w-[85%] h-14 mx-[10%] my-[2.5%] rounded"/>
+                        className="border border-[#0D1444] py-2 px-4 w-[85%] h-14 mx-[10%] my-4 rounded"/>
                     </div>
                     <div className="relative mb-[5%]">
                         <label htmlFor="inputField" className="absolute bg-white px-1 -top-[5%] md:top-[8%] lg:top-[19%] left-[12%] text-[#0D1444] text-sm">
@@ -233,41 +233,41 @@ const AddVehicle = () => {
                         <input type="text" 
                         id="inputField" 
                         name="inputField" 
-                        className="border border-[#0D1444] py-2 px-4 w-[85%] h-14 mx-[10%] my-[2.5%] rounded mb-4"/>
+                        className="border border-[#0D1444] py-2 px-4 w-[85%] h-14 mx-[10%] my-4 rounded mb-4"/>
                     </div>
                 </section>
             </div>
 
-            <div className="bg-[#31429B] w-[100%] mx-[2.5%] lg:mx-[3.5%]">
+            <div className="bg-[#31429B] w-[100%] mx-[2.5%] md:-mx-[22%] md:w-[150%]">
             <h3 className="text-white w-4/5 text-start py-4 mx-4 font-semibold">REGISTRO ÚNICO DE TRANSPORTE DEL AUTOMOTOR</h3>
             <div className="relative my-0">
-                        <label htmlFor="inputField" className="absolute bg-[#31429B] px-1 -top-[5%] md:top-[8%] lg:top-[19%] left-[12%] z-10 text-white text-sm">
+                        <label htmlFor="inputField" className="absolute bg-[#31429B] px-1 -top-[5%]  left-[12%] z-10 text-white text-sm md:left-[22%] lg:top-[8%]">
                         Constancia de inscripción
                         </label>
                         <div className="relative">
                         <input type="text" 
                         id="yearField" 
                         name="yearField" 
-                        className="border bg-[#31429B] border-white py-2 px-4 h-14 w-[85%] mx-[10%] my-[2.5%] rounded "/>
+                        className="border bg-[#31429B] border-white py-2 px-4 h-14 w-[85%] mx-[8%] my-4 rounded md:w-[57%] md:mx-[21%]"/>
                         </div>
                     </div>
                     
                     <div className="relative mb-2">
-                        <label htmlFor="inputField" className="absolute bg-[#31429B] px-1 -top-[5%] md:top-[8%] lg:top-[19%] left-[12%] text-white text-sm">
+                        <label htmlFor="inputField" className="absolute bg-[#31429B] px-1 -top-[5%] md:top-[8%] left-[12%] text-white text-sm md:left-[22%] lg:top-[8%]">
                         Categoría
                         </label>
                         <input type="text" 
                         id="inputField" 
                         name="inputField" 
-                        className="border bg-[#31429B] border-white py-2 px-4 h-14 w-[85%] mx-[10%] my-[2.5%] rounded"/>
+                        className="border bg-[#31429B] border-white py-2 px-4 h-14 w-[85%] mx-[8%] my-4 rounded md:w-[57%] md:mx-[21%]"/>
                     </div>
-            <button className="w-2/3 h-8 mx-[10%] my-[5%] rounded-md bg-white text-[#0D1444] font-semibold text-xs">
+            <button className="w-[65%] h-8 mx-[8%] mb-4 rounded-md bg-white text-[#0D1444] font-semibold text-xs md:w-[30%] md:mx-[21%]">
             seleccionar constancia
             </button>
 
             </div>
             <div className="w-[95%] h-20">
-                <button className="w-[80%] h-1/2 bg-[#31429B] mx-[15%] my-[12%] rounded-md text-white">
+                <button className="w-[90%] h-8 bg-[#31429B] mx-[10%] my-[12%] rounded-md text-white md:w-[90%]">
                 Agregar vehículo
                 </button>
             </div>
