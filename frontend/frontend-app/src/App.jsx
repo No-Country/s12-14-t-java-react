@@ -8,6 +8,7 @@ import { Register } from "./pages/Register";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import Empleado from "./components/Empleado/Empleado";
 import DashboardVehicles from './pages/DashboardVehicles'
+import ModificarContrasena from "./components/ModificarContrasena/ModificarContrasena";
 
 function App() {
   return (
@@ -22,6 +23,7 @@ function App() {
           <Route path="/Empleado" element={<Empleado />} />
           <Route path='/dashboard-v2' element={<DashboardGerente />} />
           <Route path='/dashboard-fleet-vehicles' element={<DashboardVehicles />} />
+          <Route path="/modificar" element={<ModificarContrasena />} />
         </Routes>
       </Router>
     </>

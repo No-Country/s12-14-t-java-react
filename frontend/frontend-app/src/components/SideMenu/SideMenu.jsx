@@ -7,6 +7,8 @@ import { TbCar } from "react-icons/tb";
 import { TbCarOff } from "react-icons/tb";
 import { LiaNotesMedicalSolid } from "react-icons/lia";
 import { IoIosLogOut } from "react-icons/io";
+import { Link } from 'react-router-dom';
+
 
 const SideMenu = () => {
     const [selectedItem, setSelectedItem] = useState('');
@@ -15,7 +17,7 @@ const SideMenu = () => {
         { name: 'Empresa', icon: null, size: 'text-xl', spacing: 'mb-4', isClickable: false },
         { name: 'Nombre y apellido', icon: null, size: 'text-base', weight: 'font-light', spacing: 'mb-3', isClickable: false },
         { name: 'gerente@empresa.com', icon: null, size: 'text-base', spacing: 'mb-4', isClickable: false },
-        { name: 'Modificar contraseña', icon: <BsShieldLock />, size: 'text-base', spacing: 'mb-10', isClickable: true, height: 'h-10' }, // 40px height
+        { name: 'Modificar contraseña', icon: <BsShieldLock />, size: 'text-base', spacing: 'mb-10', isClickable: true, height: 'h-10' } // 40px height
         { name: 'Panel de control', icon: <LuPanelLeftOpen />, size: 'text-base', spacing: 'mb-2', isClickable: true, height: 'h-15' }, // 60px height
         { name: 'Cerrar perfiles', icon: <FaUserPlus />, size: 'text-base', spacing: 'mb-2', isClickable: true, height: 'h-15' },
         { name: 'Agregar vehículos', icon: <TbCar />, size: 'text-base', spacing: 'mb-2', isClickable: true, height: 'h-15' },
@@ -44,6 +46,7 @@ const SideMenu = () => {
                         {item.icon && <span className="inline-block mr-2">{item.icon}</span>}
                         {item.name}
                     </div>
+                    
                 ))}
             </div>
         </div>
