@@ -9,8 +9,13 @@ import com.trucking.mapper.VehicleMapper;
 import com.trucking.repository.FuelRepository;
 import com.trucking.repository.VehicleRepository;
 import com.trucking.repository.VehicleTypeRepository;
+import com.trucking.security.entity.User;
 import com.trucking.security.exception.ValidationIntegrity;
+import com.trucking.security.service.UserServiceImplement;
 import lombok.RequiredArgsConstructor;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Service;
 
 import java.text.SimpleDateFormat;
@@ -31,6 +36,7 @@ public class VehicleServiceImpl implements VehicleService {
     private final VehicleMapper vehicleMapper;
     private final FuelRepository fuelRepository;
     private final VehicleTypeRepository vehicleTypeRepository;
+    private final UserServiceImplement userServiceImplement;
 
     @Override
     public List<VehicleDto> getAll() {
@@ -62,9 +68,11 @@ public class VehicleServiceImpl implements VehicleService {
                 .orElseThrow(() -> new ValidationIntegrity("El tipo de vehiculo no es valido"));
 
         Vehicle vehicle = vehicleMapper.toEntity(newVehicleDto);
+        User user = getUserAuth();
 
         vehicle.setFuel(actualFuel);
         vehicle.setVehicleType(actualVehicleType);
+        user.getCompany().getVehicles().add(vehicle);
 
         return vehicleMapper.toDto(vehicleRepository.save(vehicle));
     }
@@ -76,5 +84,16 @@ public class VehicleServiceImpl implements VehicleService {
         }
         vehicleRepository.deleteById(id);
         return true;
+    }
+
+    private User getUserAuth(){
+        Authentication auth = SecurityContextHolder
+                .getContext()
+                .getAuthentication();
+        if (auth != null && auth.getPrincipal() instanceof UserDetails userDetail) {
+            return this.userServiceImplement.getUserByEmail(userDetail.getUsername());
+        } else {
+            throw new ValidationIntegrity("El usuario no existe");
+        }
     }
 }

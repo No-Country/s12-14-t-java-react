@@ -20,4 +20,9 @@ public class UserServiceImplement {
         userRepository.save(user);
         return user;
     }
+
+    public User getUserByEmail(String emailUser){
+        return userRepository.findByEmail(emailUser).orElseThrow(() -> new IllegalArgumentException(
+                "No se encontró el usuario con el email " + emailUser));
+    }
 }
