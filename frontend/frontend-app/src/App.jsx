@@ -8,7 +8,11 @@ import { Register } from "./pages/Register";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import Empleado from "./components/Empleado/Empleado";
 import DashboardVehicles from './pages/DashboardVehicles'
+<<<<<<< HEAD
 import ModificarContrasena from "./components/ModificarContrasena/ModificarContrasena";
+=======
+import {DashboardNewProfile} from './pages/DashboardNewProfile';
+>>>>>>> 965d60e89ed93d0bfbfea08f5785f51d0f388501
 
 function App() {
   return (
@@ -21,6 +25,7 @@ function App() {
           <Route path='/Dashboard' element={<DashboardAdmi />} />
           <Route path="/AddVehicle" element={<AddVehicle />} />
           <Route path="/Empleado" element={<Empleado />} />
+          <Route path="/NewProfile" element={<DashboardNewProfile />} />
           <Route path='/dashboard-v2' element={<DashboardGerente />} />
           <Route path='/dashboard-fleet-vehicles' element={<DashboardVehicles />} />
           <Route path="/modificar" element={<ModificarContrasena />} />

@@ -4,7 +4,10 @@ import { useState } from "react";
 import { IoMdEye, IoIosEyeOff } from "react-icons/io";
 
 
+<<<<<<< HEAD
 
+=======
+>>>>>>> 965d60e89ed93d0bfbfea08f5785f51d0f388501
 function ModificarContrasena() {
     const [contrasenaActual, setContrasenaActual] = useState('');
     const [nuevaContrasena, setNuevaContrasena] = useState('');
@@ -85,16 +88,22 @@ function ModificarContrasena() {
 
     return (
 
+<<<<<<< HEAD
       
         <section className="flex flex-col ml-5 items-center mt-5">
              
+=======
+
+        <section  className="flex flex-col w-[100%] ml-5 items-center mt-5 ">
+
+>>>>>>> 965d60e89ed93d0bfbfea08f5785f51d0f388501
             <h1 className="Mostrar-title font-bold text-[#0D1544] lg:text-2xl md:text-2xl text-lg ml-0">Modificar la Contraseña</h1>
             <div className="Mostrar-container flex items-center lg:justify-center    mt-10">
                 <img className=" w-[180] contents md:flex" src="././img/encrypted.svg" alt="logo de modificar contraseña" />
                 <div className="flex flex-col gap-7   mt-5">
                     
                     <form className="flex flex-col gap-10 w-[70%]" onSubmit={handleSubmit}>
-                        <div class="relative">
+                        <div className="relative">
 
                             <input
                                 className="block xl:w-[350px] xl:h-[56px] w-[290px] h-[56px] sm:w-[350px] sm:h-[56px] cursor-pointer px-2.5 pb-2.5 pt-4 w text-lg text-gray-900 bg-transparent rounded-lg border-1 border-[#0D1544] appearance-none dark:text-white dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-[#0D1544] peer" placeholder=""
@@ -120,7 +129,7 @@ function ModificarContrasena() {
                             {errorContrasenaActual && <p className="title-error w-[350px] mt-2">{errorContrasenaActual}</p>}
                         </div>
 
-                        <div class="relative">
+                        <div className="relative">
                             <input
                                 type={icoPassword. nuevaContrasena ? "text" : "password"}
                                 id="miInput"
@@ -143,7 +152,7 @@ function ModificarContrasena() {
                             {errorNuevaContrasena && <p className="title-error w-[350px] mt-2">{errorNuevaContrasena}</p>}
                         </div>
 
-                        <div class="relative ">
+                        <div className="relative ">
                             <input
                                 type={icoPassword. confirmarContrasena ? "text" : "password"}
                                 id="input"
@@ -168,10 +177,14 @@ function ModificarContrasena() {
                     </form>
                 </div>
             </div>
+<<<<<<< HEAD
             
 
+=======
+         
+>>>>>>> 965d60e89ed93d0bfbfea08f5785f51d0f388501
         </section>
     );
-};
+}
 
 export default ModificarContrasena
