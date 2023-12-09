@@ -10,6 +10,7 @@ import io.swagger.v3.oas.annotations.media.Schema;
 import io.swagger.v3.oas.annotations.responses.ApiResponse;
 import io.swagger.v3.oas.annotations.security.SecurityRequirement;
 import io.swagger.v3.oas.annotations.tags.Tag;
+import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Page;
 import org.springframework.http.HttpStatus;
@@ -80,7 +81,7 @@ public class RouteController {
     }
     )
     @PostMapping
-    public ResponseEntity<?> createRoute(@RequestBody RouteRequestDto route) {
+    public ResponseEntity<?> createRoute(@Valid @RequestBody RouteRequestDto route) {
         return new ResponseEntity<>(routeService.create(route), HttpStatus.CREATED);
     }
 
@@ -96,7 +97,7 @@ public class RouteController {
     }
     )
     @PatchMapping("/{id}")
-    public ResponseEntity<?> updateRoute(@PathVariable Long id, @RequestBody RouteRequestDto route) {
+    public ResponseEntity<?> updateRoute(@PathVariable Long id, @Valid @RequestBody RouteRequestDto route) {
         return new ResponseEntity<>(routeService.update(id, route), HttpStatus.OK);
     }
 
