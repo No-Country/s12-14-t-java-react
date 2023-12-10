@@ -7,12 +7,7 @@ import { TbCar } from "react-icons/tb";
 import { TbCarOff } from "react-icons/tb";
 import { LiaNotesMedicalSolid } from "react-icons/lia";
 import { IoIosLogOut } from "react-icons/io";
-<<<<<<< HEAD
-import { Link } from 'react-router-dom';
-
-=======
 import { Link } from 'react-router-dom'
->>>>>>> 965d60e89ed93d0bfbfea08f5785f51d0f388501
 
 const SideMenu = () => {
     const [selectedItem, setSelectedItem] = useState('');
@@ -21,15 +16,6 @@ const SideMenu = () => {
         { name: 'Empresa', icon: null, size: 'text-xl', spacing: 'mb-4', isClickable: false},
         { name: 'Nombre y apellido', icon: null, size: 'text-base', weight: 'font-light', spacing: 'mb-3', isClickable: false },
         { name: 'gerente@empresa.com', icon: null, size: 'text-base', spacing: 'mb-4', isClickable: false },
-<<<<<<< HEAD
-        { name: 'Modificar contraseña', icon: <BsShieldLock />, size: 'text-base', spacing: 'mb-10', isClickable: true, height: 'h-10' } // 40px height
-        { name: 'Panel de control', icon: <LuPanelLeftOpen />, size: 'text-base', spacing: 'mb-2', isClickable: true, height: 'h-15' }, // 60px height
-        { name: 'Cerrar perfiles', icon: <FaUserPlus />, size: 'text-base', spacing: 'mb-2', isClickable: true, height: 'h-15' },
-        { name: 'Agregar vehículos', icon: <TbCar />, size: 'text-base', spacing: 'mb-2', isClickable: true, height: 'h-15' },
-        { name: 'Eliminar vehículos', icon: <TbCarOff />, size: 'text-base', spacing: 'mb-2', isClickable: true, height: 'h-15' },
-        { name: 'Registro mantenimiento', icon: <LiaNotesMedicalSolid />, size: 'text-base', spacing: 'mb-20', isClickable: true, height: 'h-15' },
-        { name: 'Cerrar sesión', icon: <IoIosLogOut />, size: 'text-sm', spacing: 'mb-5', isClickable: true, height: 'h-10' },
-=======
         { name: 'Modificar contraseña', icon: <BsShieldLock />, size: 'text-base', spacing: 'mb-10', isClickable: true, height: 'h-10' , Link: '/dashboard-v2' }, // 40px height
         { name: 'Panel de control', icon: <LuPanelLeftOpen />, size: 'text-base', spacing: 'mb-2', isClickable: true, height: 'h-15', Link:'/dashboard-fleet-vehicles' }, // 60px height
         { name: 'Crear perfiles', icon: <FaUserPlus />, size: 'text-base', spacing: 'mb-2', isClickable: true, height: 'h-15' , Link:'/NewProfile' },
@@ -37,7 +23,6 @@ const SideMenu = () => {
         { name: 'Eliminar vehículos', icon: <TbCarOff />, size: 'text-base', spacing: 'mb-2', isClickable: true, height: 'h-15' , Link:'/dashboard-fleet-vehicles' },
         { name: 'Registro mantenimiento', icon: <LiaNotesMedicalSolid />, size: 'text-base', spacing: 'mb-20', isClickable: true, height: 'h-15' , Link:'/dashboard-fleet-vehicles'},
         { name: 'Cerrar sesión', icon: <IoIosLogOut />, size: 'text-sm', spacing: 'mb-5', isClickable: true, height: 'h-10' , Link:'/dashboard-fleet-vehicles'},
->>>>>>> 965d60e89ed93d0bfbfea08f5785f51d0f388501
     ];
 
     const handleItemClick = (itemName) => {
@@ -61,13 +46,8 @@ const SideMenu = () => {
                     >
                         {item.icon && <span className="inline-block mr-2">{item.icon}</span>}
                         {item.name}
-<<<<<<< HEAD
-                    </div>
-                    
-=======
                     </Link>
                   
->>>>>>> 965d60e89ed93d0bfbfea08f5785f51d0f388501
                 ))}
             </div>
         </div>

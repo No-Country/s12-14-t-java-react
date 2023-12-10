@@ -1,19 +1,3 @@
-<<<<<<< HEAD
-import { Sidebar } from '../components/Sidebar/Sidebar'
-import { SidebarEmpleado } from '../components/SidebarEmpleado/SidebarEmpleado'
-
-
-export const DashboardGerente = () => {
-  return (
-    <>
-      {/* <Sidebar></Sidebar> */}
-
-      {/* <SidebarEmpleado></SidebarEmpleado> */}
-      
-    </>
-  )
-}
-=======
 import ModificarContrasena from "../components/ModificarContrasena/ModificarContrasena";
 import SideMenu from "../components/SideMenu/SideMenu";
 import Empleado from "../components/Empleado/Empleado";
@@ -32,4 +16,3 @@ export const DashboardGerente = () => {
     </div>
   );
 };
->>>>>>> 965d60e89ed93d0bfbfea08f5785f51d0f388501
