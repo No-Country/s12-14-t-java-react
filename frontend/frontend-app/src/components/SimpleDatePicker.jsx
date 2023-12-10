@@ -2,14 +2,11 @@ import { useState } from 'react'
 import Datepicker from 'react-tailwindcss-datepicker'
 
 export const SimpleDatePicker = () => {
-  const [value, setValue] = useState({
-    startDate: new Date(),
-    endDate: new Date().setMonth(11)
-  })
+  const [value, setValue] = useState(new Date())
 
   const handleValueChange = newValue => {
     // console.log('newValue:', newValue.startDate)
-    setValue(newValue.startDate)
+    setValue(newValue)
   }
 
   return (
