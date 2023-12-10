@@ -54,7 +54,7 @@ export const MantenimientoBoard = () => {
 
             <div className='grid grid-cols-2 gap-5 pt-10'>
               <div className='relative z-20'>
-                <SimpleDatePicker />
+                <SimpleDatePicker label='Fecha de mantenimiento*' />
               </div>
 
               <div>
