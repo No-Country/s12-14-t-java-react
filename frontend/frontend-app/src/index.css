@@ -25,7 +25,7 @@ html {
 
 @layer components {
   .btn {
-    @apply block p-3 mb-3 text-center text-white rounded-[15px] transition-colors;
+    @apply block p-3 mb-3 text-center text-white rounded-[4px] transition-colors;
   }
 
   .btn-template-1 {
