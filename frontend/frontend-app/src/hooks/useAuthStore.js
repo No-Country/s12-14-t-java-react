@@ -16,7 +16,7 @@ export const useAuthStore = () => {
   const startRegister = async User => {
     dispatch(onChecking())
     try {
-      const { data } = await axios.post('http://200.45.208.45:9896/api/v1/auth/register', {
+      const { data } = await axios.post('https://trucking-jebius.koyeb.app/api/v1/register', {
         ...User
       })
       localStorage.setItem('token', data.token)
@@ -42,7 +42,7 @@ export const useAuthStore = () => {
   const startLogin = async ({ email, password }) => {
     dispatch(onChecking())
     try {
-      const { data } = await axios.post('http://200.45.208.45:9896/api/v1/auth/login', {
+      const { data } = await axios.post('https://trucking-jebius.koyeb.app/api/v1/login', {
         email,
         password
       })
@@ -53,7 +53,7 @@ export const useAuthStore = () => {
 
       // d.setTime(d.getTime() + (1 * 24 * 60 * 60 * 1000));
       d.setTime(d.getTime() + 60 * 1000)
-      
+
       let expires = 'expires=' + d.toUTCString()
 
       document.cookie = `token=${data.token}; ${expires};`
