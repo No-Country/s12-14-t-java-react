@@ -11,7 +11,7 @@ import { Link } from "react-router-dom";
 
 const SideMenu = () => {
     const [selectedItem, setSelectedItem] = useState('');
-    const [ setIsMobile] = useState(false);
+    const [ isMobile, setIsMobile] = useState(false);
 
     const menuItems = [
         { name: 'Empresa', size: 'text-xl', spacing: 'mb-4', isClickable: false },
