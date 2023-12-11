@@ -49,8 +49,18 @@ export const useAuthStore = () => {
 
       console.log(data)
 
+      const d = new Date()
+
+      // d.setTime(d.getTime() + (1 * 24 * 60 * 60 * 1000));
+      d.setTime(d.getTime() + 60 * 1000)
+      
+      let expires = 'expires=' + d.toUTCString()
+
+      document.cookie = `token=${data.token}; ${expires};`
+
       localStorage.setItem('token', data.token)
       localStorage.setItem('token-init-date', new Date().getTime())
+      // localStorage.setItem('user', data)
       dispatch(onLogin({ name: data.name, uid: data.uid }))
 
       console.log(data.user.name)
