@@ -1,6 +1,6 @@
-import { useState, useEffect } from 'react';
+import  { useState, useEffect } from 'react';
 import { BsShieldLockFill } from "react-icons/bs";
-import { FaUserPlus } from "react-icons/fa";
+import {  FaUserPlus } from "react-icons/fa";
 import { VscLayoutPanelRight } from "react-icons/vsc";
 import { TbCar } from "react-icons/tb";
 import { TbCarOff } from "react-icons/tb";
@@ -9,10 +9,9 @@ import { MdLogout } from "react-icons/md";
 import { Link } from "react-router-dom";
 
 
-
 const SideMenu = () => {
     const [selectedItem, setSelectedItem] = useState('');
-    const [isMobile, setIsMobile] = useState(false);
+    const [ setIsMobile] = useState(false);
 
     const menuItems = [
         { name: 'Empresa', size: 'text-xl', spacing: 'mb-4', isClickable: false },
