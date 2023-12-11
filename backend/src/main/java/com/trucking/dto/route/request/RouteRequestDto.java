@@ -13,6 +13,9 @@ import java.time.LocalDate;
  */
 
 public record RouteRequestDto(
+
+        @NotNull (message = "El id del vehiculo es obligatorio")
+        Long idVehicle,
         @Schema(description = "Numero de registro", example = "123456789", defaultValue = "123456789")
         @NotEmpty(message = "No debe estar vacio")
         @Size(min = 1, max = 6, message = "Solo se permite 6 caracteres")

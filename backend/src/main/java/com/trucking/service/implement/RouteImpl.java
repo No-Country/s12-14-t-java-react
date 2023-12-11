@@ -4,12 +4,14 @@ import com.trucking.dto.pageable.PageableDto;
 import com.trucking.dto.route.request.RouteRequestDto;
 import com.trucking.dto.route.response.RouteResponseDto;
 import com.trucking.entity.Route;
+import com.trucking.entity.Vehicle;
 import com.trucking.entity.enums.RouteCategory;
 import com.trucking.exception.DuplicateEntityException;
 import com.trucking.exception.InputNotValidException;
 import com.trucking.exception.ResourceNotFoundException;
 import com.trucking.mapper.RouteMapper;
 import com.trucking.repository.RouteRepository;
+import com.trucking.repository.VehicleRepository;
 import com.trucking.service.RouteService;
 import com.trucking.util.Utility;
 import jakarta.validation.Valid;
@@ -36,6 +38,7 @@ import java.util.Optional;
 public class RouteImpl implements RouteService {
 
     private final RouteRepository routeRepository;
+    private final VehicleRepository vehicleRepository;
     private final RouteMapper routeMapper;
 
     @Override
@@ -49,7 +52,14 @@ public class RouteImpl implements RouteService {
                 .ifPresent(route -> {
                     throw new DuplicateEntityException("Ya existe una ruta con ese numero de registro");
                 });
-        return routeMapper.toDto(routeRepository.save(routeMapper.toEntity(data)));
+
+        // Crea el registro RUTA y lo asigna al vehiculo correspondiente.
+        Route actualRoute = routeRepository.save(routeMapper.toEntity(data));
+        Vehicle actualVehicle = vehicleRepository.findById(data.idVehicle()).get();
+        actualVehicle.setRoute(actualRoute);
+        vehicleRepository.save(actualVehicle);
+
+        return routeMapper.toDto(actualRoute);
     }
 
     @Override
