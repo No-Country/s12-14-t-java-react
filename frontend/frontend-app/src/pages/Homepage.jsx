@@ -115,12 +115,12 @@ export const Homepage = () => {
               </Link>
               <div className='pt-2 md:flex'>
                 <div className='flex-1 text-left'>
-                  <a href='#' className='flex-1 text-blue'>
+                  <a href='#' className='flex-1 text-blue-600'>
                     Olvidé mi contraseña
                   </a>
                 </div>
                 <div className='flex flex-col justify-center flex-auto gap-5 grow-0'>
-                  <p className='order-2 text-blue md:order-1'>Ingresar con email</p>
+                  <p className='order-2 text-blue-600 md:order-1'>Ingresar con email</p>
                   <div className='flex justify-center order-1 mt-5 md:mt-0 md:justify-between md:order-2'>
                     <a className='inline-block p-3 mx-4 md:p-2 md:mx-0' href='#'>
                       <img
@@ -158,3 +158,4 @@ export const Homepage = () => {
     </section>
   )
 }
+
