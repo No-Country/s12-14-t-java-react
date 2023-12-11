@@ -16,7 +16,7 @@ export const useAuthStore = () => {
   const startRegister = async User => {
     dispatch(onChecking())
     try {
-      const { data } = await axios.post('http://trucking-jebius.koyeb.app/api/v1/auth/register', {
+      const { data } = await axios.post('https://trucking-jebius.koyeb.app/api/v1/auth/register', {
         ...User
       })
       localStorage.setItem('token', data.token)
