@@ -3,8 +3,12 @@
 const AddVehicle = () => {
     
 
-
-
+    function handleClick1() {
+        console.log('¡Hiciste clic en el botón 1!');
+    }
+    function handleClick2() {
+        console.log('¡Hiciste clic en el botón 2!');
+    }
     
 
     return (
@@ -169,47 +173,44 @@ const AddVehicle = () => {
                         mx-[10%] my-4  rounded"/>
                     </div>
                     <div className="relative mb-[5%]">
-                        <label 
+                    <label 
                         htmlFor="inputField" 
-                        className="absolute bg-white px-1 -top-[5%] md:top-[8%] 
-                        lg:top-[8%] left-[12%] z-10 text-[#0D1444] text-sm">
+                        className="absolute bg-white px-1 -top-[5%] md:top-[8%] lg:top-[8%] left-[12%] z-10 text-[#0D1444] text-sm">
                         Año
-                        </label>
-                        <div className="relative">
+                    </label>
+                    <div className="relative">
                         <input 
                         type="text" 
                         id="yearField" 
-                        className="border border-[#0D1444] py-2 px-4 w-[85%] h-14 
-                        mx-[10%] my-4  rounded"
+                        className="border border-[#0D1444] py-2 px-4 w-[85%] h-14 mx-[10%] my-4 rounded"
                         placeholder="Seleccione el año"
                         />
                         <select
                         id="yearSelect"  
-                        className=" bg-white absolute inset-0 opacity-0 cursor-pointer 
-                        w-[85%] h-14 left-[10%] z-10">
-                            <option value="Seleccione el año" >
-                            Seleccione el año
-                            </option>
-                            <option value="2023">2023</option>
-                            <option value="2022">2022</option>
-                            <option value="2021">2021</option>
-                            <option value="2020">2020</option>
-                            <option value="2019">2019</option>
-                            <option value="2018">2018</option>
-                            <option value="2017">2017</option>
-                            <option value="2016">2016</option>
-                            <option value="2015">2015</option>
-                            <option value="2014">2014</option>
-                            <option value="2013">2013</option>
-                            <option value="2012">2012</option>
-                            <option value="2011">2011</option>
-                            <option value="2010">2010</option>
+                        className="bg-white absolute inset-0 opacity-0 cursor-pointer w-[85%] h-14 mx-[10%] my-4 z-10"
+                        onChange={(e) => {
+                            const selectedYear = e.target.value;
+                            document.getElementById('yearField').value = selectedYear;
+                        }}
+                        >
+                        <option value="Seleccione el año">Seleccione el año</option>
+                        <option value="2023">2023</option>
+                        <option value="2022">2022</option>
+                        <option value="2021">2021</option>
+                        <option value="2020">2020</option>
+                        <option value="2019">2019</option>
+                        <option value="2018">2018</option>
+                        <option value="2017">2017</option>
+                        <option value="2016">2016</option>
+                        <option value="2015">2015</option>
+                        <option value="2014">2014</option>
+                        <option value="2013">2013</option>
+                        <option value="2012">2012</option>
+                        <option value="2011">2011</option>
+                        <option value="2010">2010</option>
                         </select>                      
-                        <div 
-                        className="pointer-events-none absolute inset-y-0 right-0 flex 
-                        items-center px-2 text-gray-700">
-                        </div>
-                        </div>
+                        <div className="pointer-events-none absolute inset-y-0 right-0 flex items-center px-2 text-gray-700"></div>
+                    </div>
                     </div>
                     <div className="relative mb-[5%]">
                         <label 
@@ -391,32 +392,36 @@ const AddVehicle = () => {
                         className="border border-[#0D1444] py-2 px-4 w-[85%] h-14 
                         mx-[10%] my-4 rounded"/>
                     </div>
-                    <div className="relative mb-[5%]">
-                        <label 
+                     <div className="relative mb-[5%]">
+                    <label 
                         htmlFor="inputField" 
-                        className="absolute bg-white px-1 -top-[5%] md:top-[8%]  
-                        left-[12%] text-[#0D1444] text-sm">
+                        className="absolute bg-white px-1 -top-[5%] md:top-[8%] lg:top-[8%] left-[12%] z-10 text-[#0D1444] text-sm">
                         Cantidad de ejes
-                        </label>
+                    </label>
+                    <div className="relative">
                         <input 
-                        type="text"
-                        id="ejesSelecccionados" 
-                        className="border border-[#0D1444] py-2 px-4 w-[85%] h-14 
-                        mx-[10%] my-4 rounded mb-4"                        
-                        placeholder="Cantidad de ejes"
+                        type="text" 
+                        id="ejesField" 
+                        className="border border-[#0D1444] py-2 px-4 w-[85%] h-14 mx-[10%] my-4 rounded"
+                        placeholder="Seleccione n° de ejes"
                         />
-                        <select 
-                        id="ejesSelect" 
-                        className=" bg-white absolute inset-0 opacity-0 cursor-pointer 
-                        w-[85%] h-1/2 left-[5%]">                        
-                            <option value="1" disabled selected hidden >
-                            Seleccione cantidad de ejes
-                            </option>
-                            <option value="2">2 ejes</option>
-                            <option value="3">3 ejes</option>
-                            <option value="4">4 ejes</option>
-                            <option value="5">5 ejes</option>
-                        </select>
+                        <select
+                        id="ejesSelect"  
+                        className="bg-white absolute inset-0 opacity-0 cursor-pointer w-[85%] h-14 mx-[10%] my-4 z-10"
+                        onChange={(e) => {
+                            const selectedEjes = e.target.value;
+                            document.getElementById('ejesField').value = selectedEjes;
+                        }}
+                        >
+                        <option value="Seleccione n° de ejes" >Seleccione n° de ejes</option>
+                        <option value="2 Ejes" >2 Ejes</option>
+                        <option value="3 Ejes" >3 Ejes</option>
+                        <option value="4 Ejes" >4 Ejes</option>
+                        <option value="5 Ejes" >5 Ejes</option>
+                        <option value="6 Ejes" >6 Ejes</option>
+                        </select>                      
+                        <div className="pointer-events-none absolute inset-y-0 right-0 flex items-center px-2 text-gray-700"></div>
+                    </div>
                     </div>
                 </section>
             </div>
@@ -443,52 +448,71 @@ const AddVehicle = () => {
                         name="yearField" 
                         className="border bg-[#31429B] border-white py-2 px-4 h-14 
                         w-[85%] mx-[8%] my-4 rounded md:w-[57%] md:mx-[21%] 
-                        lg:w-[70%] lg:ml-[22%]"/>
+                        lg:w-[70%] lg:ml-[22%]  text-white"/>
                         </div>
-                    </div>
-                    
+                    </div>                   
                     <div className="relative mb-2">
-                        <label 
+                    <label 
                         htmlFor="inputField" 
                         className="absolute bg-[#31429B] px-1 -top-[5%] 
                         md:top-[8%] left-[12%] text-white text-sm 
-                        md:left-[22%] lg:top-[8%]">
+                        md:left-[22%] lg:top-[8%] z-20">
                         Categoría
-                        </label>
+                    </label>
+                    <div className="relative">
                         <input 
                         type="text" 
-                        id="catSeleccionada"  
-                        className="border bg-[#31429B] border-white py-2 px-4 h-14 
-                        w-[85%] mx-[8%] my-4 rounded md:w-[57%] md:mx-[21%] 
-                        lg:w-[70%] lg:ml-[22%]"
+                        id="categoryField" 
+                        className="border bg-[#31429B] border-white py-2 px-4  
+                        w-[85%] h-14 mx-[8%] my-4 rounded md:w-[57%] md:mx-[21%] 
+                        lg:w-[70%] lg:ml-[22%] text-white"
                         placeholder="Categoría de carga"
                         />
-                        <select 
-                        id="catSelect"  
-                        className=" bg-blue absolute inset-0 opacity-0 cursor-pointer 
-                        w-1/2 h-1/2 left-20 z-10">                        
-                            <option 
+                        <select
+                        id="categorySelect"  
+                        className=" bg-white absolute inset-0 opacity-0 cursor-pointer 
+                        w-[85%] h-14 mx-[8%] my-4 md:w-[57%] md:mx-[21%] lg:w-[70%] lg:ml[22%]"
+                        onChange={(e) => {
+                            const selectedCategory = e.target.value;
+                            document.getElementById('categoryField').value = selectedCategory;
+                        }}
+                        >
+                       <option 
                             value="Categoría de carga">
                             Seleccione la categoría de carga
                             </option>
-                            <option value="2">Transportista de carga de masiva o a granel</option>
-                            <option value="3">Transportista de carga peligrosa</option>
-                            <option value="4">Transportista de carga fraccionada</option>
-                            <option value="5">Transportista de carga propia</option>
-                            <option value="5">Transportista tráficos especiales</option>
-                            <option value="5">Transportista de carga internacional</option>
-                        </select>
+                            <option value="Transportista de carga de masiva o a granel">
+                            Transportista de carga de masiva o a granel
+                            </option>
+                            <option value="Transportista de carga peligrosa">
+                            Transportista de carga peligrosa
+                            </option>
+                            <option value="Transportista de carga fraccionada">
+                            Transportista de carga fraccionada
+                            </option>
+                            <option value="Transportista de carga propia">
+                            Transportista de carga propia
+                            </option>
+                            <option value="Transportista tráficos especiales">
+                            Transportista tráficos especiales
+                            </option>
+                            <option value="Transportista de carga internacional">
+                            Transportista de carga internacional
+                            </option>
+                        </select>                      
+                        <div className="pointer-events-none absolute inset-y-0 right-0 flex items-center px-2 text-gray-700"></div>
+                    </div>
                     </div>
                     <div>
                     <button 
+                    onClick={handleClick1}
                     className="w-[65%] h-8 mx-[8%] mb-0 rounded-md bg-white 
                     text-[#0D1444] font-semibold text-xs md:w-[30%] 
                     md:mx-[21%] lg:mt-[5%] lg:w-[55%]">
                     seleccionar constancia
                     </button>
                     <p 
-                    className="text-white mx-[10%] pb-4 md:mx-[22%]"
-                    onClick={""}>
+                    className="text-white mx-[10%] pb-4 md:mx-[22%]">
                     imagen.jpg
                     </p>
                     </div>
@@ -497,8 +521,10 @@ const AddVehicle = () => {
             </div>
             <div className="w-[95%] h-20">
                 <button 
+                onClick={handleClick2}
                 className="w-[90%] h-8 bg-[#31429B] mx-[10%] my-[12%] rounded-md 
-                text-white md:w-[90%] lg:mx-[12%]" onClick={""}>
+                text-white md:w-[90%] lg:mx-[12%]"
+                >
                 Agregar vehículo
                 </button>
             </div>
