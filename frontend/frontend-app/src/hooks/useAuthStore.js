@@ -42,7 +42,7 @@ export const useAuthStore = () => {
   const startLogin = async ({ email, password }) => {
     dispatch(onChecking())
     try {
-      const { data } = await axios.post('http://trucking-jebius.koyeb.app/api/v1/auth/login', {
+      const { data } = await axios.post('https://trucking-jebius.koyeb.app/api/v1/auth/login', {
         email,
         password
       })
