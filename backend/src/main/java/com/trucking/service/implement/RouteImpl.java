@@ -12,6 +12,7 @@ import com.trucking.exception.ResourceNotFoundException;
 import com.trucking.mapper.RouteMapper;
 import com.trucking.repository.RouteRepository;
 import com.trucking.repository.VehicleRepository;
+import com.trucking.security.exception.ValidationIntegrity;
 import com.trucking.service.RouteService;
 import com.trucking.util.Utility;
 import jakarta.validation.Valid;
@@ -54,8 +55,13 @@ public class RouteImpl implements RouteService {
                 });
 
         // Crea el registro RUTA y lo asigna al vehiculo correspondiente.
+        Vehicle actualVehicle = null;
+        try {
+            actualVehicle = vehicleRepository.findById(data.idVehicle()).get();
+        } catch (Exception e) {
+            throw new ValidationIntegrity("El id de vehiculo es invalido");
+        }
         Route actualRoute = routeRepository.save(routeMapper.toEntity(data));
-        Vehicle actualVehicle = vehicleRepository.findById(data.idVehicle()).get();
         actualVehicle.setRoute(actualRoute);
         vehicleRepository.save(actualVehicle);
 
