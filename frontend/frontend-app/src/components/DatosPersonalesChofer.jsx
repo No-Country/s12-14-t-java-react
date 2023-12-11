@@ -2,7 +2,7 @@
 import { SimpleDatePicker } from './SimpleDatePicker'
 import React, { useRef, useState } from 'react';
 
-function DashboardChofer() {
+function DatosPersonalesChofer() {
 
     const InputRef1 = useRef(null);
     const InputRef2 = useRef(null);
@@ -103,7 +103,7 @@ function DashboardChofer() {
     )
 }
 
-export default DashboardChofer
+export default DatosPersonalesChofer
 
 
 

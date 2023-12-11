@@ -9,8 +9,10 @@ import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import Empleado from "./components/Empleado/Empleado";
 import DashboardVehicles from './pages/DashboardVehicles'
 import {DashboardNewProfile} from './pages/DashboardNewProfile';
-import DashboardChofer from "./components/DashboardChofer";
 import { RegistroMantenimiento } from './pages/RegistroMantenimiento'
+import DatosPersonalesChofer from "./components/DatosPersonalesChofer";
+import PanelGeneral from "./components/PanelGeneralChofer/PanelGeneral";
+
 
 function App() {
   return (
@@ -26,8 +28,9 @@ function App() {
           <Route path="/NewProfile" element={<DashboardNewProfile />} />
           <Route path='/dashboard-v2' element={<DashboardGerente />} />
           <Route path='/dashboard-fleet-vehicles' element={<DashboardVehicles />} />
-          <Route path="/dashboard-datos-personales" element={<DashboardChofer/>} />
+         <Route path="/dashboard-datos-personales" element={<DatosPersonalesChofer/>} /> 
           <Route path='/registro-mantenimiento' element={<RegistroMantenimiento />} />
+          <Route path="/panel-general-chofer" element={<PanelGeneral />} />
         </Routes>
       </Router>
     </>
