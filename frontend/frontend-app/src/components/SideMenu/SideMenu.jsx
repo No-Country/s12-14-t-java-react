@@ -1,35 +1,46 @@
-"use client";
-import { useState } from 'react';
-import { BsShieldLock } from "react-icons/bs";
-import { LuPanelLeftOpen } from "react-icons/lu";
-import { FaUserPlus } from "react-icons/fa6";
+import { useState, useEffect } from 'react';
+import { BsShieldLockFill } from "react-icons/bs";
+import { FaUserPlus } from "react-icons/fa";
+import { VscLayoutPanelRight } from "react-icons/vsc";
 import { TbCar } from "react-icons/tb";
 import { TbCarOff } from "react-icons/tb";
-import { LiaNotesMedicalSolid } from "react-icons/lia";
-import { IoIosLogOut } from "react-icons/io";
-import { Link } from 'react-router-dom'
+import { PiNotepad } from "react-icons/pi";
+import { MdLogout } from "react-icons/md";
+import { Link } from "react-router-dom";
+
+
 
 const SideMenu = () => {
     const [selectedItem, setSelectedItem] = useState('');
+    const [isMobile, setIsMobile] = useState(false);
 
     const menuItems = [
-        { name: 'Empresa', icon: null, size: 'text-xl', spacing: 'mb-4', isClickable: false},
+        { name: 'Empresa', size: 'text-xl', spacing: 'mb-4', isClickable: false },
         { name: 'Nombre y apellido', icon: null, size: 'text-base', weight: 'font-light', spacing: 'mb-3', isClickable: false },
         { name: 'gerente@empresa.com', icon: null, size: 'text-base', spacing: 'mb-4', isClickable: false },
-        { name: 'Modificar contraseña', icon: <BsShieldLock />, size: 'text-base', spacing: 'mb-10', isClickable: true, height: 'h-10' , Link: '/dashboard-v2' }, // 40px height
-        { name: 'Panel de control', icon: <LuPanelLeftOpen />, size: 'text-base', spacing: 'mb-2', isClickable: true, height: 'h-15', Link:'/dashboard-fleet-vehicles' }, // 60px height
-        { name: 'Crear perfiles', icon: <FaUserPlus />, size: 'text-base', spacing: 'mb-2', isClickable: true, height: 'h-15' , Link:'/NewProfile' },
-        { name: 'Agregar vehículos', icon: <TbCar />, size: 'text-base', spacing: 'mb-2', isClickable: true, height: 'h-15' , Link:'/AddVehicle'},
-        { name: 'Eliminar vehículos', icon: <TbCarOff />, size: 'text-base', spacing: 'mb-2', isClickable: true, height: 'h-15' , Link:'/dashboard-fleet-vehicles' },
-        { name: 'Registro mantenimiento', icon: <LiaNotesMedicalSolid />, size: 'text-base', spacing: 'mb-20', isClickable: true, height: 'h-15' , Link:'/dashboard-fleet-vehicles'},
-        { name: 'Cerrar sesión', icon: <IoIosLogOut />, size: 'text-sm', spacing: 'mb-5', isClickable: true, height: 'h-10' , Link:'/dashboard-fleet-vehicles'},
+        { name: 'Modificar contraseña', icon: <BsShieldLockFill />, size: 'text-base', spacing: 'mb-10', isClickable: true },
+        { name: 'Panel de control', icon: <VscLayoutPanelRight />, size: 'text-base', spacing: 'mb-2', isClickable: true },
+        { name: 'Crear perfiles', icon: <FaUserPlus />, size: 'text-base', spacing: 'mb-2', isClickable: true },
+        { name: 'Agregar vehículos', icon: <TbCar />, size: 'text-base', spacing: 'mb-2', isClickable: true },
+        { name: 'Eliminar vehículos', icon: <TbCarOff />, size: 'text-base', spacing: 'mb-2', isClickable: true },
+        { name: 'Registro mantenimiento', icon: <PiNotepad />, size: 'text-base', spacing: 'mb-20', isClickable: true },
+        { name: 'Cerrar sesión', icon: <MdLogout />, size: 'text-base', spacing: 'mb-5', isClickable: true },
     ];
 
     const handleItemClick = (itemName) => {
-        if (menuItems.find(item => item.name === itemName).isClickable) {
-            setSelectedItem(itemName);
-        }
-    }; 
+        setSelectedItem(itemName);
+    };
+
+    useEffect(() => {
+        const handleResize = () => {
+            setIsMobile(window.innerWidth <= 360);
+        };
+
+        window.addEventListener('resize', handleResize);
+        handleResize();
+
+        return () => window.removeEventListener('resize', handleResize);
+    }, []);
 
     return (
         <div className="h-screen  query-menu  bg-[#31429B]  text-white font-poppins  left-0 top-0">
