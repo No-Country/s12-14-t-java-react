@@ -52,7 +52,7 @@ export const EmpleadosLista = [
 const Empleado = () => {
   return (
     <>
-      <section className="flex  w-[30%]    flex-col justify-start text-lg  gap-5 max-h-screen min-h-screen h-[90vh]">
+      <section className="flex w-[20%] query-empleado flex-col justify-start text-lg  gap-5 max-h-screen min-h-screen h-[90vh]">
         <h2 className="text-[#0D1544] mt-10 font-bold text-xl lg:text-2xl md:text-2xl m-6 max-h-screen">Empleados</h2>
         <div className="grid grid-cols-1 gap-4 md:grid-cols-1 lg:grid-cols-1  xl:grid-cols-1 mx-auto  overflow-y-scroll  max-h-[70vh] min-h-[30vh]">
           {EmpleadosLista.map((empleado) => (

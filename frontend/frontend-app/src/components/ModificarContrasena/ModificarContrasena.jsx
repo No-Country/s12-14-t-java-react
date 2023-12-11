@@ -89,7 +89,7 @@ function ModificarContrasena() {
 
             <h1 className="Mostrar-title font-bold text-[#0D1544] lg:text-2xl md:text-2xl text-lg ml-0">Modificar la Contraseña</h1>
             <div className="Mostrar-container flex items-center lg:justify-center    mt-10">
-                <img className=" w-[180] contents md:flex" src="././img/encrypted.svg" alt="logo de modificar contraseña" />
+                <img className=" w-[180px] contents md:flex" src="././img/encrypted.svg" alt="logo de modificar contraseña" />
                 <div className="flex flex-col gap-7   mt-5">
                     
                     <form className="flex flex-col gap-10 w-[70%]" onSubmit={handleSubmit}>

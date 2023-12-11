@@ -7,7 +7,7 @@ export const DashboardGerente = () => {
   return (
     <div className="container-gerente"> 
       <SideMenu />
-      <div className="w-[60%] flex flex-col justify-between items-center">
+      <div className="w-[70%] flex flex-col justify-between items-center">
       <ModificarContrasena />
       <PanelVehiclesNotWorking />
       </div>

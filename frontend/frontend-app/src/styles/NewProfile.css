@@ -49,3 +49,21 @@
     display: flex;
     flex-direction: column;
 }
+
+
+@media (max-width: 767px) {
+
+
+    .container-form{
+     
+        flex-direction: column;
+    }
+
+    .section-1-form{
+       width:  90%;
+    }
+    .section-2-form{
+        width:  90%;
+     }
+  }
+  

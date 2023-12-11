@@ -7,7 +7,7 @@ export const DashboardNewProfile = () => {
   return (
     <div className="container-gerente"> 
       <SideMenu />
-      <div className="w-[60%] flex flex-col justify-between items-center">
+      <div className=" c-newprofile w-[60%] flex flex-col justify-between items-center">
       <NewProfile />
       <PanelVehiclesNotWorking />
       </div>

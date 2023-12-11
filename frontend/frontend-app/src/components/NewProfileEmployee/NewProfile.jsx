@@ -14,7 +14,7 @@ const NewProfile = () => {
                 </h2>
                 <div className="relative mt-3">
                   <input
-                    className="block w-[85%] h-[56px]  cursor-pointer px-2.5 pb-2.5 pt-4 w text-lg text-gray-900 bg-transparent rounded-lg border-1 border-[#0D1544] appearance-none dark:text-white dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-[#0D1544] peer"
+                    className="block w-[90%]   h-[56px]  cursor-pointer px-2.5 pb-2.5 pt-4 w text-lg text-gray-900 bg-transparent rounded-lg border-1 border-[#0D1544] appearance-none dark:text-white dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-[#0D1544] peer"
                     placeholder=""
                     autoComplete="text"
                     type="text"
@@ -32,7 +32,7 @@ const NewProfile = () => {
                 </div>
                 <div className="relative mt-3">
                   <input
-                    className="block w-[85%] h-[56px] cursor-pointer px-2.5 pb-2.5 pt-4 w text-lg text-gray-900 bg-transparent rounded-lg border-1 border-[#0D1544] appearance-none dark:text-white dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-[#0D1544] peer"
+                    className="block w-[90%] h-[56px] cursor-pointer px-2.5 pb-2.5 pt-4 w text-lg text-gray-900 bg-transparent rounded-lg border-1 border-[#0D1544] appearance-none dark:text-white dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-[#0D1544] peer"
                     placeholder=""
                     autoComplete="text"
                     type="text"
@@ -50,7 +50,7 @@ const NewProfile = () => {
                 </div>
                 <div className="relative mt-3">
                   <input
-                    className="block w-[85%] h-[56px] cursor-pointer px-2.5 pb-2.5 pt-4 w text-lg text-gray-900 bg-transparent rounded-lg border-1 border-[#0D1544] appearance-none dark:text-white dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-[#0D1544] peer"
+                    className="block w-[90%] h-[56px] cursor-pointer px-2.5 pb-2.5 pt-4 w text-lg text-gray-900 bg-transparent rounded-lg border-1 border-[#0D1544] appearance-none dark:text-white dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-[#0D1544] peer"
                     placeholder=""
                     autoComplete="text"
                     type="text"

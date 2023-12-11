@@ -87,3 +87,45 @@ textarea:focus {
   box-shadow: var(--tw-ring-offset-shadow), var(--tw-ring-shadow), var(--tw-shadow);
   border-color: #2563eb;
 }
+
+.container-gerente{
+  display: flex;
+  justify-content:space-between;
+
+/* max-height: 100vh; */
+}
+
+
+@media (min-width: 1630px) {
+  .query-menu{
+   
+    min-width: 18%;
+  }
+}
+@media (max-width: 1200px) {
+ 
+  .query-menu{
+    width: 30%;
+  }
+
+  .query-empleado{
+   min-width: 20%;
+}
+}
+
+
+
+
+@media (max-width: 1100px) {
+  .query-empleado{
+      display: none;
+  }
+  .query-menu{
+    width: 30%;
+  }
+  .c-newprofile{
+    width: 100%;
+  }
+}
+
+
