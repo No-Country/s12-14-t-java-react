@@ -14,6 +14,7 @@ import ProtectedRoute from './pages/ProtectedRoute'
 import PanelGeneral from './components/PanelGeneralChofer/PanelGeneral'
 import { useDispatch, useSelector } from 'react-redux'
 import { useEffect } from 'react'
+import LatestMaintenance from "./pages/LatestMaintenance";
 
 function App() {
   const dispatch = useDispatch()
@@ -44,6 +45,8 @@ function App() {
           <Route path='/dashboard-fleet-vehicles' element={<DashboardVehicles />} />
           <Route path='/dashboard-datos-personales' element={<DatosPersonalesChofer />} />
           <Route path='/panel-general-chofer' element={<PanelGeneral />} />
+          {/* Ruta agregada para ultimos mantenimientos, dentro del panel de mantenimiento */}
+          <Route path="/latest-maintenance" element={<LatestMaintenance/>} />
         </Routes>
       </Router>
     </>
