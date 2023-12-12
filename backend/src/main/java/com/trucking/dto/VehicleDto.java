@@ -18,7 +18,7 @@ public class VehicleDto {
     private String brand;
 
     @NotBlank(message = "El modelo es obligatorio")
-    @Pattern(regexp = "^[a-zA-Z0-9]{3,15}$|^$", message = "El modelo no es válido")
+    @Pattern(regexp = "^[a-zA-Z0-9 ]{3,15}$|^$", message = "El modelo no es válido")
     private String model;
 
     @NotBlank(message = "La marca es obligatoria")
