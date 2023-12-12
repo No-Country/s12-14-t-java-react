@@ -9,6 +9,7 @@ import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import Empleado from "./components/Empleado/Empleado";
 import DashboardVehicles from './pages/DashboardVehicles'
 import {DashboardNewProfile} from './pages/DashboardNewProfile';
+import LatestMaintenance from "./pages/LatestMaintenance";
 
 function App() {
   return (
@@ -24,6 +25,9 @@ function App() {
           <Route path="/NewProfile" element={<DashboardNewProfile />} />
           <Route path='/dashboard-v2' element={<DashboardGerente />} />
           <Route path='/dashboard-fleet-vehicles' element={<DashboardVehicles />} />
+
+          {/* Ruta agregada para ultimos mantenimientos, dentro del panel de mantenimiento */}
+          <Route path="/latest-maintenance" element={<LatestMaintenance/>} />
         </Routes>
       </Router>
     </>
