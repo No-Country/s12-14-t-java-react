@@ -1,0 +1,132 @@
+@import 'tailwindcss/base';
+@import 'tailwindcss/components';
+@import 'tailwindcss/utilities';
+
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,300;0,400;0,600;0,700;1,300;1,400;1,600;1,700&display=swap');
+
+html,
+body {
+  font-family: 'Poppins', sans-serif;
+}
+html,
+body {
+  height: 100%;
+}
+html {
+  box-sizing: border-box;
+}
+*,
+*:before,
+*:after {
+  box-sizing: inherit;
+  margin: 0;
+  padding: 0;
+}
+
+@layer components {
+  .btn {
+    @apply block p-3 mb-3 text-center text-white rounded-[4px] transition-colors;
+  }
+
+  .btn-template-1 {
+    @apply text-xl bg-blue-600 hover:bg-dark-blue-600;
+    letter-spacing: 0.1px;
+    font-weight: 500;
+  }
+}
+
+[multiple],
+[type='date'],
+[type='datetime-local'],
+[type='email'],
+[type='month'],
+[type='number'],
+[type='password'],
+[type='search'],
+[type='tel'],
+[type='text'],
+[type='time'],
+[type='url'],
+[type='week'],
+input:where(:not([type])),
+select,
+textarea {
+  appearance: none;
+  border-width: 1px;
+  padding: 0.94rem 0.75rem;
+  font-size: 1rem;
+  line-height: 1.5rem;
+  border-radius: 4px;
+}
+
+[multiple]:focus,
+[type='date']:focus,
+[type='datetime-local']:focus,
+[type='email']:focus,
+[type='month']:focus,
+[type='number']:focus,
+[type='password']:focus,
+[type='search']:focus,
+[type='tel']:focus,
+[type='text']:focus,
+[type='time']:focus,
+[type='url']:focus,
+[type='week']:focus,
+input:where(:not([type])):focus,
+select:focus,
+textarea:focus {
+  outline: 2px solid #0000;
+  outline-offset: 1px;
+  --tw-ring-inset: var(--tw-empty, /*!*/ /*!*/);
+  --tw-ring-offset-width: 0px;
+  --tw-ring-offset-color: #fff;
+  --tw-ring-color: #2563eb;
+  --tw-ring-offset-shadow: var(--tw-ring-inset) 0 0 0 var(--tw-ring-offset-width)
+    var(--tw-ring-offset-color);
+  --tw-ring-shadow: var(--tw-ring-inset) 0 0 0 calc(1px + var(--tw-ring-offset-width))
+    var(--tw-ring-color);
+  box-shadow: var(--tw-ring-offset-shadow), var(--tw-ring-shadow), var(--tw-shadow);
+  border-color: #2563eb;
+}
+
+.container-gerente{
+  display: flex;
+  justify-content:space-between;
+
+/* max-height: 100vh; */
+}
+
+
+@media (min-width: 1630px) {
+  .query-menu{
+   
+    min-width: 18%;
+  }
+}
+@media (max-width: 1200px) {
+ 
+  .query-menu{
+    width: 30%;
+  }
+
+  .query-empleado{
+   min-width: 20%;
+}
+}
+
+
+
+
+@media (max-width: 1100px) {
+  .query-empleado{
+      display: none;
+  }
+  .query-menu{
+    width: 30%;
+  }
+  .c-newprofile{
+    width: 100%;
+  }
+}
+
+
