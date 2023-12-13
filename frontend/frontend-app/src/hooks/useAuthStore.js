@@ -26,7 +26,7 @@ export const useAuthStore = () => {
       dispatch(onLogin({ name: data.user.name, uid: data.user.id }))
       console.log('Usuario creado correctamente', 'success')
       Swal.fire('Usuario correctamente registrado!')
-      navigateTo(`/dashboard-fleet-vehicles`)
+      navigateTo(`/dashboard`)
     } catch (error) {
       Swal.fire({
         icon: 'error',
@@ -70,7 +70,7 @@ export const useAuthStore = () => {
 
       console.log(data.user.name)
       Swal.fire(`Bienvenido!  ${data.user.name}`)
-      navigate(`/dashboard-v2`)
+      navigate(`/dashboard`)
     } catch (error) {
       console.log(error)
       Swal.fire({
