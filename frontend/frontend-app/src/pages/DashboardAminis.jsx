@@ -2,9 +2,9 @@ import { FaWifi, FaSignal, FaBus } from "react-icons/fa";
 import { IoMdBatteryFull, IoIosNotificationsOutline, IoMdTime } from "react-icons/io";
 import { BiErrorAlt } from "react-icons/bi";
 import { MdMailOutline } from "react-icons/md";
-import HoraEnTiempoReal from "../components/Hora";
-import FechaEnTiempoReal from "../components/Fecha";
-import Switch from "../components/Switch";
+import HoraEnTiempoReal from "../components/DashboardAdmiComp/Hora";
+import FechaEnTiempoReal from "../components/DashboardAdmiComp/Fecha";
+import Switch from "../components/DashboardAdmiComp/Switch";
 import { useState } from 'react';
 
 function DashboardAdmi() {
