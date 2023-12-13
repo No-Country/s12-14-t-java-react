@@ -8,10 +8,12 @@ import axios from 'axios'
 
 export const useAuthStore = () => {
   const { status, user, errorMessage } = useSelector(state => state.auth)
-
+console.log(status)
+console.log(user)
   const dispatch = useDispatch()
 
   const navigate = useNavigate()
+  const navigateTo = useNavigate();
 
   const startRegister = async User => {
     dispatch(onChecking())
@@ -21,11 +23,11 @@ export const useAuthStore = () => {
       })
       localStorage.setItem('token', data.token)
       localStorage.setItem('token-init-date', new Date().getTime())
-      dispatch(onLogin({ name: data.name, uid: data.uid }))
+      dispatch(onLogin({ name: data.user.name, uid: data.user.id }))
       console.log('Usuario creado correctamente', 'success')
       Swal.fire('Usuario correctamente registrado!')
-      // navigateTo( `/profile/${ data.uid }` );
-    } catch (error) {
+      navigateTo( `/dashboard-fleet-vehicles` );
+    } catch (error) { 
       Swal.fire({
         icon: 'error',
         title: 'Oops...',
@@ -59,19 +61,20 @@ export const useAuthStore = () => {
       document.cookie = `token=${data.token}; ${expires};`
 
       localStorage.setItem('token', data.token)
+    
       localStorage.setItem('token-init-date', new Date().getTime())
       // localStorage.setItem('user', data)
-      dispatch(onLogin({ name: data.name, uid: data.uid }))
+      dispatch(onLogin({ name: data.user.name, uid: data.user.id }))
 
       console.log(data.user.name)
       Swal.fire(`Bienvenido! ${data.user.name} me debes Dinero`)
-      navigate(`/dashboard`)
+      navigate(`/dashboard-v2`)
     } catch (error) {
       console.log(error)
       Swal.fire({
         icon: 'error',
         title: 'Oops...',
-        text: error.response.data?.details
+        text: "Email o contraseña invalidos"
       })
       console.log('Error en la autenticación', error.response.data?.details, 'error')
       dispatch(onLogout('Credenciales incorrectas'))
@@ -99,12 +102,43 @@ export const useAuthStore = () => {
     }
   }
 
+  const changePassword = async ({ oldPassword, newPassword}) => {
+    
+    let miStorage = window.localStorage.token;
+    
+   
+    const config = {
+        headers: { 
+          'AUTHORIZATION': miStorage 
+        }
+      };
+      console.log(config)
+    try {
+        const { data } = await axios.put('https://trucking-jebius.koyeb.app/api/v1/auth/changePassword', {
+            oldPassword,
+            newPassword
+        }, config )
+        console.log(data)
+        Swal.fire('Cambio de contraseña exitoso!')
+    } catch (error) {
+        // Swal.fire({
+        //     icon: 'error',
+        //     title: 'Oops...',
+        //     text: "La nueva contraseña debe tener entre 8 y 12 caracteres y tener al menos una letra mayúscula, una letra minúscula, un número y un carácter especial.,contraseña actual no puede estar vacía ni ser nula"
+        //   })
+        console.log(error)
+   
+  }
+
+}
+
   return {
     status,
     user,
     errorMessage,
     checkAuthToken,
     startRegister,
-    startLogin
+    startLogin,
+    changePassword
   }
 }

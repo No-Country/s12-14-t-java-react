@@ -2,6 +2,28 @@ import "../../styles/NewProfile.css";
 
 
 const NewProfile = () => {
+
+
+
+
+
+
+
+
+  const onFileInputChange = ( {target}) => {
+      if(target.files === 0) return;
+
+
+      // dispatch( startUploadingFiles(target.files))
+
+
+  }
+
+
+
+
+
+
   return (
     <div className="container-profile">
       <section className="new-profile-continer">
@@ -76,6 +98,7 @@ const NewProfile = () => {
                     Foto del empleado*
                   </label>
                   <input
+                  onChange ={onFileInputChange}
                     id="example1"
                     type="file"
                     className="block w-full text-sm file:mr-4 file:rounded-md file:border-0 file:bg-dark-blue-500 file:py-2.5 file:px-4 file:text-sm file:font-semibold file:text-white hover:file:bg-dark-blue-700 focus:outline-none disabled:pointer-events-none disabled:opacity-60"
