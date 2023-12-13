@@ -10,6 +10,6 @@ import java.util.Optional;
 
 public interface VehicleRepository extends JpaRepository<Vehicle, Long> {
 
-    Page<Vehicle> findByAvailableTrueAndCompanyName(String name, Pageable pageable);
-    Page<Vehicle> findByAvailableFalseAndCompanyName(String name, Pageable pageable);
+    Page<Vehicle> findByAvailableTrueAndCompanyNameOrderById(String name, Pageable pageable);
+    Page<Vehicle> findByAvailableFalseAndCompanyNameOrderById(String name, Pageable pageable);
 }

@@ -90,20 +90,20 @@ public class VehicleServiceImpl implements VehicleService {
         return true;
     }
     @Override
-    public List<VehicleDto> getAllActive(PageableDto pageable){
-        Pageable setPageable = Utility.setPageable(pageable);
-        Page<Vehicle> vehiclePage = vehicleRepository.findByAvailableTrueAndCompanyName(
+    public List<VehicleDto> getAllActive(Pageable pageable){
+//        Pageable setPageable = Utility.setPageable(pageable);
+        Page<Vehicle> vehiclePage = vehicleRepository.findByAvailableTrueAndCompanyNameOrderById(
                 getUserAuth().getCompany().getName(),
-                setPageable);
+                pageable);
         return vehicleMapper.toListDto(vehiclePage.stream().toList());
     }
 
     @Override
-    public List<VehicleDto> getAllInactive(PageableDto pageable) {
-        Pageable setPageable = Utility.setPageable(pageable);
-        Page<Vehicle> vehiclePage = vehicleRepository.findByAvailableFalseAndCompanyName(
+    public List<VehicleDto> getAllInactive(Pageable pageable) {
+//        Pageable setPageable = Utility.setPageable(pageable);
+        Page<Vehicle> vehiclePage = vehicleRepository.findByAvailableFalseAndCompanyNameOrderById(
                 getUserAuth().getCompany().getName(),
-                setPageable);
+                pageable);
         return vehicleMapper.toListDto(vehiclePage.stream().toList());
     }
 
