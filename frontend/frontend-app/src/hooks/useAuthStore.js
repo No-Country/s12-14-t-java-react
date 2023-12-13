@@ -67,7 +67,7 @@ console.log(user)
       dispatch(onLogin({ name: data.user.name, uid: data.user.id }))
 
       console.log(data.user.name)
-      Swal.fire(`Bienvenido! ${data.user.name} me debes Dinero`)
+      Swal.fire(`Bienvenido!  ${data.user.name}`)
       navigate(`/dashboard-v2`)
     } catch (error) {
       console.log(error)
