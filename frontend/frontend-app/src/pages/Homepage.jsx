@@ -24,9 +24,12 @@ export const Homepage = () => {
     password,
     onInputChange: onLoginInputChange,
     formState: { errors }
-  } = useForm(loginFormFields)
+  } = useForm(loginFormFields) 
 
   const loginSubmit = handleSubmit(data => {
+
+
+    console.log(data)
     startLogin({
       email: data.email,
       password: data.password
@@ -82,26 +85,32 @@ export const Homepage = () => {
                 />
                 {errors.email && (
                   <span className='pl-2 mb-4 -mt-2 text-left text-white'>
-                    {errors.email.message}
+                    {errors?.email.message}
                   </span>
                 )}
                 <input
+                {...register('password', {
+                  required: {
+                    value: true,
+                    message: 'Contraseña es requerido'
+                  },
+
+                  pattern: {
+                    value: true,
+                    message: 'La contraseña no es válido'
+                  }
+                })}
                   type='password'
                   placeholder='Contraseña...'
                   className='mb-4 border-none rounded-lg'
                   name='password'
                   value={password}
                   onChange={onLoginInputChange}
-                  {...register('password', {
-                    required: {
-                      value: true,
-                      message: 'Contraseña es requerida'
-                    }
-                  })}
+             
                 />
                 {errors.email && (
                   <span className='pl-2 mb-4 -mt-2 text-left text-white'>
-                    {errors.password.message}
+                     {errors?.password?.message}
                   </span>
                 )}
               </div>

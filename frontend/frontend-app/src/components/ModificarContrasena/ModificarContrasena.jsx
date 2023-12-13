@@ -1,20 +1,29 @@
 import './ModificarContrasena.css'
 import { useState } from 'react'
 import { IoMdEye, IoIosEyeOff } from 'react-icons/io'
+import { useAuthStore } from '../../hooks/useAuthStore'
 
 function ModificarContrasena() {
-  const [contrasenaActual, setContrasenaActual] = useState('')
-  const [nuevaContrasena, setNuevaContrasena] = useState('')
+  const { changePassword} = useAuthStore()
+  const [oldPassword, setContrasenaActual] = useState('')
+  const [newPassword, setNuevaContrasena] = useState('')
   const [confirmarContrasena, setConfirmarContrasena] = useState('')
   const [errorContrasenaActual, setErrorContrasenaActual] = useState('')
   const [errorNuevaContrasena, setErrorNuevaContrasena] = useState('')
   const [errorConfirmarContrasena, setErrorConfirmarContrasena] = useState('')
 
+
+      
   const handleSubmit = event => {
     event.preventDefault()
 
+  
+
     if (validarFormulario()) {
-      console.log('Formulario válido. Enviando...')
+      changePassword({
+        oldPassword,
+        newPassword
+      });
     }
   }
 
@@ -29,7 +38,7 @@ function ModificarContrasena() {
   }
 
   const validarContrasenaActual = () => {
-    if (contrasenaActual.trim() === '') {
+    if ( oldPassword.trim() === '') {
       setErrorContrasenaActual('La contraseña actual es obligatoria')
       return false
     }
@@ -39,14 +48,14 @@ function ModificarContrasena() {
   }
 
   const validarNuevaContrasena = () => {
-    if (nuevaContrasena.trim() === '') {
+    if (newPassword.trim() === '') {
       setErrorNuevaContrasena('La nueva contraseña es obligatoria')
       return false
     }
 
     const regex = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,12}$/
 
-    if (!regex.test(nuevaContrasena)) {
+    if (!regex.test(newPassword)) {
       setErrorNuevaContrasena(
         'La contraseña debe tener entre 8 y 12 caracteres, una letra mayúscula, una minúscula, un número y un caracter especial'
       )
@@ -63,7 +72,7 @@ function ModificarContrasena() {
       return false
     }
 
-    if (confirmarContrasena !== nuevaContrasena) {
+    if (confirmarContrasena !== newPassword) {
       setErrorConfirmarContrasena('La contraseña no coincide.')
       return false
     }
@@ -72,7 +81,7 @@ function ModificarContrasena() {
     return true
   }
 
-  const mostrarAsterisco = !contrasenaActual.trim()
+  const mostrarAsterisco = ! oldPassword.trim()
   const [icoPassword, setsicoPassword] = useState({
     contrasenaActual: false,
     nuevaContrasena: false,
@@ -99,7 +108,7 @@ function ModificarContrasena() {
                 autoComplete='text'
                 type={icoPassword.contrasenaActual ? 'text' : 'password'}
                 id='InputContainer'
-                value={contrasenaActual}
+                value={ oldPassword}
                 onChange={e => setContrasenaActual(e.target.value)}
               />
               <div
@@ -129,7 +138,7 @@ function ModificarContrasena() {
               <input
                 type={icoPassword.nuevaContrasena ? 'text' : 'password'}
                 id='miInput'
-                value={nuevaContrasena}
+                value={newPassword}
                 onChange={e => setNuevaContrasena(e.target.value)}
                 className='block xl:w-[350px] xl:h-[56px] w-[290px] h-[56px] sm:w-[350px] sm:h-[56px] cursor-pointer px-2.5 pb-2.5 pt-4 w text-lg text-gray-900 bg-transparent rounded-lg border-1  border-[#0D1544] appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-[#0D1544] peer'
                 placeholder=' '
