@@ -23,6 +23,12 @@ public class ShowDataUserDto {
     private String name;
 
     /**
+     * Apellido del nuevo usuario.
+     */
+    private String lastName;
+
+
+    /**
      * Correo electrónico del nuevo usuario.
      */
     private String email;
