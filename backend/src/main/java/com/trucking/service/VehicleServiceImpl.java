@@ -1,6 +1,7 @@
 package com.trucking.service;
 
 import com.trucking.dto.VehicleDto;
+import com.trucking.dto.pageable.PageableDto;
 import com.trucking.entity.Fuel;
 import com.trucking.entity.Vehicle;
 import com.trucking.entity.VehicleType;
@@ -12,7 +13,10 @@ import com.trucking.repository.VehicleTypeRepository;
 import com.trucking.security.entity.User;
 import com.trucking.security.exception.ValidationIntegrity;
 import com.trucking.security.service.UserServiceImplement;
+import com.trucking.util.Utility;
 import lombok.RequiredArgsConstructor;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -84,6 +88,23 @@ public class VehicleServiceImpl implements VehicleService {
         }
         vehicleRepository.deleteById(id);
         return true;
+    }
+    @Override
+    public List<VehicleDto> getAllActive(PageableDto pageable){
+        Pageable setPageable = Utility.setPageable(pageable);
+        Page<Vehicle> vehiclePage = vehicleRepository.findByAvailableTrueAndCompanyName(
+                getUserAuth().getCompany().getName(),
+                setPageable);
+        return vehicleMapper.toListDto(vehiclePage.stream().toList());
+    }
+
+    @Override
+    public List<VehicleDto> getAllInactive(PageableDto pageable) {
+        Pageable setPageable = Utility.setPageable(pageable);
+        Page<Vehicle> vehiclePage = vehicleRepository.findByAvailableFalseAndCompanyName(
+                getUserAuth().getCompany().getName(),
+                setPageable);
+        return vehicleMapper.toListDto(vehiclePage.stream().toList());
     }
 
     private User getUserAuth(){
