@@ -3,7 +3,7 @@ import { SimpleDatePicker } from '../SimpleDatePicker'
 export const MantenimientoBoard = () => {
   return (
     <>
-      <div className='container w-full md:w-[50%] p-3'>
+      <div className='container w-full md:w-[55%] py-3 px-5'>
         <div className='w-full h-full rounded-[15px] shadow-custom px-6 py-7'>
           <h1 className='text-xl font-bold lg:text-2xl md:text-2xl'>
             Crear registro de mantenimiento

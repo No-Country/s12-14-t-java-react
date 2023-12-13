@@ -1,5 +1,4 @@
 import AddVehicle from './pages/AddVehicle'
-import DashboardAdmi from './pages/DashboardAminis'
 import { DashboardGerente } from './pages/DashboardGerente'
 import { Homepage } from './pages/Homepage'
 import { Login } from './pages/Login'
@@ -41,10 +40,10 @@ function App() {
       <Router>
         <Routes>
           <Route element={<ProtectedRoute isAllowed={isAllowed} />}>
-            <Route path='/registro-mantenimiento' element={<RegistroMantenimiento />} />
           </Route>
 
           <Route path='/' element={<Homepage />} />
+          <Route path='/registro-mantenimiento' element={<RegistroMantenimiento />} />
           <Route path='/login' element={<Login />} />
           <Route path='/register' element={<Register />} />
           <Route path='/AddVehicle' element={<AddVehicle />} />
@@ -52,9 +51,9 @@ function App() {
           <Route path='/NewProfile' element={<DashboardNewProfile />} />
 
           {/* <Route path='/Dashboard' element={<DashboardAdmi />} /> */}
-          <Route path='/dashboard' element={<DashboardGerente />} />
+          <Route path='/modificar-contrasena' element={<DashboardGerente />} />
 
-          <Route path='/dashboard-fleet-vehicles' element={<DashboardVehicles />} />
+          <Route path='/dashboard' element={<DashboardVehicles />} />
           <Route path='/dashboard-datos-personales' element={<DatosPersonalesChofer />} />
           <Route path='/panel-general-chofer' element={<PanelGeneral />} />
           <Route path='/RevisionDiaria' element={<RevisionDiaria />} />

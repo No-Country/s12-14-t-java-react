@@ -89,7 +89,8 @@ function ModificarContrasena() {
   })
 
   return (
-    <section className='flex flex-col w-[100%] ml-5 items-center mt-5 '>
+    <section className='flex flex-col w-[100%] ml-5 items-center px-4'>
+      <div className="py-3 px-4  rounded-[15px] h-full w-full shadow-custom">
       <h1 className='Mostrar-title font-bold text-[#0D1544] lg:text-2xl md:text-2xl text-lg ml-0'>
         Modificar la Contraseña
       </h1>
@@ -101,9 +102,12 @@ function ModificarContrasena() {
         />
         <div className='flex flex-col mt-5 gap-7'>
           <form className='flex flex-col gap-10 w-[70%]' onSubmit={handleSubmit}>
-            <div className='relative'>
+            <div className='relative '>
               <input
-                className='block xl:w-[350px] xl:h-[56px] w-[290px] h-[56px] sm:w-[350px] sm:h-[56px] cursor-pointer px-2.5 pb-2.5 pt-4 w text-lg text-gray-900 bg-transparent rounded-lg border-1 border-[#0D1544] appearance-none dark:text-white dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-[#0D1544] peer'
+                className='block  xl:h-[56px]  h-[56px]  sm:h-[56px] cursor-pointer w-full 
+                px-2.5 pb-2.5 pt-4 pr-[1rem] text-lg text-gray-900 bg-transparent rounded-lg 
+                border-1 border-[#0D1544] appearance-none dark:text-white dark:focus:border-blue-500
+                 focus:outline-none focus:ring-0 focus:border-[#0D1544] peer'
                 placeholder=''
                 autoComplete='text'
                 type={icoPassword.contrasenaActual ? 'text' : 'password'}
@@ -112,7 +116,7 @@ function ModificarContrasena() {
                 onChange={e => setContrasenaActual(e.target.value)}
               />
               <div
-                className='absolute flex items-center transform -translate-y-1/2 cursor-pointer icono right-1 top-1/2'
+                className='absolute flex items-center transform -translate-y-1/2 icono cursor-pointer right-[10px] top-1/2'
                 onClick={() =>
                   setsicoPassword(prev => ({ ...prev, contrasenaActual: !prev.contrasenaActual }))
                 }
@@ -206,6 +210,7 @@ function ModificarContrasena() {
             </button>
           </form>
         </div>
+      </div>
       </div>
     </section>
   )

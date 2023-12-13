@@ -52,7 +52,8 @@ export const EmpleadosLista = [
 const Empleado = () => {
   return (
     <>
-      <section className="flex w-[20%] query-empleado flex-col justify-start text-lg  gap-5 max-h-screen min-h-screen h-[90vh]">
+      <section className="flex lg:w-[30%] query-empleado 2xl:w-[25%] py-3 pr-3  flex-col justify-start text-lg  gap-5 max-h-screen min-h-screen h-[90vh]">
+        <div className="py-3 px-4  rounded-[15px] h-full w-full shadow-custom">
         <h2 className="text-[#0D1544] mt-10 font-bold text-xl lg:text-2xl md:text-2xl m-6 max-h-screen">Empleados</h2>
         <div className="grid grid-cols-1 gap-4 md:grid-cols-1 lg:grid-cols-1  xl:grid-cols-1 mx-auto  overflow-y-scroll  max-h-[70vh] min-h-[30vh]">
           {EmpleadosLista.map((empleado) => (
@@ -81,9 +82,10 @@ const Empleado = () => {
           ))}
         </div>
 
-        <button className="rounded-md bg-dark-blue text-white w-[90%] h-10 md:max-w-[90%] lg:max-w-[60%] mx-auto">
+        <button className="btn btn-template-1 w-full mt-4">
           Eliminar selección
         </button>
+        </div>
       </section>
     </>
   );

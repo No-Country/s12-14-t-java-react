@@ -29,7 +29,7 @@ html {
   }
 
   .btn-template-1 {
-    @apply text-xl bg-blue-600 hover:bg-dark-blue-600;
+    @apply text-xl bg-[#31429B] hover:bg-dark-blue-600;
     letter-spacing: 0.1px;
     font-weight: 500;
   }
