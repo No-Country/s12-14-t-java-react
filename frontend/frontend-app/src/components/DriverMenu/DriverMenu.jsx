@@ -1,27 +1,22 @@
 import React, { useState, useEffect } from 'react';
 import { BsShieldLockFill } from "react-icons/bs";
-import { FaBars, FaUserPlus } from "react-icons/fa";
-import { VscLayoutPanelRight } from "react-icons/vsc";
-import { TbCar } from "react-icons/tb";
-import { TbCarOff } from "react-icons/tb";
-import { PiNotepad } from "react-icons/pi";
+import { FaBars } from "react-icons/fa";
+import { HiOutlineUser } from "react-icons/hi";
+import { PiListChecks } from "react-icons/pi";
 import { MdLogout } from "react-icons/md";
 
 
-const SideMenu = () => {
+
+const DriverMenu = () => {
     const [selectedItem, setSelectedItem] = useState('');
     const [isMobile, setIsMobile] = useState(false);
 
     const menuItems = [
         { name: 'Empresa', size: 'text-xl', spacing: 'mb-4', isClickable: false },
         { name: 'Nombre y apellido', icon: null, size: 'text-base', weight: 'font-light', spacing: 'mb-3', isClickable: false },
-        { name: 'gerente@empresa.com', icon: null, size: 'text-base', spacing: 'mb-4', isClickable: false },
-        { name: 'Modificar contraseña', icon: <BsShieldLockFill />, size: 'text-base', spacing: 'mb-16', isClickable: true },
-        { name: 'Panel de control', icon: <VscLayoutPanelRight />, size: 'text-base', spacing: 'mb-4', isClickable: true },
-        { name: 'Crear perfiles', icon: <FaUserPlus />, size: 'text-base', spacing: 'mb-4', isClickable: true },
-        { name: 'Agregar vehículos', icon: <TbCar />, size: 'text-base', spacing: 'mb-4', isClickable: true },
-        { name: 'Eliminar vehículos', icon: <TbCarOff />, size: 'text-base', spacing: 'mb-4', isClickable: true },
-        { name: 'Registro mantenimiento', icon: <PiNotepad />, size: 'text-base', spacing: 'mb-32', isClickable: true },
+        { name: 'Modificar contraseña', icon: <BsShieldLockFill />, size: 'text-base', spacing: 'mb-28', isClickable: true },
+        { name: 'Perfil', icon: <HiOutlineUser />, size: 'text-base', spacing: 'mb-4', isClickable: true },
+        { name: 'Revisión diaria', icon: <PiListChecks />, size: 'text-base', spacing: 'mb-64', isClickable: true },
         { name: 'Cerrar sesión', icon: <MdLogout />, size: 'text-base', spacing: 'mb-5', isClickable: true },
     ];
 
@@ -68,4 +63,4 @@ const SideMenu = () => {
     );
 };
 
-export default SideMenu;
+export default DriverMenu;
