@@ -1,14 +1,15 @@
 import React, { useState, useEffect } from 'react';
 import { BsShieldLockFill } from "react-icons/bs";
-import { FaBars, FaUserPlus } from "react-icons/fa";
+import { FaBars } from "react-icons/fa";
 import { VscLayoutPanelRight } from "react-icons/vsc";
-import { TbCar } from "react-icons/tb";
-import { TbCarOff } from "react-icons/tb";
+import { PiListChecks } from "react-icons/pi";
+import { CgList } from "react-icons/cg";
 import { PiNotepad } from "react-icons/pi";
 import { MdLogout } from "react-icons/md";
+import { TbCalendarTime } from "react-icons/tb";
 
 
-const SideMenu = () => {
+const MaintenanceMenu = () => {
     const [selectedItem, setSelectedItem] = useState('');
     const [isMobile, setIsMobile] = useState(false);
 
@@ -18,10 +19,10 @@ const SideMenu = () => {
         { name: 'gerente@empresa.com', icon: null, size: 'text-base', spacing: 'mb-4', isClickable: false },
         { name: 'Modificar contraseña', icon: <BsShieldLockFill />, size: 'text-base', spacing: 'mb-16', isClickable: true },
         { name: 'Panel de control', icon: <VscLayoutPanelRight />, size: 'text-base', spacing: 'mb-4', isClickable: true },
-        { name: 'Crear perfiles', icon: <FaUserPlus />, size: 'text-base', spacing: 'mb-4', isClickable: true },
-        { name: 'Agregar vehículos', icon: <TbCar />, size: 'text-base', spacing: 'mb-4', isClickable: true },
-        { name: 'Eliminar vehículos', icon: <TbCarOff />, size: 'text-base', spacing: 'mb-4', isClickable: true },
-        { name: 'Registro mantenimiento', icon: <PiNotepad />, size: 'text-base', spacing: 'mb-32', isClickable: true },
+        { name: 'Revisión diaria', icon: <PiListChecks />, size: 'text-base', spacing: 'mb-4', isClickable: true },
+        { name: 'Últimos mantenimientos', icon: <TbCalendarTime />, size: 'text-base', spacing: 'mb-4', isClickable: true },
+        { name: 'Registro mantenimiento', icon: <PiNotepad />, size: 'text-base', spacing: 'mb-4', isClickable: true },
+        { name: 'Historial mantenimiento', icon: <CgList />, size: 'text-base', spacing: 'mb-28', isClickable: true },
         { name: 'Cerrar sesión', icon: <MdLogout />, size: 'text-base', spacing: 'mb-5', isClickable: true },
     ];
 
@@ -68,4 +69,4 @@ const SideMenu = () => {
     );
 };
 
-export default SideMenu;
+export default MaintenanceMenu;
