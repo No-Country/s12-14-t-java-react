@@ -7,7 +7,6 @@
 html,
 body {
   font-family: 'Poppins', sans-serif;
-  /* background-color: #8b9eff; */
 }
 html,
 body {
@@ -23,13 +22,14 @@ html {
   margin: 0;
   padding: 0;
 }
+
 @layer components {
   .btn {
-    @apply block p-3 mb-3 text-center text-white rounded-[15px] transition-colors;
+    @apply block p-3 mb-3 text-center text-white rounded-[4px] transition-colors;
   }
 
   .btn-template-1 {
-    @apply text-xl bg-blue hover:bg-dark-blue;
+    @apply text-xl bg-blue-600 hover:bg-dark-blue-600;
     letter-spacing: 0.1px;
     font-weight: 500;
   }
@@ -53,9 +53,10 @@ select,
 textarea {
   appearance: none;
   border-width: 1px;
-  padding: 0.5rem 0.75rem;
+  padding: 0.94rem 0.75rem;
   font-size: 1rem;
   line-height: 1.5rem;
+  border-radius: 4px;
 }
 
 [multiple]:focus,
@@ -75,7 +76,7 @@ input:where(:not([type])):focus,
 select:focus,
 textarea:focus {
   outline: 2px solid #0000;
-  outline-offset: 2px;
+  outline-offset: 1px;
   --tw-ring-inset: var(--tw-empty, /*!*/ /*!*/);
   --tw-ring-offset-width: 0px;
   --tw-ring-offset-color: #fff;
@@ -87,3 +88,45 @@ textarea:focus {
   box-shadow: var(--tw-ring-offset-shadow), var(--tw-ring-shadow), var(--tw-shadow);
   border-color: #2563eb;
 }
+
+.container-gerente{
+  display: flex;
+  justify-content:space-between;
+
+/* max-height: 100vh; */
+}
+
+
+@media (min-width: 1630px) {
+  .query-menu{
+   
+    min-width: 18%;
+  }
+}
+@media (max-width: 1200px) {
+ 
+  .query-menu{
+    width: 30%;
+  }
+
+  .query-empleado{
+   min-width: 20%;
+}
+}
+
+
+
+
+@media (max-width: 1100px) {
+  .query-empleado{
+      display: none;
+  }
+  .query-menu{
+    width: 30%;
+  }
+  .c-newprofile{
+    width: 100%;
+  }
+}
+
+
