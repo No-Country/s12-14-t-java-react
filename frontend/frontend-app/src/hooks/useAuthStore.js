@@ -108,7 +108,7 @@ console.log(user)
     
    
     const config = {
-        headers: {
+        headers: { 
           'AUTHORIZATION': miStorage 
         }
       };
