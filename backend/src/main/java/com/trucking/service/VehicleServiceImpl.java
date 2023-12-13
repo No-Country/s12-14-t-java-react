@@ -1,6 +1,7 @@
 package com.trucking.service;
 
 import com.trucking.dto.VehicleDto;
+import com.trucking.dto.pageable.PageableDto;
 import com.trucking.entity.Fuel;
 import com.trucking.entity.Vehicle;
 import com.trucking.entity.VehicleType;
@@ -9,8 +10,16 @@ import com.trucking.mapper.VehicleMapper;
 import com.trucking.repository.FuelRepository;
 import com.trucking.repository.VehicleRepository;
 import com.trucking.repository.VehicleTypeRepository;
+import com.trucking.security.entity.User;
 import com.trucking.security.exception.ValidationIntegrity;
+import com.trucking.security.service.UserServiceImplement;
+import com.trucking.util.Utility;
 import lombok.RequiredArgsConstructor;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Service;
 
 import java.text.SimpleDateFormat;
@@ -31,6 +40,7 @@ public class VehicleServiceImpl implements VehicleService {
     private final VehicleMapper vehicleMapper;
     private final FuelRepository fuelRepository;
     private final VehicleTypeRepository vehicleTypeRepository;
+    private final UserServiceImplement userServiceImplement;
 
     @Override
     public List<VehicleDto> getAll() {
@@ -62,9 +72,11 @@ public class VehicleServiceImpl implements VehicleService {
                 .orElseThrow(() -> new ValidationIntegrity("El tipo de vehiculo no es valido"));
 
         Vehicle vehicle = vehicleMapper.toEntity(newVehicleDto);
+        User user = getUserAuth();
 
         vehicle.setFuel(actualFuel);
         vehicle.setVehicleType(actualVehicleType);
+        user.getCompany().getVehicles().add(vehicle);
 
         return vehicleMapper.toDto(vehicleRepository.save(vehicle));
     }
@@ -76,5 +88,33 @@ public class VehicleServiceImpl implements VehicleService {
         }
         vehicleRepository.deleteById(id);
         return true;
+    }
+    @Override
+    public List<VehicleDto> getAllActive(PageableDto pageable){
+        Pageable setPageable = Utility.setPageable(pageable);
+        Page<Vehicle> vehiclePage = vehicleRepository.findByAvailableTrueAndCompanyName(
+                getUserAuth().getCompany().getName(),
+                setPageable);
+        return vehicleMapper.toListDto(vehiclePage.stream().toList());
+    }
+
+    @Override
+    public List<VehicleDto> getAllInactive(PageableDto pageable) {
+        Pageable setPageable = Utility.setPageable(pageable);
+        Page<Vehicle> vehiclePage = vehicleRepository.findByAvailableFalseAndCompanyName(
+                getUserAuth().getCompany().getName(),
+                setPageable);
+        return vehicleMapper.toListDto(vehiclePage.stream().toList());
+    }
+
+    private User getUserAuth(){
+        Authentication auth = SecurityContextHolder
+                .getContext()
+                .getAuthentication();
+        if (auth != null && auth.getPrincipal() instanceof UserDetails userDetail) {
+            return this.userServiceImplement.getUserByEmail(userDetail.getUsername());
+        } else {
+            throw new ValidationIntegrity("El usuario no existe");
+        }
     }
 }
