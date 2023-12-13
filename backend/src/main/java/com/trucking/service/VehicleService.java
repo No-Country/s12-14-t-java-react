@@ -2,6 +2,7 @@ package com.trucking.service;
 
 import com.trucking.dto.VehicleDto;
 import com.trucking.dto.pageable.PageableDto;
+import org.springframework.data.domain.Pageable;
 import org.springframework.security.core.userdetails.UserDetails;
 
 import java.util.List;
@@ -13,6 +14,6 @@ public interface VehicleService {
     VehicleDto getVehicle(Long idVehicle);
     VehicleDto save(VehicleDto newVehicleDto);
     boolean delete(Long id);
-    List<VehicleDto> getAllActive(PageableDto pageable);
-    List<VehicleDto> getAllInactive(PageableDto pageable);
+    List<VehicleDto> getAllActive(Pageable pageable);
+    List<VehicleDto> getAllInactive(Pageable pageable);
 }
