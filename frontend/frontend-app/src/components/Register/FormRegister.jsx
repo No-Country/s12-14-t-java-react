@@ -45,14 +45,17 @@ const FormRegister = () => {
     reset()
   })
   return (
-    <form onSubmit={onSubmit} className='flex flex-col items-center justify-center mb-16 text-blue'>
+    <form
+      onSubmit={onSubmit}
+      className='flex flex-col items-center justify-center w-full mb-16 text-blue'
+    >
       <label
         className={`labelInput ` + (selected == 'companyName' ? `appear` : `none-appear`)}
         htmlFor='companyName'
       >
         Nombre de la empresa
       </label>
-      <div className='input-container'>
+      <div className='w-full input-container'>
         {selected == 'companyName' ? (
           errors.companyName ? (
             <img className='w-8 h-8 icon-input' src={iconError} />
@@ -80,9 +83,9 @@ const FormRegister = () => {
           })}
           onFocus={() => setSelected('companyName')}
           onBlur={() => setSelected('')}
-          className={'textField '}
+          className={'textField w-full'}
           name='companyName'
-          style={{ outline: errors.companyName ? '2px solid #6a3838' : `none`, border: `none` }}
+          style={{ outline: errors.companyName ? '2px solid #fff' : `none`, border: `none` }}
           type='text'
           id='companyName'
           placeholder={selected == 'companyName' ? '' : 'Nombre de la empresa...'}
@@ -91,7 +94,9 @@ const FormRegister = () => {
         />
       </div>
       {errors.companyName && (
-        <span className='text-[18px] text-[#6a3838] font-bold'>{errors.companyName.message}</span>
+        <span className='text-[18px] text-[#fff] font-bold px-1 mt-2'>
+          {errors.companyName.message}
+        </span>
       )}
       <label
         className={`labelInput ` + (selected == 'name' ? `appear` : `none-appear`)}
@@ -99,7 +104,7 @@ const FormRegister = () => {
       >
         Nombres
       </label>
-      <div className='input-container'>
+      <div className='w-full input-container'>
         {selected == 'name' ? (
           errors.name ? (
             <img className='w-8 h-8 icon-input' src={iconError} />
@@ -112,12 +117,12 @@ const FormRegister = () => {
         <input
           onClick={() => setSelected('name')}
           onBlur={() => setSelected('')}
-          className='textField'
+          className='w-full textField'
           type='text'
           id='name'
           name='name'
           aria-autocomplete='list'
-          style={{ outline: errors.name ? '2px solid #6a3838' : `none`, border: `none` }}
+          style={{ outline: errors.name ? '2px solid #fff' : `none`, border: `none` }}
           placeholder={selected == 'name' ? '' : 'Nombres...'}
           {...register('name', {
             required: {
@@ -140,7 +145,7 @@ const FormRegister = () => {
         />
       </div>
       {errors.name && (
-        <span className='text-[18px] text-[#6a3838] font-bold'>{errors.name.message}</span>
+        <span className='text-[18px] text-[#fff] font-bold px-1 mt-2'>{errors.name.message}</span>
       )}
       <label
         className={`labelInput ` + (selected == 'lastName' ? `appear` : `none-appear`)}
@@ -148,7 +153,7 @@ const FormRegister = () => {
       >
         Apellidos
       </label>
-      <div className='input-container'>
+      <div className='w-full input-container'>
         {selected == 'lastName' ? (
           errors.lastName ? (
             <img className='w-8 h-8 icon-input' src={iconError} />
@@ -162,13 +167,13 @@ const FormRegister = () => {
         <input
           onFocus={() => setSelected('lastName')}
           onBlur={() => setSelected('')}
-          className='textField'
+          className='w-full textField'
           type='text'
           id='lastName'
           name='lastName'
           aria-autocomplete='both'
           autoComplete='lastName'
-          style={{ outline: errors.lastName ? '2px solid #6a3838' : `none`, border: `none` }}
+          style={{ outline: errors.lastName ? '2px solid #fff' : `none`, border: `none` }}
           placeholder={selected == 'lastName' ? '' : 'Apellidos...'}
           {...register('lastName', {
             required: {
@@ -191,7 +196,9 @@ const FormRegister = () => {
         />
       </div>
       {errors.lastName && (
-        <span className='text-[18px] text-[#6a3838] font-bold'>{errors.lastName.message}</span>
+        <span className='text-[18px] text-[#fff] font-bold px-1 mt-2'>
+          {errors.lastName.message}
+        </span>
       )}
       <label
         className={`labelInput ` + (selected == 'email' ? `appear` : `none-appear`)}
@@ -199,7 +206,7 @@ const FormRegister = () => {
       >
         Correo electronico
       </label>
-      <div className='input-container'>
+      <div className='w-full input-container'>
         {selected == 'email' ? (
           errors.email ? (
             <img className='w-8 h-8 icon-input' src={iconError} />
@@ -212,8 +219,8 @@ const FormRegister = () => {
         <input
           onFocus={() => setSelected('correo')}
           onBlur={() => setSelected('')}
-          className='textField'
-          style={{ outline: errors.correo ? '2px solid #6a3838' : `none`, border: `none` }}
+          className='w-full textField'
+          style={{ outline: errors.correo ? '2px solid #fff' : `none`, border: `none` }}
           type='email'
           id='email'
           name='email'
@@ -234,7 +241,7 @@ const FormRegister = () => {
         />
       </div>
       {errors.email && (
-        <span className='text-[18px] text-[#6a3838] font-bold'>{errors.email.message}</span>
+        <span className='text-[18px] text-[#fff] font-bold px-1 mt-2'>{errors.email.message}</span>
       )}
       <label
         className={`labelInput ` + (selected == 'password' ? `appear` : `none-appear`)}
@@ -242,7 +249,7 @@ const FormRegister = () => {
       >
         Contraseña
       </label>
-      <div className='input-container'>
+      <div className='w-full input-container'>
         {selected == 'password' ? (
           errors.password ? (
             <img className='w-8 h-8 icon-input' src={iconError} />
@@ -255,10 +262,10 @@ const FormRegister = () => {
         <input
           onFocus={() => setSelected('password')}
           onBlur={() => setSelected('')}
-          className='textField'
+          className='w-full textField'
           type='password'
           id='password'
-          style={{ outline: errors.password ? '2px solid #6a3838' : `none`, border: `none` }}
+          style={{ outline: errors.password ? '2px solid #fff' : `none`, border: `none` }}
           placeholder={selected == 'password' ? '' : 'Contraseña...'}
           {...register('password', {
             required: {
@@ -282,12 +289,12 @@ const FormRegister = () => {
         />
       </div>
       {errors.password && (
-        <span className='text-center text-[18px] text-[#6a3838] font-bold'>
+        <span className='text-[18px] text-[#fff] font-bold px-1 mt-2'>
           {errors.password.message}
         </span>
       )}
       {selected == 'password' && !errors.password ? (
-        <span className='text-center text-[18px] text-[#2E4BDF] font-bold'>
+        <span className='text-[18px] text-[#2E4BDF] font-bold'>
           La contraseña tiene entre 8 y 12 caracteres, al menos una letra mayúscula, una minúscula,
           un número y un caracter especial
         </span>
@@ -300,7 +307,7 @@ const FormRegister = () => {
       >
         Confirmar contraseña
       </label>
-      <div className='input-container'>
+      <div className='w-full input-container'>
         {selected == 'confirmPassword' ? (
           errors.confirmPassword ? (
             <img className='w-8 h-8 icon-input' src={iconError} />
@@ -313,10 +320,10 @@ const FormRegister = () => {
         <input
           onFocus={() => setSelected('confirmPassword')}
           onBlur={() => setSelected('')}
-          className='textField'
+          className='w-full textField'
           type='password'
           id='confirmPassword'
-          style={{ outline: errors.confirmPassword ? '2px solid #6a3838' : `none`, border: `none` }}
+          style={{ outline: errors.confirmPassword ? '2px solid #fff' : `none`, border: `none` }}
           placeholder={selected == 'confirmPassword' ? '' : 'Confirmar contraseña...'}
           {...register('confirmPassword', {
             required: {
@@ -330,14 +337,14 @@ const FormRegister = () => {
         />
       </div>
       {errors.confirmPassword && (
-        <span className='text-[18px] text-[#6a3838] font-bold'>
+        <span className='text-[18px] text-[#fff] font-bold px-1 mt-2'>
           {errors.confirmPassword.message}
         </span>
       )}
-      <button type='submit' className='mt-32 main-button bg-blue'>
+      <button type='submit' className='block w-full mt-8 btn btn-template-1'>
         Registrarme
       </button>
-      <button className='mt-3 main-button' onClick={goToLogin}>
+      <button className='block w-full mt-4 btn btn-template-1' onClick={goToLogin}>
         Iniciar Sesión
       </button>
     </form>

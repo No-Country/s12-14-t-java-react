@@ -1,4 +1,4 @@
-import { Navigate, Outlet, useNavigate } from 'react-router-dom'
+import { Outlet, useNavigate } from 'react-router-dom'
 import propTypes from 'prop-types'
 
 // import { useEffect } from 'react'
@@ -7,12 +7,10 @@ const ProtectedRoute = ({ isAllowed, children }) => {
   // const logout = useGlobalStore(state => state.logout)
   const navigate = useNavigate()
 
-  if (document.cookie.indexOf('token=') >= 0) {
+  if (!isAllowed) {
     //   logout()
     navigate('/')
   }
-
-  if (!isAllowed) return <Navigate to='/'></Navigate>
 
   return children ? <>children</> : <Outlet />
 }
