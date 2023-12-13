@@ -24,6 +24,7 @@ public class Vehicle {
     private Integer year;
     private String patent;
     private Integer axle;
+    private String reason;
 
     @Column(name = "date_vtv")
     @Temporal(TemporalType.DATE)
@@ -42,6 +43,10 @@ public class Vehicle {
     private List<RegMaint> maintenance;
     @OneToMany
     private List<Fail> fails;
+
+    @ManyToOne
+    @JoinColumn(name = "company_id")
+    private Company company;
 
     @OneToOne(cascade = CascadeType.MERGE)
     @JoinColumn(name = "idRoute")

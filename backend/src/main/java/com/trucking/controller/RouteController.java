@@ -3,6 +3,8 @@ package com.trucking.controller;
 import com.trucking.dto.pageable.PageableDto;
 import com.trucking.dto.route.request.RouteRequestDto;
 import com.trucking.dto.route.response.RouteResponseDto;
+import com.trucking.security.dto.MsgDto;
+import com.trucking.security.exception.ValidationIntegrity;
 import com.trucking.service.RouteService;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.media.Content;
@@ -11,6 +13,7 @@ import io.swagger.v3.oas.annotations.responses.ApiResponse;
 import io.swagger.v3.oas.annotations.security.SecurityRequirement;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import jakarta.validation.Valid;
+import jakarta.validation.ValidationException;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Page;
 import org.springframework.http.HttpStatus;
@@ -82,7 +85,11 @@ public class RouteController {
     )
     @PostMapping
     public ResponseEntity<?> createRoute(@Valid @RequestBody RouteRequestDto route) {
-        return new ResponseEntity<>(routeService.create(route), HttpStatus.CREATED);
+        try {
+            return new ResponseEntity<>(routeService.create(route), HttpStatus.CREATED);
+        } catch (ValidationIntegrity e) {
+            return new ResponseEntity<>(new MsgDto(e.getMessage()), HttpStatus.BAD_REQUEST);
+        }
     }
 
     @Operation(summary = "Actualizar una ruta", description = "Todos pueden actualizar una ruta"
