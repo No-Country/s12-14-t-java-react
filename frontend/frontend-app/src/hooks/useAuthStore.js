@@ -54,7 +54,7 @@ export const useAuthStore = () => {
       const d = new Date()
 
       // d.setTime(d.getTime() + (1 * 24 * 60 * 60 * 1000));
-      d.setTime(d.getTime() + 60 * 1000)
+      d.setTime(d.getTime() + 1000 * 60 * 60 * 12)
 
       let expires = 'expires=' + d.toUTCString()
 
@@ -70,7 +70,7 @@ export const useAuthStore = () => {
 
       console.log(data.user.name)
       Swal.fire(`Bienvenido! ${data.user.name} me debes Dinero`)
-      navigate(`/dashboard-v2`)
+      navigate(`/dashboard`)
     } catch (error) {
       console.log(error)
       Swal.fire({

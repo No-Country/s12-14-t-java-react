@@ -47,11 +47,13 @@ function App() {
           <Route path='/' element={<Homepage />} />
           <Route path='/login' element={<Login />} />
           <Route path='/register' element={<Register />} />
-          <Route path='/Dashboard' element={<DashboardAdmi />} />
           <Route path='/AddVehicle' element={<AddVehicle />} />
           <Route path='/Empleado' element={<Empleado />} />
           <Route path='/NewProfile' element={<DashboardNewProfile />} />
-          <Route path='/dashboard-v2' element={<DashboardGerente />} />
+
+          {/* <Route path='/Dashboard' element={<DashboardAdmi />} /> */}
+          <Route path='/dashboard' element={<DashboardGerente />} />
+
           <Route path='/dashboard-fleet-vehicles' element={<DashboardVehicles />} />
           <Route path='/dashboard-datos-personales' element={<DatosPersonalesChofer />} />
           <Route path='/panel-general-chofer' element={<PanelGeneral />} />
