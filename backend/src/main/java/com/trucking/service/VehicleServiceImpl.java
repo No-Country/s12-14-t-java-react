@@ -1,19 +1,18 @@
 package com.trucking.service;
 
 import com.trucking.dto.VehicleDto;
-import com.trucking.dto.pageable.PageableDto;
 import com.trucking.entity.Fuel;
 import com.trucking.entity.Vehicle;
 import com.trucking.entity.VehicleType;
 import com.trucking.exception.NotFoundVehicle;
 import com.trucking.mapper.VehicleMapper;
+import com.trucking.repository.CompanyRepository;
 import com.trucking.repository.FuelRepository;
 import com.trucking.repository.VehicleRepository;
 import com.trucking.repository.VehicleTypeRepository;
 import com.trucking.security.entity.User;
 import com.trucking.security.exception.ValidationIntegrity;
 import com.trucking.security.service.UserServiceImplement;
-import com.trucking.util.Utility;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
@@ -22,15 +21,11 @@ import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Service;
 
-import java.text.SimpleDateFormat;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
-import java.time.format.DateTimeFormatterBuilder;
 import java.time.format.DateTimeParseException;
-import java.time.temporal.ChronoField;
 import java.util.List;
 import java.util.Objects;
-import java.util.Optional;
 
 @Service
 @RequiredArgsConstructor
@@ -41,6 +36,7 @@ public class VehicleServiceImpl implements VehicleService {
     private final FuelRepository fuelRepository;
     private final VehicleTypeRepository vehicleTypeRepository;
     private final UserServiceImplement userServiceImplement;
+    private final CompanyRepository companyRepository;
 
     @Override
     public List<VehicleDto> getAll() {
@@ -76,7 +72,8 @@ public class VehicleServiceImpl implements VehicleService {
 
         vehicle.setFuel(actualFuel);
         vehicle.setVehicleType(actualVehicleType);
-        user.getCompany().getVehicles().add(vehicle);
+
+        vehicle.setCompany(user.getCompany());
 
         return vehicleMapper.toDto(vehicleRepository.save(vehicle));
     }
