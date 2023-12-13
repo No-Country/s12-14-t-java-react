@@ -1,6 +1,7 @@
 
-
-const AddVehicle = () => {
+const AddVehicle = () => {  
+    
+    
     
 
     function handleClick1() {
@@ -148,15 +149,16 @@ const AddVehicle = () => {
                         <label 
                         htmlFor="inputField" 
                         className="absolute bg-white px-1 -top-[5%] md:top-[8%] 
-                        lg:top-[8%] left-[12%] text-[#0D1444] text-sm">
+                        lg:top-[8%] left-[12%] text-[#0D1444] text-sm">                   
                         Marca
                         </label>
-                        <input 
+                        <input
                         type="text" 
                         id="inputField" 
                         name="inputField" 
                         className="border border-[#0D1444] py-2 px-4 w-[85%] h-14 
-                        mx-[10%] my-4 rounded"/>
+                        mx-[10%] my-4 rounded textField"
+                        />
                     </div>
                     <div className="relative mb-[5%]">
                         <label 
@@ -392,7 +394,7 @@ const AddVehicle = () => {
                         className="border border-[#0D1444] py-2 px-4 w-[85%] h-14 
                         mx-[10%] my-4 rounded"/>
                     </div>
-                     <div className="relative mb-[5%]">
+                    <div className="relative mb-[5%]">
                     <label 
                         htmlFor="inputField" 
                         className="absolute bg-white px-1 -top-[5%] md:top-[8%] lg:top-[8%] left-[12%] z-10 text-[#0D1444] text-sm">
@@ -477,7 +479,7 @@ const AddVehicle = () => {
                             document.getElementById('categoryField').value = selectedCategory;
                         }}
                         >
-                       <option 
+                        <option 
                             value="Categoría de carga">
                             Seleccione la categoría de carga
                             </option>
@@ -534,3 +536,47 @@ const AddVehicle = () => {
 }
 
 export default AddVehicle;
+
+
+// </label>
+// <div className='input-container'>
+//   {selected == 'companyName' ? (
+//     errors.companyName ? (
+//       <img className='w-8 h-8 icon-input' src={iconError} />
+//     ) : (
+//       <img className='w-6 h-6 icon-input ' src={iconCheck} />
+//     )
+//   ) : (
+//     <></>
+//   )}
+
+//   <input
+//     {...register('companyName', {
+//       required: {
+//         value: true,
+//         message: 'El nombre de la empresa es obligatorio'
+//       },
+//       minLength: {
+//         value: 2,
+//         message: 'El minimo de caracteres es 2'
+//       },
+//       maxLength: {
+//         value: 50,
+//         message: 'El máximo de caracteres es 50'
+//       }
+//     })}
+//     onFocus={() => setSelected('companyName')}
+//     onBlur={() => setSelected('')}
+//     className={'textField '}
+//     name='companyName'
+//     style={{ outline: errors.companyName ? '2px solid #6a3838' : `none`, border: `none` }}
+//     type='text'
+//     id='companyName'
+//     placeholder={selected == 'companyName' ? '' : 'Nombre de la empresa...'}
+//     aria-autocomplete='both'
+//     autoComplete='companyName'
+//   />
+// </div>
+// {errors.companyName && (
+//   <span className='text-[18px] text-[#6a3838] font-bold'>{errors.companyName.message}</span>
+// )}
