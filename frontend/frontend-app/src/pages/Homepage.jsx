@@ -24,11 +24,9 @@ export const Homepage = () => {
     password,
     onInputChange: onLoginInputChange,
     formState: { errors }
-  } = useForm(loginFormFields) 
+  } = useForm(loginFormFields)
 
   const loginSubmit = handleSubmit(data => {
-
-
     console.log(data)
     startLogin({
       email: data.email,
@@ -89,28 +87,27 @@ export const Homepage = () => {
                   </span>
                 )}
                 <input
-                {...register('password', {
-                  required: {
-                    value: true,
-                    message: 'Contraseña es requerido'
-                  },
+                  {...register('password', {
+                    required: {
+                      value: true,
+                      message: 'Contraseña es requerido'
+                    },
 
-                  pattern: {
-                    value: true,
-                    message: 'La contraseña no es válido'
-                  }
-                })}
+                    pattern: {
+                      value: true,
+                      message: 'La contraseña no es válido'
+                    }
+                  })}
                   type='password'
                   placeholder='Contraseña...'
                   className='mb-4 border-none rounded-lg'
                   name='password'
                   value={password}
                   onChange={onLoginInputChange}
-             
                 />
                 {errors.email && (
                   <span className='pl-2 mb-4 -mt-2 text-left text-white'>
-                     {errors?.password?.message}
+                    {errors?.password?.message}
                   </span>
                 )}
               </div>
@@ -119,7 +116,7 @@ export const Homepage = () => {
                 Ingresar
               </button>
 
-              <Link to='/register' className='btn btn-template-1'>
+              <Link to='/registro' className='btn btn-template-1'>
                 Registrarse
               </Link>
               <div className='pt-2 md:flex'>
@@ -167,4 +164,3 @@ export const Homepage = () => {
     </section>
   )
 }
-
