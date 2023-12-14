@@ -1,4 +1,4 @@
-package com.trucking.mapper;
+package com.trucking.mapper.mapstruct;
 
 import com.trucking.dto.route.request.RouteRequestDto;
 import com.trucking.dto.route.response.RouteResponseDto;

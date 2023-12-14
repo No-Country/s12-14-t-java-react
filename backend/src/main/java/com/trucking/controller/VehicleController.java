@@ -2,6 +2,7 @@ package com.trucking.controller;
 
 import com.trucking.dto.VehicleDto;
 import com.trucking.dto.pageable.PageableDto;
+import com.trucking.dto.vehicle.response.VehicleResponseDto;
 import com.trucking.security.dto.MsgDto;
 import com.trucking.security.exception.ValidationIntegrity;
 import com.trucking.service.VehicleService;
@@ -56,5 +57,10 @@ public class VehicleController {
     @DeleteMapping(path = "/{id}")
     public ResponseEntity<Boolean> delete(@PathVariable Long id) {
         return new ResponseEntity<>(this.vehicleService.delete(id) ? HttpStatus.OK : HttpStatus.NOT_FOUND);
+    }
+
+    @GetMapping(value = "/search")
+    public ResponseEntity<Page<VehicleResponseDto>> getAllMaintenance(@RequestParam String nameCompany, PageableDto pageableDto){
+        return new ResponseEntity<>(vehicleService.searchVehicleByCompany(nameCompany,pageableDto), HttpStatus.OK);
     }
 }
