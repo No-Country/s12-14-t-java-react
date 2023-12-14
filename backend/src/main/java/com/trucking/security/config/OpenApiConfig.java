@@ -26,7 +26,7 @@ import org.springframework.context.annotation.Configuration;
                 @Server(
                         url = "http://127.0.0.1:8080/api/v1/",
                         description = "development server"),
-                   @Server(url="http://149.50.132.123:9896/api/v1/",
+                   @Server(url="http://149.50.131.109:9896/api/v1/",
                           description= "dev server don web")
         })
 @SecurityScheme(
