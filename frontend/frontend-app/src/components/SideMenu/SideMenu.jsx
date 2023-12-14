@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react'
+import { useState, useEffect } from 'react'
 import { BsShieldLockFill } from 'react-icons/bs'
 import { FaBars, FaUserPlus } from 'react-icons/fa'
 import { VscLayoutPanelRight } from 'react-icons/vsc'
@@ -77,7 +77,7 @@ const SideMenu = () => {
   }, [])
 
   return (
-    <div className={`text-white font-poppins w-[20%] top-0 bg-[#31429B] h-100`}>
+    <div className={`text-white font-poppins top-0 bg-[#31429B] h-100`}>
       {isMobile ? (
         <div className='flex items-center justify-end px-4 h-[61px]'>
           <button onClick={() => setIsMobile(!isMobile)}>
