@@ -42,11 +42,11 @@ jobs:
     runs-on: self-hosted #ubuntu-latest 
 
     steps:
-      - name: Create directory work
-        run: mkdir -p backend/app
+      #- name: Create directory work
+      # run: mkdir -p backend/app
 
       - name: Enter to the directory
-        run: cd /home/gilmour/backend/app
+        run: cd /home/gilmour/
 
       - name: Permises docker 
         run: sudo chmod 666 /var/run/docker.sock
