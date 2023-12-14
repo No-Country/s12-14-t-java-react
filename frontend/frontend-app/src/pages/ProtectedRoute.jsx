@@ -1,22 +1,20 @@
-import { Outlet, useNavigate } from 'react-router-dom'
+import { Navigate, Outlet } from 'react-router-dom'
 import propTypes from 'prop-types'
 
 // import { useEffect } from 'react'
 
 const ProtectedRoute = ({ isAllowed, children }) => {
   // const logout = useGlobalStore(state => state.logout)
-  const navigate = useNavigate()
 
-  if (!isAllowed) {
-    //   logout()
-    navigate('/')
+  if (isAllowed == 'not-authenticated') {
+    return <Navigate to='/' />
   }
 
   return children ? <>children</> : <Outlet />
 }
 
 ProtectedRoute.propTypes = {
-  isAllowed: propTypes.bool.isRequired,
+  isAllowed: propTypes.string.isRequired,
   children: propTypes.node
 }
 

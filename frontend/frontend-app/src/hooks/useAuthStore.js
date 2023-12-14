@@ -8,8 +8,8 @@ import axios from 'axios'
 
 export const useAuthStore = () => {
   const { status, user, errorMessage } = useSelector(state => state.auth)
-  console.log(status)
-  console.log(user)
+  // console.log(status)
+  // console.log(user)
   const dispatch = useDispatch()
 
   const navigate = useNavigate()
@@ -66,9 +66,11 @@ export const useAuthStore = () => {
 
       localStorage.setItem('user', JSON.stringify(data.user))
 
-      dispatch(onLogin({ name: data.name }))
+      console.log(data)
 
-      console.log(data.user.name)
+      dispatch(onLogin(data.user))
+
+      // console.log(data.user.name)
       Swal.fire(`Bienvenido!  ${data.user.name}`)
       navigate(`/dashboard`)
     } catch (error) {
