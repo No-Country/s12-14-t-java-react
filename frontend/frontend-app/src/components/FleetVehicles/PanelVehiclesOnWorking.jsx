@@ -1,6 +1,9 @@
 import CardVehicleOnWorking from "./CardVehicleOnWorking";
+import { useVehiclesActivated } from "../../hooks/useVehiclesActivated";
 const PanelVehiclesOnWorking =()=>{
   console.log(import.meta.env.VITE_API_URL)
+  const {getVehicles} =useVehiclesActivated();
+  getVehicles();
 return (<section className="section-vehicles section-vehicles-ow">
     <div className="section-vehicles__container">
     
