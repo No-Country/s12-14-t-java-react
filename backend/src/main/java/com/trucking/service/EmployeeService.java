@@ -14,7 +14,7 @@ public interface EmployeeService {
     DataShowEmployee save(DataNewEmployee newEmployee);
     DataShowEmployee saveDriver(NewDriver driver, String token);
     DataShowEmployee update(Long id, UpdateEmployee updateEmployee, String token);
-    DataShowEmployee delete(Long id, String token);
+    DataShowEmployee delete(Long id);
     DataShowEmployee deactivateEmpyee(Long id, String token);
     DataShowEmployee findEmployeeById(Long id, String token);
     List<DataShowEmployee> getAllEmployees(String token);

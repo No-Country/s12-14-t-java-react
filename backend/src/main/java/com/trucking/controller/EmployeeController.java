@@ -103,9 +103,9 @@ public class EmployeeController {
 
     @DeleteMapping("/deleteEmployee/{id}")
     @PreAuthorize("OWNER")
-    public ResponseEntity<?> deleteEmployee(@PathVariable long id,  @RequestBody String token){
+    public ResponseEntity<?> deleteEmployee(@PathVariable long id){
         try {
-            DataShowEmployee delete = employeeServiceImplement.delete(id, token);
+            DataShowEmployee delete = employeeServiceImplement.delete(id);
             return new ResponseEntity<>("Empleado eliminado exitosamente", HttpStatus.OK);
         }catch (Exception e){
             return new ResponseEntity<>("Error al eliminar el empleado" + e.getMessage(), HttpStatus.BAD_REQUEST);

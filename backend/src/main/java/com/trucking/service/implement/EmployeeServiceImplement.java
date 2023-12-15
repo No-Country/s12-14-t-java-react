@@ -156,12 +156,8 @@ public class EmployeeServiceImplement implements EmployeeService {
     }
 
     @Override
-    public DataShowEmployee delete(Long id, String token) {
+    public DataShowEmployee delete(Long id) {
         //valiadar rol del usuario del token
-//        String tokenUserName = jwtService.extractUsername(token);
-//
-//        var dataToken = userRepository.findByEmail(tokenUserName).orElseThrow(
-//                () -> new IllegalArgumentException("Error al encontrar el email del usuario"));
 
         User actualUser = userRepository.findByEmail(SecurityContextHolder.getContext().getAuthentication().getName()).get();
         Company company = companyRepository.findByName(actualUser.getCompany().getName()).get();
