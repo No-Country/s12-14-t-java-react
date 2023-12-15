@@ -1,201 +1,218 @@
+import { useForm } from 'react-hook-form'
+
 export const AddVehiculeBoard = () => {
-  function handleClick1() {
-    console.log('¡Hiciste clic en el botón 1!')
+  const {
+    register,
+    formState: { errors },
+    handleSubmit
+  } = useForm()
+
+  const onSubmit = data => console.log(data)
+
+  const handleNumericInput = e => {
+    e.target.value = e.target.value.replace(/\D/g, '') // Elimina todos los caracteres no numéricos
+    e.target.value = e.target.value.slice(0, 15) // limite de 15
   }
-  function handleClick2() {
-    console.log('¡Hiciste clic en el botón 2!')
-  }
+
   return (
     <>
-      <div className='container w-full md:w-[55%] py-3 px-5'>
-        <div className='w-full h-full rounded-[15px] shadow-custom px-10 py-7'>
-          <h1
-            className='text-[#0D1444]
-            text-[22px] font-bold'
-          >
-            Agregar vehículo
-          </h1>
+      <div className='container w-full lg:w-[56%] py-3 px-5 mx-auto'>
+        <form
+          onSubmit={handleSubmit(onSubmit)}
+          className='w-full h-full rounded-[15px] shadow-custom py-7'
+        >
+          <div className='px-10'>
+            <h1
+              className='text-[#0D1444]
+              text-[22px] font-bold'
+            >
+              Agregar vehículo
+            </h1>
 
-          <h2
-            className='text-[#0D1444]
-            text-lg font-medium
-            leading-normal tracking-tight mt-4'
-          >
-            Tipo de vehículo
-          </h2>
+            <h2
+              className='text-[#0D1444]
+              text-lg font-medium
+              leading-normal tracking-tight mt-4'
+            >
+              Tipo de vehículo
+            </h2>
 
-          <div>
-            <section className='mt-[2.5%] lg:grid lg:grid-cols-6 mb-7'>
-              <div className='my-[2.5%]'>
-                <label className='text-[#0D1444] text-sm flex items-center' htmlFor='option1'>
-                  <input
-                    className='mr-2 h-4 w-4 appearance-none rounded-full border-2 border-[#0D1444] checked:bg-[#0D1444] checked:border-transparent'
-                    type='radio'
-                    id='opcion1'
-                    name='vehicleType'
-                    value='option1'
-                  />
-                  <span className='inline-block align-middle'>Acoplado</span>
-                </label>
+            <div>
+              <section className='flex flex-wrap gap-3 mt-2 lg:justify-between mb-7'>
+                <div className='mt-2'>
+                  <label
+                    className='text-[#0D1444] text-sm flex items-center cursor-pointer'
+                    htmlFor='vehicleType1'
+                  >
+                    <input
+                      className='mr-2 h-4 w-4 appearance-none rounded-full border-2 border-[#0D1444] checked:bg-[#0D1444] checked:border-transparent cursor-pointer'
+                      type='radio'
+                      id='vehicleType1'
+                      name='vehicleType'
+                      value='Acoplado'
+                      {...register('vehicleType', { required: true })}
+                    />
+                    <span className='inline-block align-middle'>Acoplado</span>
+                  </label>
+                </div>
+
+                <div className='mt-2'>
+                  <label
+                    className='text-[#0D1444] text-sm flex items-center cursor-pointer'
+                    htmlFor='vehicleType2'
+                  >
+                    <input
+                      className='mr-2 h-4 w-4 appearance-none rounded-full border-2 border-[#0D1444] checked:bg-[#0D1444] checked:border-transparent cursor-pointer'
+                      type='radio'
+                      id='vehicleType2'
+                      name='vehicleType'
+                      value='Automóvil'
+                      {...register('vehicleType', { required: 'Required field' })}
+                    />
+                    <span className='inline-block align-middle'>Automóvil</span>
+                  </label>
+                  {errors.vehicleType && <p role='alert'>{errors.vehicleType.message}</p>}
+                </div>
+
+                <div className='mt-2'>
+                  <label
+                    className='text-[#0D1444] text-sm flex items-center cursor-pointer'
+                    htmlFor='vehicleType3'
+                  >
+                    <input
+                      className='mr-2 h-4 w-4 appearance-none rounded-full border-2 border-[#0D1444] checked:bg-[#0D1444] checked:border-transparent cursor-pointer'
+                      type='radio'
+                      id='vehicleType3'
+                      name='vehicleType'
+                      value='Camión'
+                      {...register('vehicleType', { required: true })}
+                    />
+                    <span className='inline-block align-middle'>Camión</span>
+                  </label>
+                </div>
+
+                <div className='mt-2'>
+                  <label
+                    className='text-[#0D1444] text-sm flex items-center cursor-pointer'
+                    htmlFor='vehicleType4'
+                  >
+                    <input
+                      className='mr-2 h-4 w-4 appearance-none rounded-full border-2 border-[#0D1444] checked:bg-[#0D1444] checked:border-transparent cursor-pointer'
+                      type='radio'
+                      id='vehicleType4'
+                      name='vehicleType'
+                      value='Camioneta'
+                      {...register('vehicleType', { required: true })}
+                    />
+                    <span className='inline-block align-middle'>Camioneta</span>
+                  </label>
+                </div>
+
+                <div className='mt-2'>
+                  <label
+                    className='text-[#0D1444] text-sm flex items-center cursor-pointer'
+                    htmlFor='vehicleType5'
+                  >
+                    <input
+                      className='mr-2 h-4 w-4 appearance-none rounded-full border-2 border-[#0D1444] checked:bg-[#0D1444] checked:border-transparent cursor-pointer'
+                      type='radio'
+                      id='vehicleType5'
+                      name='vehicleType'
+                      value='Combi'
+                      {...register('vehicleType', { required: true })}
+                    />
+                    <span className='inline-block align-middle'>Combi</span>
+                  </label>
+                </div>
+
+                <div className='mt-2'>
+                  <label
+                    className='text-[#0D1444] text-sm flex items-center cursor-pointer'
+                    htmlFor='vehicleType6'
+                  >
+                    <input
+                      className='mr-2 h-4 w-4 appearance-none rounded-full border-2 border-[#0D1444] checked:bg-[#0D1444] checked:border-transparent cursor-pointer'
+                      type='radio'
+                      id='vehicleType6'
+                      name='vehicleType'
+                      value='Semiremolque'
+                      {...register('vehicleType', { required: true })}
+                    />
+                    <span className='inline-block align-middle'>Semiremolque</span>
+                  </label>
+                </div>
+              </section>
+
+              <div className='grid gap-5 lg:grid-cols-2'>
+                <div>
+                  <div className='relative'>
+                    <input
+                      type='text'
+                      id='brand'
+                      pattern='[0-9\s]{13,19}'
+                      className='block px-4 pb-2.5 pt-4 w-full text-sm text-gray-900 bg-transparent border-1 border-gray-300 appearance-none border-[#0D1544] hover:#31429B focus:outline-none peer'
+                      placeholder=''
+                      {...register('brand', {
+                        required: 'La marca es obligatoria',
+                        pattern: {
+                          value: /^[a-zA-Z0-9\s]+$/,
+                          message: 'La marca no es válida'
+                        },
+                        valueAsNumber: true,
+                        min: 3,
+                        max: 15
+                      })}
+                    />
+                    <label
+                      htmlFor='brand'
+                      className='left-3.5 absolute text-sm text-gray-500 duration-300 transform -translate-y-4 scale-75 top-2 z-10 origin-[0] bg-white px-1 peer-focus:px-1 peer-focus:text-blue-600 peer-focus:dark:text-#0d1544 peer-placeholder-shown:scale-100 peer-placeholder-shown:-translate-y-1/2 peer-placeholder-shown:top-[28px] pointer-events-none peer-focus:top-2 peer-focus:scale-75 peer-focus:-translate-y-4 start-1'
+                    >
+                      Marca del vehículo*
+                    </label>
+                    {errors.brand && (
+                      <span className='error color-[red]'>{errors.brand.message}</span>
+                    )}
+                    {/* La mínima cantidad de caracteres permitidos será 3. La máxima cantidad de
+                    caracteres permitidos será 15. */}
+
+                    {/* La marca no es válida : caracter especial */}
+                  </div>
+                </div>
+                <div>
+                  <div className='relative'>
+                    <input
+                      type='text'
+                      id='model'
+                      className='block px-4 pb-2.5 pt-4 w-full text-sm text-gray-900 bg-transparent border-1 border-gray-300 appearance-none border-[#0D1544] hover:#31429B focus:outline-none peer'
+                      placeholder=''
+                      {...register('model', { required: true })}
+                    />
+                    <label
+                      htmlFor='model'
+                      className='left-3.5 absolute text-sm text-gray-500 duration-300 transform -translate-y-4 scale-75 top-2 z-10 origin-[0] bg-white px-1 peer-focus:px-1 peer-focus:text-blue-600 peer-focus:dark:text-#0d1544 peer-placeholder-shown:scale-100 peer-placeholder-shown:-translate-y-1/2 peer-placeholder-shown:top-[28px] pointer-events-none peer-focus:top-2 peer-focus:scale-75 peer-focus:-translate-y-4 start-1'
+                    >
+                      Modelo*
+                    </label>
+                  </div>
+                </div>
               </div>
 
-              <div className='my-[2.5%]'>
-                <label className='text-[#0D1444] text-sm flex items-center' htmlFor='option2'>
-                  <input
-                    className='mr-2 h-4 w-4 appearance-none rounded-full border-2 border-[#0D1444] checked:bg-[#0D1444] checked:border-transparent'
-                    type='radio'
-                    id='option2'
-                    name='vehicleType'
-                    value='option2'
-                  />
-                  <span className='inline-block align-middle'>Automóvil</span>
-                </label>
-              </div>
-
-              <div className='my-[2.5%]'>
-                <label className='text-[#0D1444] text-sm flex items-center' htmlFor='option3'>
-                  <input
-                    className='mr-2 h-4 w-4 appearance-none rounded-full border-2 border-[#0D1444] checked:bg-[#0D1444] checked:border-transparent'
-                    type='radio'
-                    id='option3'
-                    name='vehicleType'
-                    value='option3'
-                  />
-                  <span className='inline-block align-middle'>Camión</span>
-                </label>
-              </div>
-
-              <div className='my-[2.5%]'>
-                <label className='text-[#0D1444] text-sm flex items-center' htmlFor='option4'>
-                  <input
-                    className='mr-2 h-4 w-4 appearance-none rounded-full border-2 border-[#0D1444] checked:bg-[#0D1444] checked:border-transparent'
-                    type='radio'
-                    id='option4'
-                    name='vehicleType'
-                    value='option4'
-                  />
-                  <span className='inline-block align-middle'>Camioneta</span>
-                </label>
-              </div>
-
-              <div className='my-[2.5%]'>
-                <label className='text-[#0D1444] text-sm flex items-center' htmlFor='option5'>
-                  <input
-                    className='mr-2 h-4 w-4 appearance-none rounded-full border-2 border-[#0D1444] checked:bg-[#0D1444] checked:border-transparent'
-                    type='radio'
-                    id='option5'
-                    name='vehicleType'
-                    value='option5'
-                  />
-                  <span className='inline-block align-middle'>Combi</span>
-                </label>
-              </div>
-
-              <div className='my-[2.5%]'>
-                <label className='text-[#0D1444] text-sm flex items-center' htmlFor='option6'>
-                  <input
-                    className='mr-2 h-4 w-4 appearance-none rounded-full border-2 border-[#0D1444] checked:bg-[#0D1444] checked:border-transparent'
-                    type='radio'
-                    id='option6'
-                    name='vehicleType'
-                    value='option6'
-                  />
-                  <span className='inline-block align-middle'>Semiremolque</span>
-                </label>
-              </div>
-            </section>
-
-            <div className='grid gap-5 lg:grid-cols-2'>
-              <div>
+              <div className='grid gap-5 pt-10 lg:grid-cols-2'>
                 <div className='relative'>
                   <label
-                    htmlFor='marca'
-                    className='left-3.5 absolute text-sm text-gray-500 duration-300 transform -translate-y-4 scale-75 top-2 z-10 origin-[0] bg-white px-1 peer-focus:px-1 peer-focus:text-blue-600 peer-focus:dark:text-#0d1544 peer-placeholder-shown:scale-100 peer-placeholder-shown:-translate-y-1/2 peer-placeholder-shown:top-[30px] pointer-events-none peer-focus:top-2 peer-focus:scale-75 peer-focus:-translate-y-4 start-1'
+                    htmlFor='year'
+                    className='left-3.5 absolute text-sm text-gray-500 duration-300 transform -translate-y-4 scale-75 top-2 z-10 origin-[0] bg-white px-1 peer-focus:px-1 peer-focus:text-blue-600 peer-focus:dark:text-#0d1544 peer-placeholder-shown:scale-100 peer-placeholder-shown:-translate-y-1/2 peer-placeholder-shown:top-[28px] pointer-events-none peer-focus:top-2 peer-focus:scale-75 peer-focus:-translate-y-4 start-1'
                   >
-                    Marca*
+                    Vehiculo*
                   </label>
                   <select
-                    id='marca'
+                    id='year'
                     className='block w-full px-4 text-sm text-gray-900 border border-gray-300 bg-gray-50 focus:ring-blue-500 focus:border-blue-500 min-h-[56px]'
                     defaultValue={'DEFAULT'}
                   >
                     <option disabled value={'DEFAULT'}>
-                      Selecciona una marca
+                      Selecciona un año
                     </option>
-                    <option value='Nissan'>Nissan</option>
-                    <option value='Ford'>Ford</option>
-                    <option value='Geely'>Geely</option>
-                    <option value='General Motorsy'>General Motors</option>
-                    <option value='BMW'>BMW</option>
-                    <option value='Grupo Stellantis'>Grupo Stellantis</option>
-                    <option value='Honda'>Honda</option>
-                    <option value='Hyundai Motor Company'>Hyundai Motor Company</option>
-                    <option value='Mazda'>Mazda</option>
-                    <option value='Subaru'>Subaru</option>
-                    <option value='Suzuki'>Suzuki</option>
-                    <option value='Tata'>Tata</option>
-                    <option value='Tesla Inc'>Tesla Inc</option>
-                    <option value='Toyota'>Toyota</option>
-                    <option value='Volkswagen'>Volkswagen</option>
-                  </select>
-                </div>
-              </div>
-            </div>
-
-            <section className='mt-[5%] lg:grid lg:grid-cols-2'>
-              <div className='relative mb-[5%]'>
-                <label
-                  htmlFor='inputField'
-                  className='absolute bg-white px-1 -top-[5%] md:top-[8%] lg:top-[8%] left-[12%] text-[#0D1444] text-sm'
-                >
-                  Marca
-                </label>
-                <input
-                  type='text'
-                  id='inputField'
-                  name='inputField'
-                  className='border border-[#0D1444] py-2 px-4 h-14 my-4 rounded textField'
-                />
-              </div>
-              <div className='relative mb-[5%]'>
-                <label
-                  htmlFor='inputField'
-                  className='absolute bg-white px-1 -top-[5%] md:top-[8%]
-                        lg:top-[8%] left-[12%] text-[#0D1444] text-sm'
-                >
-                  Modelo
-                </label>
-                <input
-                  type='text'
-                  id='inputField'
-                  name='inputField'
-                  className='border border-[#0D1444] py-2 px-4 w-[85%] h-14
-                        mx-[10%] my-4  rounded'
-                />
-              </div>
-              <div className='relative mb-[5%]'>
-                <label
-                  htmlFor='inputField'
-                  className='absolute bg-white px-1 -top-[5%] md:top-[8%] lg:top-[8%] left-[12%] z-10 text-[#0D1444] text-sm'
-                >
-                  Año
-                </label>
-                <div className='relative'>
-                  <input
-                    type='text'
-                    id='yearField'
-                    className='border border-[#0D1444] py-2 px-4 w-[85%] h-14 mx-[10%] my-4 rounded'
-                    placeholder='Seleccione el año'
-                  />
-                  <select
-                    id='yearSelect'
-                    className='bg-white absolute inset-0 opacity-0 cursor-pointer w-[85%] h-14 mx-[10%] my-4 z-10'
-                    onChange={e => {
-                      const selectedYear = e.target.value
-                      document.getElementById('yearField').value = selectedYear
-                    }}
-                  >
-                    <option value='Seleccione el año'>Seleccione el año</option>
                     <option value='2023'>2023</option>
                     <option value='2022'>2022</option>
                     <option value='2021'>2021</option>
@@ -211,308 +228,234 @@ export const AddVehiculeBoard = () => {
                     <option value='2011'>2011</option>
                     <option value='2010'>2010</option>
                   </select>
-                  <div className='absolute inset-y-0 right-0 flex items-center px-2 text-gray-700 pointer-events-none'></div>
+                </div>
+                <div>
+                  <div className='relative'>
+                    <input
+                      type='text'
+                      id='patent'
+                      className='block px-4 pb-2.5 pt-4 w-full text-sm text-gray-900 bg-transparent border-1 border-gray-300 appearance-none border-[#0D1544] hover:#31429B focus:outline-none peer'
+                      placeholder=''
+                    />
+                    <label
+                      htmlFor='patent'
+                      className='left-3.5 absolute text-sm text-gray-500 duration-300 transform -translate-y-4 scale-75 top-2 z-10 origin-[0] bg-white px-1 peer-focus:px-1 peer-focus:text-blue-600 peer-focus:dark:text-#0d1544 peer-placeholder-shown:scale-100 peer-placeholder-shown:-translate-y-1/2 peer-placeholder-shown:top-[28px] pointer-events-none peer-focus:top-2 peer-focus:scale-75 peer-focus:-translate-y-4 start-1'
+                    >
+                      Patente*
+                    </label>
+                  </div>
                 </div>
               </div>
-              <div className='relative mb-[5%]'>
+
+              <h2 className='mt-10 text-lg font-medium leading-normal tracking-tight text-dark'>
+                Tipo de combustible
+              </h2>
+
+              <div className='flex gap-4 mt-3'>
                 <label
-                  htmlFor='inputField'
-                  className='absolute bg-white px-1 -top-[5%] md:top-[8%]
-                        lg:top-[8%] left-[12%] text-sm'
+                  className='text-[#0D1444] text-sm flex items-center cursor-pointer'
+                  htmlFor='fuelType1'
                 >
-                  Patente
-                </label>
-                <input
-                  type='text'
-                  id='inputField'
-                  name='inputField'
-                  className='border border-[#0D1444] py-2 px-4 w-[85%] h-14
-                        mx-[10%] my-4  rounded'
-                />
-              </div>
-            </section>
-          </div>
-
-          <h2
-            className='ml-[10%] mt-[10%] mb-[5%] text-[#0D1444] text-lg
-            font-medium  leading-normal tracking-tight'
-          >
-            Tipo de combustible
-          </h2>
-
-          <div>
-            <section className='ml-[10%] mt-[0%] lg:grid lg:grid-cols-4 lg:ml-[15%]'>
-              <div className='my-[2.5%]'>
-                <label className='text-[#0D1444] text-sm flex items-center' htmlFor='option1'>
                   <input
-                    className='mr-2 h-4 w-4 appearance-none rounded-full border-2
-                            border-[#0D1444] checked:bg-[#0D1444] checked:border-transparent'
+                    className='mr-2 h-4 w-4 appearance-none rounded-full border-2 border-[#0D1444] checked:bg-[#0D1444] checked:border-transparent cursor-pointer'
                     type='radio'
-                    id='opcion1'
-                    name='oilType'
-                    value='option1'
+                    id='fuelType1'
+                    name='fuelType'
+                    value='Biocombustible'
                   />
                   <span className='inline-block align-middle'>Biocombustible</span>
                 </label>
-              </div>
-              <div className='my-[2.5%]'>
-                <label className='text-[#0D1444] text-sm flex items-center' htmlFor='option2'>
+                <label
+                  className='text-[#0D1444] text-sm flex items-center cursor-pointer'
+                  htmlFor='fuelType2'
+                >
                   <input
-                    className='mr-2 h-4 w-4 appearance-none rounded-full border-2
-                            border-[#0D1444] checked:bg-[#0D1444] checked:border-transparent'
+                    className='mr-2 h-4 w-4 appearance-none rounded-full border-2 border-[#0D1444] checked:bg-[#0D1444] checked:border-transparent cursor-pointer'
                     type='radio'
-                    id='option2'
-                    name='oilType'
-                    value='option2'
+                    id='fuelType2'
+                    name='fuelType'
+                    value='Gas'
                   />
                   <span className='inline-block align-middle'>Gas</span>
                 </label>
-              </div>
-              <div className='my-[2.5%]'>
-                <label className='text-[#0D1444] text-sm flex items-center' htmlFor='option3'>
+                <label
+                  className='text-[#0D1444] text-sm flex items-center cursor-pointer'
+                  htmlFor='fuelType3'
+                >
                   <input
-                    className='mr-2 h-4 w-4 appearance-none rounded-full border-2
-                            border-[#0D1444] checked:bg-[#0D1444] checked:border-transparent'
+                    className='mr-2 h-4 w-4 appearance-none rounded-full border-2 border-[#0D1444] checked:bg-[#0D1444] checked:border-transparent cursor-pointer'
                     type='radio'
-                    id='option3'
-                    name='oilType'
-                    value='option3'
+                    id='fuelType3'
+                    name='fuelType'
+                    value='Gasoil'
                   />
                   <span className='inline-block align-middle'>Gasoil</span>
                 </label>
-              </div>
-              <div className='my-[2.5%]'>
-                <label className='text-[#0D1444] text-sm flex items-center' htmlFor='option4'>
+                <label
+                  className='text-[#0D1444] text-sm flex items-center cursor-pointer'
+                  htmlFor='fuelType4'
+                >
                   <input
-                    className='mr-2 h-4 w-4 appearance-none rounded-full border-2
-                            border-[#0D1444] checked:bg-[#0D1444] checked:border-transparent'
+                    className='mr-2 h-4 w-4 appearance-none rounded-full border-2 border-[#0D1444] checked:bg-[#0D1444] checked:border-transparent cursor-pointer'
                     type='radio'
-                    id='option4'
-                    name='oilType'
-                    value='option4'
+                    id='fuelType4'
+                    name='fuelType'
+                    value='Nafta'
                   />
                   <span className='inline-block align-middle'>Nafta</span>
                 </label>
               </div>
-            </section>
 
-            <section className='mt-[5%] lg:grid lg:grid-cols-2 lg:ml-[8%]'>
-              <div className='relative mb-[5%]'>
-                <label
-                  htmlFor='inputField'
-                  className='absolute bg-white px-1 -top-[5%] md:top-[8%]
-                        left-[12%] text-[#0D1444] text-sm'
-                >
-                  Marca de motor
-                </label>
-                <input
-                  type='text'
-                  id='inputField'
-                  name='inputField'
-                  className='border border-[#0D1444] py-2 px-4 w-[85%] h-14
-                        mx-[10%] my-4 rounded'
-                />
-              </div>
-              <div className='relative mb-[5%]'>
-                <label
-                  htmlFor='inputField'
-                  className='absolute bg-white px-1 -top-[5%] md:top-[8%]
-                        left-[12%] text-[#0D1444] text-sm'
-                >
-                  N° de motor
-                </label>
-                <input
-                  type='text'
-                  id='inputField'
-                  name='inputField'
-                  className='border border-[#0D1444] py-2 px-4 w-[85%] h-14
-                        mx-[10%] my-4 rounded'
-                />
-              </div>
-              <div className='relative mb-[5%]'>
-                <label
-                  htmlFor='inputField'
-                  className='absolute bg-white px-1 -top-[5%] md:top-[8%]
-                        left-[12%] z-10 text-[#0D1444] text-sm'
-                >
-                  Marca de chasis
-                </label>
-                <div className='relative'>
-                  <input
-                    type='text'
-                    id='yearField'
-                    name='yearField'
-                    className='border border-[#0D1444] py-2 px-4 w-[85%] h-14
-                        mx-[10%] my-4 rounded'
-                  />
+              <div className='grid gap-5 pt-10 lg:grid-cols-2'>
+                <div>
+                  <div className='relative'>
+                    <input
+                      type='text'
+                      id='brandMotor'
+                      className='block px-4 pb-2.5 pt-4 w-full text-sm text-gray-900 bg-transparent border-1 border-gray-300 appearance-none border-[#0D1544] hover:#31429B focus:outline-none peer'
+                      placeholder=''
+                    />
+                    <label
+                      htmlFor='brandMotor'
+                      className='left-3.5 absolute text-sm text-gray-500 duration-300 transform -translate-y-4 scale-75 top-2 z-10 origin-[0] bg-white px-1 peer-focus:px-1 peer-focus:text-blue-600 peer-focus:dark:text-#0d1544 peer-placeholder-shown:scale-100 peer-placeholder-shown:-translate-y-1/2 peer-placeholder-shown:top-[28px] pointer-events-none peer-focus:top-2 peer-focus:scale-75 peer-focus:-translate-y-4 start-1'
+                    >
+                      Marca del motor*
+                    </label>
+                  </div>
                 </div>
-              </div>
 
-              <div className='relative mb-[5%]'>
-                <label
-                  htmlFor='inputField'
-                  className='absolute bg-white px-1 -top-[5%] md:top-[8%]
-                        left-[12%] text-[#0D1444] text-sm'
-                >
-                  N° de chasis
-                </label>
-                <input
-                  type='text'
-                  id='inputField'
-                  name='inputField'
-                  className='border border-[#0D1444] py-2 px-4 w-[85%] h-14
-                        mx-[10%] my-4 rounded'
-                />
-              </div>
-              <div className='relative mb-[5%]'>
-                <label
-                  htmlFor='inputField'
-                  className='absolute bg-white px-1 -top-[5%] md:top-[8%]
-                        left-[12%] text-[#0D1444] text-sm'
-                >
-                  Fecha de Vtv
-                </label>
-                <input
-                  type='text'
-                  id='inputField'
-                  name='inputField'
-                  className='border border-[#0D1444] py-2 px-4 w-[85%] h-14
-                        mx-[10%] my-4 rounded'
-                />
-              </div>
-              <div className='relative mb-[5%]'>
-                <label
-                  htmlFor='inputField'
-                  className='absolute bg-white px-1 -top-[5%] md:top-[8%] lg:top-[8%] left-[12%] z-10 text-[#0D1444] text-sm'
-                >
-                  Cantidad de ejes
-                </label>
-                <div className='relative'>
-                  <input
-                    type='text'
-                    id='ejesField'
-                    className='border border-[#0D1444] py-2 px-4 w-[85%] h-14 mx-[10%] my-4 rounded'
-                    placeholder='Seleccione n° de ejes'
-                  />
-                  <select
-                    id='ejesSelect'
-                    className='bg-white absolute inset-0 opacity-0 cursor-pointer w-[85%] h-14 mx-[10%] my-4 z-10'
-                    onChange={e => {
-                      const selectedEjes = e.target.value
-                      document.getElementById('ejesField').value = selectedEjes
-                    }}
-                  >
-                    <option value='Seleccione n° de ejes'>Seleccione n° de ejes</option>
-                    <option value='2 Ejes'>2 Ejes</option>
-                    <option value='3 Ejes'>3 Ejes</option>
-                    <option value='4 Ejes'>4 Ejes</option>
-                    <option value='5 Ejes'>5 Ejes</option>
-                    <option value='6 Ejes'>6 Ejes</option>
-                  </select>
-                  <div className='absolute inset-y-0 right-0 flex items-center px-2 text-gray-700 pointer-events-none'></div>
+                <div>
+                  <div className='relative'>
+                    <input
+                      type='text'
+                      id='numberMotor'
+                      className='block px-4 pb-2.5 pt-4 w-full text-sm text-gray-900 bg-transparent border-1 border-gray-300 appearance-none border-[#0D1544] hover:#31429B focus:outline-none peer'
+                      placeholder=''
+                    />
+                    <label
+                      htmlFor='numberMotor'
+                      className='left-3.5 absolute text-sm text-gray-500 duration-300 transform -translate-y-4 scale-75 top-2 z-10 origin-[0] bg-white px-1 peer-focus:px-1 peer-focus:text-blue-600 peer-focus:dark:text-#0d1544 peer-placeholder-shown:scale-100 peer-placeholder-shown:-translate-y-1/2 peer-placeholder-shown:top-[28px] pointer-events-none peer-focus:top-2 peer-focus:scale-75 peer-focus:-translate-y-4 start-1'
+                    >
+                      N° de motor*
+                    </label>
+                  </div>
                 </div>
               </div>
-            </section>
-          </div>
+              <div className='grid gap-5 pt-10 lg:grid-cols-2'>
+                <div>
+                  <div className='relative'>
+                    <input
+                      type='text'
+                      id='brandChassis'
+                      className='block px-4 pb-2.5 pt-4 w-full text-sm text-gray-900 bg-transparent border-1 border-gray-300 appearance-none border-[#0D1544] hover:#31429B focus:outline-none peer'
+                      placeholder=''
+                    />
+                    <label
+                      htmlFor='brandChassis'
+                      className='left-3.5 absolute text-sm text-gray-500 duration-300 transform -translate-y-4 scale-75 top-2 z-10 origin-[0] bg-white px-1 peer-focus:px-1 peer-focus:text-blue-600 peer-focus:dark:text-#0d1544 peer-placeholder-shown:scale-100 peer-placeholder-shown:-translate-y-1/2 peer-placeholder-shown:top-[28px] pointer-events-none peer-focus:top-2 peer-focus:scale-75 peer-focus:-translate-y-4 start-1'
+                    >
+                      Marca del chasis*
+                    </label>
+                  </div>
+                </div>
 
-          <div className='bg-[#31429B] w-[100%] mx-[2.5%] md:-mx-[22%] md:w-[150%] lg:w-[100%] lg:mx-[5%]'>
-            <h3 className='w-4/5 py-4 mx-4 font-semibold text-white text-start'>
-              REGISTRO ÚNICO DE TRANSPORTE DEL AUTOMOTOR
-            </h3>
-            <div className='lg:grid lg:grid-cols-3'>
-              <div className='relative my-0'>
-                <label
-                  htmlFor='inputField'
-                  className='absolute bg-[#31429B] px-1 -top-[5%]  left-[12%]
-                        z-10 text-white text-sm md:left-[22%] lg:top-[8%]'
-                >
-                  Constancia de inscripción
-                </label>
-                <div className='relative'>
-                  <input
-                    type='text'
-                    id='yearField'
-                    name='yearField'
-                    className='border bg-[#31429B] border-white py-2 px-4 h-14
-                        w-[85%] mx-[8%] my-4 rounded md:w-[57%] md:mx-[21%]
-                        lg:w-[70%] lg:ml-[22%]  text-white'
-                  />
+                <div>
+                  <div className='relative'>
+                    <input
+                      type='text'
+                      id='numberChassis'
+                      className='block px-4 pb-2.5 pt-4 w-full text-sm text-gray-900 bg-transparent border-1 border-gray-300 appearance-none border-[#0D1544] hover:#31429B focus:outline-none peer'
+                      placeholder=''
+                    />
+                    <label
+                      htmlFor='numberChassis'
+                      className='left-3.5 absolute text-sm text-gray-500 duration-300 transform -translate-y-4 scale-75 top-2 z-10 origin-[0] bg-white px-1 peer-focus:px-1 peer-focus:text-blue-600 peer-focus:dark:text-#0d1544 peer-placeholder-shown:scale-100 peer-placeholder-shown:-translate-y-1/2 peer-placeholder-shown:top-[28px] pointer-events-none peer-focus:top-2 peer-focus:scale-75 peer-focus:-translate-y-4 start-1'
+                    >
+                      N° de chasis*
+                    </label>
+                  </div>
                 </div>
-              </div>
-              <div className='relative mb-2'>
-                <label
-                  htmlFor='inputField'
-                  className='absolute bg-[#31429B] px-1 -top-[5%]
-                        md:top-[8%] left-[12%] text-white text-sm
-                        md:left-[22%] lg:top-[8%] z-20'
-                >
-                  Categoría
-                </label>
-                <div className='relative'>
-                  <input
-                    type='text'
-                    id='categoryField'
-                    className='border bg-[#31429B] border-white py-2 px-4
-                        w-[85%] h-14 mx-[8%] my-4 rounded md:w-[57%] md:mx-[21%]
-                        lg:w-[70%] lg:ml-[22%] text-white'
-                    placeholder='Categoría de carga'
-                  />
-                  <select
-                    id='categorySelect'
-                    className=' bg-white absolute inset-0 opacity-0 cursor-pointer
-                        w-[85%] h-14 mx-[8%] my-4 md:w-[57%] md:mx-[21%] lg:w-[70%] lg:ml[22%]'
-                    onChange={e => {
-                      const selectedCategory = e.target.value
-                      document.getElementById('categoryField').value = selectedCategory
-                    }}
-                  >
-                    <option value='Categoría de carga'>Seleccione la categoría de carga</option>
-                    <option value='Transportista de carga de masiva o a granel'>
-                      Transportista de carga de masiva o a granel
-                    </option>
-                    <option value='Transportista de carga peligrosa'>
-                      Transportista de carga peligrosa
-                    </option>
-                    <option value='Transportista de carga fraccionada'>
-                      Transportista de carga fraccionada
-                    </option>
-                    <option value='Transportista de carga propia'>
-                      Transportista de carga propia
-                    </option>
-                    <option value='Transportista tráficos especiales'>
-                      Transportista tráficos especiales
-                    </option>
-                    <option value='Transportista de carga internacional'>
-                      Transportista de carga internacional
-                    </option>
-                  </select>
-                  <div className='absolute inset-y-0 right-0 flex items-center px-2 text-gray-700 pointer-events-none'></div>
-                </div>
-              </div>
-              <div>
-                <button
-                  onClick={handleClick1}
-                  className='w-[65%] h-8 mx-[8%] mb-0 rounded-md bg-white
-                    text-[#0D1444] font-semibold text-xs md:w-[30%]
-                    md:mx-[21%] lg:mt-[5%] lg:w-[55%]'
-                >
-                  seleccionar constancia
-                </button>
-                <p className='text-white mx-[10%] pb-4 md:mx-[22%]'>imagen.jpg</p>
               </div>
             </div>
           </div>
 
-          <div className='w-[95%] h-20'>
-            <button
-              onClick={handleClick2}
-              className='w-full h-8 bg-[#31429B] rounded-md
-                text-white'
-            >
-              Agregar vehículo
-            </button>
+          <div className='bg-[#31429B] w-full pt-5 pb-8 px-4 mt-7'>
+            <h3 className='w-4/5 py-4 mx-4 font-semibold text-white text-start'>
+              REGISTRO ÚNICO DE TRANSPORTE DEL AUTOMOTOR
+            </h3>
+            <div className='gap-3 lg:grid lg:grid-cols-3'>
+              <div className='flex items-end'>
+                <div className='relative w-full'>
+                  <input
+                    type='text'
+                    id='constanciaInscripcion'
+                    className='block px-4 pb-2.5 pt-4 w-full text-sm text-gray-900 bg-transparent border-1 bg-white border-gray-300 appearance-none border-[#0D1544] hover:#31429B focus:outline-none peer'
+                    placeholder=''
+                  />
+                  <label
+                    htmlFor='constanciaInscripcion'
+                    className='left-3.5 absolute text-sm rounded text-gray-500 duration-300 transform -translate-y-4 scale-75 top-2 z-10 origin-[0] bg-white px-1 peer-focus:px-1 peer-focus:text-black peer-focus:dark:text-black peer-placeholder-shown:scale-100 peer-placeholder-shown:-translate-y-1/2 peer-placeholder-shown:top-[28px] pointer-events-none peer-focus:top-2 peer-focus:scale-75 peer-focus:-translate-y-4 start-1'
+                  >
+                    Constancia de inscripción
+                  </label>
+                </div>
+              </div>
+              <div className='flex items-end'>
+                <div className='relative w-full'>
+                  <label
+                    htmlFor='year'
+                    className='left-3.5 absolute text-sm rounded text-gray-500 duration-300 transform -translate-y-4 scale-75 top-2 z-10 origin-[0] bg-white px-1 peer-focus:px-1 peer-focus:text-black peer-focus:dark:text-black peer-placeholder-shown:scale-100 peer-placeholder-shown:-translate-y-1/2 peer-placeholder-shown:top-[28px] pointer-events-none peer-focus:top-2 peer-focus:scale-75 peer-focus:-translate-y-4 start-1'
+                  >
+                    Categoría
+                  </label>
+                  <select
+                    id='categoria'
+                    className='block w-full px-4 text-sm text-gray-900 border border-gray-300 bg-gray-50 focus:ring-blue-500 focus:border-blue-500 min-h-[56px]'
+                    defaultValue={'DEFAULT'}
+                  >
+                    <option disabled value={'DEFAULT'}>
+                      Selecciona un año
+                    </option>
+                    <option value='Transportista de Carga Masiva o a Granel'>
+                      Transportista de Carga Masiva o a Granel
+                    </option>
+                    <option value='Transportista de Carga Peligrosa'>
+                      Transportista de Carga Peligrosa{' '}
+                    </option>
+                    <option value='Transportista de Carga Fraccionada'>
+                      Transportista de Carga Fraccionada
+                    </option>
+                    <option value='Transportista de Carga Propia'>
+                      Transportista de Carga Propia
+                    </option>
+                    <option value='Transportista de Tráficos Especiales'>
+                      Transportista de Tráficos Especiales
+                    </option>
+                    <option value='Transportista de Carga Internacional'>
+                      Transportista de Carga Internacional
+                    </option>
+                  </select>
+                </div>
+              </div>
+
+              <div className='relative'>
+                <label htmlFor='example1' className='block mb-1 text-base font-medium text-white'>
+                  Foto del empleado*
+                </label>
+                <input
+                  id='example1'
+                  type='file'
+                  className='block cursor-pointer w-full text-sm file:mr-4 file:rounded-md file:border-0 file:bg-blue-600 file:py-2.5 file:px-4 file:text-sm file:font-semibold file:text-white hover:file:bg-dark-blue-600 focus:outline-none disabled:pointer-events-none disabled:opacity-60'
+                  placeholder='valsad'
+                />
+              </div>
+            </div>
           </div>
-        </div>
+
+          <div className='px-10 mt-7'>
+            <button className='w-full btn btn-template-1'>Agregar vehículo</button>
+          </div>
+        </form>
       </div>
     </>
   )
