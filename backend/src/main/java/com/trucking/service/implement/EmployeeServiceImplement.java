@@ -46,11 +46,12 @@ public class EmployeeServiceImplement implements EmployeeService {
 //                () -> new IllegalArgumentException("Error al encontrar el email del usuario"));
         User actualUser = userRepository.findByEmail(SecurityContextHolder.getContext().getAuthentication().getName()).get();
         Company company = companyRepository.findByName(actualUser.getCompany().getName()).get();
+        String newPassword = passwordGenerator();
         //crear usuario con password generico
         User newEmpl = new User();
         newEmpl.setName(newEmployee.getName());
         newEmpl.setEmail(newEmployee.getEmail());
-        newEmpl.setPassword(passwordGenerator());
+        newEmpl.setPassword(newPassword);
         newEmpl.setCompany(company);
         newEmpl.setRole(newEmployee.getRoleName());
         newEmpl.setPhoto(newEmployee.getPhoto());
@@ -64,7 +65,7 @@ public class EmployeeServiceImplement implements EmployeeService {
         //crear el dto para enviar el email
         DataForgotPasswordDto fgt = new DataForgotPasswordDto(newEmpl.getName(), newEmployee.getEmail(), tokenProv);
         //enviar mail para cambio de contraseña
-        emailService.setEmail(fgt);
+        emailService.setNewEmployeeEmail(fgt, newPassword);
         DataShowEmployee employee = new DataShowEmployee(
                 savEmpl.getId(),
                 savEmpl.getName(),
@@ -157,14 +158,18 @@ public class EmployeeServiceImplement implements EmployeeService {
     @Override
     public DataShowEmployee delete(Long id, String token) {
         //valiadar rol del usuario del token
-        String tokenUserName = jwtService.extractUsername(token);
+//        String tokenUserName = jwtService.extractUsername(token);
+//
+//        var dataToken = userRepository.findByEmail(tokenUserName).orElseThrow(
+//                () -> new IllegalArgumentException("Error al encontrar el email del usuario"));
 
-        var dataToken = userRepository.findByEmail(tokenUserName).orElseThrow(
-                () -> new IllegalArgumentException("Error al encontrar el email del usuario"));
+        User actualUser = userRepository.findByEmail(SecurityContextHolder.getContext().getAuthentication().getName()).get();
+        Company company = companyRepository.findByName(actualUser.getCompany().getName()).get();
+
 
         var emplId = employeeRepository.findById(id).orElseThrow(() ->
                 new IllegalArgumentException("Empleado no encontrado con el id: " + id));
-        if (dataToken.getCompany().equals(emplId.getCompany())) {
+        if (company.equals(emplId.getCompany())) {
             employeeRepository.deleteById(id);
         }else  {
             throw new IllegalArgumentException("La compañia del Administrador y del Empleado no es la misma");
@@ -178,9 +183,9 @@ public class EmployeeServiceImplement implements EmployeeService {
                 emplId.getRole(),
                 emplId.getPhoto()
         );
-        if (dataToken.getCompany().equals(emplId.getCompany())) {
-            employeeRepository.deleteById(id);
-        }
+//        if (dataToken.getCompany().equals(emplId.getCompany())) {
+//            employeeRepository.deleteById(id);
+//        }
         return employee;
     }
 

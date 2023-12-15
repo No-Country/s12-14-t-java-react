@@ -26,7 +26,7 @@ public class EmployeeController {
     public ResponseEntity<?> newEmployee(@RequestBody @Valid DataNewEmployee dataNewEmployee){
         try {
             DataShowEmployee emp = employeeServiceImplement.save(dataNewEmployee);
-            return new ResponseEntity<>("Empleado creado exitosamente, "+ emp, HttpStatus.CREATED);
+            return new ResponseEntity<>(emp, HttpStatus.CREATED);
         }catch (Exception e){
             return new ResponseEntity<>("Error al crear el empleado:" + e.getMessage(), HttpStatus.BAD_REQUEST);
         }
@@ -106,9 +106,9 @@ public class EmployeeController {
     public ResponseEntity<?> deleteEmployee(@PathVariable long id,  @RequestBody String token){
         try {
             DataShowEmployee delete = employeeServiceImplement.delete(id, token);
-            return new ResponseEntity<>("Empleado eliminado exitosamente, "+ delete, HttpStatus.OK);
+            return new ResponseEntity<>("Empleado eliminado exitosamente", HttpStatus.OK);
         }catch (Exception e){
-            return new ResponseEntity<>("Error al eliminar el empleado", HttpStatus.BAD_REQUEST);
+            return new ResponseEntity<>("Error al eliminar el empleado" + e.getMessage(), HttpStatus.BAD_REQUEST);
         }
     }
 

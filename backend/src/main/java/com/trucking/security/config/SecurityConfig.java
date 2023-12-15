@@ -45,6 +45,9 @@ public class SecurityConfig {
                                 .requestMatchers("/vehicle/**").hasAnyAuthority(
                                         RoleName.OWNER.name()
                                 )
+                                .requestMatchers("/employee/**").hasAnyAuthority(
+                                        RoleName.OWNER.name()
+                                )
                                 .requestMatchers("/swagger-ui.html", "/v3/api-docs/**", "/swagger-ui/**").permitAll()
                                 .anyRequest().authenticated()
                 ).sessionManagement(
