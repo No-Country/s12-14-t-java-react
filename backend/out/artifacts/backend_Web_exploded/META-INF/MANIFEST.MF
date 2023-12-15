@@ -1,0 +1,9 @@
+Manifest-Version: 1.0
+Created-By: IntelliJ IDEA
+Built-By: steph
+Build-Jdk: Amazon Corretto version 17.0.9
+Implementation-Title: backend
+Implementation-Version: 0.0.1-SNAPSHOT
+Implementation-Vendor-Id: com.trucking
+Main-Class: ${start-class}
+
