@@ -36,6 +36,7 @@ const DriverMenu = () => {
     }, []);
 
     return (
+       
         <div className={`text-white font-poppins fixed top-0 ${isMobile ? 'w-full bg-[#31429B] h-[61px]' : 'h-screen w-[239px] bg-[#31429B]'}`}>
             {isMobile ? (
                 <div className="flex items-center justify-end px-4 h-[61px]">

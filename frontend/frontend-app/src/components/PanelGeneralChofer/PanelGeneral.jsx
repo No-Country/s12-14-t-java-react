@@ -18,7 +18,7 @@ function PanelGeneral({value}) {
     return (
         <>
          <DriverMenu/>
-        <section className="sm:w-100% sm:h-100% ">
+        <section className="sm:w-100% sm:h-100%  ">
           
             <div className="flex mt-24 gap-6">
                 <img className="ml-6 rounded-2xl" src="././img/chofer.png" alt="" />
@@ -27,7 +27,7 @@ function PanelGeneral({value}) {
                     <p className="font-semibold text-base">Rol</p>
                 </div>
             </div>
-            <div className="flex mt-10 ml-8 items-center gap-4">
+            <div className="flex mt-10 ml-8 items-center gap-4 ">
                 <div className="flex flex-col">
                     <h1 className="text-base font-semibold">Identidad Validada</h1>
                     <p className="fecha text-xs font-semibold">{formattedDate} </p>
@@ -62,7 +62,7 @@ function PanelGeneral({value}) {
             </div>
             {SwitchOn && (
           
-            <select id="countries" class=" ml-6 mt-8 bg-gray-50 border border-[#0D1544] text-gray-900 text-base rounded-lg focus:ring-blue-500 focus:border-[#0D1544] block w-[90%]  h-14 p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
+            <select id="countries" class="ml-6 mt-8 bg-gray-50 border border-[#0D1544] text-gray-900 text-base rounded-lg focus:ring-blue-500 focus:border-[#0D1544] block w-[90%]  h-14 p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
                 <option className="bg-[#0D1544] text-white" selected>Seleccionar vehiculo</option>
                 <option value="TV">Tipo de vehiculo - Patente</option>
                 <option value="TV">Tipo de vehiculo - Patente</option>
