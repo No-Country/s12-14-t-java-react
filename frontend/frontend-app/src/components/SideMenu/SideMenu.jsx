@@ -77,7 +77,7 @@ const SideMenu = () => {
   }, [])
 
   return (
-    <div className={`text-white font-poppins top-0 bg-[#31429B] h-100`}>
+    <div className={`text-white font-poppins lg:w-[19%] top-0 bg-[#31429B] h-100`}>
       {isMobile ? (
         <div className='flex items-center justify-end px-4 h-[61px]'>
           <button onClick={() => setIsMobile(!isMobile)}>

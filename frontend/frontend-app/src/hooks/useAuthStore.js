@@ -18,7 +18,7 @@ export const useAuthStore = () => {
   const startRegister = async User => {
     dispatch(onChecking())
     try {
-      const { data } = await axios.post('https://trucking-jebius.koyeb.app/api/v1/auth/register', {
+      const { data } = await axios.post(`${import.meta.env.VITE_API_URL}/auth/register`, {
         ...User
       })
       localStorage.setItem('token', data.token)
@@ -44,7 +44,7 @@ export const useAuthStore = () => {
   const startLogin = async ({ email, password }) => {
     dispatch(onChecking())
     try {
-      const { data } = await axios.post('https://trucking-jebius.koyeb.app/api/v1/auth/login', {
+      const { data } = await axios.post(`${import.meta.env.VITE_API_URL}/auth/login`, {
         email,
         password
       })
@@ -117,7 +117,7 @@ export const useAuthStore = () => {
     console.log(config)
     try {
       const { data } = await axios.put(
-        'https://trucking-jebius.koyeb.app/api/v1/auth/changePassword',
+        `${import.meta.env.VITE_API_URL}/auth/changePassword`,
         {
           oldPassword,
           newPassword

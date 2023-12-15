@@ -25,6 +25,7 @@ function App() {
     if (document.cookie.indexOf('token=') >= 0) {
       const user = JSON.parse(window.localStorage.getItem('user'))
       // console.log(user)
+      // console.log()
       dispatch(onLogin(user))
     } else {
       document.cookie = 'token=;expires=Thu, 01 Jan 1970 00:00:01 GMT;'
@@ -37,10 +38,10 @@ function App() {
       <Router>
         <Routes>
           <Route element={<ProtectedRoute isAllowed={isAllowed} />}>
-            <Route path='/registro-mantenimiento' element={<RegistroMantenimiento />} />
-            <Route path='/agregar-vehiculo' element={<AddVehicle />} />
-            <Route path='/mostrar-empleados' element={<Empleado />} />
             <Route path='/crear-perfil' element={<DashboardNewProfile />} />
+            <Route path='/mostrar-empleados' element={<Empleado />} />
+            <Route path='/agregar-vehiculo' element={<AddVehicle />} />
+            <Route path='/registro-mantenimiento' element={<RegistroMantenimiento />} />
 
             {/* Ruta agregada para ultimos mantenimientos, dentro del panel de mantenimiento */}
             <Route path='/latest-maintenance' element={<LatestMaintenance />} />

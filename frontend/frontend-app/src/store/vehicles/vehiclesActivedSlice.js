@@ -8,7 +8,9 @@ export const vehiclesActivedSlice = createSlice({
     isLoading: false    
   },
   reducers: {
-    
+    startLoadingVehiclesActivated: (state, action)=>{
+      state.isLoading=true;
+    }
   }
 })
 
