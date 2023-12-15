@@ -45,6 +45,9 @@ public class SecurityConfig {
                                 .requestMatchers("/vehicle/**").hasAnyAuthority(
                                         RoleName.OWNER.name()
                                 )
+                                .requestMatchers("/employee/**").hasAnyAuthority(
+                                        RoleName.OWNER.name()
+                                )
                                 .requestMatchers("/list/vehicle/**").hasAnyAuthority(
                                         RoleName.OWNER.name(),
                                         RoleName.MAINTENANCE.name(),

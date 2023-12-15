@@ -22,11 +22,13 @@ import java.util.List;
 @AllArgsConstructor
 @Entity
 @Table(name = "users", uniqueConstraints = {@UniqueConstraint(columnNames = "email")})
+@Inheritance(strategy = InheritanceType.TABLE_PER_CLASS)
 public class User implements UserDetails {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private String name;
+    private String lastName;
     private String email;
     private String password;
     @ManyToOne
@@ -34,6 +36,10 @@ public class User implements UserDetails {
     @Enumerated(EnumType.STRING)
     private RoleName role;
     private String tokenPassword;
+    private String photo;
+    private boolean active;
+    private String driverLicencePhoto;
+    private String criminalRecord;
 
     /**
      * Obtiene la colección de autoridades (roles) del usuario.
