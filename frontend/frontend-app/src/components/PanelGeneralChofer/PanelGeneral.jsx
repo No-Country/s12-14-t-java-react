@@ -28,7 +28,6 @@ function PanelGeneral({ value }) {
     setButtonRevision(true);
     setSelectStatus(false);
     setSelectedVehicle(selectedValue);
-    console.log(selectedValue);
     setShowRevisionComponent(false); // Oculta el componente revisión al cambiar al seleccionar un vehículo
   };
 

@@ -67,7 +67,7 @@ const DriverMenu = () => {
 
   return (
     <div
-      className={`text-white font-poppins fixed top-0 ${
+      className={`text-white font-poppins top-0 ${
         isMobile
           ? "w-full bg-[#31429B] h-[61px]"
           : "h-screen w-[239px] bg-[#31429B]"
@@ -87,9 +87,7 @@ const DriverMenu = () => {
           {menuItems.map((item, index) => (
             <Link
               to={
-                item.name === "Revisión diaria"
-                  ? "/panel-general-chofer"
-                  : "/perfil-chofer"
+                item.name === "Revisión diaria" ? "/panel-general-chofer" : ""
               }
               key={index}
               className={`${item.spacing} ${item.size} ${item.weight} ${

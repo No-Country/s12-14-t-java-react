@@ -15,7 +15,6 @@ import { useEffect } from "react";
 import { onLogin, onLogout } from "./store/auth/authSlice";
 import LatestMaintenance from "./pages/LatestMaintenance";
 import RevisionDiaria from "./pages/RevisionDiaria";
-import PerfilChofer from "./components/PanelGeneralChofer/PerfilChofer";
 
 function App() {
   const dispatch = useDispatch();
@@ -59,7 +58,6 @@ function App() {
               element={<DatosPersonalesChofer />}
             />
             <Route path="/panel-general-chofer" element={<PanelGeneral />} />
-            <Route path="/perfil-chofer" element={<PerfilChofer />} />
 
             <Route path="/RevisionDiaria" element={<RevisionDiaria />} />
           </Route>
