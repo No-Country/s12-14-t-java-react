@@ -1,14 +1,12 @@
 package com.trucking.dto.employee;
 
 import com.trucking.entity.Company;
-import com.trucking.entity.Employee;
 import com.trucking.security.entity.RoleName;
-import lombok.AllArgsConstructor;
+import com.trucking.security.entity.User;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
 @Data
-@AllArgsConstructor
 @NoArgsConstructor
 public class DataShowEmployee {
     private Long id;
@@ -21,7 +19,7 @@ public class DataShowEmployee {
     private String criminalRecord;
     private String driverLicencePhoto;
 
-    public DataShowEmployee(Employee employee) {
+    public DataShowEmployee(User employee) {
         this.id = employee.getId();
         this.name = employee.getName();
         this.lastName = employee.getLastName();
@@ -52,4 +50,5 @@ public class DataShowEmployee {
         this.roleName = role;
         this.photo = photo;
     }
+
 }

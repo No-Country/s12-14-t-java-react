@@ -4,10 +4,10 @@ import com.trucking.controller.NewDriver;
 import com.trucking.dto.employee.DataNewEmployee;
 import com.trucking.dto.employee.DataShowEmployee;
 import com.trucking.dto.employee.UpdateEmployee;
-import com.trucking.entity.Employee;
 import com.trucking.repository.EmployeeRepository;
 import com.trucking.security.config.JwtService;
 import com.trucking.security.dto.DataForgotPasswordDto;
+import com.trucking.security.entity.User;
 import com.trucking.security.repository.UserRepository;
 import com.trucking.security.service.EmailService;
 import com.trucking.service.EmployeeService;
@@ -40,7 +40,7 @@ public class EmployeeServiceImplement implements EmployeeService {
                 () -> new IllegalArgumentException("Error al encontrar el email del usuario"));
 
         //crear usuario con password generico
-        Employee newEmpl = new Employee();
+        User newEmpl = new User();
         newEmpl.setName(newEmployee.getName());
         newEmpl.setEmail(newEmployee.getEmail());
         newEmpl.setPassword(passwordGenerator());
@@ -49,7 +49,7 @@ public class EmployeeServiceImplement implements EmployeeService {
         newEmpl.setPhoto(newEmployee.getPhoto());
         newEmpl.setActive(true);
         //guardar el usuario
-        Employee savEmpl = employeeRepository.save(newEmpl);
+        User savEmpl = employeeRepository.save(newEmpl);
         //generar token para usar en el envio del email
         String tokenProv = jwtService.generateToken(savEmpl);
         //crear el dto para enviar el email
@@ -57,7 +57,7 @@ public class EmployeeServiceImplement implements EmployeeService {
         //enviar mail para cambio de contraseña
         emailService.setEmail(fgt);
         DataShowEmployee employee = new DataShowEmployee(
-                savEmpl.getEmployeeId(),
+                savEmpl.getId(),
                 savEmpl.getName(),
                 savEmpl.getLastName(),
                 savEmpl.getEmail(),
@@ -77,7 +77,7 @@ public class EmployeeServiceImplement implements EmployeeService {
                 () -> new IllegalArgumentException("Error al encontrar el email del usuario"));
 
         //crear usuario con password generico
-        Employee newDrv = new Employee();
+        User newDrv = new User();
         newDrv.setName(driver.getName());
         newDrv.setEmail(driver.getEmail());
         newDrv.setPassword(passwordGenerator());
@@ -86,7 +86,7 @@ public class EmployeeServiceImplement implements EmployeeService {
         newDrv.setPhoto(driver.getPhoto());
         newDrv.setActive(true);
         //guardar el usuario
-        Employee savDriv = employeeRepository.save(newDrv);
+        User savDriv = employeeRepository.save(newDrv);
         //generar token para usar en el envio del email
         String tokenProv = jwtService.generateToken(savDriv);
         //crear el dto para enviar el email
@@ -94,7 +94,7 @@ public class EmployeeServiceImplement implements EmployeeService {
         //enviar mail para cambio de contraseña
         emailService.setEmail(fgt);
         DataShowEmployee driverData = new DataShowEmployee(
-                savDriv.getEmployeeId(),
+                savDriv.getId(),
                 savDriv.getName(),
                 savDriv.getLastName(),
                 savDriv.getEmail(),
@@ -130,10 +130,10 @@ public class EmployeeServiceImplement implements EmployeeService {
         }else {
             throw new IllegalArgumentException("La compañia del Administrador y del Empleado no es la misma");
         }
-        Employee updEmp = employeeRepository.save(emplId);
+        User updEmp = employeeRepository.save(emplId);
 
         DataShowEmployee employee = new DataShowEmployee(
-                updEmp.getEmployeeId(),
+                updEmp.getId(),
                 updEmp.getName(),
                 updEmp.getLastName(),
                 updEmp.getEmail(),
@@ -161,7 +161,7 @@ public class EmployeeServiceImplement implements EmployeeService {
             throw new IllegalArgumentException("La compañia del Administrador y del Empleado no es la misma");
         }
         DataShowEmployee employee = new DataShowEmployee(
-                emplId.getEmployeeId(),
+                emplId.getId(),
                 emplId.getName(),
                 emplId.getLastName(),
                 emplId.getEmail(),
@@ -191,9 +191,9 @@ public class EmployeeServiceImplement implements EmployeeService {
             throw new IllegalArgumentException("La compañia del Administrador y del Empleado no es la misma");
         }
         emplId.setActive(false);
-        Employee deavtive = employeeRepository.save(emplId);
+        User deavtive = employeeRepository.save(emplId);
         DataShowEmployee employee = new DataShowEmployee(
-                deavtive.getEmployeeId(),
+                deavtive.getId(),
                 deavtive.getName(),
                 deavtive.getLastName(),
                 deavtive.getEmail(),
@@ -218,7 +218,7 @@ public class EmployeeServiceImplement implements EmployeeService {
         DataShowEmployee employee;
         if (dataToken.getCompany().equals(emplId.getCompany())) {
             employee = new DataShowEmployee(
-                    emplId.getEmployeeId(),
+                    emplId.getId(),
                     emplId.getName(),
                     emplId.getLastName(),
                     emplId.getEmail(),
@@ -241,7 +241,7 @@ public class EmployeeServiceImplement implements EmployeeService {
                 () -> new IllegalArgumentException("Error al encontrar el email del usuario"));
 
 
-        List<Employee> all = employeeRepository.findAllByCompany(dataToken.getCompany().toString());
+        List<User> all = employeeRepository.findAllByCompanyId(dataToken.getCompany().getId());
         List<DataShowEmployee> dataShowEmployees = all.stream()
                 .map(DataShowEmployee::new)
                 .collect(Collectors.toList());
@@ -256,7 +256,7 @@ public class EmployeeServiceImplement implements EmployeeService {
         var dataToken = userRepository.findByEmail(tokenUserName).orElseThrow(
                 () -> new IllegalArgumentException("Error al encontrar el email del usuario"));
 
-        List<Employee> actives = employeeRepository.findAllByCompanyAndActiveIsTrue(dataToken.getCompany().toString());
+        List<User> actives = employeeRepository.findAllByCompanyIdAndActiveIsTrue(dataToken.getCompany().getId());
         List<DataShowEmployee> dataShowEmployees = actives.stream()
                 .map(DataShowEmployee::new)
                 .collect(Collectors.toList());

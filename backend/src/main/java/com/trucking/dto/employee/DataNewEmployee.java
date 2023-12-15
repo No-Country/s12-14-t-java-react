@@ -19,6 +19,9 @@ public class DataNewEmployee {
     @NotBlank(message = "El nombre es obligatorio")
     @Pattern(regexp = "^[A-Za-zÁÉÍÓÚÜÑáéíóúüñ\\- ]{2,50}$|^$", message = "El nombre no es válido")
     private String name;
+    @NotBlank(message = "El apellido es obligatorio")
+    @Pattern(regexp = "^[A-Za-zÁÉÍÓÚÜÑáéíóúüñ\\- ]{2,50}$|^$", message = "El apellido no es válido")
+    private String lastName;
     @Pattern(regexp = "^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\\.[a-zA-Z]{2,}$", message = "El correo electrónico no es válido")
     @NotBlank(message = "El correo electrónico es obligatorio")
     @Email
@@ -27,4 +30,7 @@ public class DataNewEmployee {
     private RoleName roleName;
     @NotBlank(message = "La foto del empleado es obligatoria")
     private String photo;
+    @NotBlank(message = "El id de la compàñia es obligatoria")
+    @Pattern(regexp = "^[0-9]+$")
+    private Long company;
 }
