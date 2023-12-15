@@ -1,4 +1,4 @@
-package com.trucking.dto;
+package com.trucking.dto.vehicle;
 
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
@@ -28,6 +28,8 @@ public class VehicleDto {
     @NotBlank(message = "La patente es obligatoria")
     @Pattern(regexp = "^[a-zA-Z0-9]{6,7}$|^$", message = "La patente no es válida")
     private String patent;
+
+    private String reason;
 
     @NotBlank(message = "La cantidad de ejes es obligatoria")
     private String axle;

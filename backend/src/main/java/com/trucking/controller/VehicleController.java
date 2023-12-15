@@ -1,19 +1,15 @@
 package com.trucking.controller;
 
-import com.trucking.dto.VehicleDto;
-import com.trucking.dto.pageable.PageableDto;
+import com.trucking.dto.vehicle.VehicleDto;
 import com.trucking.security.dto.MsgDto;
 import com.trucking.security.exception.ValidationIntegrity;
 import com.trucking.service.VehicleService;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.springdoc.core.annotations.ParameterObject;
-import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.security.core.annotation.AuthenticationPrincipal;
-import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;

@@ -1,6 +1,7 @@
 package com.trucking.service;
 
-import com.trucking.dto.VehicleDto;
+import com.trucking.dto.vehicle.VehicleDto;
+import com.trucking.entity.Company;
 import com.trucking.entity.Fuel;
 import com.trucking.entity.Vehicle;
 import com.trucking.entity.VehicleType;
@@ -26,6 +27,7 @@ import java.time.format.DateTimeFormatter;
 import java.time.format.DateTimeParseException;
 import java.util.List;
 import java.util.Objects;
+import java.util.Optional;
 
 @Service
 @RequiredArgsConstructor
@@ -80,8 +82,14 @@ public class VehicleServiceImpl implements VehicleService {
 
     @Override
     public boolean delete(Long id) {
-        if(vehicleRepository.findById(id).isEmpty()){
+        Optional<Vehicle> oVehicle = vehicleRepository.findById(id);
+
+        if (oVehicle.isEmpty()) {
             return false;
+        }
+        Company company = oVehicle.get().getCompany();
+        if(company != null){
+            company.getVehicles().remove(oVehicle.get());
         }
         vehicleRepository.deleteById(id);
         return true;
