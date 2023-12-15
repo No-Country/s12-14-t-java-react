@@ -11,7 +11,7 @@ const PanelMaintenance =()=>{
                  md:w-full md:flex md:flex-row md:justify-center md:items-center md:flex-wrap md:p-7
                 2xl:w-full 2xl:h-[700px] 2xl:overflow-hidden 2xl:overflow-y-scroll 2xl:bg-scroll-[#969ec1] 
                 custom-scroll">
-                    <CardMaintenance />
+                    <CardMaintenance /> 
                     <CardMaintenance />
                     <CardMaintenance />
                     <CardMaintenance />
