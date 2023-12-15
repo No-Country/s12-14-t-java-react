@@ -1,9 +1,8 @@
 package com.trucking.mapper;
 
 import lombok.SneakyThrows;
-import com.trucking.dto.VehicleDto;
+import com.trucking.dto.vehicle.VehicleDto;
 import com.trucking.entity.Vehicle;
-import com.trucking.entity.VehicleType;
 import org.springframework.stereotype.Component;
 
 import java.time.LocalDate;
@@ -26,6 +25,7 @@ public class VehicleMapperImpl implements VehicleMapper{
                 .axle(Integer.parseInt(vehicleDto.getAxle()))
                 .dateVtv(LocalDate.parse(vehicleDto.getDateVtv(),DateTimeFormatter.ISO_LOCAL_DATE))
 //                .vehicleType(vehicleDto.getVehicleType())
+                .reason(vehicleDto.getReason())
                 .brandMotor(vehicleDto.getBrandMotor())
                 .numberMotor(vehicleDto.getNumberMotor())
                 .brandChassis(vehicleDto.getBrandChassis())
@@ -42,6 +42,7 @@ public class VehicleMapperImpl implements VehicleMapper{
                 .model(vehicleEntity.getModel())
                 .year(String.valueOf(vehicleEntity.getYear()))
                 .patent(vehicleEntity.getPatent())
+                .reason(vehicleEntity.getReason())
                 .axle(String.valueOf(vehicleEntity.getAxle()))
                 .dateVtv(String.valueOf(vehicleEntity.getDateVtv()))
                 .vehicleType(vehicleEntity.getVehicleType().getType())
