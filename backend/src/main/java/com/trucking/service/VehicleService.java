@@ -1,12 +1,9 @@
 package com.trucking.service;
 
-import com.trucking.dto.VehicleDto;
-import com.trucking.dto.pageable.PageableDto;
+import com.trucking.dto.vehicle.VehicleDto;
 import org.springframework.data.domain.Pageable;
-import org.springframework.security.core.userdetails.UserDetails;
 
 import java.util.List;
-import java.util.Optional;
 
 public interface VehicleService {
 
