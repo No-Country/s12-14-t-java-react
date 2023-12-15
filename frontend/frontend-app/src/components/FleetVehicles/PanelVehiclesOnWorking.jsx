@@ -1,7 +1,7 @@
 import CardVehicleOnWorking from "./CardVehicleOnWorking";
-
 const PanelVehiclesOnWorking =()=>{
-    return (<section className="section-vehicles section-vehicles-ow">
+  console.log(import.meta.env.VITE_API_URL)
+return (<section className="section-vehicles section-vehicles-ow">
     <div className="section-vehicles__container">
     
       <h2 className="section-vehicles__title">Vehículos de la flota</h2>

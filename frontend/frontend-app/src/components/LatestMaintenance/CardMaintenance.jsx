@@ -1,4 +1,4 @@
-import arrowRight from "../../../public/img/arrowRight.svg";
+import arrowRight from "/img/arrowRight.svg";
 
 const CardMaintenance = ()=>{
     return (
