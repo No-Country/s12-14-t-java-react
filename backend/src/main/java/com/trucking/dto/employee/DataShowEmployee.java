@@ -13,7 +13,7 @@ public class DataShowEmployee {
     private String name;
     private String lastName;
     private String email;
-    private Company company;
+    private String company;
     private RoleName roleName;
     private String photo;
     private String criminalRecord;
@@ -24,12 +24,12 @@ public class DataShowEmployee {
         this.name = employee.getName();
         this.lastName = employee.getLastName();
         this.email = employee.getEmail();
-        this.company = employee.getCompany();
+        this.company = employee.getCompany().getName();
         this.roleName = employee.getRole();
         this.photo = employee.getPhoto();
     }
 
-    public DataShowEmployee(Long employeeId, String name, String lastName, String email, Company company, RoleName role, String photo, String driverLicencePhoto, String criminalRecord) {
+    public DataShowEmployee(Long employeeId, String name, String lastName, String email, String company, RoleName role, String photo, String driverLicencePhoto, String criminalRecord) {
         this.id = employeeId;
         this.name = name;
         this.lastName = lastName;
@@ -41,7 +41,7 @@ public class DataShowEmployee {
         this.driverLicencePhoto = driverLicencePhoto;
     }
 
-    public DataShowEmployee(Long employeeId, String name, String lastName, String email, Company company, RoleName role, String photo) {
+    public DataShowEmployee(Long employeeId, String name, String lastName, String email, String company, RoleName role, String photo) {
         this.id = employeeId;
         this.name = name;
         this.lastName = lastName;

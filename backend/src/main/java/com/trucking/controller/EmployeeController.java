@@ -23,12 +23,12 @@ public class EmployeeController {
 
     @PostMapping("/newEmployee")
     @PreAuthorize("OWNER")
-    public ResponseEntity<?> newEmployee(@RequestBody @Valid DataNewEmployee dataNewEmployee, String token){
+    public ResponseEntity<?> newEmployee(@RequestBody @Valid DataNewEmployee dataNewEmployee){
         try {
-            DataShowEmployee emp = employeeServiceImplement.save(dataNewEmployee, token);
+            DataShowEmployee emp = employeeServiceImplement.save(dataNewEmployee);
             return new ResponseEntity<>("Empleado creado exitosamente, "+ emp, HttpStatus.CREATED);
         }catch (Exception e){
-            return new ResponseEntity<>("Error al crear el empleado", HttpStatus.BAD_REQUEST);
+            return new ResponseEntity<>("Error al crear el empleado:" + e.getMessage(), HttpStatus.BAD_REQUEST);
         }
     }
 

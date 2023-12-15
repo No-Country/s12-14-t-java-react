@@ -11,7 +11,7 @@ import java.util.List;
 @Service
 public interface EmployeeService {
 
-    DataShowEmployee save(DataNewEmployee newEmployee, String token);
+    DataShowEmployee save(DataNewEmployee newEmployee);
     DataShowEmployee saveDriver(NewDriver driver, String token);
     DataShowEmployee update(Long id, UpdateEmployee updateEmployee, String token);
     DataShowEmployee delete(Long id, String token);

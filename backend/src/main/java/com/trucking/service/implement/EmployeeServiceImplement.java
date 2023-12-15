@@ -4,14 +4,18 @@ import com.trucking.controller.NewDriver;
 import com.trucking.dto.employee.DataNewEmployee;
 import com.trucking.dto.employee.DataShowEmployee;
 import com.trucking.dto.employee.UpdateEmployee;
+import com.trucking.entity.Company;
+import com.trucking.repository.CompanyRepository;
 import com.trucking.repository.EmployeeRepository;
 import com.trucking.security.config.JwtService;
 import com.trucking.security.dto.DataForgotPasswordDto;
+import com.trucking.security.entity.RoleName;
 import com.trucking.security.entity.User;
 import com.trucking.security.repository.UserRepository;
 import com.trucking.security.service.EmailService;
 import com.trucking.service.EmployeeService;
 import lombok.RequiredArgsConstructor;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Service;
 
 import java.security.SecureRandom;
@@ -27,27 +31,32 @@ public class EmployeeServiceImplement implements EmployeeService {
     private final EmailService emailService;
     private final JwtService jwtService;
 
+    private final CompanyRepository companyRepository;
+
     /**
      * Implementación del servicio para crear un nuevo empleado para un
      */
     @Override
-    public DataShowEmployee save(DataNewEmployee newEmployee, String token) {
+    public DataShowEmployee save(DataNewEmployee newEmployee) {
 
         //valiadar rol del usuario del token
-        String tokenUserName = jwtService.extractUsername(token);
+//        String tokenUserName = jwtService.extractUsername(token);
 
-        var dataToken = userRepository.findByEmail(tokenUserName).orElseThrow(
-                () -> new IllegalArgumentException("Error al encontrar el email del usuario"));
-
+//        var dataToken = userRepository.findByEmail(tokenUserName).orElseThrow(
+//                () -> new IllegalArgumentException("Error al encontrar el email del usuario"));
+        User actualUser = userRepository.findByEmail(SecurityContextHolder.getContext().getAuthentication().getName()).get();
+        Company company = companyRepository.findByName(actualUser.getCompany().getName()).get();
         //crear usuario con password generico
         User newEmpl = new User();
         newEmpl.setName(newEmployee.getName());
         newEmpl.setEmail(newEmployee.getEmail());
         newEmpl.setPassword(passwordGenerator());
-        newEmpl.setCompany(dataToken.getCompany());
+        newEmpl.setCompany(company);
         newEmpl.setRole(newEmployee.getRoleName());
         newEmpl.setPhoto(newEmployee.getPhoto());
         newEmpl.setActive(true);
+
+
         //guardar el usuario
         User savEmpl = employeeRepository.save(newEmpl);
         //generar token para usar en el envio del email
@@ -61,7 +70,7 @@ public class EmployeeServiceImplement implements EmployeeService {
                 savEmpl.getName(),
                 savEmpl.getLastName(),
                 savEmpl.getEmail(),
-                savEmpl.getCompany(),
+                savEmpl.getCompany().getName(),
                 savEmpl.getRole(),
                 savEmpl.getPhoto()
         );
@@ -98,7 +107,7 @@ public class EmployeeServiceImplement implements EmployeeService {
                 savDriv.getName(),
                 savDriv.getLastName(),
                 savDriv.getEmail(),
-                savDriv.getCompany(),
+                savDriv.getCompany().getName(),
                 savDriv.getRole(),
                 savDriv.getPhoto(),
                 savDriv.getDriverLicencePhoto(),
@@ -137,7 +146,7 @@ public class EmployeeServiceImplement implements EmployeeService {
                 updEmp.getName(),
                 updEmp.getLastName(),
                 updEmp.getEmail(),
-                updEmp.getCompany(),
+                updEmp.getCompany().getName(),
                 updEmp.getRole(),
                 updEmp.getPhoto()
         );
@@ -165,7 +174,7 @@ public class EmployeeServiceImplement implements EmployeeService {
                 emplId.getName(),
                 emplId.getLastName(),
                 emplId.getEmail(),
-                emplId.getCompany(),
+                emplId.getCompany().getName(),
                 emplId.getRole(),
                 emplId.getPhoto()
         );
@@ -197,7 +206,7 @@ public class EmployeeServiceImplement implements EmployeeService {
                 deavtive.getName(),
                 deavtive.getLastName(),
                 deavtive.getEmail(),
-                deavtive.getCompany(),
+                deavtive.getCompany().getName(),
                 deavtive.getRole(),
                 deavtive.getPhoto()
         );
@@ -222,7 +231,7 @@ public class EmployeeServiceImplement implements EmployeeService {
                     emplId.getName(),
                     emplId.getLastName(),
                     emplId.getEmail(),
-                    emplId.getCompany(),
+                    emplId.getCompany().getName(),
                     emplId.getRole(),
                     emplId.getPhoto()
             );

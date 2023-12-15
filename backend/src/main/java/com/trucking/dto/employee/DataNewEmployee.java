@@ -30,7 +30,4 @@ public class DataNewEmployee {
     private RoleName roleName;
     @NotBlank(message = "La foto del empleado es obligatoria")
     private String photo;
-    @NotBlank(message = "El id de la compàñia es obligatoria")
-    @Pattern(regexp = "^[0-9]+$")
-    private Long company;
 }
