@@ -62,7 +62,7 @@ export const AddVehiculeBoard = () => {
                       id='vehicleType1'
                       name='vehicleType'
                       value='Acoplado'
-                      {...register('vehicleType', { required: true })}
+                      {...register('vehicleType', { required: 'Campo requerido' })}
                     />
                     <span className='inline-block align-middle'>Acoplado</span>
                   </label>
@@ -79,7 +79,7 @@ export const AddVehiculeBoard = () => {
                       id='vehicleType2'
                       name='vehicleType'
                       value='Automóvil'
-                      {...register('vehicleType', { required: 'Required field' })}
+                      {...register('vehicleType', { required: 'Campo requerido' })}
                     />
                     <span className='inline-block align-middle'>Automóvil</span>
                   </label>
@@ -96,7 +96,7 @@ export const AddVehiculeBoard = () => {
                       id='vehicleType3'
                       name='vehicleType'
                       value='Camión'
-                      {...register('vehicleType', { required: true })}
+                      {...register('vehicleType', { required: 'Campo requerido' })}
                     />
                     <span className='inline-block align-middle'>Camión</span>
                   </label>
@@ -113,7 +113,7 @@ export const AddVehiculeBoard = () => {
                       id='vehicleType4'
                       name='vehicleType'
                       value='Camioneta'
-                      {...register('vehicleType', { required: true })}
+                      {...register('vehicleType', { required: 'Campo requerido' })}
                     />
                     <span className='inline-block align-middle'>Camioneta</span>
                   </label>
@@ -130,7 +130,7 @@ export const AddVehiculeBoard = () => {
                       id='vehicleType5'
                       name='vehicleType'
                       value='Combi'
-                      {...register('vehicleType', { required: 'Required field' })}
+                      {...register('vehicleType', { required: 'Campo requerido' })}
                     />
                     <span className='inline-block align-middle'>Combi</span>
                   </label>
@@ -147,14 +147,18 @@ export const AddVehiculeBoard = () => {
                       id='vehicleType6'
                       name='vehicleType'
                       value='Semiremolque'
-                      {...register('vehicleType', { required: true })}
+                      {...register('vehicleType', { required: 'Campo requerido' })}
                     />
                     <span className='inline-block align-middle'>Semiremolque</span>
                   </label>
                 </div>
               </section>
 
-              {errors.vehicleType && <span className='error'>{errors.vehicleType.message}</span>}
+              {errors.vehicleType && (
+                <div className='mb-3 -mt-5'>
+                  <span className='error'>{errors.vehicleType.message}</span>
+                </div>
+              )}
 
               <div className='grid gap-5 lg:grid-cols-2'>
                 <div>
@@ -195,7 +199,7 @@ export const AddVehiculeBoard = () => {
                       id='model'
                       className='block px-4 pb-2.5 pt-4 w-full text-sm text-gray-900 bg-transparent border-1 border-gray-300 appearance-none border-[#0D1544] hover:#31429B focus:outline-none peer'
                       placeholder=''
-                      {...register('model', { required: true })}
+                      {...register('model', { required: 'Campo requerido' })}
                     />
                     <label
                       htmlFor='model'
@@ -204,6 +208,7 @@ export const AddVehiculeBoard = () => {
                       Modelo*
                     </label>
                   </div>
+                  {errors.model && <span className='error '>{errors.model.message}</span>}
                 </div>
               </div>
 
@@ -219,6 +224,7 @@ export const AddVehiculeBoard = () => {
                     id='year'
                     className='block w-full px-4 text-sm text-gray-900 border border-gray-300 bg-gray-50 focus:ring-blue-500 focus:border-blue-500 min-h-[56px]'
                     defaultValue={'DEFAULT'}
+                    {...register('year', { required: 'Campo requerido' })}
                   >
                     <option disabled value={'DEFAULT'}>
                       Selecciona un año
@@ -238,6 +244,7 @@ export const AddVehiculeBoard = () => {
                     <option value='2011'>2011</option>
                     <option value='2010'>2010</option>
                   </select>
+                  {errors.year && <span className='error'>{errors.year.message}</span>}
                 </div>
                 <div>
                   <div className='relative'>
@@ -246,6 +253,7 @@ export const AddVehiculeBoard = () => {
                       id='patent'
                       className='block px-4 pb-2.5 pt-4 w-full text-sm text-gray-900 bg-transparent border-1 border-gray-300 appearance-none border-[#0D1544] hover:#31429B focus:outline-none peer'
                       placeholder=''
+                      {...register('patent', { required: 'Campo requerido' })}
                     />
                     <label
                       htmlFor='patent'
@@ -254,6 +262,7 @@ export const AddVehiculeBoard = () => {
                       Patente*
                     </label>
                   </div>
+                  {errors.patent && <span className='error'>{errors.patent.message}</span>}
                 </div>
               </div>
 
@@ -272,6 +281,7 @@ export const AddVehiculeBoard = () => {
                     id='fuelType1'
                     name='fuelType'
                     value='Biocombustible'
+                    {...register('fuelType', { required: 'Campo requerido' })}
                   />
                   <span className='inline-block align-middle'>Biocombustible</span>
                 </label>
@@ -285,6 +295,7 @@ export const AddVehiculeBoard = () => {
                     id='fuelType2'
                     name='fuelType'
                     value='Gas'
+                    {...register('fuelType', { required: 'Campo requerido' })}
                   />
                   <span className='inline-block align-middle'>Gas</span>
                 </label>
@@ -298,6 +309,7 @@ export const AddVehiculeBoard = () => {
                     id='fuelType3'
                     name='fuelType'
                     value='Gasoil'
+                    {...register('fuelType', { required: 'Campo requerido' })}
                   />
                   <span className='inline-block align-middle'>Gasoil</span>
                 </label>
@@ -311,9 +323,14 @@ export const AddVehiculeBoard = () => {
                     id='fuelType4'
                     name='fuelType'
                     value='Nafta'
+                    {...register('fuelType', { required: 'Campo requerido' })}
                   />
                   <span className='inline-block align-middle'>Nafta</span>
                 </label>
+              </div>
+
+              <div className='mt-2'>
+                {errors.fuelType && <span className='error'>{errors.fuelType.message}</span>}
               </div>
 
               <div className='grid gap-5 pt-10 lg:grid-cols-2'>
@@ -324,6 +341,7 @@ export const AddVehiculeBoard = () => {
                       id='brandMotor'
                       className='block px-4 pb-2.5 pt-4 w-full text-sm text-gray-900 bg-transparent border-1 border-gray-300 appearance-none border-[#0D1544] hover:#31429B focus:outline-none peer'
                       placeholder=''
+                      {...register('brandMotor', { required: 'Campo requerido' })}
                     />
                     <label
                       htmlFor='brandMotor'
@@ -332,8 +350,8 @@ export const AddVehiculeBoard = () => {
                       Marca del motor*
                     </label>
                   </div>
+                  {errors.brandMotor && <span className='error'>{errors.brandMotor.message}</span>}
                 </div>
-
                 <div>
                   <div className='relative'>
                     <input
@@ -341,6 +359,7 @@ export const AddVehiculeBoard = () => {
                       id='numberMotor'
                       className='block px-4 pb-2.5 pt-4 w-full text-sm text-gray-900 bg-transparent border-1 border-gray-300 appearance-none border-[#0D1544] hover:#31429B focus:outline-none peer'
                       placeholder=''
+                      {...register('numberMotor', { required: 'Campo requerido' })}
                     />
                     <label
                       htmlFor='numberMotor'
@@ -349,6 +368,9 @@ export const AddVehiculeBoard = () => {
                       N° de motor*
                     </label>
                   </div>
+                  {errors.numberMotor && (
+                    <span className='error'>{errors.numberMotor.message}</span>
+                  )}
                 </div>
               </div>
               <div className='grid gap-5 pt-10 lg:grid-cols-2'>
@@ -359,6 +381,7 @@ export const AddVehiculeBoard = () => {
                       id='brandChassis'
                       className='block px-4 pb-2.5 pt-4 w-full text-sm text-gray-900 bg-transparent border-1 border-gray-300 appearance-none border-[#0D1544] hover:#31429B focus:outline-none peer'
                       placeholder=''
+                      {...register('brandChassis', { required: 'Campo requerido' })}
                     />
                     <label
                       htmlFor='brandChassis'
@@ -367,6 +390,9 @@ export const AddVehiculeBoard = () => {
                       Marca del chasis*
                     </label>
                   </div>
+                  {errors.brandChassis && (
+                    <span className='error'>{errors.brandChassis.message}</span>
+                  )}
                 </div>
 
                 <div>
@@ -376,6 +402,7 @@ export const AddVehiculeBoard = () => {
                       id='numberChassis'
                       className='block px-4 pb-2.5 pt-4 w-full text-sm text-gray-900 bg-transparent border-1 border-gray-300 appearance-none border-[#0D1544] hover:#31429B focus:outline-none peer'
                       placeholder=''
+                      {...register('numberChassis', { required: 'Campo requerido' })}
                     />
                     <label
                       htmlFor='numberChassis'
@@ -384,6 +411,55 @@ export const AddVehiculeBoard = () => {
                       N° de chasis*
                     </label>
                   </div>
+                  {errors.numberChassis && (
+                    <span className='error'>{errors.numberChassis.message}</span>
+                  )}
+                </div>
+              </div>
+
+              <div className='grid gap-5 pt-10 lg:grid-cols-2'>
+                <div className='relative w-full'>
+                  <label
+                    htmlFor='year'
+                    className='left-3.5 absolute text-sm rounded text-gray-500 duration-300 transform -translate-y-4 scale-75 top-2 z-10 origin-[0] bg-white px-1 peer-focus:px-1 peer-focus:text-black peer-focus:dark:text-black peer-placeholder-shown:scale-100 peer-placeholder-shown:-translate-y-1/2 peer-placeholder-shown:top-[28px] pointer-events-none peer-focus:top-2 peer-focus:scale-75 peer-focus:-translate-y-4 start-1'
+                  >
+                    Cantidad de ejes*
+                  </label>
+                  <select
+                    id='axle'
+                    className='block w-full px-4 text-sm text-gray-900 border border-gray-300 bg-gray-50 focus:ring-blue-500 focus:border-blue-500 min-h-[56px]'
+                    defaultValue={'DEFAULT'}
+                    {...register('axle', { required: 'Campo requerido' })}
+                  >
+                    <option disabled value={'DEFAULT'}>
+                      Seleccione la cantidad de ejes*
+                    </option>
+                    <option value='2'>2</option>
+                    <option value='3'>3</option>
+                    <option value='4'>4</option>
+                    <option value='5'>5</option>
+                    <option value='6'>6</option>
+                    <option value='7'>7</option>
+                  </select>
+                  {errors.axle && <span className='error'>{errors.axle.message}</span>}
+                </div>
+                <div>
+                  <div className='relative'>
+                    <input
+                      type='text'
+                      id='dateVtv'
+                      className='block px-4 pb-2.5 pt-4 w-full text-sm text-gray-900 bg-transparent border-1 border-gray-300 appearance-none border-[#0D1544] hover:#31429B focus:outline-none peer'
+                      placeholder=''
+                      {...register('dateVtv', { required: 'Campo requerido' })}
+                    />
+                    <label
+                      htmlFor='dateVtv'
+                      className='left-3.5 absolute text-sm text-gray-500 duration-300 transform -translate-y-4 scale-75 top-2 z-10 origin-[0] bg-white px-1 peer-focus:px-1 peer-focus:text-blue-600 peer-focus:dark:text-#0d1544 peer-placeholder-shown:scale-100 peer-placeholder-shown:-translate-y-1/2 peer-placeholder-shown:top-[28px] pointer-events-none peer-focus:top-2 peer-focus:scale-75 peer-focus:-translate-y-4 start-1'
+                    >
+                      N° de motor*
+                    </label>
+                  </div>
+                  {errors.dateVtv && <span className='error'>{errors.dateVtv.message}</span>}
                 </div>
               </div>
             </div>
@@ -430,7 +506,7 @@ export const AddVehiculeBoard = () => {
                       Transportista de Carga Masiva o a Granel
                     </option>
                     <option value='Transportista de Carga Peligrosa'>
-                      Transportista de Carga Peligrosa{' '}
+                      Transportista de Carga Peligrosa
                     </option>
                     <option value='Transportista de Carga Fraccionada'>
                       Transportista de Carga Fraccionada
