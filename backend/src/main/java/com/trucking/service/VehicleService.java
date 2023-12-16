@@ -18,6 +18,6 @@ public interface VehicleService {
     boolean delete(Long id);
     List<VehicleDto> getAllActive(Pageable pageable);
     List<VehicleDto> getAllInactive(Pageable pageable);
-    Page<VehicleResponseDto> searchVehicleByCompany(String name, PageableDto pageableDto);
+    Page<VehicleResponseDto> searchVehicleByCompany(String token, PageableDto pageableDto);
 
 }

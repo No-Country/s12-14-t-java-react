@@ -12,12 +12,13 @@ import com.trucking.exception.GenericException;
 import com.trucking.exception.NotFoundVehicle;
 import com.trucking.mapper.VehicleMapper;
 import com.trucking.mapper.mapstruct.VehicleMsMapper;
-import com.trucking.repository.CompanyRepository;
 import com.trucking.repository.FuelRepository;
 import com.trucking.repository.VehicleRepository;
 import com.trucking.repository.VehicleTypeRepository;
+import com.trucking.security.config.JwtService;
 import com.trucking.security.entity.User;
 import com.trucking.security.exception.ValidationIntegrity;
+import com.trucking.security.repository.UserRepository;
 import com.trucking.security.service.UserServiceImplement;
 import com.trucking.service.VehicleService;
 import com.trucking.util.Utility;
@@ -49,6 +50,8 @@ public class VehicleServiceImpl implements VehicleService {
     private final VehicleTypeRepository vehicleTypeRepository;
     private final UserServiceImplement userServiceImplement;
     private final VehicleMsMapper vehicleMapperStruct;
+    private final UserRepository userRepository;
+    private final JwtService jwtService;
 
     @Override
     public List<VehicleDto> getAll() {
@@ -135,11 +138,15 @@ public class VehicleServiceImpl implements VehicleService {
     }
 
     @Override
-    public Page<VehicleResponseDto> searchVehicleByCompany(String name, PageableDto pageableDto) {
-        if (!StringUtils.hasText(name))
-            throw new GenericException("El nombre de la empresa no puede ser nulo", HttpStatus.BAD_REQUEST);
+    public Page<VehicleResponseDto> searchVehicleByCompany(String token,PageableDto pageableDto) {
+        String userEmail = jwtService.extractUsername(token);
+        if (!StringUtils.hasText(userEmail))
+            throw new GenericException("El token es invalido", HttpStatus.BAD_REQUEST);
+        User user = userRepository.findByEmail(userEmail)
+                .orElseThrow(() -> new GenericException("El usuario no existe", HttpStatus.NOT_FOUND));
+
         Pageable pageable = Utility.setPageable(pageableDto);
-        Page<Vehicle> vehiclePage = vehicleRepository.searchVehicleByCompany(name, pageable);
+        Page<Vehicle> vehiclePage = vehicleRepository.searchVehicleByCompany(user.getCompany().getName(), pageable);
         if (vehiclePage.isEmpty()) throw new GenericException("No se encontraron vehiculos", HttpStatus.NOT_FOUND);
         List<VehicleResponseDto> vehicleResponseDtos = vehiclePage.getContent().stream()
                 .map(vehicleMapperStruct::toVehicleDto)

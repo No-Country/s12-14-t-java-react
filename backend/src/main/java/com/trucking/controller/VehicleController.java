@@ -65,7 +65,8 @@ public class VehicleController {
     }
 
     @PostMapping(value = "/search")
-    public ResponseEntity<Page<VehicleResponseDto>> getAllMaintenance(@RequestParam String nameCompany, PageableDto pageableDto) {
-        return new ResponseEntity<>(vehicleService.searchVehicleByCompany(nameCompany, pageableDto), HttpStatus.OK);
+    public ResponseEntity<Page<VehicleResponseDto>> getAllMaintenance(@RequestHeader("Authorization") String bearerToken,@RequestParam String nameCompany, PageableDto pageableDto) {
+        bearerToken = bearerToken.substring("Bearer ".length());
+        return new ResponseEntity<>(vehicleService.searchVehicleByCompany(bearerToken, pageableDto), HttpStatus.OK);
     }
 }
