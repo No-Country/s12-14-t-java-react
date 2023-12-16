@@ -1,54 +1,3 @@
-// export const EmpleadosLista = [
-//   {
-//     id: 1,
-//     name: 'Nombre del chofer 1',
-//     rol: 'Rol 1',
-//     status: 'Descanso'
-//   },
-//   {
-//     id: 2,
-//     name: 'Nombre del chofer 2',
-//     rol: 'Rol 2',
-//     status: 'Descanso'
-//   },
-//   {
-//     id: 3,
-//     name: 'Nombre del chofer 3',
-//     rol: 'Rol 2',
-//     status: 'En actividad'
-//   },
-//   {
-//     id: 4,
-//     name: 'Nombre del chofer 4',
-//     rol: 'Rol 2',
-//     status: 'En actividad'
-//   },
-//   {
-//     id: 5,
-//     name: 'Nombre del chofer 5',
-//     rol: 'Rol 2',
-//     status: 'En actividad'
-//   },
-//   {
-//     id: 10,
-//     name: 'Nombre del chofer 6',
-//     rol: 'Rol 2',
-//     status: 'En actividad'
-//   },
-//   {
-//     id: 11,
-//     name: 'Nombre del chofer 6',
-//     rol: 'Rol 2',
-//     status: 'En actividad'
-//   },
-//   {
-//     id: 12,
-//     name: 'Nombre del chofer 6',
-//     rol: 'Rol 2',
-//     status: 'En actividad'
-//   }
-// ]
-
 import { useEffect, useState } from "react";
 import { getEmployees } from "../../services/fetchService";
 
@@ -67,7 +16,9 @@ const Empleado = () => {
   
   }, []);
 
-
+  const imageStyle = {
+    height: '100px'
+  }
 
   return (
     <>
@@ -82,7 +33,7 @@ const Empleado = () => {
                 key={empleado.id}
                 className='flex max-h-screen pr-2 mr-5 space-x-4 shadow-md rounded-xl '
               >
-                <img src='/img/chofer.png' alt='profile' className='rounded-l-lg' />
+                <img style={imageStyle} src={empleado.photo} alt='No Image' className='rounded-l-lg' />
                 <div >
                   <h2 className='text-[#31429B] text-l font-semibold'>{empleado.name + ' ' + empleado.lastName}</h2>
                   <h3 className='text-[#0D1544] text-xs font-semibold'>{empleado.roleName=='OWNER'?'Gerente':empleado.roleName=='DRIVER'?'Chofer':empleado.roleName=='MAINTENANCE'?'Mantenimiento':'Sin Rol'}</h3>
