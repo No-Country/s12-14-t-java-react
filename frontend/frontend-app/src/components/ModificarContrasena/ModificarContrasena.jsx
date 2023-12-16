@@ -17,13 +17,14 @@ function ModificarContrasena() {
   const handleSubmit = event => {
     event.preventDefault()
 
-  
+
 
     if (validarFormulario()) {
       changePassword({
         oldPassword,
         newPassword
       });
+      
     }
   }
 

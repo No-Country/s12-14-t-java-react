@@ -119,7 +119,7 @@ export const useAuthStore = () => {
       const { data } = await axios.put(
         `${import.meta.env.VITE_API_URL}/auth/changePassword`,
         {
-          oldPassword,
+          oldPassword,  
           newPassword
         },
         config
@@ -132,7 +132,7 @@ export const useAuthStore = () => {
       //     title: 'Oops...',
       //     text: "La nueva contraseña debe tener entre 8 y 12 caracteres y tener al menos una letra mayúscula, una letra minúscula, un número y un carácter especial.,contraseña actual no puede estar vacía ni ser nula"
       //   })
-      console.log(error)
+      console.log(error.message)
     }
   }
 
