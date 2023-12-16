@@ -4,7 +4,9 @@ import com.trucking.security.entity.RoleName;
 import lombok.RequiredArgsConstructor;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.http.HttpMethod;
 import org.springframework.security.authentication.AuthenticationProvider;
+import org.springframework.security.config.annotation.method.configuration.EnableMethodSecurity;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configurers.AbstractHttpConfigurer;
@@ -45,6 +47,9 @@ public class SecurityConfig {
                                 .requestMatchers("/vehicle/**").hasAnyAuthority(
                                         RoleName.OWNER.name()
                                 )
+                                .requestMatchers(HttpMethod.POST,"/vehicle/search").hasAnyAuthority(
+                                        RoleName.MAINTENANCE.name()
+                                )
                                 .requestMatchers("/employee/**").hasAnyAuthority(
                                         RoleName.OWNER.name()
                                 )
@@ -52,6 +57,9 @@ public class SecurityConfig {
                                         RoleName.OWNER.name(),
                                         RoleName.MAINTENANCE.name(),
                                         RoleName.DRIVER.name()
+                                )
+                                .requestMatchers("/routes/**").hasAnyAuthority(
+                                        RoleName.OWNER.name()
                                 )
                                 .requestMatchers("/swagger-ui.html", "/v3/api-docs/**", "/swagger-ui/**").permitAll()
                                 .anyRequest().authenticated()

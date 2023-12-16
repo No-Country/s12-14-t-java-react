@@ -19,7 +19,6 @@ import java.util.List;
 public class RegMantServiceImplement implements RegMantService {
     private final RegMantRepository regMantRepository;
     private final VehicleRepository vehicleRepository;
-    private final ManTypeServiceImplement manTypeService;
 
     @Override
     public RegMaint save(NewRegMantDto newRegMantDto) {
