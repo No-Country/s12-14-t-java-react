@@ -1,6 +1,7 @@
 import CardVehicleNotWorking from "./CardVehicleNotWorking";
 
 const PanelVehiclesNotWorking =()=>{
+
     return (
         <section className="section-vehicles mt-[3rem]  w-[90%]  section-vehicles-nw">
         <div className="section-vehicles__container ">
