@@ -29,6 +29,7 @@ export const NewProfile = () => {
     } catch (error) {
       console.log("ERROR")
       console.log(error.response.data)
+      Swal.fire(`Error al crear empleado! \n ${error.response.data.details[0]}`)
     }
   }
 
