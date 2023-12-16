@@ -1,4 +1,6 @@
 import { useForm } from 'react-hook-form'
+import Swal from 'sweetalert2'
+import { addVehicle } from '../../api/vehicleApi'
 
 export const AddVehiculeBoard = () => {
   const {
@@ -7,7 +9,17 @@ export const AddVehiculeBoard = () => {
     handleSubmit
   } = useForm()
 
-  const onSubmit = data => console.log(data)
+  const onSubmit = async data => {
+    try {
+      console.log(data)
+
+      const response = await addVehicle(data)
+
+      console.log(response)
+    } catch (error) {
+      console.log(error)
+    }
+  }
 
   const handleNumericInput = e => {
     e.target.value = e.target.value.replace(/\D/g, '') // Elimina todos los caracteres no numéricos
@@ -71,7 +83,6 @@ export const AddVehiculeBoard = () => {
                     />
                     <span className='inline-block align-middle'>Automóvil</span>
                   </label>
-                  {errors.vehicleType && <p role='alert'>{errors.vehicleType.message}</p>}
                 </div>
 
                 <div className='mt-2'>
@@ -119,7 +130,7 @@ export const AddVehiculeBoard = () => {
                       id='vehicleType5'
                       name='vehicleType'
                       value='Combi'
-                      {...register('vehicleType', { required: true })}
+                      {...register('vehicleType', { required: 'Required field' })}
                     />
                     <span className='inline-block align-middle'>Combi</span>
                   </label>
@@ -143,13 +154,14 @@ export const AddVehiculeBoard = () => {
                 </div>
               </section>
 
+              {errors.vehicleType && <span className='error'>{errors.vehicleType.message}</span>}
+
               <div className='grid gap-5 lg:grid-cols-2'>
                 <div>
                   <div className='relative'>
                     <input
                       type='text'
                       id='brand'
-                      pattern='[0-9\s]{13,19}'
                       className='block px-4 pb-2.5 pt-4 w-full text-sm text-gray-900 bg-transparent border-1 border-gray-300 appearance-none border-[#0D1544] hover:#31429B focus:outline-none peer'
                       placeholder=''
                       {...register('brand', {
@@ -158,7 +170,7 @@ export const AddVehiculeBoard = () => {
                           value: /^[a-zA-Z0-9\s]+$/,
                           message: 'La marca no es válida'
                         },
-                        valueAsNumber: true,
+                        // valueAsNumber: true,
                         min: 3,
                         max: 15
                       })}
@@ -169,9 +181,7 @@ export const AddVehiculeBoard = () => {
                     >
                       Marca del vehículo*
                     </label>
-                    {errors.brand && (
-                      <span className='error color-[red]'>{errors.brand.message}</span>
-                    )}
+                    {errors.brand && <span className='error '>{errors.brand.message}</span>}
                     {/* La mínima cantidad de caracteres permitidos será 3. La máxima cantidad de
                     caracteres permitidos será 15. */}
 
