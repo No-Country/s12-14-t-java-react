@@ -49,6 +49,11 @@ const DriverMenu = () => {
       isClickable: true,
     },
   ];
+  const routeMapping = {
+    "Revisión diaria": "/panel-general-chofer",
+    Perfil: "/dashboard-datos-personales",
+    "Modificar contraseña": "/modificar-contrasena-chofer",
+  };
 
   const handleItemClick = (itemName) => {
     setSelectedItem(itemName);
@@ -56,18 +61,18 @@ const DriverMenu = () => {
 
   useEffect(() => {
     const handleResize = () => {
-      setIsMobile(window.innerWidth <= 360);
-    };
+      setIsMobile(window.innerWidth <= 360)
+    }
 
     window.addEventListener("resize", handleResize);
-    handleResize();
+    handleResize()
 
     return () => window.removeEventListener("resize", handleResize);
   }, []);
 
   return (
     <div
-      className={`text-white font-poppins top-0 ${
+      className={`text-white font-poppins fixed z-50 top-0 ${
         isMobile
           ? "w-full bg-[#31429B] h-[61px]"
           : "h-screen w-[239px] bg-[#31429B]"
@@ -86,9 +91,7 @@ const DriverMenu = () => {
           </h1>
           {menuItems.map((item, index) => (
             <Link
-              to={
-                item.name === "Revisión diaria" ? "/panel-general-chofer" : ""
-              }
+            to={routeMapping[item.name] || ""}
               key={index}
               className={`${item.spacing} ${item.size} ${item.weight} ${
                 item.isClickable ? "cursor-pointer" : ""
@@ -112,4 +115,4 @@ const DriverMenu = () => {
   );
 };
 
-export default DriverMenu;
+export default DriverMenu

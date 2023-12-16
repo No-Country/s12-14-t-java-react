@@ -69,7 +69,7 @@ const SideMenu = () => {
     const handleResize = () => {
       setIsMobile(window.innerWidth <= 360)
     }
-
+ 
     window.addEventListener('resize', handleResize)
     handleResize()
 

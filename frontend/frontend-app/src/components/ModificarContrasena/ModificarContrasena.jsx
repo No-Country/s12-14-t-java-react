@@ -96,18 +96,15 @@ function ModificarContrasena() {
       </h1>
       <div className='flex items-center mt-10 Mostrar-container lg:justify-center'>
         <img
-          className=' w-[180px] contents md:flex'
+          className=' w-[60%] contents md:flex'
           src='././img/encrypted.svg'
           alt='logo de modificar contraseña'
         />
         <div className='flex flex-col mt-5 gap-7'>
-          <form className='flex flex-col gap-10 w-[70%]' onSubmit={handleSubmit}>
+          <form className='flex flex-col gap-8 lg:w-[70%] w-full ' onSubmit={handleSubmit}>
             <div className='relative '>
               <input
-                className='block  xl:h-[56px]  h-[56px]  sm:h-[56px] cursor-pointer w-full 
-                px-2.5 pb-2.5 pt-4 pr-[1rem] text-lg text-gray-900 bg-transparent rounded-lg 
-                border-1 border-[#0D1544] appearance-none dark:text-white dark:focus:border-blue-500
-                 focus:outline-none focus:ring-0 focus:border-[#0D1544] peer'
+                 className='block w-full xl:h-[56px]  h-[56px] sm:h-[56px] cursor-pointer px-2.5 pb-2.5 pt-4  text-lg text-gray-900 bg-transparent rounded-lg border-1  border-[#0D1544] appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-[#0D1544] peer'
                 placeholder=''
                 autoComplete='text'
                 type={icoPassword.contrasenaActual ? 'text' : 'password'}
@@ -116,7 +113,7 @@ function ModificarContrasena() {
                 onChange={e => setContrasenaActual(e.target.value)}
               />
               <div
-                className='absolute flex items-center transform -translate-y-1/2 icono cursor-pointer right-[10px] top-1/2'
+                className='absolute flex items-center transform -translate-y-1/2  cursor-pointer right-[10px] top-1/3'
                 onClick={() =>
                   setsicoPassword(prev => ({ ...prev, contrasenaActual: !prev.contrasenaActual }))
                 }
@@ -144,11 +141,11 @@ function ModificarContrasena() {
                 id='miInput'
                 value={newPassword}
                 onChange={e => setNuevaContrasena(e.target.value)}
-                className='block xl:w-[350px] xl:h-[56px] w-[290px] h-[56px] sm:w-[350px] sm:h-[56px] cursor-pointer px-2.5 pb-2.5 pt-4 w text-lg text-gray-900 bg-transparent rounded-lg border-1  border-[#0D1544] appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-[#0D1544] peer'
+                className='block w-full xl:h-[56px]  h-[56px] sm:h-[56px] cursor-pointer px-2.5 pb-2.5 pt-4  text-lg text-gray-900 bg-transparent rounded-lg border-1  border-[#0D1544] appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-[#0D1544] peer'
                 placeholder=' '
               />
               <div
-                className='absolute flex items-center transform -translate-y-1/2 cursor-pointer icono right-1 top-1/2'
+                className='absolute flex items-center transform -translate-y-1/2 cursor-pointer right-[10px] top-1/3'
                 onClick={() =>
                   setsicoPassword(prev => ({ ...prev, nuevaContrasena: !prev.nuevaContrasena }))
                 }
@@ -171,13 +168,13 @@ function ModificarContrasena() {
               <input
                 type={icoPassword.confirmarContrasena ? 'text' : 'password'}
                 id='input'
-                className='blockxl:w-[350px] xl:h-[56px] w-[290px] h-[56px] sm:w-[350px] sm:h-[56px] cursor-pointer px-3.5 pb-2.5 pt-5 w text-lg text-gray-900 bg-transparent rounded-lg border-1  border-[#0D1544] appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-[#0D1544] peer'
+                className='block w-full xl:h-[56px]  h-[56px] sm:h-[56px] cursor-pointer px-2.5 pb-2.5 pt-4  text-lg text-gray-900 bg-transparent rounded-lg border-1  border-[#0D1544] appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-[#0D1544] peer'
                 placeholder=' '
                 value={confirmarContrasena}
                 onChange={e => setConfirmarContrasena(e.target.value)}
               />
               <div
-                className='absolute flex items-center transform -translate-y-1/2 cursor-pointer icono right-1 top-1/2'
+                className='absolute flex items-center transform -translate-y-1/2 cursor-pointer right-2 top-1/3'
                 onClick={() =>
                   setsicoPassword(prev => ({
                     ...prev,

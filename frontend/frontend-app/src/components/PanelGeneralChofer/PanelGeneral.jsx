@@ -68,7 +68,7 @@ function PanelGeneral({ value }) {
           <div className=" h-24 p-2">
             <h6 className="text-lg font-semibold">Horario laboral</h6>
             <div className="flex gap-4  items-center">
-              <div className="{`gap-5 ${isSwitchOn ? 'text-white' : 'text-blue-600'}`}> ">
+              <div className="{gap-5 ${isSwitchOn ? 'text-white' : 'text-blue-600'}}> ">
                 <IoMdTime size={40} />
               </div>
               <p className="mt-3 text-base font-semibold">
@@ -157,4 +157,4 @@ function PanelGeneral({ value }) {
   );
 }
 
-export default PanelGeneral;
+export default PanelGeneral

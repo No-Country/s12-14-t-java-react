@@ -15,6 +15,8 @@ import { useEffect } from "react";
 import { onLogin, onLogout } from "./store/auth/authSlice";
 import LatestMaintenance from "./pages/LatestMaintenance";
 import RevisionDiaria from "./pages/RevisionDiaria";
+import ModificarChofer from "./components/ModificarContrasenaChofer/ModificarContrasenaChofer";
+
 
 function App() {
   const dispatch = useDispatch();
@@ -58,6 +60,7 @@ function App() {
               element={<DatosPersonalesChofer />}
             />
             <Route path="/panel-general-chofer" element={<PanelGeneral />} />
+            <Route path="/modificar-contrasena-chofer" element={<ModificarChofer />} />
 
             <Route path="/RevisionDiaria" element={<RevisionDiaria />} />
           </Route>
