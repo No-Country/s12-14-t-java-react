@@ -1,28 +1,24 @@
-import { useEffect, useState } from "react";
-import { getEmployees } from "../../services/fetchService";
+import { useEffect, useState } from 'react'
+import { getEmployees } from '../../services/fetchService'
 
 const Empleado = () => {
-
-
-  const [empleados, setEmpleados] = useState([]);
+  const [empleados, setEmpleados] = useState([])
 
   useEffect(() => {
-    getEmployees().then((response)=>{
-      console.log("Response:");
-      console.log(response.data);
-      setEmpleados(response.data);
-    }
-    )
-  
-  }, []);
+    getEmployees().then(response => {
+      console.log('Response:')
+      console.log(response.data)
+      setEmpleados(response.data)
+    })
+  }, [])
 
   const imageStyle = {
     height: '100px'
   }
-// Prueba
+  // Prueba
   return (
     <>
-      <section className='flex flex-col lg:w-[25%] justify-start max-h-screen min-h-screen gap-5 py-3 pr-3 text-lg query-empleado'>
+      <section className='flex flex-col lg:w-[25%] justify-start min-h-screen gap-5 py-3 pr-3 text-lg query-empleado'>
         <div className='py-3 px-4  rounded-[15px] h-full w-full shadow-custom'>
           <h2 className='text-[#0D1544] mt-10 font-bold text-xl lg:text-2xl md:text-2xl m-6 max-h-screen'>
             Empleados
@@ -33,10 +29,25 @@ const Empleado = () => {
                 key={empleado.id}
                 className='flex max-h-screen pr-2 mr-5 space-x-4 shadow-md rounded-xl '
               >
-                <img style={imageStyle} src={empleado.photo} alt='No Image' className='rounded-l-lg' />
-                <div >
-                  <h2 className='text-[#31429B] text-l font-semibold'>{empleado.name + ' ' + empleado.lastName}</h2>
-                  <h3 className='text-[#0D1544] text-xs font-semibold'>{empleado.roleName=='OWNER'?'Gerente':empleado.roleName=='DRIVER'?'Chofer':empleado.roleName=='MAINTENANCE'?'Mantenimiento':'Sin Rol'}</h3>
+                <img
+                  style={imageStyle}
+                  src={empleado.photo}
+                  alt='No Image'
+                  className='rounded-l-lg'
+                />
+                <div>
+                  <h2 className='text-[#31429B] text-l font-semibold'>
+                    {empleado.name + ' ' + empleado.lastName}
+                  </h2>
+                  <h3 className='text-[#0D1544] text-xs font-semibold'>
+                    {empleado.roleName == 'OWNER'
+                      ? 'Gerente'
+                      : empleado.roleName == 'DRIVER'
+                      ? 'Chofer'
+                      : empleado.roleName == 'MAINTENANCE'
+                      ? 'Mantenimiento'
+                      : 'Sin Rol'}
+                  </h3>
                   <h3 className='text-[#0D1544] text-xs font-normal'>{empleado.email}</h3>
                 </div>
                 <input type='checkbox' />

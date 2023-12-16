@@ -15,6 +15,7 @@ import { useEffect } from 'react'
 import { onLogin, onLogout } from './store/auth/authSlice'
 import LatestMaintenance from './pages/LatestMaintenance'
 import RevisionDiaria from './pages/RevisionDiaria'
+import { EliminarVehiculo } from './pages/EliminarVehiculo'
 
 function App() {
   const dispatch = useDispatch()
@@ -42,6 +43,7 @@ function App() {
             <Route path='/mostrar-empleados' element={<Empleado />} />
             <Route path='/agregar-vehiculo' element={<AddVehicle />} />
             <Route path='/registro-mantenimiento' element={<RegistroMantenimiento />} />
+            <Route path='/eliminar-vehiculo' element={<EliminarVehiculo />} />
 
             {/* Ruta agregada para ultimos mantenimientos, dentro del panel de mantenimiento */}
             <Route path='/latest-maintenance' element={<LatestMaintenance />} />

@@ -33,7 +33,7 @@ export const AddVehiculeBoard = () => {
 
   return (
     <>
-      <div className='container w-full lg:w-[56%] py-3 px-5 mx-auto'>
+      <div className='container w-full lg:w-[60%] py-3 px-5 mx-auto'>
         <form
           onSubmit={handleSubmit(onSubmit)}
           className='w-full h-full rounded-[15px] shadow-custom py-7'
