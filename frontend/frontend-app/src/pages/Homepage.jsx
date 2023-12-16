@@ -26,11 +26,11 @@ export const Homepage = () => {
     formState: { errors }
   } = useForm(loginFormFields)
 
-  const loginSubmit = handleSubmit(e => {
-    console.log(e)
+  const loginSubmit = handleSubmit(data => {
+    console.log(data)
     startLogin({
-      email: e.email,
-      password: e.password
+      email: data.email,
+      password: data.password
     })
   })
 
