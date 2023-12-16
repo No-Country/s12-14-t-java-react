@@ -19,7 +19,7 @@ const Empleado = () => {
   const imageStyle = {
     height: '100px'
   }
-
+// Prueba
   return (
     <>
       <section className='flex flex-col lg:w-[25%] justify-start max-h-screen min-h-screen gap-5 py-3 pr-3 text-lg query-empleado'>
