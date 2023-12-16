@@ -70,6 +70,7 @@ public class AuthenticationService {
         var user = User.builder()
                 .name(newUserDto.getName())
                 .email(newUserDto.getEmail())
+                .lastName(newUserDto.getLastName())
                 .password(passwordEncoder.encode(newUserDto.getPassword()))
                 .role(RoleName.OWNER)
                 .company(company)
@@ -85,6 +86,7 @@ public class AuthenticationService {
                 .user(ShowDataUserDto.builder()
                         .id(user.getId())
                         .name(user.getName())
+                        .lastName(user.getLastName())
                         .email(user.getEmail())
                         .companyName(company.getName())
                         .role(RoleName.valueOf(String.valueOf(user.getRole()))).build()
@@ -123,6 +125,7 @@ public class AuthenticationService {
                 .id(user.getId())
                 .name(user.getName())
                 .email(user.getEmail())
+                .lastName(user.getLastName())
                 .companyName(company.get().getName())
                 .role(RoleName.valueOf(String.valueOf(user.getRole()))).build()
         ).build();
@@ -151,6 +154,7 @@ public class AuthenticationService {
         return AuthenticationResponseDto.builder().token(tokenPassword).user(ShowDataUserDto.builder()
                 .id(user.getId())
                 .name(user.getName())
+                .lastName(user.getLastName())
                 .email(user.getEmail())
                 .role(RoleName.valueOf(String.valueOf(user.getRole()))).build()
         ).build();
@@ -185,6 +189,7 @@ public class AuthenticationService {
         return AuthenticationResponseDto.builder().user(ShowDataUserDto.builder()
                 .id(user.getId())
                 .name(user.getName())
+                .lastName(user.getLastName())
                 .email(user.getEmail())
                 .role(RoleName.valueOf(String.valueOf(user.getRole()))).build()
         ).build();

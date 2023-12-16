@@ -243,15 +243,18 @@ public class EmployeeServiceImplement implements EmployeeService {
     }
 
     @Override
-    public List<DataShowEmployee> getAllEmployees(String token) {
+    public List<DataShowEmployee> getAllEmployees() {
         //valiadar rol del usuario del token
-        String tokenUserName = jwtService.extractUsername(token);
+//        String tokenUserName = jwtService.extractUsername(token);
 
-        var dataToken = userRepository.findByEmail(tokenUserName).orElseThrow(
-                () -> new IllegalArgumentException("Error al encontrar el email del usuario"));
+//        var dataToken = userRepository.findByEmail(tokenUserName).orElseThrow(
+//                () -> new IllegalArgumentException("Error al encontrar el email del usuario"));
+
+        User actualUser = userRepository.findByEmail(SecurityContextHolder.getContext().getAuthentication().getName()).get();
+        Company company = companyRepository.findByName(actualUser.getCompany().getName()).get();
 
 
-        List<User> all = employeeRepository.findAllByCompanyId(dataToken.getCompany().getId());
+        List<User> all = employeeRepository.findAllByCompanyId(company.getId());
         List<DataShowEmployee> dataShowEmployees = all.stream()
                 .map(DataShowEmployee::new)
                 .collect(Collectors.toList());

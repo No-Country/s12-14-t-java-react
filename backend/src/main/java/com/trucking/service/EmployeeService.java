@@ -17,7 +17,7 @@ public interface EmployeeService {
     DataShowEmployee delete(Long id);
     DataShowEmployee deactivateEmpyee(Long id, String token);
     DataShowEmployee findEmployeeById(Long id, String token);
-    List<DataShowEmployee> getAllEmployees(String token);
+    List<DataShowEmployee> getAllEmployees();
     List<DataShowEmployee> getActiveEmployees(String token);
     String passwordGenerator();
 
