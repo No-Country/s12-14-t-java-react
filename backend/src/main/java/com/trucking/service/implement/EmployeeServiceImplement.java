@@ -50,6 +50,7 @@ public class EmployeeServiceImplement implements EmployeeService {
         //crear usuario con password generico
         User newEmpl = new User();
         newEmpl.setName(newEmployee.getName());
+        newEmpl.setLastName(newEmpl.getLastName());
         newEmpl.setEmail(newEmployee.getEmail());
         newEmpl.setPassword(newPassword);
         newEmpl.setCompany(company);
