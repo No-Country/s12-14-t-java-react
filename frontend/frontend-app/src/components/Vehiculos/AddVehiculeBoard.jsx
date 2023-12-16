@@ -15,12 +15,12 @@ export const AddVehiculeBoard = () => {
     try {
       console.log(data)
       const response = await postVehicle(data)
-      console.log("RESPONSE")
+      console.log('RESPONSE')
       console.log(response)
       Swal.fire(`Vehiculo creado!`)
       reset()
     } catch (error) {
-      console.log("ERROR")
+      console.log('ERROR')
       console.log(error.response.data)
       Swal.fire(`Error al crear empleado! \n ${error.response.data.details[0]}`)
     }

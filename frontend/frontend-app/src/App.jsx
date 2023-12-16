@@ -16,6 +16,7 @@ import { onLogin, onLogout } from './store/auth/authSlice'
 import LatestMaintenance from './pages/LatestMaintenance'
 import RevisionDiaria from './pages/RevisionDiaria'
 import { EliminarVehiculo } from './pages/EliminarVehiculo'
+import ModificarChofer from './components/ModificarContrasenaChofer/ModificarContrasenaChofer'
 
 function App() {
   const dispatch = useDispatch()
@@ -52,6 +53,7 @@ function App() {
             <Route path='/dashboard' element={<DashboardVehicles />} />
             <Route path='/dashboard-datos-personales' element={<DatosPersonalesChofer />} />
             <Route path='/panel-general-chofer' element={<PanelGeneral />} />
+            <Route path='/modificar-contrasena-chofer' element={<ModificarChofer />} />
 
             <Route path='/RevisionDiaria' element={<RevisionDiaria />} />
           </Route>
