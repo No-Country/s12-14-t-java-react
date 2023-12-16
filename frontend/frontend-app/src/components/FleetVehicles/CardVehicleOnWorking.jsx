@@ -1,8 +1,8 @@
 import deleteIcon from "/img/deleteIcon.svg";
 import editIcon from "/img/editIcon.svg";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import {v4 as uuidv4} from "uuid";
-const CardVehicleOnWorking = () => {
+const CardVehicleOnWorking = (props) => {
   const deleteVehicle = () => {};
   const editVehicle = () => {};
   const iconDelete = (
@@ -26,11 +26,12 @@ const CardVehicleOnWorking = () => {
   const handleCheckBoxChange = () => {
     setIsChecked(!isChecked);
   };
+
   return (
     <article className="card">
       <header className="bg-[#31429B] w-full h-9 flex flex-row justify-around  items-center rounded-t-[10px] ">
         <h2 className="text-[#fff] text-[14px] font-semibold">
-          ID del vehículo
+          {props.vehicle.id}
         </h2>
         <div className="flex flex-row gap-1">
           {iconEdit}
@@ -39,11 +40,12 @@ const CardVehicleOnWorking = () => {
       </header>
       <div className="w-full flex flex-row justify-around items-start bg-[#F0F8FF]">
         <div className="text-[13px] font-bold leading-6 text-[#0D1544] ">
-          <p>Tipo de vehículo</p>
-          <p>Patente</p>
-          <p>Marca</p>
+          <p>{props.vehicle.vehicleType}</p>
+          <p>{props.vehicle.model}</p>
+          <p>{props.vehicle.patent}</p>
+          <p>{props.vehicle.brand}</p>
         </div>
-        <span className=" text-[#0D1544] font-bold leading-6">Año</span>
+        <span className=" text-[#0D1544] font-bold leading-6">{props.vehicle.year}</span>
       </div>
       <footer className="bg-[#31429B] w-full h-9 flex flex-row justify-center items-center rounded-b-[10px]">
         <div>
