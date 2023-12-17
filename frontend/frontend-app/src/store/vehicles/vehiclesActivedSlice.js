@@ -11,23 +11,27 @@ export const vehiclesActivatedSlice = createSlice({
   },
   reducers: {
     startLoadingVehiclesActivated: (state, )=>{
+      console.log("Ingresado isLoading al store");
       state.isLoading=true;
     },
     setVehiclesActivated: (state, action)=>{
-      console.log(action);
-      state.vehicles=action.payload;
-    }
+      console.log("ingresando objeto al estado: ")
+      console.log("payload: ", action.payload);
+      state.page=action.payload.page;
+      state.isLoading=action.payload.isLoading;
+      state.vehicles=action.payload.vehicles;
+     }
   }
 })
 
 // Configuración de persistencia para el reducer de auth
-const authPersistConfig = {
+const vehiclesActivatedSlicePersistConfig = {
   key: 'vehiclesActivatedSlice',
   storage: storage,
   blacklist: [], // Puedes excluir ciertos campos si es necesario
 };
 
-const persistedVehiclesReducer = persistReducer(authPersistConfig, vehiclesActivatedSlice.reducer);
+const persistedVehiclesReducer = persistReducer(vehiclesActivatedSlicePersistConfig, vehiclesActivatedSlice.reducer);
 
 export const { startLoadingVehiclesActivated , setVehiclesActivated} = vehiclesActivatedSlice.actions
 

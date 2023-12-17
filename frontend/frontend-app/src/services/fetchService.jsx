@@ -1,10 +1,9 @@
 import axios from "axios";
 import { pageApi } from "../api/PageApi";
 
-export const getActiveVehicles = () => {
-  return pageApi.get('http://149.50.131.109:9896/api/v1/list/vehicle/getAllActive?page=0&size=10');
+export const getActiveVehicles = (size) => {
+  return pageApi.get(`${import.meta.env.VITE_API_URL}/list/vehicle/getAllActive?page=0&size=${size}`);
 } 
-
 export const getEmployees = () => {
   return pageApi.get('http://149.50.131.109:9896/api/v1/employee/allEmployees');
 } 
