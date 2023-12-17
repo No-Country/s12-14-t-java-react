@@ -16,6 +16,7 @@ import com.trucking.security.service.EmailService;
 import com.trucking.service.EmployeeService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import java.security.SecureRandom;
@@ -30,7 +31,7 @@ public class EmployeeServiceImplement implements EmployeeService {
     private final UserRepository userRepository;
     private final EmailService emailService;
     private final JwtService jwtService;
-
+    private final PasswordEncoder passwordEncoder;
     private final CompanyRepository companyRepository;
 
     /**
@@ -52,7 +53,7 @@ public class EmployeeServiceImplement implements EmployeeService {
         newEmpl.setName(newEmployee.getName());
         newEmpl.setLastName(newEmployee.getLastName());
         newEmpl.setEmail(newEmployee.getEmail());
-        newEmpl.setPassword(newPassword);
+        newEmpl.setPassword(passwordEncoder.encode(newPassword));
         newEmpl.setCompany(company);
         newEmpl.setRole(newEmployee.getRoleName());
         newEmpl.setPhoto(newEmployee.getPhoto());
