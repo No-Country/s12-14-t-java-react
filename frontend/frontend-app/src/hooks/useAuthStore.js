@@ -88,13 +88,23 @@ export const useAuthStore = () => {
     }
   }
 
-  const checkAuthToken = async () => {
-    const token = localStorage.getItem('token')
-
-    if (!token) return dispatch(onLogout())
-
-   
-  }
+  const checkAuthToken = async (dispatch) => {
+    try {
+      const token = localStorage.getItem('token');
+  
+      if (!token) {
+        console.log('Token no encontrado. Ejecutando onLogout...');
+        dispatch(onLogout());
+      } else {
+        console.log('Token encontrado. Ejecutando lógica adicional...');
+        // Lógica adicional si es necesario cuando hay un token
+        // ...
+      }
+    } catch (error) {
+      // Manejar cualquier error aquí
+      console.error('Error al verificar el token:', error);
+    }
+  };
 
   const changePassword = async ({ oldPassword, newPassword }) => {
     let miStorage = window.localStorage.token

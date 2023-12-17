@@ -187,7 +187,7 @@ const NewProfile = () => {
                     className="block w-full text-sm file:mr-4 file:rounded-md file:border-0 file:bg-dark-blue-500 file:py-2.5 file:px-4 file:text-sm file:font-semibold file:text-white hover:file:bg-dark-blue-700 focus:outline-none disabled:pointer-events-none disabled:opacity-60"
                
                   />
-                </div>
+                </div> 
 
                 <h2 className="mt-8 text-2xl">Rol del empleado*</h2>
                 <div className="mx-auto space-y-3">

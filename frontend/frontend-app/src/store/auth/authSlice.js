@@ -1,4 +1,6 @@
 import { createSlice } from '@reduxjs/toolkit';
+import { persistReducer } from 'redux-persist';
+import storage from 'redux-persist/lib/storage';
 
 export const authSlice = createSlice({
     name: 'auth',
@@ -29,4 +31,15 @@ export const authSlice = createSlice({
     }
 });
 
-export const { onChecking, onLogin, onLogout, clearErrorMessage } = authSlice.actions;
+// Configuración de persistencia para el reducer de auth
+const authPersistConfig = {
+    key: 'auth',
+    storage: storage,
+    blacklist: [], // Puedes excluir ciertos campos si es necesario
+  };
+  
+  const persistedAuthReducer = persistReducer(authPersistConfig, authSlice.reducer);
+  
+  export const { onChecking, onLogin, onLogout, clearErrorMessage } = authSlice.actions;
+  
+  export default persistedAuthReducer;
