@@ -8,11 +8,9 @@ import axios from 'axios'
 
 export const useAuthStore = () => {
   const { status, user, errorMessage } = useSelector(state => state.auth)
-  // console.log(status)
-  // console.log(user)
   const dispatch = useDispatch()
 
-  const navigate = useNavigate()
+ 
   const navigateTo = useNavigate()
 
   const startRegister = async User => {
@@ -61,20 +59,21 @@ export const useAuthStore = () => {
       document.cookie = `token=${data.token}; ${expires};`
 
       localStorage.setItem('token', data.token)
+      console.log(data.token)
 
       localStorage.setItem('token-init-date', new Date().getTime())
 
       localStorage.setItem('user', JSON.stringify(data.user))
 
-      console.log(data)
+      console.log(data.user)
 
       dispatch(onLogin(data.user))
 
       // console.log(data.user.name)
       Swal.fire(`Bienvenido!  ${data.user.name}`)
-      navigate(`/dashboard`)
+      navigateTo(`/dashboard`)
     } catch (error) {
-      console.log(error)
+      console.log(error) 
       Swal.fire({
         icon: 'error',
         title: 'Oops...',
@@ -89,22 +88,23 @@ export const useAuthStore = () => {
     }
   }
 
-  const checkAuthToken = async () => {
-    const token = localStorage.getItem('token')
-
-    if (!token) return dispatch(onLogout())
-
+  const checkAuthToken = async (dispatch) => {
     try {
-      const { data } = await pageApi.get('auth/renew')
-      localStorage.setItem('token', data.token)
-      localStorage.setItem('token-init-date', new Date().getTime())
-      dispatch(onLogin({ name: data.name, uid: data.uid }))
+      const token = localStorage.getItem('token');
+  
+      if (!token) {
+        console.log('Token no encontrado. Ejecutando onLogout...');
+        dispatch(onLogout());
+      } else {
+        console.log('Token encontrado. Ejecutando lógica adicional...');
+        // Lógica adicional si es necesario cuando hay un token
+        // ...
+      }
     } catch (error) {
-      console.log(error)
-      localStorage.clear()
-      dispatch(onLogout())
+      // Manejar cualquier error aquí
+      console.error('Error al verificar el token:', error);
     }
-  }
+  };
 
   const changePassword = async ({ oldPassword, newPassword }) => {
     let miStorage = window.localStorage.token
@@ -162,17 +162,13 @@ export const useAuthStore = () => {
       Swal.fire('Usuario correctamente registrado!')
       navigateTo(`/crear-perfil`)
     } catch (error) {
-      navigateTo(`/crear-perfil`)
+      
       Swal.fire({
         icon: 'error',
         title: 'Oops...',
-        text: error.response.data?.details
+        text: 'Error al crear usuario'
       })
       console.log('Error al crear usuario', error.response.data?.details, 'error')
-      dispatch(onLogout(error.response.data?.msg || 'add valid email or password'))
-      setTimeout(() => {
-     
-      }, 10)
     }
   }
 
