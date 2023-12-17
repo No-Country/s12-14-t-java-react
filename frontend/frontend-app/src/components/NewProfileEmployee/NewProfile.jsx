@@ -185,6 +185,7 @@ const NewProfile = () => {
                     id="photo"
                     type="file"
                     className="block w-full text-sm file:mr-4 file:rounded-md file:border-0 file:bg-dark-blue-500 file:py-2.5 file:px-4 file:text-sm file:font-semibold file:text-white hover:file:bg-dark-blue-700 focus:outline-none disabled:pointer-events-none disabled:opacity-60"
+                    {...register('photo', { required: 'Campo requerido' })}
                   />
                 </div>
 
@@ -199,6 +200,7 @@ const NewProfile = () => {
                       id="rol1"
                       name="roleName"
                       className="h-4 w-4 rounded-full border-gray-300 text-primary-600 shadow-sm focus:border-primary-300 focus:ring focus:ring-primary-200 focus:ring-opacity-50 focus:ring-offset-0 disabled:cursor-not-allowed disabled:text-gray-400"
+                      {...register('roleName', { required: 'Campo requerido' })}
                     />
                     <label
                       htmlFor="rol1"
@@ -209,13 +211,14 @@ const NewProfile = () => {
                   </div>
                   <div className="flex items-center space-x-2">
                     <input
-                      value="GERENTE"
+                      value="OWNER"
                       checked={formData?.roleName === "GERENTE"}
                       onChange={handleRadioChange}
                       type="radio"
                       id="rol2"
                       name="roleName"
                       className="h-4 w-4 rounded-full border-gray-300 text-primary-600 shadow-sm focus:border-primary-300 focus:ring focus:ring-primary-200 focus:ring-opacity-50 focus:ring-offset-0 disabled:cursor-not-allowed disabled:text-gray-400"
+                      {...register('roleName', { required: 'Campo requerido' })}
                     />
                     <label
                       htmlFor="rol2"
@@ -226,13 +229,14 @@ const NewProfile = () => {
                   </div>
                   <div className="flex items-center space-x-2">
                     <input
-                      value="MANTENIMIENTO"
+                       value="MAINTENANCE"
                       checked={formData?.roleName === "MANTENIMIENTO"}
                       onChange={handleRadioChange}
                       type="radio"
                       id="rol3"
                       name="roleName"
                       className="h-4 w-4 rounded-full border-gray-300 text-primary-600 shadow-sm focus:border-primary-300 focus:ring focus:ring-primary-200 focus:ring-opacity-50 focus:ring-offset-0 disabled:cursor-not-allowed disabled:text-gray-400"
+                      {...register('roleName', { required: 'Campo requerido' })}
                     />
                     <label
                       htmlFor="rol3"

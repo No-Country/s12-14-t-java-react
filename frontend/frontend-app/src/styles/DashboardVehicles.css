@@ -81,6 +81,13 @@
   justify-content: center;
   align-items: center;
 }
+
+@media (max-width: 1023px){
+  .cards-carrusel{
+    width: 100%;
+  }
+}
+
 .cards-carrusel_nw{
   height: 256px;
 }

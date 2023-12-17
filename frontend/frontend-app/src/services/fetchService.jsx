@@ -23,3 +23,4 @@ export const postEmployee = (data) => {
   console.log(data)
   return pageApi.post(`http://149.50.131.109:9896/api/v1/employee/newEmployee`, data)
 } 
+

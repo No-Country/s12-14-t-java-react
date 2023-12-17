@@ -1,5 +1,5 @@
 import { pageApi } from './PageApi'
 
 export const addVehicle = async data => {
-  return pageApi.post('/vehicle/save', data)
+  return pageApi.post('/vehicle', data)
 }
