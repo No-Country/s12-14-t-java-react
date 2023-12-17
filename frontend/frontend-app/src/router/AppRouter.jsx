@@ -27,13 +27,13 @@ export const AppRouter = () => {
         <Route path="/*" element={<ManagerRoutes />} />
       ) : (
         // Rutas de autenticación para usuarios no autenticados
-        <Route path="/auth/*" element={<AuthRoutes />} />
+        <Route path="/*" element={<AuthRoutes />} />
       )}
 
-      {status !== "authenticated" && (
+      {/* {status !== "authenticated" && (
         // Redirige al inicio de sesión si no está autenticado
         <Route path="/*" element={<Navigate to="auth/login" />} />
-      )}
+      )} */}
     </Routes>
   );
 };
