@@ -1,15 +1,11 @@
 import { useState } from "react";
 import "../../styles/NewProfile.css";
 import { useAuthStore } from "../../hooks/useAuthStore";
-import {Cloudinary} from "@cloudinary/url-gen";
-import axios from 'axios'
 
 const NewProfile = () => {
-  const { RegisterNewEmployed,fileUpload } = useAuthStore();
-  
+  const { RegisterNewEmployed, fileUpload } = useAuthStore();
 
 
-  // https://res.cloudinary.com/demo/image/upload/
   const [formData, setFormData] = useState({
     name: "",
     lastName: "",
@@ -22,17 +18,20 @@ const NewProfile = () => {
     // Verificar que los campos requeridos no estén en blanco
     if (
       !formData ||
-      !formData.name || formData.name.trim() === "" ||
-      !formData.lastName || formData.lastName.trim() === "" ||
-      !formData.email || formData.email.trim() === "" ||
-      !formData.roleName || formData.roleName.trim() === "" ||
+      !formData.name ||
+      formData.name.trim() === "" ||
+      !formData.lastName ||
+      formData.lastName.trim() === "" ||
+      !formData.email ||
+      formData.email.trim() === "" ||
+      !formData.roleName ||
+      formData.roleName.trim() === "" ||
       formData.photo === null
     ) {
       return false;
     }
     return true;
   };
-
 
   const handleRadioChange = (e) => {
     const { name, value } = e.target;
@@ -41,10 +40,6 @@ const NewProfile = () => {
       [name]: value,
     }));
   };
-
-
-
-
 
   const handleChange = (e) => {
     const { id, value, type, files } = e.target;
@@ -55,24 +50,18 @@ const NewProfile = () => {
     }));
   };
 
-
-
-
   const uploadImageToCloudinary = async () => {
     try {
-     
       const resp = await fileUpload(formData.photo);
 
-      
       const photo = resp;
-      console.log(photo )
+      console.log(photo);
 
-      
       setFormData((prevFormData) => ({
         ...prevFormData,
         photo: photo,
       }));
-      console.log(setFormData(formData))
+      console.log(setFormData(formData));
 
       return resp;
     } catch (error) {
@@ -81,51 +70,36 @@ const NewProfile = () => {
     }
   };
 
-
-
-
-
-
-
-
   const handleSubmit = async (e) => {
     e.preventDefault();
-    
-    
+
     if (formData && isFormValid()) {
       try {
-        
         const photo = await uploadImageToCloudinary();
-        console.log(photo)
-        
+        console.log(photo);
+
         setFormData((prevFormData) => ({
           ...prevFormData,
           photo: photo,
         }));
         console.log("Datos del formulario:", formData);
-   
 
-
-       await RegisterNewEmployed({
-           name: formData.name,
-           lastName: formData.lastName,
-           email: formData.email,
-           roleName: formData.roleName,
-           photo: photo,
-         });
-
-
-
-
-    } catch (error) {
-      console.error('Error al subir la imagen a Cloudinary:', error);
+        await RegisterNewEmployed({
+          name: formData.name,
+          lastName: formData.lastName,
+          email: formData.email,
+          roleName: formData.roleName,
+          photo: photo,
+        });
+      } catch (error) {
+        console.error("Error al subir la imagen a Cloudinary:", error);
+      }
+    } else {
+      console.error(
+        "Error de validación: Todos los campos requeridos deben estar llenos"
+      );
     }
-  } else {
-    console.error('Error de validación: Todos los campos requeridos deben estar llenos');
-  }
-};
-
-  
+  };
 
   return (
     <div className="container-profile">
@@ -235,7 +209,7 @@ const NewProfile = () => {
                   </div>
                   <div className="flex items-center space-x-2">
                     <input
-                    value='GERENTE'
+                      value="GERENTE"
                       checked={formData?.roleName === "GERENTE"}
                       onChange={handleRadioChange}
                       type="radio"
@@ -252,7 +226,7 @@ const NewProfile = () => {
                   </div>
                   <div className="flex items-center space-x-2">
                     <input
-                    value='MANTENIMIENTO'
+                      value="MANTENIMIENTO"
                       checked={formData?.roleName === "MANTENIMIENTO"}
                       onChange={handleRadioChange}
                       type="radio"

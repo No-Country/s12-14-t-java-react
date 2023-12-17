@@ -147,12 +147,7 @@ export const useAuthStore = () => {
     let miStorage = window.localStorage.token
     console.log(miStorage)
 
-    const config = {
-      headers: {
-        'Authorization':'Bearer '+ miStorage,
-        'Content-type': 'application/json'
-      }
-    }
+   
     try {
       const { data } = await pageApi.post('/employee/newEmployee', {
         email,
@@ -198,9 +193,6 @@ export const useAuthStore = () => {
             method: 'POST',
             body: formData
         });
-        
-
-
 
         if ( !resp.ok ) throw new Error('No se pudo subir imagen')
         const cloudResp = await resp.json();
@@ -214,11 +206,6 @@ export const useAuthStore = () => {
     }
 
 }
-
-
-
-
-
 
   return {
     status,
