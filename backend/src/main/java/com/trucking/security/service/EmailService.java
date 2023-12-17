@@ -8,6 +8,7 @@ import jakarta.mail.MessagingException;
 import jakarta.mail.internet.MimeMessage;
 import lombok.RequiredArgsConstructor;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 
 import org.springframework.mail.javamail.JavaMailSender;
@@ -20,21 +21,23 @@ import java.util.HashMap;
 import java.util.Map;
 
 @Service
-@RequiredArgsConstructor
 public class EmailService {
 
+    @Autowired
     private final JavaMailSender javaMailSender;
-    private final TemplateEngine templateEngine;
-    private final JwtService jwtService;
 
+    @Autowired
+    private final TemplateEngine templateEngine;
     @Value("${mail.urlFront}")
     private String urlNewPassword;
 
-    @Value("${mail.loginFront}")
-    private String login;
-
     @Value("${spring.mail.username}")
     private String emailFrom;
+
+    public EmailService(JavaMailSender javaMailSender, TemplateEngine templateEngine) {
+        this.javaMailSender = javaMailSender;
+        this.templateEngine = templateEngine;
+    }
 
     public void setEmail(DataForgotPasswordDto dataForgotPasswordDto){
         MimeMessage message = javaMailSender.createMimeMessage();
@@ -73,30 +76,6 @@ public class EmailService {
             helper.setSubject("Cambiar contraseña de tu cuenta de Trucking");
             helper.setFrom(emailFrom);
             helper.setTo(dataForgotPasswordDto.getEmail());
-            helper.setText(htmlText, true);
-
-            javaMailSender.send(message);
-        } catch (MessagingException e) {
-            e.printStackTrace();
-        }
-    }
-
-    public void setEmailWithPassword(DataChangePasswordEmployee employee){
-        MimeMessage message = javaMailSender.createMimeMessage();
-        try {
-            MimeMessageHelper helper = new MimeMessageHelper(message, true);
-            Context context = new Context();
-            Map<String, Object> model = new HashMap<>();
-            model.put("email", emailFrom);
-            model.put("url", login + employee.getToken());
-            model.put("username", employee.getName());
-            model.put("password", employee.getCurrentPassword());
-            context.setVariables(model);
-
-            String htmlText = templateEngine.process("email-template-password", context);
-            helper.setSubject("Accede a tu cuenta en Trucking");
-            helper.setFrom(emailFrom);
-            helper.setTo(employee.getEmail());
             helper.setText(htmlText, true);
 
             javaMailSender.send(message);
