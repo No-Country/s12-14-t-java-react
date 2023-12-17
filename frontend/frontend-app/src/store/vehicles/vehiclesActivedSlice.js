@@ -1,4 +1,6 @@
 import { createSlice } from '@reduxjs/toolkit'
+import { persistReducer } from 'redux-persist';
+import storage from 'redux-persist/lib/storage';
 
 export const vehiclesActivatedSlice = createSlice({
   name: 'vehiclesActivatedSlice',
@@ -18,4 +20,15 @@ export const vehiclesActivatedSlice = createSlice({
   }
 })
 
+// Configuración de persistencia para el reducer de auth
+const authPersistConfig = {
+  key: 'vehiclesActivatedSlice',
+  storage: storage,
+  blacklist: [], // Puedes excluir ciertos campos si es necesario
+};
+
+const persistedVehiclesReducer = persistReducer(authPersistConfig, vehiclesActivatedSlice.reducer);
+
 export const { startLoadingVehiclesActivated , setVehiclesActivated} = vehiclesActivatedSlice.actions
+
+export default persistedVehiclesReducer;
