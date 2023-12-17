@@ -10,6 +10,8 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import java.time.LocalDate;
+
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
@@ -40,7 +42,8 @@ public class NewDriver {
         private String driverLicencePhoto;
         @NotNull (message = "La foto de los antecedentes penales del empleado es obligatorio")
         private String criminalRecord;
-
-
+        @NotBlank(message = "La fecha de expiración de la licencia de conducción del empleado es obligatoria")
+        @Pattern(regexp = "^[0-9]{4}-[0-9]{2}-[0-9]{2}$")
+        private LocalDate dateExpire;
 
 }

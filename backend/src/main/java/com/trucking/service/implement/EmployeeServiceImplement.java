@@ -59,7 +59,6 @@ public class EmployeeServiceImplement implements EmployeeService {
         newEmpl.setPhoto(newEmployee.getPhoto());
         newEmpl.setActive(true);
 
-
         //guardar el usuario
         User savEmpl = employeeRepository.save(newEmpl);
         //generar token para usar en el envio del email
@@ -97,6 +96,8 @@ public class EmployeeServiceImplement implements EmployeeService {
         newDrv.setRole(driver.getRoleName());
         newDrv.setPhoto(driver.getPhoto());
         newDrv.setActive(true);
+        newDrv.setLicenceDateExpired(driver.getDateExpire());
+
         //guardar el usuario
         User savDriv = employeeRepository.save(newDrv);
         //generar token para usar en el envio del email

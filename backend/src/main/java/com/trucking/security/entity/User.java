@@ -6,10 +6,12 @@ import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
+import java.time.LocalDate;
 import java.util.Collection;
 import java.util.List;
 
@@ -40,6 +42,8 @@ public class User implements UserDetails {
     private boolean active;
     private String driverLicencePhoto;
     private String criminalRecord;
+    @DateTimeFormat(fallbackPatterns = "YYYY-MM-DD")
+    private LocalDate licenceDateExpired;
 
     /**
      * Obtiene la colección de autoridades (roles) del usuario.
