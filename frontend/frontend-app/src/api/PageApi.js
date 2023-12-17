@@ -4,7 +4,7 @@ import { getEnvVariables } from '../helpers/getEnvVariables';
 const { VITE_API_URL } = getEnvVariables();
 
 export const pageApi = axios.create({
-    VITE_API_URL : VITE_API_URL
+    baseURL : VITE_API_URL
 });
 // console.log(import.meta.env.VITE_API_URL)
 
@@ -13,7 +13,7 @@ pageApi.interceptors.request.use(config => {
 
     config.headers = {
         ...config.headers,
-        'x-token': localStorage.getItem('token')
+        'Authorization': 'Bearer ' + localStorage.getItem('token')
     }
 
     return config;

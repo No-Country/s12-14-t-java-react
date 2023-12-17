@@ -136,6 +136,90 @@ export const useAuthStore = () => {
     }
   }
 
+
+
+
+  const RegisterNewEmployed = async({  email,
+    lastName,
+    name,
+    photo,
+    roleName })=> {
+    let miStorage = window.localStorage.token
+    console.log(miStorage)
+
+    const config = {
+      headers: {
+        'Authorization':'Bearer '+ miStorage,
+        'Content-type': 'application/json'
+      }
+    }
+    try {
+      const { data } = await pageApi.post('/employee/newEmployee', {
+        email,
+        lastName,
+        name,
+        photo,
+        roleName
+
+      })
+      
+      console.log('Usuario creado correctamente', 'success')
+      Swal.fire('Usuario correctamente registrado!')
+      navigateTo(`/crear-perfil`)
+    } catch (error) {
+      navigateTo(`/crear-perfil`)
+      Swal.fire({
+        icon: 'error',
+        title: 'Oops...',
+        text: error.response.data?.details
+      })
+      console.log('Error al crear usuario', error.response.data?.details, 'error')
+      dispatch(onLogout(error.response.data?.msg || 'add valid email or password'))
+      setTimeout(() => {
+     
+      }, 10)
+    }
+  }
+
+
+
+  const fileUpload = async( file ) => {
+    if ( !file ) throw new Error('No tenemos ningúna archivo a subir');
+
+    const cloudUrl = 'https://api.cloudinary.com/v1_1/carlosv/upload';
+
+    const formData = new FormData();
+    formData.append('upload_preset','Trucking-app');
+    formData.append('file', file );
+
+    try {
+ 
+        const resp = await fetch( cloudUrl, {
+            method: 'POST',
+            body: formData
+        });
+        
+
+
+
+        if ( !resp.ok ) throw new Error('No se pudo subir imagen')
+        const cloudResp = await resp.json();
+        console.log(cloudResp.secure_url)
+        return cloudResp.secure_url;
+
+
+    } catch (error) {
+        console.log(error);
+        throw new Error( error.message );
+    }
+
+}
+
+
+
+
+
+
   return {
     status,
     user,
@@ -143,6 +227,10 @@ export const useAuthStore = () => {
     checkAuthToken,
     startRegister,
     startLogin,
-    changePassword
+    changePassword,
+    RegisterNewEmployed,
+    fileUpload
   }
 }
+
+

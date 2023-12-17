@@ -38,7 +38,6 @@ function App() {
       <Router>
         <Routes>
           <Route element={<ProtectedRoute isAllowed={isAllowed} />}>
-            <Route path='/crear-perfil' element={<DashboardNewProfile />} />
             <Route path='/mostrar-empleados' element={<Empleado />} />
             <Route path='/agregar-vehiculo' element={<AddVehicle />} />
             <Route path='/registro-mantenimiento' element={<RegistroMantenimiento />} />
@@ -56,6 +55,7 @@ function App() {
 
           <Route path='/' element={<Homepage />} />
           <Route path='/registro' element={<Register />} />
+            <Route path='/crear-perfil' element={<DashboardNewProfile />} />
 
           {/* <Route path='/Dashboard' element={<DashboardAdmi />} /> */}
         </Routes>

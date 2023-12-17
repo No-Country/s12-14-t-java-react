@@ -10,6 +10,8 @@
     "preview": "vite preview"
   },
   "dependencies": {
+    "@cloudinary/react": "^1.11.2",
+    "@cloudinary/url-gen": "^1.14.0",
     "@reduxjs/toolkit": "^1.9.7",
     "axios": "^1.6.2",
     "dayjs": "^1.11.10",
