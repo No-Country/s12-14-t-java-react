@@ -5,6 +5,10 @@ export const getActiveVehicles = () => {
   return pageApi.get(`${import.meta.env.VITE_API_URL}/list/vehicle/getAllActive?page=0&size=10`);
 } 
 
+export const getInactiveVehicles = () => {
+  return pageApi.get(`${import.meta.env.VITE_API_URL}/list/vehicle/getAllInactive?page=0&size=10`);
+} 
+
 export const getEmployees = () => {
   return pageApi.get(`${import.meta.env.VITE_API_URL}/employee/allEmployees`);
 } 

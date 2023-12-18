@@ -1,6 +1,21 @@
+import { useEffect, useState } from "react";
 import CardVehicleNotWorking from "./CardVehicleNotWorking";
+import { getInactiveVehicles } from "../../services/fetchService";
 
 const PanelVehiclesNotWorking =()=>{
+
+  const [vehicles, setVehicles] = useState([]);
+
+  useEffect(() => {
+    getInactiveVehicles().then((response)=>{
+      console.log("Response:");
+      console.log(response.data);
+      setVehicles(response.data);
+    }
+    )
+  
+  }, []);
+
 
     return (
         <section className="section-vehicles mt-[3rem]  w-[90%]  section-vehicles-nw">
@@ -10,10 +25,9 @@ const PanelVehiclesNotWorking =()=>{
           </h2>
           <div className="cards-container">
             <div className="cards-carrusel cards-carrusel_nw">
-              <CardVehicleNotWorking />
-              <CardVehicleNotWorking />
-              <CardVehicleNotWorking />
-              <CardVehicleNotWorking />
+            {vehicles.map((vehicle, index)=>
+                       (<CardVehicleNotWorking vehicle={vehicle} key={index}/>)
+                    )}
             </div>
 
           </div>

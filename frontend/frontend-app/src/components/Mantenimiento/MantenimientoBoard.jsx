@@ -1,6 +1,23 @@
+import { useEffect, useState } from 'react';
 import { SimpleDatePicker } from '../SimpleDatePicker'
+import { getActiveVehicles } from '../../services/fetchService';
 
 export const MantenimientoBoard = () => {
+
+
+  const [vehicles, setVehicles] = useState([]);
+
+  useEffect(() => {
+    getActiveVehicles().then((response)=>{
+      console.log("Response:");
+      console.log(response.data);
+      setVehicles(response.data);
+    }
+    )
+  
+  }, []);
+
+
   return (
     <>
       <div className='container w-full lg:w-[50%] py-3 px-5'>
@@ -27,10 +44,9 @@ export const MantenimientoBoard = () => {
                     <option disabled value={'DEFAULT'}>
                       Selecciona un Vehículo
                     </option>
-                    <option value='1'>Vehículo 1</option>
-                    <option value='2'>Vehículo 2</option>
-                    <option value='3'>Vehículo 3</option>
-                    <option value='4'>Vehículo 4</option>
+                    {vehicles.map((vehicle, index)=>
+                       (<option value={vehicle.id}>{vehicle.brand} {vehicle.model} ({vehicle.patent})</option>)
+                    )}
                   </select>
                 </div>
               </div>
