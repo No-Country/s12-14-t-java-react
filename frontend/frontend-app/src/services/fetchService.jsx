@@ -10,7 +10,12 @@ export const getInactiveVehicles = () => {
 } 
 
 export const getEmployees = () => {
-  return pageApi.get('/employee/allEmployees');
+  const config = {
+    headers: {
+      'Authorization': 'Bearer ' + localStorage.getItem('token')
+    }
+  }
+  return pageApi.get('/employee/allEmployees',config);
 } 
 
 export const postVehicle = (data) => {
