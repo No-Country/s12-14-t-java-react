@@ -15,7 +15,7 @@ export const useVehiclesActivated =()=>{
                 console.log( "respuesta: ", response.data);
                 console.log( "mi objeto a ingresar al store:", { page: size,
                     vehicles:response.data, isLoading:false})
-                dispatch(setVehiclesActivated({ size: size,
+                    dispatch(setVehiclesActivated({ size: size,
                     vehicles:response.data, isLoading:false}));
                 });
         }catch(error){
