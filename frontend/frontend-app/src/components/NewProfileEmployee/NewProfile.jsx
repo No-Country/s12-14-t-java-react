@@ -34,10 +34,10 @@ const NewProfile = () => {
   };
 
   const handleRadioChange = (e) => {
-    const { name, value } = e.target;
+    const { id, value } = e.target;
     setFormData((prevFormData) => ({
       ...prevFormData,
-      [name]: value,
+      [id]: value,
     }));
   };
 
