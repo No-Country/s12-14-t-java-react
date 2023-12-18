@@ -23,7 +23,7 @@ const Empleado = () => {
   return (
     <>
       <section className='flex flex-col lg:w-[25%] justify-start max-h-screen min-h-screen gap-5 py-3 pr-3 text-lg query-empleado'>
-        <div className='py-3 px-4  rounded-[15px] h-full w-full shadow-custom'>
+        <div className='py-3 px-4  rounded-[15px] h-full w-full shadow-custom empleados'>
           <h2 className='text-[#0D1544] mt-10 font-bold text-xl lg:text-2xl md:text-2xl m-6 max-h-screen'>
             Empleados
           </h2>

@@ -18,7 +18,7 @@ const PanelVehiclesOnWorking =()=>{
   }, []);
   
 
-return (<section className="section-vehicles section-vehicles-ow">
+return (<section className="section-vehicles section-vehicles-ow shadow-custom">
     <div className="section-vehicles__container">
     
       <h2 className="section-vehicles__title">Vehículos de la flota</h2>

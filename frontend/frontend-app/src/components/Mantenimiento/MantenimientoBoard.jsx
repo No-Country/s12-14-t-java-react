@@ -1,9 +1,17 @@
 import { useEffect, useState } from 'react';
 import { SimpleDatePicker } from '../SimpleDatePicker'
 import { getActiveVehicles } from '../../services/fetchService';
+import { useForm } from 'react-hook-form';
 
 export const MantenimientoBoard = () => {
+  const {
+    register,
+    formState: { errors },
+    handleSubmit,
+    reset
+  } = useForm()
 
+  const [value, setValue] = useState();
 
   const [vehicles, setVehicles] = useState([]);
 
@@ -17,29 +25,45 @@ export const MantenimientoBoard = () => {
   
   }, []);
 
+  const onSubmit = async data => {
+    try {
+      data.dateMant = value
+      console.log(data)
+      // const response = await postVehicle(data)
+      // console.log("RESPONSE")
+      // console.log(response)
+      // Swal.fire(`Vehiculo creado!`)
+      // reset()
+    } catch (error) {
+      console.log("ERROR")
+      console.log(error.response.data)
+      Swal.fire(`Error al crear empleado! \n ${error.response.data.details[0]}`)
+    }
+  }
 
   return (
     <>
       <div className='container w-full lg:w-[50%] py-3 px-5'>
-        <div className='w-full h-full rounded-[15px] shadow-custom px-6 py-7'>
+        <div className='addVehicle w-full h-full rounded-[15px] shadow-custom px-6 py-7'>
           <h1 className='text-xl font-bold lg:text-2xl md:text-2xl'>
             Crear registro de mantenimiento
           </h1>
 
-          <form>
+          <form onSubmit={handleSubmit(onSubmit)}>
             <div className='grid gap-5 pt-10 lg:grid-cols-2'>
               <div>
                 <div className='relative'>
                   <label
-                    htmlFor='default'
+                    htmlFor='vehicle'
                     className='left-3.5 absolute text-sm text-gray-500 duration-300 transform -translate-y-4 scale-75 top-2 z-10 origin-[0] bg-white px-1 peer-focus:px-1 peer-focus:text-blue-600 peer-focus:dark:text-#0d1544 peer-placeholder-shown:scale-100 peer-placeholder-shown:-translate-y-1/2 peer-placeholder-shown:top-[28px] pointer-events-none peer-focus:top-2 peer-focus:scale-75 peer-focus:-translate-y-4 start-1'
                   >
                     Vehiculo*
                   </label>
                   <select
-                    id='default'
+                    id='vehicle'
                     className='block w-full px-4 text-sm text-gray-900 border border-gray-300 bg-gray-50 focus:ring-blue-500 focus:border-blue-500 min-h-[56px]'
                     defaultValue={'DEFAULT'}
+                    {...register('vehicle', { required: 'Campo requerido' })}
                   >
                     <option disabled value={'DEFAULT'}>
                       Selecciona un Vehículo
@@ -48,31 +72,42 @@ export const MantenimientoBoard = () => {
                        (<option value={vehicle.id}>{vehicle.brand} {vehicle.model} ({vehicle.patent})</option>)
                     )}
                   </select>
+                  {errors.vehicle && <span className='error'>{errors.vehicle.message}</span>}
                 </div>
               </div>
               <div>
                 <div className='relative'>
                   <input
                     type='text'
-                    id='floating_outlined'
+                    id='km'
                     className='block px-4 pb-2.5 pt-4 w-full text-sm text-gray-900 bg-transparent border-1 border-gray-300 appearance-none border-[#0D1544] hover:#31429B focus:outline-none peer'
                     placeholder=''
+                    {...register('km', { required: 'Campo requerido' })}
                   />
                   <label
-                    htmlFor='floating_outlined'
+                    htmlFor='km'
                     className='left-3.5 absolute text-sm text-gray-500 duration-300 transform -translate-y-4 scale-75 top-2 z-10 origin-[0] bg-white px-1 peer-focus:px-1 peer-focus:text-blue-600 peer-focus:dark:text-#0d1544 peer-placeholder-shown:scale-100 peer-placeholder-shown:-translate-y-1/2 peer-placeholder-shown:top-[28px] pointer-events-none peer-focus:top-2 peer-focus:scale-75 peer-focus:-translate-y-4 start-1'
                   >
                     Kilometraje actual*
                   </label>
                 </div>
+                {errors.km && <span className='error'>{errors.km.message}</span>}
               </div>
             </div>
 
             <div className='grid gap-5 pt-10 lg:grid-cols-2'>
+            <input
+                      type='text'
+                      id='dateMant'
+                      value={value}
+                      className='block px-4 pb-2.5 pt-4 w-full text-sm text-gray-900 bg-transparent border-1 border-gray-300 appearance-none border-[#0D1544] hover:#31429B focus:outline-none peer'
+                      placeholder=''
+                      {...register('dateMant')}
+                    />
               <div className='relative z-20'>
-                <SimpleDatePicker label='Fecha de mantenimiento*' />
+                <SimpleDatePicker label='Fecha de mantenimiento*' changeValue={setValue}/>
               </div>
-
+              {errors.dateMant && <span className='error'>{errors.dateMant.message}</span>}
               <div className='relative'>
                 <label
                   htmlFor='mantType'
@@ -84,6 +119,7 @@ export const MantenimientoBoard = () => {
                   id='mantType'
                   name='mantType'
                   defaultValue={'DEFAULT'}
+                  {...register('manType', { required: 'Campo requerido' })}
                   className='block w-full px-4 text-sm text-gray-900 border border-gray-300 bg-gray-50 focus:ring-blue-500 focus:border-blue-500 min-h-[56px]'
                 >
                   <option disabled value='DEFAULT'>
@@ -94,6 +130,7 @@ export const MantenimientoBoard = () => {
                   <option value='3'>Tipo 3</option>
                   <option value='4'>Tipo 4</option>
                 </select>
+                {errors.manType && <span className='error'>{errors.manType.message}</span>}
               </div>
             </div>
 
@@ -106,6 +143,7 @@ export const MantenimientoBoard = () => {
                   placeholder=''
                   name='description'
                   rows={5}
+                  {...register('description', { required: 'Campo requerido' })}
                 />
                 <label
                   htmlFor='description'
@@ -114,6 +152,7 @@ export const MantenimientoBoard = () => {
                   Descripción*
                 </label>
               </div>
+              {errors.description && <span className='error'>{errors.description.message}</span>}
             </div>
 
             <div className='grid gap-5 pt-8 lg:grid-cols-2'>
@@ -125,6 +164,7 @@ export const MantenimientoBoard = () => {
                     className='block px-4 pb-2.5 pt-4 w-full text-sm text-gray-900 bg-transparent border-1 border-gray-300 appearance-none border-[#0D1544] hover:#31429B focus:outline-none peer'
                     placeholder=''
                     name='costo'
+                    {...register('costo', { required: 'Campo requerido' })}
                   />
                   <label
                     htmlFor='costo'
@@ -133,6 +173,7 @@ export const MantenimientoBoard = () => {
                     Costo*
                   </label>
                 </div>
+                {errors.costo && <span className='error'>{errors.costo.message}</span>}
               </div>
 
               <div className='relative'>

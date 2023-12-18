@@ -17,6 +17,7 @@ const [value, setValue] = useState();
 
   const onSubmit = async data => {
     try {
+      data.dateVTV = value
       console.log(data)
       const response = await postVehicle(data)
       console.log("RESPONSE")
@@ -40,7 +41,7 @@ const [value, setValue] = useState();
       <div className='container w-full lg:w-[56%] py-3 px-5 mx-auto'>
         <form
           onSubmit={handleSubmit(onSubmit)}
-          className='w-full h-full rounded-[15px] shadow-custom py-7'
+          className='addVehicle w-full h-full rounded-[15px] shadow-custom py-7'
         >
           <div className='px-10'>
             <h1

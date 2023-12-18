@@ -35,7 +35,7 @@ export const NewProfile = () => {
 
   return (
     <div className="container-profile">
-      <section className="new-profile-continer">
+      <section className="new-profile-continer shadow-custom">
         <div className="continer-empleado-vehiculooff  text-[#0D1544]">
           <form className="form"
             onSubmit={handleSubmit(onSubmit)}>

@@ -15,6 +15,10 @@ body {
 html {
   box-sizing: border-box;
 }
+#root{
+  background: linear-gradient(0deg, rgba(2,0,36,1) 0%, rgba(255,255,255,1) 0%, rgba(228,230,242,1) 100%, rgba(193,198,225,1) 100%, rgba(228,230,242,1) 100%);
+}
+
 *,
 *:before,
 *:after {
@@ -94,6 +98,10 @@ textarea:focus {
   justify-content: space-between;
 
   /* max-height: 100vh; */
+}
+
+.addVehicle, .new-profile-continer, .container-new-vehicle, .empleados{
+  background-color: white;
 }
 
 @media (min-width: 1630px) {

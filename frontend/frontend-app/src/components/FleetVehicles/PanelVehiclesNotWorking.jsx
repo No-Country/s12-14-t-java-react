@@ -18,7 +18,7 @@ const PanelVehiclesNotWorking =()=>{
 
 
     return (
-        <section className="section-vehicles mt-[3rem]  w-[90%]  section-vehicles-nw">
+        <section className="section-vehicles mt-[3rem]  w-[90%]  section-vehicles-nw shadow-custom">
         <div className="section-vehicles__container ">
           <h2 className="section-vehicles__title">
             Vehículos fuera de servicio
