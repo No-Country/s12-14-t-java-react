@@ -13,7 +13,7 @@ const PanelVehiclesOnWorking = () => {
     };
 
     fetchData();
-  }, []); // La dependencia vacía asegura que este efecto se ejecute solo una vez después del montaje
+  }, []); 
 
   const {vehicles} = useSelector((state) => state.vehiclesActivate);
 
