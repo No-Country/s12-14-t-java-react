@@ -133,7 +133,7 @@ public class ManTypeController {
     public ResponseEntity<?> getAllManTypes(){
         try {
             List<ManType> manTypeList = manTypeServiceImplement.getAllManTypes();
-            return new ResponseEntity<>("Listado de tipos de mantenimiento, "+ manTypeList, HttpStatus.OK);
+            return new ResponseEntity<>(manTypeList, HttpStatus.OK);
         }catch (Exception e){
             return new ResponseEntity<>("Error al encontrar la lista de tipos de mantenimiento", HttpStatus.BAD_REQUEST);
         }
