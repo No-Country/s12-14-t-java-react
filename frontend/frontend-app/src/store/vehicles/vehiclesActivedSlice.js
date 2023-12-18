@@ -7,7 +7,7 @@ export const vehiclesActivatedSlice = createSlice({
   initialState: {
     size: 0,
     vehicles: [],
-    isLoading: false    
+    isLoading: false     
   },
   reducers: {
     startLoadingVehiclesActivated: (state, )=>{
@@ -17,9 +17,9 @@ export const vehiclesActivatedSlice = createSlice({
     setVehiclesActivated: (state, action)=>{
       console.log("ingresando objeto al estado: ")
       console.log("payload: ", action.payload);
-      state.page=action.payload.size;
-      state.isLoading=action.payload.isLoading;
-      state.vehicles=action.payload.vehicles;
+      state.page = action.payload.size;
+      state.isLoading = action.payload.isLoading;
+      state.vehicles = action.payload.vehicles;
      }
   }
 })

@@ -1,4 +1,4 @@
-import axios from "axios";
+
 import { pageApi } from "../api/PageApi";
 
 export const getActiveVehicles = (size) => {
@@ -20,10 +20,10 @@ export const postVehicle = (data) => {
   return pageApi.post(`${import.meta.env.VITE_API_URL}/vehicle/save`, data)
 } 
 
-export const postEmployee = (data) => {
-  data.photo = photo.value
-  console.log("Token : " + localStorage.getItem('token'))
-  console.log("Employee: ")
-  console.log(data)
-  return pageApi.post(`${import.meta.env.VITE_API_URL}/employee/newEmployee`, data)
-} 
+// export const postEmployee = (data) => {
+//   data.photo = photo.value
+//   console.log("Token : " + localStorage.getItem('token'))
+//   console.log("Employee: ")
+//   console.log(data)
+//   return pageApi.post(`${import.meta.env.VITE_API_URL}/employee/newEmployee`, data)
+// } 
