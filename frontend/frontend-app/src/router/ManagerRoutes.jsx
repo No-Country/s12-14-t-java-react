@@ -30,7 +30,15 @@ export const ManagerRoutes = () => {
       <Route path="/modificar-contrasena" element={<DashboardGerente />} />
 
       <Route path="/dashboard" element={<DashboardVehicles />} />
-    
+      <Route
+        path="/dashboard-datos-personales"
+        element={<DatosPersonalesChofer />}
+      />
+      <Route path="/panel-general-chofer" element={<PanelGeneral />} />
+      <Route
+        path="/modificar-contrasena-chofer"
+        element={<ModificarChofer />}
+      />
 
       <Route path="/RevisionDiaria" element={<RevisionDiaria />} />
     </Routes>

@@ -10,15 +10,7 @@ export const AuthRoutes = () => {
     <Routes>
       <Route path="/*" element={<Homepage />} />
       <Route path="/registro" element={<Register />} />
-      <Route
-        path="/dashboard-datos-personales"
-        element={<DatosPersonalesChofer />}
-      />
-      <Route path="/panel-general-chofer" element={<PanelGeneral />} />
-      <Route
-        path="/modificar-contrasena-chofer"
-        element={<ModificarChofer />}
-      />
+    
     </Routes>
   );
 };

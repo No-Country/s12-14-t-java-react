@@ -62,7 +62,16 @@ const SideMenu = () => {
       spacing: 'mb-32',
       isClickable: true,
       link: '/registro-mantenimiento'
-    }
+    },
+    {
+      name: 'Datos personales',
+      icon: <PiNotepad />,
+      size: 'text-base',
+      spacing: 'mb-32',
+      isClickable: true,
+      link: '/dashboard-datos-personales'
+    },
+  
   ]
 
   useEffect(() => {
