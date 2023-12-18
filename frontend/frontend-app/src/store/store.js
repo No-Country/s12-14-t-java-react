@@ -7,7 +7,7 @@ import { persistStore } from 'redux-persist';
 export const store = configureStore({
     reducer: {
         auth: persistedAuthReducer,
-        vehiclesActivatedSlice : persistedVehiclesReducer,
+        vehiclesActivate : persistedVehiclesReducer,
         
     },
     middleware: (getDefaultMiddleware) => getDefaultMiddleware({

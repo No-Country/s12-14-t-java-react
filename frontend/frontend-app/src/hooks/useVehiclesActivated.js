@@ -1,33 +1,32 @@
-import { useDispatch } from "react-redux"
-import {startLoadingVehiclesActivated, setVehiclesActivated} from './../store/vehicles/vehiclesActivedSlice'
+import { useDispatch } from "react-redux";
+import { startLoadingVehiclesActivated, setVehiclesActivated } from './../store/vehicles/vehiclesActivedSlice';
+import { pageApi } from "../api/PageApi";
 
-import { getActiveVehicles } from "../services/fetchService";
-
-
-
-export const useVehiclesActivated =()=>{
-  
+export const useVehiclesActivated = () => {
     const dispatch = useDispatch();
-    
-    const getVehiclesActivated= async (size)=>{
-      
-        dispatch(startLoadingVehiclesActivated()); 
-        
-        try{
-               await getActiveVehicles(size).then(response => {
-                console.log( "respuesta: ", response.data);
 
-                    setVehiclesActivated({ size: size,
-                    vehicles:response.data, isLoading:false});
-                });
-        }catch(error){
-            console.log("error en llamar a la api:", error);
+    const getVehiclesActivated = async (size) => {
+        dispatch(startLoadingVehiclesActivated());
+
+        try {
+            // Asegúrate de que la ruta de la API sea correcta y acepte los parámetros adecuados
+            const { data } = await pageApi.get(`/list/vehicle/getAllActive?page=0&size=${size}`);
+            
+            // Puede que desees utilizar el parámetro 'size' en alguna parte del código
+            dispatch(setVehiclesActivated({
+                size: size,
+                vehicles: data,
+                isLoading: false
+            }));
+            console.log(data);
+
+
+
+        } catch (error) {
+            console.error("Error al llamar a la API:", error);
+            // Puedes agregar acciones adicionales aquí, como mostrar un mensaje de error al usuario
         }
-
-
     };
-    
-    return { getVehiclesActivated}
-    
-}
 
+    return { getVehiclesActivated };
+};

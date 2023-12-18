@@ -1,24 +1,21 @@
-import CardVehicleOnWorking from './CardVehicleOnWorking'
-import { useSelector } from 'react-redux'
-import { useVehiclesActivated} from './../../hooks/useVehiclesActivated'
+import { useEffect } from 'react';
+import CardVehicleOnWorking from './CardVehicleOnWorking';
+import { useSelector } from 'react-redux';
+import { useVehiclesActivated } from './../../hooks/useVehiclesActivated';
+
 const PanelVehiclesOnWorking = () => {
-  console.log(import.meta.env.VITE_API_URL)
+  
+  const { getVehiclesActivated } = useVehiclesActivated();
 
-  //const [vehicles, setVehicles] = useState([])
+  useEffect(() => {
+    const fetchData = async () => {
+      await getVehiclesActivated(6);
+    };
 
-  const {getVehiclesActivated} =useVehiclesActivated();
+    fetchData();
+  }, []); // La dependencia vacía asegura que este efecto se ejecute solo una vez después del montaje
 
-  getVehiclesActivated(5);
-  const {isLoading,vehicles, page}=useSelector((state)=>state.vehiclesActivatedSlice);
-  console.log("is loading: ", isLoading, "page: ", page)
-  console.log("vehiculos del store; ", vehicles);
-  // useEffect(() => {
-  //   getActiveVehicles().then(response => {
-  //     console.log('Response:')
-  //     console.log(response.data)
-  //     setVehicles(response.data)
-  //   })
-  // }, [])
+  const {vehicles} = useSelector((state) => state.vehiclesActivate);
 
   return (
     <section className='w-full section-vehicles section-vehicles-ow'>
@@ -34,6 +31,7 @@ const PanelVehiclesOnWorking = () => {
         </div>
       </div>
     </section>
-  )
-}
-export default PanelVehiclesOnWorking
+  );
+};
+
+export default PanelVehiclesOnWorking;

@@ -3,7 +3,7 @@ import { persistReducer } from 'redux-persist';
 import storage from 'redux-persist/lib/storage';
 
 export const vehiclesActivatedSlice = createSlice({
-  name: 'vehiclesActivatedSlice',
+  name: 'vehiclesActivate',
   initialState: {
     size: 0,
     vehicles: [],
@@ -14,24 +14,24 @@ export const vehiclesActivatedSlice = createSlice({
       console.log("Ingresado isLoading al store");
       state.isLoading=true;
     },
-    setVehiclesActivated: (state, action)=>{
+    setVehiclesActivated: (state, {payload})=>{
       console.log("ingresando objeto al estado: ")
-      console.log("payload: ", action.payload);
-      state.page = action.payload.size;
-      state.isLoading = action.payload.isLoading;
-      state.vehicles = action.payload.vehicles;
+      console.log("payload: ", payload);
+      state.size = payload.size;
+      state.isLoading = payload.isLoading;
+      state.vehicles = payload.vehicles;
      }
   }
 })
 
 // Configuración de persistencia para el reducer de auth
-const vehiclesActivatedSlicePersistConfig = {
-  key: 'vehiclesActivatedSlice',
+const vehiclesSlicePersistConfig = {
+  key: 'vehiclesActivate',
   storage: storage,
   blacklist: [], // Puedes excluir ciertos campos si es necesario
 };
 
-const persistedVehiclesReducer = persistReducer(vehiclesActivatedSlicePersistConfig, vehiclesActivatedSlice.reducer);
+const persistedVehiclesReducer = persistReducer(vehiclesSlicePersistConfig, vehiclesActivatedSlice.reducer);
 
 export const { startLoadingVehiclesActivated , setVehiclesActivated} = vehiclesActivatedSlice.actions
 
