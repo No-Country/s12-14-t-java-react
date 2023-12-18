@@ -1,18 +1,21 @@
-import { useEffect, useState } from 'react'
-import CardVehicleOnWorking from './CardVehicleOnWorking'
-import { getActiveVehicles } from '../../services/fetchService'
-const PanelVehiclesOnWorking = () => {
-  console.log(import.meta.env.VITE_API_URL)
+import { useEffect } from 'react';
+import CardVehicleOnWorking from './CardVehicleOnWorking';
+import { useSelector } from 'react-redux';
+import { useVehiclesActivated } from './../../hooks/useVehiclesActivated';
 
-  const [vehicles, setVehicles] = useState([])
+const PanelVehiclesOnWorking = () => {
+  
+  const { getVehiclesActivated } = useVehiclesActivated();
 
   useEffect(() => {
-    getActiveVehicles().then(response => {
-      console.log('Response:')
-      console.log(response.data)
-      setVehicles(response.data)
-    })
-  }, [])
+    const fetchData = async () => {
+      await getVehiclesActivated(6);
+    };
+
+    fetchData();
+  }, []); 
+
+  const {vehicles} = useSelector((state) => state.vehiclesActivate);
 
   return (
     <section className='w-full section-vehicles section-vehicles-ow'>
@@ -28,6 +31,7 @@ const PanelVehiclesOnWorking = () => {
         </div>
       </div>
     </section>
-  )
-}
-export default PanelVehiclesOnWorking
+  );
+};
+
+export default PanelVehiclesOnWorking;
