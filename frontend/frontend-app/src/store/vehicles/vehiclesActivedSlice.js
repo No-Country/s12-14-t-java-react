@@ -5,7 +5,7 @@ import storage from 'redux-persist/lib/storage';
 export const vehiclesActivatedSlice = createSlice({
   name: 'vehiclesActivatedSlice',
   initialState: {
-    page: 0,
+    size: 0,
     vehicles: [],
     isLoading: false    
   },
@@ -17,7 +17,7 @@ export const vehiclesActivatedSlice = createSlice({
     setVehiclesActivated: (state, action)=>{
       console.log("ingresando objeto al estado: ")
       console.log("payload: ", action.payload);
-      state.page=action.payload.page;
+      state.page=action.payload.size;
       state.isLoading=action.payload.isLoading;
       state.vehicles=action.payload.vehicles;
      }

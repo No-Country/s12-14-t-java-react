@@ -27,9 +27,9 @@ const PanelVehiclesOnWorking = () => {
 
         <div className='cards-container'>
           <div className='cards-carrusel cards-carrusel_wo'>
-            {/* {vehicles.map((vehicle, index) => (
+            {vehicles.map((vehicle, index) => (
               <CardVehicleOnWorking vehicle={vehicle} key={index} />
-            ))} */}
+            ))}
           </div>
         </div>
       </div>
