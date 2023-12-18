@@ -27,8 +27,12 @@ const [value, setValue] = useState();
     } catch (error) {
       console.log("ERROR")
       console.log(error.response.data)
-      Swal.fire(`Error al crear empleado! \n ${error.response.data.details[0]}`)
-    }
+      try{
+        Swal.fire(`Error al crear empleado! \n ${error.response.data.details[0]}`)
+      } catch (error) {
+        Swal.fire(`Error desconocido`)
+      }
+  }
   }
 
   const handleNumericInput = e => {
@@ -455,15 +459,6 @@ const [value, setValue] = useState();
                 </div>
                 <div>
                   <div className='relative'>
-                    <input
-                      type='hidden'
-                      id='dateVtv'
-                      value={value}
-                      className='block px-4 pb-2.5 pt-4 w-full text-sm text-gray-900 bg-transparent border-1 border-gray-300 appearance-none border-[#0D1544] hover:#31429B focus:outline-none peer'
-                      placeholder=''
-                      {...register('dateVtv')}
-                    />
-                  
                   <div className='relative z-20'>
                     <SimpleDatePicker label='Fecha vencimiento VTV*' changeValue={setValue}
                     />

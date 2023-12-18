@@ -13,6 +13,10 @@ export const getEmployees = () => {
   return pageApi.get(`${import.meta.env.VITE_API_URL}/employee/allEmployees`);
 } 
 
+export const getManTypes = () => {
+  return pageApi.get(`${import.meta.env.VITE_API_URL}/man_types/allTypes`);
+} 
+
 export const postVehicle = (data) => {
   console.log("Token : " + localStorage.getItem('token'))
   console.log("Vehicle: ")
@@ -28,3 +32,9 @@ export const postEmployee = (data) => {
   return pageApi.post(`${import.meta.env.VITE_API_URL}/employee/newEmployee`, data)
 } 
 
+export const postNewMant = (data) => {
+  console.log("Token : " + localStorage.getItem('token'))
+  console.log("RegMant: ")
+  console.log(data)
+  return pageApi.post(`${import.meta.env.VITE_API_URL}/reg-mant`, data)
+} 
