@@ -13,10 +13,10 @@ export const MantenimientoBoard = () => {
   } = useForm()
 
   const [value, setValue] = useState();
-
   const [vehicles, setVehicles] = useState([]);
-
   const [manTypes, setManTypes] = useState([]);
+  const [sending, setSending] = useState(false);
+
 
   useEffect(() => {
     getActiveVehicles().then((response)=>{
@@ -32,7 +32,9 @@ export const MantenimientoBoard = () => {
   }, []);
 
   const onSubmit = async data => {
+    if (!sending){
     try {
+      setSending(true)
       data.date = value
       data.bill = 'recibo'
       console.log(data)
@@ -49,7 +51,9 @@ export const MantenimientoBoard = () => {
       } catch (error) {
         Swal.fire(`Error desconocido`)
       }
-    }
+    }finally{
+      setSending(false)
+    }}
   }
 
   return (
@@ -195,8 +199,8 @@ export const MantenimientoBoard = () => {
             </div>
 
             <div>
-              <button type='submit' className='block w-full mt-8 btn btn-template-1'>
-                Registrar mantenimiento
+              <button type='submit' className='h-[52px] block w-full mt-8 btn btn-template-1'>
+                {sending?<span class="loaderSpinBtn"></span>:<span>Registrar mantenimiento</span>}
               </button>
             </div>
           </form>

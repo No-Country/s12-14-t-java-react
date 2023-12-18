@@ -15,9 +15,14 @@ export const AddVehiculeBoard = () => {
 
 const [value, setValue] = useState();
 
+const [sending, setSending] = useState(false);
+
+
   const onSubmit = async data => {
+    if(!sending){
     try {
-      data.dateVTV = value
+      setSending(true)
+      data.dateVtv = value
       console.log(data)
       const response = await postVehicle(data)
       console.log("RESPONSE")
@@ -32,7 +37,9 @@ const [value, setValue] = useState();
       } catch (error) {
         Swal.fire(`Error desconocido`)
       }
-  }
+  }finally{
+    setSending(false)
+  }}
   }
 
   const handleNumericInput = e => {
@@ -550,7 +557,9 @@ const [value, setValue] = useState();
           </div>
 
           <div className='px-10 mt-7'>
-            <button className='w-full btn btn-template-1'>Agregar vehículo</button>
+            <button className='h-[52px] w-full btn btn-template-1'>
+            {sending?<span class="loaderSpinBtn"></span>:<span>Agregar vehículo</span>}
+            </button>
           </div>
         </form>
       </div>

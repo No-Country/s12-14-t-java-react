@@ -2,6 +2,7 @@ import { useForm } from "react-hook-form";
 import "../../styles/NewProfile.css";
 import { postEmployee } from "../../services/fetchService";
 import Swal from "sweetalert2";
+import { useState } from "react";
 
 
 export const NewProfile = () => {
@@ -19,8 +20,12 @@ export const NewProfile = () => {
 
   }
 
+  const [sending, setSending] = useState(false);
+
   const onSubmit = async data => {
+    if (!sending){
     try {
+      setSending(true)
       const response = await postEmployee(data)
       console.log("RESPONSE")
       console.log(response)
@@ -30,7 +35,9 @@ export const NewProfile = () => {
       console.log("ERROR")
       console.log(error.response.data)
       Swal.fire(`Error al crear empleado! \n ${error.response.data.details[0]}`)
-    }
+    } finally{
+      setSending(false)
+    }}
   }
 
   return (
@@ -202,9 +209,9 @@ export const NewProfile = () => {
             </div>
             <button
               // type="button"
-              className="rounded-lg border bg-dark-blue border-bg-blue-500 bg-blue-500 px-5 py-2.5 text-center text-sm font-medium text-white shadow-sm transition-all hover:border-blue-700 hover:bg-blue-700 focus:ring focus:ring-blue-200 disabled:cursor-not-allowed disabled:border-blue-300 disabled:bg-blue-300"
+              className="h-[52px] rounded-lg border bg-dark-blue border-bg-blue-500 bg-blue-500 px-5 py-2.5 text-center text-sm font-medium text-white shadow-sm transition-all hover:border-blue-700 hover:bg-blue-700 focus:ring focus:ring-blue-200 disabled:cursor-not-allowed disabled:border-blue-300 disabled:bg-blue-300"
             >
-              Confirmar
+              {sending?<span class="loaderSpinBtn"></span>:<span>Confirmar</span>}
             </button>
           </form>
         </div>
