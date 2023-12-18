@@ -1,6 +1,6 @@
 import { Logo } from '../components/Logo'
 import { Link } from 'react-router-dom'
-import { useEffect } from 'react'
+import { useEffect, useState } from 'react'
 import { useAuthStore } from '../hooks/useAuthStore'
 import { useForm } from 'react-hook-form'
 import { HomeSlider } from '../components/HomeSlider/HomeSlider'
@@ -15,6 +15,9 @@ const loginFormFields = {
 const emailRegex = /^[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Z|a-z]{2,}$/
 
 export const Homepage = () => {
+
+  const [loggin, setLoggin] = useState(false);
+
   const { errorMessage, startLogin } = useAuthStore()
 
   const {
@@ -27,12 +30,14 @@ export const Homepage = () => {
   } = useForm(loginFormFields)
 
   const loginSubmit = handleSubmit(data => {
+    if (!loggin){
+    setLoggin(true)
     console.log(data)
     startLogin({
       email: data.email,
       password: data.password
     })
-  })
+  }})
 
   useEffect(() => {
     if (errorMessage !== undefined) {
@@ -112,8 +117,8 @@ export const Homepage = () => {
                 )}
               </div>
 
-              <button className='block w-full mt-0 mb-4 btn btn-template-1' type='submit'>
-                Ingresar
+              <button className='block h-[52px] w-full mt-0 mb-4 btn btn-template-1' type='submit'>
+                {loggin?<span class="loaderSpinBtn"></span>:<span>Ingresar</span>}
               </button>
 
               <Link to='/registro' className='btn btn-template-1'>

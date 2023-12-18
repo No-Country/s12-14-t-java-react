@@ -71,7 +71,6 @@ export const useAuthStore = () => {
       dispatch(onLogin(data.user))
 
       // console.log(data.user.name)
-      Swal.fire(`Bienvenido!  ${data.user.name}`)
       navigate(`/dashboard`)
     } catch (error) {
       console.log(error)

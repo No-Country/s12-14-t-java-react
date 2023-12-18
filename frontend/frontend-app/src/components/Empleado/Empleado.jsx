@@ -4,7 +4,7 @@ import { getEmployees } from "../../services/fetchService";
 const Empleado = () => {
 
 
-  const [empleados, setEmpleados] = useState([]);
+  const [empleados, setEmpleados] = useState(null);
 
   useEffect(() => {
     getEmployees().then((response)=>{
@@ -19,6 +19,15 @@ const Empleado = () => {
   const imageStyle = {
     height: '100px'
   }
+
+  const spinner = {
+    height: '100%',
+    width: '100%',
+    display: 'flex',
+    justifyContent: 'center',
+    alignItems: 'center'
+  }
+
 // Prueba
   return (
     <>
@@ -28,7 +37,7 @@ const Empleado = () => {
             Empleados
           </h2>
           <div className='grid grid-cols-1 gap-4 md:grid-cols-1 lg:grid-cols-1  xl:grid-cols-1 mx-auto  overflow-y-scroll  max-h-[70vh] min-h-[30vh]'>
-            {empleados.map(empleado => (
+            {empleados!=null?empleados.map(empleado => (
               <article
                 key={empleado.id}
                 className='flex max-h-screen pr-2 mr-5 space-x-4 shadow-md rounded-xl '
@@ -41,7 +50,8 @@ const Empleado = () => {
                 </div>
                 <input type='checkbox' />
               </article>
-            ))}
+            )):<div style={spinner}><span class="loaderSpin"></span></div>}
+
           </div>
 
           <button className='w-full mt-4 btn btn-template-1'>Eliminar selección</button>

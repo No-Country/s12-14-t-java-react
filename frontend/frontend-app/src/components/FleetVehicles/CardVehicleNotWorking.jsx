@@ -3,7 +3,7 @@ const CardVehicleNotWorking = (props) => {
     <article className="card h-max-[250px] mb-3 overflow-hidden">
       <header className="bg-[#31429B] w-full h-9 flex flex-row justify-around  items-center">
         <h2 className="text-[#fff] text-[16px] font-medium leading-6 tracking-[0.15px]">
-          Tipo de Vehículo: {props.vehicle.vehicleType}
+          Tipo : {props.vehicle.vehicleType}
         </h2>
         <div className="flex flex-row gap-1"></div>
       </header>

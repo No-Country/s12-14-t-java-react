@@ -4,7 +4,7 @@ import { getInactiveVehicles } from "../../services/fetchService";
 
 const PanelVehiclesNotWorking =()=>{
 
-  const [vehicles, setVehicles] = useState([]);
+  const [vehicles, setVehicles] = useState(null);
 
   useEffect(() => {
     getInactiveVehicles().then((response)=>{
@@ -25,9 +25,9 @@ const PanelVehiclesNotWorking =()=>{
           </h2>
           <div className="cards-container">
             <div className="cards-carrusel cards-carrusel_nw">
-            {vehicles.map((vehicle, index)=>
+            {vehicles!=null?vehicles.map((vehicle, index)=>
                        (<CardVehicleNotWorking vehicle={vehicle} key={index}/>)
-                    )}
+                    ):<span class="loaderSpin"></span>}
             </div>
 
           </div>

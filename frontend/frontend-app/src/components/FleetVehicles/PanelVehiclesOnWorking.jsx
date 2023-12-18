@@ -5,7 +5,7 @@ import CardVehicleNotWorking from "./CardVehicleNotWorking";
 const PanelVehiclesOnWorking =()=>{
   console.log(import.meta.env.VITE_API_URL)
 
-  const [vehicles, setVehicles] = useState([]);
+  const [vehicles, setVehicles] = useState(null);
 
   useEffect(() => {
     getActiveVehicles().then((response)=>{
@@ -25,9 +25,9 @@ return (<section className="section-vehicles section-vehicles-ow shadow-custom">
 
       <div className="cards-container">
         <div className="cards-carrusel cards-carrusel_wo">
-        {vehicles.map((vehicle, index)=>
+        {vehicles!=null?vehicles.map((vehicle, index)=>
                        (<CardVehicleOnWorking vehicle={vehicle} key={index}/>)
-                    )}
+                    ):<span class="loaderSpin"></span>}
         </div>
       </div>
     </div>
