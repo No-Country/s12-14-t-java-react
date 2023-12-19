@@ -21,8 +21,7 @@ const PanelVehiclesNotWorking = () => {
         <h2 className='section-vehicles__title'>Vehículos fuera de servicio</h2>
         <div className='cards-container'>
           <div className='cards-carrusel cards-carrusel_nw'>
-            { (!isLoadingVOff)? <span>Cargando ...</span>:
-              vehiclesOff.map((vehicle, index) => 
+            { vehiclesOff.map((vehicle, index) => 
             (
               <CardVehicleNotWorking  vehicle={vehicle} key={index} />
             ))}

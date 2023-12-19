@@ -32,7 +32,7 @@ export const vehicles = createSlice({
     },
     startLoadingVehiclesOff: (state, )=>{
       console.log("Ingresado isLoading al store");
-      state.isLoadingVOff=true;
+      state.isLoadingVOff=false;
     },
     setVehiclesOff: (state, {payload})=>{
       console.log("ingresando al estado VOff: ")
@@ -43,7 +43,7 @@ export const vehicles = createSlice({
      },
      startLoadingVehicles: (state, )=>{
       console.log("Ingresado isLoading al store");
-      state.isLoadingVOff=true;
+      state.isLoadingVOff=false;
     },
     setVehicles: (state, {payload})=>{
       console.log("ingresando todos los vehiculos al store: ")
@@ -52,7 +52,7 @@ export const vehicles = createSlice({
       state.isLoading = payload.isLoading;
       state.vehicles = payload.vehicles;
      },
-    deleteVehicle:(state, {payload})=>{
+    deleteVehicles:(state, {payload})=>{
       state.vehicles= state.vehicles.filter((vehicle)=>vehicle.id!=payload);
       state.vehiclesOn= state.vehiclesOn.filter((vehicle)=>vehicle.id!=payload);
       state.vehiclesOff= state.vehiclesOff.filter((vehicle)=>vehicle.id!=payload);
@@ -74,7 +74,7 @@ const persistedVehiclesReducer = persistReducer(vehiclesPersistConfig, vehicles.
 export const { 
   startLoadingVehiclesOn , setVehiclesOn,
   startLoadingVehiclesOff, setVehiclesOff,
-  startLoadingVehicles, setVehicles, deleteVehicle
+  startLoadingVehicles, setVehicles, deleteVehicles
   } = vehicles.actions
 
 export default persistedVehiclesReducer;

@@ -1,43 +1,15 @@
 import deleteIcon from '/img/deleteIcon.svg'
 import editIcon from '/img/editIcon.svg'
 import { useEffect, useState } from 'react'
-import { deleteVehicle } from '../../services/fetchService'
 import { v4 as uuidv4 } from 'uuid'
 import Swal from 'sweetalert2'
+import { useVehicles } from '../../hooks/useVehicles'
 const CardVehicleOnWorking = props => {
-  const editVehicle = () => {}
-
+  const {deleteVehicle} =useVehicles();
   const handleDelete = async e => {
     e.preventDefault()
-
-    Swal.fire({
-      title: '¿Estás seguro de que quieres eliminar el vehiculo?',
-      text: '¡No podrás revertir esto!',
-      icon: 'warning',
-      showCancelButton: true,
-      confirmButtonColor: '#31429B',
-      cancelButtonColor: '#d33',
-      confirmButtonText: '¡Sí, bórralo!',
-      cancelButtonText: 'Cancelar'
-    }).then(result => {
-      if (result.isConfirmed) {
-        // console.log(props.vehicle.id)
-        // const response = deleteVehicle({ id: props.vehicle.id })
-        deleteVehicle({ id: props.vehicle.id })
-          .then(response => {
-            console.log(response)
-            Swal.fire({
-              title: '¡Eliminado!',
-              text: 'Su vehiculo ha sido eliminado.',
-              icon: 'success'
-            })
-          })
-          .catch(err => {
-            console.log(err)
-            Swal.fire(`Error al eliminar el vehiculo!`)
-          })
-      }
-    })
+    deleteVehicle(props.vehicle.id);
+  
   }
 
   const iconDelete = (

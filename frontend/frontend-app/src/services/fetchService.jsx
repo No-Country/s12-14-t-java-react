@@ -18,7 +18,7 @@ export const getEmployees = () => {
 } 
 
 export const deleteVehicle = data => {
-  return pageApi.delete(`https://trucking-jebius.koyeb.app/api/v1/vehicle/${data.id}`)
+  return pageApi.delete(`${import.meta.env.VITE_API_URL}/vehicle/${data.id}`)
 }
 
 export const postVehicle = data => {

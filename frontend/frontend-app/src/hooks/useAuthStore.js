@@ -16,7 +16,7 @@ export const useAuthStore = () => {
   const startRegister = async User => {
     dispatch(onChecking())
     try {
-      const { data } = await pageApi.post('/auth/register', {
+      const { data } = await axios.post(`${import.meta.env.VITE_API_URL}/auth/register`, {
         ...User
       })
       localStorage.setItem('token', data.token)
@@ -42,7 +42,7 @@ export const useAuthStore = () => {
   const startLogin = async ({ email, password }) => {
     dispatch(onChecking())
     try {
-      const { data } = await pageApi.post('/auth/login', {
+      const { data } = await axios.post(`${import.meta.env.VITE_API_URL}/auth/login`, {
         email,
         password
       })
@@ -116,8 +116,8 @@ export const useAuthStore = () => {
     }
     console.log(config)
     try {
-      const { data } = await pageApi.put(
-        '/auth/changePassword',
+      const { data } = await axios.put(
+        `${import.meta.env.VITE_API_URL}/auth/changePassword`,
         {
           oldPassword,  
           newPassword
@@ -215,5 +215,4 @@ export const useAuthStore = () => {
     fileUpload
   }
 }
-
 

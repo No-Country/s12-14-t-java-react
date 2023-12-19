@@ -1,6 +1,8 @@
 import { useDispatch } from "react-redux";
 import { startLoadingVehiclesOn , setVehiclesOn, startLoadingVehiclesOff, setVehiclesOff} from '../store/vehicles/vehiclesSlice';
 import { pageApi } from "../api/PageApi";
+import { deleteVehicles } from "../store/vehicles/vehiclesSlice";
+import Swal from 'sweetalert2'
 
 export const useVehicles = () => {
     const dispatch = useDispatch();
@@ -16,7 +18,7 @@ export const useVehicles = () => {
             dispatch(setVehiclesOn({
                 size: size,
                 vehicles: data,
-                isLoading: false
+                isLoading: true
             }));
             console.log("vehiculos en servicio: ", data);
 
@@ -28,7 +30,7 @@ export const useVehicles = () => {
         }
     };
 
-    const  getVehiclesNotWorking= async (size)=>{
+    const getVehiclesNotWorking= async (size)=>{
         dispatch(startLoadingVehiclesOff());
 
         try {
@@ -38,7 +40,7 @@ export const useVehicles = () => {
             dispatch(setVehiclesOff({
                 size: size,
                 vehicles: data,
-                isLoading: false
+                isLoading: true
             }));
             console.log("vehiculos fuera de servicio: ", data);
 
@@ -49,5 +51,40 @@ export const useVehicles = () => {
             // Puedes agregar acciones adicionales aquí, como mostrar un mensaje de error al usuario
         }
     }
-    return { getVehiclesActivated, getVehiclesNotWorking };
+    const deleteVehicle=async (id)=>{
+        Swal.fire({
+            title: '¿Estás seguro de que quieres eliminar el vehiculo?',
+            text: '¡No podrás revertir esto!',
+            icon: 'warning',
+            showCancelButton: true,
+            confirmButtonColor: '#31429B',
+            cancelButtonColor: '#d33',
+            confirmButtonText: '¡Sí, bórralo!',
+            cancelButtonText: 'Cancelar'
+          }).then(result => {
+            if (result.isConfirmed) {    
+                pageApi.delete(`${import.meta.env.VITE_API_URL}/vehicle/${id}`)
+            .then(
+                response =>{
+                console.log(response);
+                Swal.fire({
+                    title: '¡Eliminado!',
+                    text: 'Su vehiculo ha sido eliminado.',
+                    icon: 'success'
+                  }) 
+                  dispatch(deleteVehicles(id));
+                }).catch(err => {
+                   console.log(err)
+                       Swal.fire(`Error al eliminar el vehiculo!`)
+                 })
+            }
+            }
+          )        
+
+ }
+    
+    return { getVehiclesActivated, getVehiclesNotWorking, deleteVehicle};
+
+    
+
 };
