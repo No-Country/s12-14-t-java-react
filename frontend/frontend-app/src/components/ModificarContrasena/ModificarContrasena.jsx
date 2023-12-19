@@ -86,7 +86,7 @@ function ModificarContrasena() {
 
   return (
     <section className='flex flex-col w-[100%] lg:ml-5 items-center px-4'>
-      <div className='py-3 px-4  rounded-[15px] h-full w-full shadow-custom'>
+      <div className='addVehicle py-3 px-4  rounded-[15px] h-full w-full shadow-custom'>
         <h1 className='Mostrar-title font-bold text-[#0D1544] lg:text-2xl md:text-2xl text-lg ml-0'>
           Modificar la Contraseña
         </h1>
