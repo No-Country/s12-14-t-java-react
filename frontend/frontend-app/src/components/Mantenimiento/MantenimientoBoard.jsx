@@ -112,7 +112,19 @@ export const MantenimientoBoard = () => {
 
             <div className='grid gap-5 pt-10 lg:grid-cols-2'>
               <div className='relative z-20'>
-                <SimpleDatePicker label='Fecha de mantenimiento*' changeValue={setValue}/>
+              <input
+                      type='date'
+                      id='date'
+                      className='block px-4 pb-2.5 pt-4 w-full text-sm text-gray-900 bg-transparent border-1 border-gray-300 appearance-none border-[#0D1544] hover:#31429B focus:outline-none peer'
+                      placeholder=''
+                      {...register('date', { required: 'Campo requerido' })}
+                    />
+                    <label
+                      htmlFor='dateVtv'
+                      className='left-3.5 absolute text-sm text-gray-500 duration-300 transform -translate-y-4 scale-75 top-2 z-10 origin-[0] bg-white px-1 peer-focus:px-1 peer-focus:text-blue-600 peer-focus:dark:text-#0d1544 peer-placeholder-shown:scale-100 peer-placeholder-shown:-translate-y-1/2 peer-placeholder-shown:top-[28px] pointer-events-none peer-focus:top-2 peer-focus:scale-75 peer-focus:-translate-y-4 start-1'
+                    >
+                      Fecha mantenimiento*
+                    </label>
               </div>
               {errors.dateMant && <span className='error'>{errors.dateMant.message}</span>}
               <div className='relative'>
