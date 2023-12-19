@@ -6,6 +6,7 @@ import com.trucking.dto.regmant.UpdateRegMant;
 import com.trucking.entity.RegMaint;
 import com.trucking.exception.NotFoundVehicle;
 import com.trucking.security.dto.AuthenticationResponseDto;
+import com.trucking.security.dto.ErrorMsgDto;
 import com.trucking.security.dto.MsgDto;
 import com.trucking.service.implement.RegMantServiceImplement;
 
@@ -178,6 +179,17 @@ public class RegMantenController {
         }catch (Exception e){
             return new ResponseEntity<>("Error al encontrsar el registro de mantenimiento ", HttpStatus.BAD_REQUEST);
         }
+    }
+
+    @GetMapping("/byVehicle/{id}")
+    public ResponseEntity<?> byVehicleId(@PathVariable Long id){
+
+        try {
+            return new ResponseEntity<>(regMantServiceImplement.getAllByVehicle(id),HttpStatus.OK);
+        } catch (NotFoundVehicle e) {
+            return new ResponseEntity<>(new MsgDto(e.getMessage()),HttpStatus.BAD_REQUEST);
+        }
+
     }
 
     /**

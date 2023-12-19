@@ -7,9 +7,12 @@ import com.trucking.entity.RegMaint;
 import com.trucking.entity.Vehicle;
 import com.trucking.exception.NotFoundVehicle;
 import com.trucking.repository.VehicleRepository;
+import com.trucking.security.dto.MsgDto;
 import com.trucking.security.repository.RegMantRepository;
 import com.trucking.service.RegMantService;
 import lombok.RequiredArgsConstructor;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -76,4 +79,10 @@ public class RegMantServiceImplement implements RegMantService {
         return regMantRepository.findAll();
     }
 
+    @Override
+    public List<RegMaint> getAllByVehicle(Long idVehicle) {
+
+        if(vehicleRepository.findById(idVehicle).isEmpty()){throw new NotFoundVehicle();}
+        return vehicleRepository.findById(idVehicle).get().getMaintenance();
+    }
 }

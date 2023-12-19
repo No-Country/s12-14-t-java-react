@@ -45,6 +45,8 @@ public class VehicleServiceImpl implements VehicleService {
         return vehicleMapper.toListDto(vehicleRepository.findAll());
     }
 
+
+
     @Override
     public VehicleDto getVehicle(Long idVehicle) {
         return vehicleRepository.findById(idVehicle)
