@@ -26,6 +26,10 @@ function DatosPersonalesChofer() {
       setName2('')
     }
   }
+  const user = JSON.parse(localStorage.getItem('user'));
+  const imageStyle = {
+    height: '100px'
+  }
 
 
     return (
@@ -33,7 +37,7 @@ function DatosPersonalesChofer() {
             <DriverMenu />
             <section className='sm:w-100%'>
                 <div className="flex mt-24 gap-6 w-full">
-                    <img className="ml-4 rounded-2xl" src="././img/chofer.png" alt="" />
+                <img style={imageStyle} className="ml-6 rounded-2xl" src={user.photo} alt="" />
                     <div className="flex flex-col">
                         <h6 className="text-xl text-[#31429B] font-semibold">Nombre empleado</h6>
                         <p className="font-semibold text-base">Rol</p>

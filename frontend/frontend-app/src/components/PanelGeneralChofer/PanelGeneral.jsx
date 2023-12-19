@@ -117,7 +117,7 @@ function PanelGeneral({ value }) {
               Seleccionar vehiculo
             </option>
             {vehicles.map((vehicle) => (
-            <option key={vehicle.id} value={vehicle.id}>
+            <option key={vehicle.id} value={'Vehiculo: ' + vehicle.brand + ' ' + vehicle.model + '(' + vehicle.patent + ')'}>
               {vehicle.brand} {vehicle.model} {vehicle.patent}
             </option>))}
           </select>
@@ -126,8 +126,8 @@ function PanelGeneral({ value }) {
         {buttonRevision && (
           <div className="flex flex-col gap-3 m-5">
             <div className="flex justify-between text-sm text-blue-600 font-semibold">
-              <h2>Vehiculo</h2>
-              <h2>Patente: {selectedVehicle}</h2>
+              <h2>{selectedVehicle}</h2>
+
             </div>
 
             <button
