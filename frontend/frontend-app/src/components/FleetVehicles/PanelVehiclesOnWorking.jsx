@@ -17,6 +17,7 @@ const PanelVehiclesOnWorking = () => {
 
   const {vehiclesOn, isLoadingVOn} = useSelector((state) => state.vehicles);
 
+
   return (
     <section className='w-full section-vehicles section-vehicles-ow'>
       <div className='section-vehicles__container'>
