@@ -50,7 +50,7 @@ const Empleado = () => {
                 </div>
                 <input type='checkbox' />
               </article>
-            )):<div style={spinner}><span class="loaderSpin"></span></div>}
+            )):<div style={spinner}><span className="loaderSpin"></span></div>}
 
           </div>
 
