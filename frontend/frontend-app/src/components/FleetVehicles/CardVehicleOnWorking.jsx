@@ -11,7 +11,6 @@ const CardVehicleOnWorking = props => {
     console.log("Deletting")
     e.preventDefault()
     deleteVehicle(props.vehicle.id);
-  
   }
 
   const iconDelete = (

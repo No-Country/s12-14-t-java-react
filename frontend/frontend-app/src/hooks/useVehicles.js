@@ -82,8 +82,42 @@ export const useVehicles = () => {
           )        
 
  }
-    
-    return { getVehiclesActivated, getVehiclesNotWorking, deleteVehicle};
+ const deleteEmployee=async (id)=>{
+    Swal.fire({
+        title: '¿Estás seguro de que quieres eliminar el empleado?',
+        text: '¡No podrás revertir esto!',
+        icon: 'warning',
+        showCancelButton: true,
+        confirmButtonColor: '#31429B',
+        cancelButtonColor: '#d33',
+        confirmButtonText: '¡Sí, bórralo!',
+        cancelButtonText: 'Cancelar'
+      }).then(result => {
+        if (result.isConfirmed) {    
+            pageApi.delete(`${import.meta.env.VITE_API_URL}/employee/deleteEmployee/${id}`)
+        .then(
+            response =>{
+            console.log(response);
+            Swal.fire({
+                title: '¡Eliminado!',
+                text: 'Su empleado ha sido eliminado.',
+                icon: 'success'
+              }) 
+              dispatch(deleteVehicles(id));
+            }).catch(err => {
+               console.log(err)
+                   Swal.fire(`Error al eliminar el vehiculo!`)
+             })
+        }
+        }
+      )        
+
+}
+
+
+
+
+ return { getVehiclesActivated, getVehiclesNotWorking, deleteVehicle, deleteEmployee};
 
     
 

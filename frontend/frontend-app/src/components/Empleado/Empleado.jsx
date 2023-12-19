@@ -1,8 +1,11 @@
 import { useEffect, useState } from "react";
 import { getEmployees } from "../../services/fetchService";
+import { useVehicles } from "../../hooks/useVehicles";
+
+
+var listaEmpleados = [];
 
 const Empleado = () => {
-
 
   const [empleados, setEmpleados] = useState(null);
 
@@ -18,6 +21,25 @@ const Empleado = () => {
 
   const imageStyle = {
     height: '100px'
+  }
+
+  const {deleteEmployee} =useVehicles();
+
+  const handleDelete = async e => {
+    console.log("Deletting")
+    e.preventDefault()
+    listaEmpleados.map((id)=>{
+      deleteEmployee(id);
+    })
+  }
+
+  const manageCheckbox = (id) =>{
+    listaEmpleados=[]
+    empleados.map((empleado)=>{
+      if (document.getElementById(empleado.id).checked==true)
+      listaEmpleados.push(empleado.id)
+    })
+    console.log("Empleados" + listaEmpleados)
   }
 
   const spinner = {
@@ -47,14 +69,19 @@ const Empleado = () => {
                   <h2 className='text-[#31429B] text-l font-semibold'>{empleado.name + ' ' + empleado.lastName}</h2>
                   <h3 className='text-[#0D1544] text-xs font-semibold'>{empleado.roleName=='OWNER'?'Gerente':empleado.roleName=='DRIVER'?'Chofer':empleado.roleName=='MAINTENANCE'?'Mantenimiento':'Sin Rol'}</h3>
                   <h3 className='text-[#0D1544] text-xs font-normal'>{empleado.email}</h3>
+                  <input type='checkbox' id={empleado.id} onClick={manageCheckbox}/>
                 </div>
-                <input type='checkbox' />
               </article>
             )):<div style={spinner}><span class="loaderSpin"></span></div>}
 
           </div>
+          <button 
+            type='submit'
+            className='w-full btn btn-template-1'
+            onClick={handleDelete}
+            ><span>Eliminar seleccion</span></button>
 
-          <button className='w-full mt-4 btn btn-template-1'>Eliminar selección</button>
+          {/* <button onClick={handleDelete} className='w-full mt-4 btn btn-template-1'>Eliminar selección</button> */}
         </div>
       </section>
     </>

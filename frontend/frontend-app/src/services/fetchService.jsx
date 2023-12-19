@@ -21,6 +21,10 @@ export const deleteVehicle = data => {
   return pageApi.delete(`${import.meta.env.VITE_API_URL}/vehicle/${data.id}`)
 }
 
+export const deleteEmployee = data => {
+  return pageApi.delete(`${import.meta.env.VITE_API_URL}/employee/deleteEmployee/${data.id}`)
+}
+
 export const getManTypes = () => {
   return pageApi.get(`${import.meta.env.VITE_API_URL}/man_types/allTypes`);
 } 
