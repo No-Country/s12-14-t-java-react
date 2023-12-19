@@ -13,3 +13,8 @@
         background-color: #2d376b;
       }
 }
+.contorno{
+  border-radius: 15px;
+  background:  #FFF;
+  box-shadow: 0px 0px 4px 0px rgba(108, 99, 255, 0.20);
+}
