@@ -127,7 +127,9 @@ public class AuthenticationService {
                 .email(user.getEmail())
                 .lastName(user.getLastName())
                 .companyName(company.get().getName())
-                .role(RoleName.valueOf(String.valueOf(user.getRole()))).build()
+                .role(RoleName.valueOf(String.valueOf(user.getRole())))
+                .photo(user.getPhoto())
+                .build()
         ).build();
     }
 

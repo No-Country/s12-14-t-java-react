@@ -40,5 +40,5 @@ public class ShowDataUserDto {
      */
     private String companyName;
 
-
+    private String photo;
 }
