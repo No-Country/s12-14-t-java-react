@@ -5,10 +5,18 @@ import { HiOutlineUser } from "react-icons/hi";
 import { PiListChecks } from "react-icons/pi";
 import { MdLogout } from "react-icons/md";
 import { Link } from "react-router-dom";
+import { onLogout } from "../../store/auth/authSlice";
+import { useDispatch } from "react-redux";
 
 const DriverMenu = () => {
+  const dispatch = useDispatch()
   const [selectedItem, setSelectedItem] = useState("");
   const [isMobile, setIsMobile] = useState(false);
+
+  const handleLogout = () => {
+    document.cookie = 'token=;expires=Thu, 01 Jan 1970 00:00:01 GMT;'
+    dispatch(onLogout())
+  }
 
   const menuItems = [
     { name: "Empresa", size: "text-xl", spacing: "mb-4", isClickable: false },
@@ -39,13 +47,6 @@ const DriverMenu = () => {
       icon: <PiListChecks />,
       size: "text-base",
       spacing: "mb-64",
-      isClickable: true,
-    },
-    {
-      name: "Cerrar sesión",
-      icon: <MdLogout />,
-      size: "text-base",
-      spacing: "mb-5",
       isClickable: true,
     },
   ];
@@ -111,6 +112,15 @@ const DriverMenu = () => {
               {item.name}
             </Link>
           ))}
+          <button onClick={handleLogout} className='mt-10 text-base'>
+            <span className='flex items-center w-full py-2 px-7'>
+              <span className='mr-2'>
+                <MdLogout />
+              </span>
+              Cerrar sesión
+            </span>
+          </button>
+
         </div>
       )}
     </div>
