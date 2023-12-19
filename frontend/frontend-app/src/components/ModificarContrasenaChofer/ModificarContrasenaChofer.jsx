@@ -10,9 +10,9 @@ function ModificarChofer (){
         <section className="">
         <div className="mt-24 lg:w-9/12 ">
           <ModificarContrasena />
-       <div className=" lg:ml-20 px-4">
+       {/* <div className=" lg:ml-20 px-4">
           <PanelVehiclesNotWorking />
-          </div>
+          </div> */}
           </div>
           
       </section>

@@ -11,15 +11,17 @@ function ModificarContrasena() {
   const [errorContrasenaActual, setErrorContrasenaActual] = useState('')
   const [errorNuevaContrasena, setErrorNuevaContrasena] = useState('')
   const [errorConfirmarContrasena, setErrorConfirmarContrasena] = useState('')
+  const [sending, setSending] = useState(false);
 
   const handleSubmit = event => {
     event.preventDefault()
 
     if (validarFormulario()) {
+      setSending(true)
       changePassword({
         oldPassword,
         newPassword
-      })
+      }).then(()=>{setSending(false)})
     }
   }
 
@@ -49,7 +51,7 @@ function ModificarContrasena() {
       return false
     }
 
-    const regex = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,12}$/
+    const regex = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&_])[A-Za-z\d@$!%*?&_]{8,12}$/
 
     if (!regex.test(newPassword)) {
       setErrorNuevaContrasena(
@@ -195,11 +197,8 @@ function ModificarContrasena() {
                 )}
               </div>
 
-              <button
-                type='submit'
-                className='w-full bg-[#31429B] text-white rounded-sm  py-3 hover:bg-[#2E4BDF]'
-              >
-                Confirmar cambio
+              <button type='submit' className='h-[52px] block w-full mt-8 btn btn-template-1'>
+                {sending?<span class="loaderSpinBtn"></span>:<span>Confirmar cambio</span>}
               </button>
             </form>
           </div>
