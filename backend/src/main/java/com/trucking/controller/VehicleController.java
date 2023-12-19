@@ -55,4 +55,25 @@ public class VehicleController {
     public ResponseEntity<Boolean> delete(@PathVariable Long id) {
         return new ResponseEntity<>(this.vehicleService.delete(id) ? HttpStatus.OK : HttpStatus.NOT_FOUND);
     }
+
+    @PostMapping("/inactiveVehi/{id}")
+    public ResponseEntity<?> inactiveVehicle(@PathVariable Long id) {
+       try {
+           VehicleDto vehicleDto = vehicleService.inactiveVehicle(id);
+           return ResponseEntity.status(HttpStatus.OK).body(vehicleDto);
+       }catch (Exception e){
+           return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(e.getMessage());
+       }
+    }
+
+    @PostMapping("/activeVehi/{id}")
+    public ResponseEntity<?> activeVehicle(@PathVariable Long id) {
+       try {
+           VehicleDto vehicleDto = vehicleService.activeVehicle(id);
+           return ResponseEntity.status(HttpStatus.OK).body(vehicleDto);
+       }catch (Exception e){
+           return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(e.getMessage());
+       }
+    }
+
 }

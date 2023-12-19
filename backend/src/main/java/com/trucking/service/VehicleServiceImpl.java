@@ -76,7 +76,7 @@ public class VehicleServiceImpl implements VehicleService {
         vehicle.setVehicleType(actualVehicleType);
 
         vehicle.setCompany(user.getCompany());
-
+        vehicle.setAvailable(true);
         return vehicleMapper.toDto(vehicleRepository.save(vehicle));
     }
 
@@ -94,6 +94,61 @@ public class VehicleServiceImpl implements VehicleService {
         vehicleRepository.deleteById(id);
         return true;
     }
+
+    @Override
+    public VehicleDto inactiveVehicle(Long id) {
+        var vehicleById = vehicleRepository.findById(id).orElseThrow(() -> new IllegalArgumentException(
+                "Error al encontrar el vehiculo con el id " + id
+        ));
+        vehicleById.setAvailable(false);
+        vehicleRepository.save(vehicleById);
+        VehicleDto vehicleIna = new VehicleDto(
+                vehicleById.getId(),
+                vehicleById.getBrand(),
+                vehicleById.getModel(),
+                vehicleById.getYear().toString(),
+                vehicleById.getPatent(),
+                vehicleById.getReason(),
+                vehicleById.getAxle().toString(),
+                vehicleById.getDateVtv().toString(),
+                vehicleById.getVehicleType().toString(),
+                vehicleById.getFuel().getType(),
+                vehicleById.getBrandMotor(),
+                vehicleById.getNumberMotor(),
+                vehicleById.getBrandChassis(),
+                vehicleById.getNumberChassis()
+        );
+        return vehicleIna;
+    }
+
+    @Override
+    public VehicleDto activeVehicle(Long id) {
+        var vehicleById = vehicleRepository.findById(id).orElseThrow(() -> new IllegalArgumentException(
+                "Error al encontrar el vehiculo con el id " + id
+        ));
+        vehicleById.setAvailable(true);
+        vehicleRepository.save(vehicleById);
+        VehicleDto vehicleAct = new VehicleDto(
+                vehicleById.getId(),
+                vehicleById.getBrand(),
+                vehicleById.getModel(),
+                vehicleById.getYear().toString(),
+                vehicleById.getPatent(),
+                vehicleById.getReason(),
+                vehicleById.getAxle().toString(),
+                vehicleById.getDateVtv().toString(),
+                vehicleById.getVehicleType().toString(),
+                vehicleById.getFuel().getType(),
+                vehicleById.getBrandMotor(),
+                vehicleById.getNumberMotor(),
+                vehicleById.getBrandChassis(),
+                vehicleById.getNumberChassis()
+        );
+        return vehicleAct;
+    }
+
+
+
     @Override
     public List<VehicleDto> getAllActive(Pageable pageable){
 //        Pageable setPageable = Utility.setPageable(pageable);
