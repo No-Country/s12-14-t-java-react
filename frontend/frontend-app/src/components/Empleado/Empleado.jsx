@@ -8,7 +8,7 @@ const Empleado = () => {
     getEmployees().then(response => {
       console.log('Response:')
       console.log(response.data)
-      setEmpleados(response.data)
+      setEmpleados(response.data) 
     })
   }, [])
 

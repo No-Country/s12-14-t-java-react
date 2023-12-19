@@ -1,7 +1,7 @@
 import DriverMenu from './DriverMenu/DriverMenu'
-import SideMenu from './SideMenu/SideMenu'
+
 import { SimpleDatePicker } from './SimpleDatePicker'
-import React, { useRef, useState } from 'react'
+import { useRef, useState } from 'react'
 
 function DatosPersonalesChofer() {
   const InputRef1 = useRef(null)
