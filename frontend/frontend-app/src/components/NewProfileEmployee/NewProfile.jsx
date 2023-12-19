@@ -5,7 +5,6 @@ import { useAuthStore } from "../../hooks/useAuthStore";
 const NewProfile = () => {
   const { RegisterNewEmployed, fileUpload } = useAuthStore();
 
-
   const [formData, setFormData] = useState({
     name: "",
     lastName: "",
@@ -14,35 +13,87 @@ const NewProfile = () => {
     photo: null,
   });
 
-  const isFormValid = () => {
-    // Verificar que los campos requeridos no estén en blanco
-    if (
-      !formData ||
-      !formData.name ||
-      formData.name.trim() === "" ||
-      !formData.lastName ||
-      formData.lastName.trim() === "" ||
-      !formData.email ||
-      formData.email.trim() === "" ||
-      !formData.roleName ||
-      formData.roleName.trim() === "" ||
-      formData.photo === null
-    ) {
-      return false;
+  //Validacion de Formulario
+  const [nameError, setNameError] = useState("");
+  const [lastNameError, setLastNameError] = useState("");
+  const [emailError, setEmailError] = useState("");
+
+  const validateName = (value) => {
+    if (!value.trim()) {
+      return "El nombre es obligatorio";
+    } else if (!/^[a-zA-Z-à]+$/.test(value)) {
+      return "El nombre no es válido";
     }
-    return true;
+    return "";
   };
 
+  const validateLastName = (value) => {
+    if (!value.trim()) {
+      return "El apellido es obligatorio";
+    } else if (!/^[a-zA-Z-à]+$/.test(value)) {
+      return "El apellido no es válido";
+    }
+    return "";
+  };
+
+  const validateEmail = (value) => {
+    if (!value.trim()) {
+      return "El correo electrónico es obligatorio";
+    } else {
+      const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+      if (!emailRegex.test(value)) {
+        return "El correo electrónico no es válido";
+      }
+    }
+    return "";
+  };
+
+  const isFormValid = () => {
+    const isNameValid = validateName(formData.name);
+    const isLastNameValid = validateLastName(formData.lastName);
+    const isEmailValid = validateEmail(formData.email);
+
+    const isFormValid =
+      formData.name.trim() !== "" &&
+      formData.lastName.trim() !== "" &&
+      formData.email.trim() !== "" &&
+      formData.roleName.trim() !== "" &&
+      formData.photo !== null &&
+      isNameValid === "" &&
+      isLastNameValid === "" &&
+      isEmailValid === "";
+
+    setNameError(isNameValid);
+    setLastNameError(isLastNameValid);
+    setEmailError(isEmailValid);
+
+    return isFormValid;
+  };
+  
   const handleRadioChange = (e) => {
-    const { id, value } = e.target;
+    const { value } = e.target;
     setFormData((prevFormData) => ({
       ...prevFormData,
-      [id]: value,
+      roleName: value,
     }));
   };
 
+
   const handleChange = (e) => {
     const { id, value, type, files } = e.target;
+    let error = "";
+
+    if (id === "name") {
+      error = validateName(value);
+      setNameError(error);
+    } else if (id === "lastName") {
+      error = validateLastName(value);
+      setLastNameError(error);
+    } else if (id === "email") {
+      error = validateEmail(value);
+      setEmailError(error);
+    }
+
     console.log(id, value, type, files);
     setFormData((prevFormData) => ({
       ...prevFormData,
@@ -130,6 +181,7 @@ const NewProfile = () => {
                   >
                     Nombre del empleado*
                   </label>
+                  {nameError && <p className="title-error text-sm mt-1">{nameError}</p>}
                 </div>
                 <div className="relative mt-3">
                   <input
@@ -150,6 +202,7 @@ const NewProfile = () => {
                   >
                     Apellido del empleado*
                   </label>
+                  {lastNameError && <p className="title-error text-sm mt-1">{lastNameError}</p>}
                 </div>
                 <div className="relative mt-3">
                   <input
@@ -170,6 +223,7 @@ const NewProfile = () => {
                   >
                     Correo electrónico del empleado*
                   </label>
+                  {emailError && <p className=" title-error text-sm mt-1">{emailError}</p>}
                 </div>
               </div>
               <div className="section-2-form mt-3">
@@ -185,9 +239,9 @@ const NewProfile = () => {
                     id="photo"
                     type="file"
                     className="block w-full text-sm file:mr-4 file:rounded-md file:border-0 file:bg-dark-blue-500 file:py-2.5 file:px-4 file:text-sm file:font-semibold file:text-white hover:file:bg-dark-blue-700 focus:outline-none disabled:pointer-events-none disabled:opacity-60"
-               
+
                   />
-                </div> 
+                </div>
 
                 <h2 className="mt-8 text-2xl">Rol del empleado*</h2>
                 <div className="mx-auto space-y-3">
@@ -200,7 +254,7 @@ const NewProfile = () => {
                       id="rol1"
                       name="roleName"
                       className="h-4 w-4 rounded-full border-gray-300 text-primary-600 shadow-sm focus:border-primary-300 focus:ring focus:ring-primary-200 focus:ring-opacity-50 focus:ring-offset-0 disabled:cursor-not-allowed disabled:text-gray-400"
-                   
+
                     />
                     <label
                       htmlFor="rol1"
@@ -212,13 +266,13 @@ const NewProfile = () => {
                   <div className="flex items-center space-x-2">
                     <input
                       value="OWNER"
-                      checked={formData?.roleName === "GERENTE"}
+                      checked={formData?.roleName === "OWNER"}
                       onChange={handleRadioChange}
                       type="radio"
                       id="rol2"
                       name="roleName"
                       className="h-4 w-4 rounded-full border-gray-300 text-primary-600 shadow-sm focus:border-primary-300 focus:ring focus:ring-primary-200 focus:ring-opacity-50 focus:ring-offset-0 disabled:cursor-not-allowed disabled:text-gray-400"
-               
+
                     />
                     <label
                       htmlFor="rol2"
@@ -226,17 +280,18 @@ const NewProfile = () => {
                     >
                       Gerente
                     </label>
+
                   </div>
                   <div className="flex items-center space-x-2">
                     <input
-                       value="MAINTENANCE"
-                      checked={formData?.roleName === "MANTENIMIENTO"}
+                      value="MAINTENANCE"
+                      checked={formData?.roleName === "MAINTENANCE"}
                       onChange={handleRadioChange}
                       type="radio"
                       id="rol3"
                       name="roleName"
                       className="h-4 w-4 rounded-full border-gray-300 text-primary-600 shadow-sm focus:border-primary-300 focus:ring focus:ring-primary-200 focus:ring-opacity-50 focus:ring-offset-0 disabled:cursor-not-allowed disabled:text-gray-400"
-                 
+
                     />
                     <label
                       htmlFor="rol3"
@@ -251,6 +306,7 @@ const NewProfile = () => {
             <button
               type="submit"
               className="rounded-lg border bg-dark-blue border-bg-blue-500 bg-blue-500 px-5 py-2.5 text-center text-sm font-medium text-white shadow-sm transition-all hover:border-blue-700 hover:bg-blue-700 focus:ring focus:ring-blue-200 disabled:cursor-not-allowed disabled:border-blue-300 disabled:bg-blue-300"
+
             >
               Confirmar
             </button>
