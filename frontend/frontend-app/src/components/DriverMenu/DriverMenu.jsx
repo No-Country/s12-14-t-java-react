@@ -61,7 +61,7 @@ const DriverMenu = () => {
 
   useEffect(() => {
     const handleResize = () => {
-      setIsMobile(window.innerWidth <= 360)
+      setIsMobile(window.innerWidth <= 500)
     }
 
     window.addEventListener("resize", handleResize);
