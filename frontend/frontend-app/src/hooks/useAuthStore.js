@@ -64,14 +64,12 @@ export const useAuthStore = () => {
       localStorage.setItem('token-init-date', new Date().getTime())
 
       localStorage.setItem('user', JSON.stringify(data.user))
-
       console.log(data.user)
-
       dispatch(onLogin(data.user))
-
       // console.log(data.user.name)
-      Swal.fire(`Bienvenido!  ${data.user.name}`)
-      navigateTo(`/dashboard`)
+      data.user.role==='OWNER'?navigateTo(`/dashboard`)
+      :data.user.role==='DRIVER'?navigateTo(`/dashboard-datos-personales`)
+      :null
     } catch (error) {
       console.log(error) 
       Swal.fire({

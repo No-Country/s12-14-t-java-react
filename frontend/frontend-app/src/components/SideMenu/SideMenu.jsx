@@ -16,13 +16,16 @@ const SideMenu = () => {
   const [isMobile, setIsMobile] = useState(false)
   const user = useSelector(state => state.auth.user)
 
+  const [menuItems, setMenuItems] = useState([]);
+
   const handleLogout = () => {
     document.cookie = 'token=;expires=Thu, 01 Jan 1970 00:00:01 GMT;'
     dispatch(onLogout())
   }
 
   console.log(user)
-  const menuItems = [
+    
+  const menuItemsOwner = [
     {
       name: 'Panel de control',
       icon: <VscLayoutPanelRight />,
@@ -63,6 +66,9 @@ const SideMenu = () => {
       isClickable: true,
       link: '/registro-mantenimiento'
     },
+  ]
+
+  const menuItemsDriver = [
     {
       name: 'Datos personales',
       icon: <PiNotepad />,
@@ -71,10 +77,19 @@ const SideMenu = () => {
       isClickable: true,
       link: '/dashboard-datos-personales'
     },
-  
   ]
 
+
   useEffect(() => {
+    const user = JSON.parse(localStorage.getItem('user'))
+    if (user.role==="OWNER"){
+      console.log("Menu owner")
+      setMenuItems(menuItemsOwner)
+    }
+    if (user.role==="DRIVER"){
+      console.log("Menu chofer")
+      setMenuItems(menuItemsDriver)
+    }
     const handleResize = () => {
       setIsMobile(window.innerWidth <= 360)
     }
