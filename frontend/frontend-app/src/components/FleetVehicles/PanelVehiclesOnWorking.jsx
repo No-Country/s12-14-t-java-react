@@ -1,11 +1,11 @@
 import { useEffect } from 'react';
 import CardVehicleOnWorking from './CardVehicleOnWorking';
 import { useSelector } from 'react-redux';
-import { useVehiclesActivated } from './../../hooks/useVehiclesActivated';
+import { useVehicles } from './../../hooks/useVehicles';
 
 const PanelVehiclesOnWorking = () => {
   
-  const { getVehiclesActivated } = useVehiclesActivated();
+  const { getVehiclesActivated } = useVehicles();
 
   useEffect(() => {
     const fetchData = async () => {
@@ -15,7 +15,7 @@ const PanelVehiclesOnWorking = () => {
     fetchData();
   }, []); 
 
-  const {vehicles} = useSelector((state) => state.vehiclesActivate);
+  const {vehiclesOn, isLoadingVOn} = useSelector((state) => state.vehicles);
 
   return (
     <section className='w-full section-vehicles section-vehicles-ow'>
@@ -24,7 +24,8 @@ const PanelVehiclesOnWorking = () => {
 
         <div className='cards-container'>
           <div className='cards-carrusel cards-carrusel_wo'>
-            {vehicles.map((vehicle, index) => (
+            { (!isLoadingVOn)? <span>Cargando ...</span>:
+              vehiclesOn.map((vehicle, index) => (
               <CardVehicleOnWorking vehicle={vehicle} key={index} />
             ))}
           </div>

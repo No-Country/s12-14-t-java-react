@@ -1,13 +1,13 @@
 import { configureStore } from '@reduxjs/toolkit';
 import  persistedAuthReducer  from './auth/authSlice';
-import persistedVehiclesReducer from './vehicles/vehiclesActivedSlice';
+import persistedVehiclesReducer from './vehicles/vehiclesSlice';
 // import { vehiclesActivedSlice } from '../vehicles/vehiclesActivedSlice.js';
 import { persistStore } from 'redux-persist';
 
 export const store = configureStore({
     reducer: {
         auth: persistedAuthReducer,
-        vehiclesActivate : persistedVehiclesReducer,
+        vehicles : persistedVehiclesReducer,
         
     },
     middleware: (getDefaultMiddleware) => getDefaultMiddleware({
