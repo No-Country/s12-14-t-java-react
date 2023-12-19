@@ -50,14 +50,14 @@ const SideMenu = () => {
       isClickable: true,
       link: '/agregar-vehiculo'
     },
-    {
-      name: 'Eliminar vehículos',
-      icon: <TbCarOff />,
-      size: 'text-base',
-      spacing: 'mb-4',
-      isClickable: true,
-      link: '/eliminar-vehiculo'
-    },
+    // {
+    //   name: 'Eliminar vehículos',
+    //   icon: <TbCarOff />,
+    //   size: 'text-base',
+    //   spacing: 'mb-4',
+    //   isClickable: true,
+    //   link: '/eliminar-vehiculo'
+    // },
     {
       name: 'Registro mantenimiento',
       icon: <PiNotepad />,

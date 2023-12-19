@@ -1,11 +1,24 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { BiErrorAlt } from "react-icons/bi";
 import "./PanelGeneralChofer.css";
 import { IoMdTime } from "react-icons/io";
 import DriverMenu from "../DriverMenu/DriverMenu";
 import RevisionChofer from "./RevisionChofer";
+import { getActiveVehicles } from "../../services/fetchService";
 
 function PanelGeneral({ value }) {
+  
+  const [vehicles, setVehicles] = useState([]);
+
+  useEffect(() => {
+    getActiveVehicles().then((vehicles)=>{
+      setVehicles(vehicles.data)
+      console.log(vehicles.data)
+    })
+
+  }, []);
+
+
   const formattedDate = value
     ? value.format("DD/MM/YYYY")
     : "01/2023 - 01/2024";
@@ -37,17 +50,23 @@ function PanelGeneral({ value }) {
     setShowRevisionComponent(true); // Muestra el componente al hacer clic en "Iniciar revisión diaria"
   };
 
+  const user = JSON.parse(localStorage.getItem('user'));
+
+  const imageStyle = {
+    height: '100px'
+  }
+
   return (
     <>
       <DriverMenu />
       <section className="sm:w-100% sm:h-100% ">
         <div className="flex mt-24 gap-6">
-          <img className="ml-6 rounded-2xl" src="././img/chofer.png" alt="" />
+          <img style={imageStyle} className="ml-6 rounded-2xl" src={user.photo} alt="" />
           <div className="flex flex-col">
             <h6 className="text-xl text-[#31429B] font-semibold">
-              Nombre empleado
+              {user.name}
             </h6>
-            <p className="font-semibold text-base">Rol</p>
+            <p className="font-semibold text-base">{user.role}</p>
           </div>
         </div>
         <div className="flex mt-10 ml-8 items-center gap-4">
@@ -97,11 +116,10 @@ function PanelGeneral({ value }) {
             <option className="bg-[#0D1544] text-white" disabled>
               Seleccionar vehiculo
             </option>
-            <option value="1">Tipo de vehiculo - Patente</option>
-            <option value="2">Tipo de vehiculo - Patente</option>
-            <option value="3">Tipo de vehiculo - Patente</option>
-            <option value="4">Tipo de vehiculo - Patente</option>
-            <option value="5">Tipo de vehiculo - Patente</option>
+            {vehicles.map((vehicle) => (
+            <option key={vehicle.id} value={vehicle.id}>
+              {vehicle.brand} {vehicle.model} {vehicle.patent}
+            </option>))}
           </select>
         )}
 

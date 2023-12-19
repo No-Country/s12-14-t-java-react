@@ -5,8 +5,10 @@ import { v4 as uuidv4 } from 'uuid'
 import Swal from 'sweetalert2'
 import { useVehicles } from '../../hooks/useVehicles'
 const CardVehicleOnWorking = props => {
+
   const {deleteVehicle} =useVehicles();
   const handleDelete = async e => {
+    console.log("Deletting")
     e.preventDefault()
     deleteVehicle(props.vehicle.id);
   
@@ -35,9 +37,9 @@ const CardVehicleOnWorking = props => {
   }
 
   return (
-    <article className='card'>
+      <article className='card'>
       <header className='bg-[#31429B] w-full flex flex-row justify-between items-center rounded-t-lg pl-3'>
-        <p className='text-[#fff] text-[16px] font-semibold'>{props.vehicle.id}</p>
+        <p className='text-[#fff] text-[16px] font-semibold'>ID: {props.vehicle.id}</p>
         <div className='flex flex-row gap-1'>
           {/* <a href='#'>{iconEdit}</a> */}
           <a href='#' className='px-3 pt-3 pb-2 group border-color' onClick={handleDelete}>
