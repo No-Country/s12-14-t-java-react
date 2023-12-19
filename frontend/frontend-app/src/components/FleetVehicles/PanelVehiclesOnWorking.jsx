@@ -17,7 +17,7 @@ const PanelVehiclesOnWorking = () => {
     fetchData().then(()=>{setLoading(false)});
   }, []); 
 
-  const {vehiclesOn, isLoadingVOn} = useSelector((state) => state.vehicles);
+  const {vehiclesOn} = useSelector((state) => state.vehicles);
 
 
   return (
@@ -29,7 +29,7 @@ const PanelVehiclesOnWorking = () => {
           <div className='cards-carrusel cards-carrusel_wo'>
             {!loading?vehiclesOn.map((vehicle, index) => (
               <CardVehicleOnWorking vehicle={vehicle} key={index} />
-            )):<span class="loaderSpin"></span>}
+            )):<span className="loaderSpin"></span>}
           </div>
         </div>
       </div>
