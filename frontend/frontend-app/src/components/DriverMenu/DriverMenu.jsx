@@ -60,14 +60,16 @@ const DriverMenu = () => {
   };
 
   useEffect(() => {
-    const handleResize = () => {
-      setIsMobile(window.innerWidth <= 500)
-    }
 
-    window.addEventListener("resize", handleResize);
-    handleResize()
+  setIsMobile(true)
+    // const handleResize = () => {
+    //   setIsMobile(window.innerWidth <= 500)
+    // }
 
-    return () => window.removeEventListener("resize", handleResize);
+    // window.addEventListener("resize", handleResize);
+    // handleResize()
+
+    // return () => window.removeEventListener("resize", handleResize);
   }, []);
 
   return (
