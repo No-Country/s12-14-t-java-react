@@ -9,7 +9,7 @@ const PanelVehiclesOnWorking = () => {
 
   useEffect(() => {
     const fetchData = async () => {
-      await getVehiclesActivated(6);
+      await getVehiclesActivated(15);
     };
 
     fetchData();

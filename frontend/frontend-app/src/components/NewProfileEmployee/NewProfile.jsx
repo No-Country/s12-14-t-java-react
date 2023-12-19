@@ -4,6 +4,7 @@ import { useAuthStore } from "../../hooks/useAuthStore";
 
 const NewProfile = () => {
   const { RegisterNewEmployed, fileUpload } = useAuthStore();
+  const [sending, setSending] = useState(false);
 
 
   const [formData, setFormData] = useState({
@@ -71,6 +72,8 @@ const NewProfile = () => {
   };
 
   const handleSubmit = async (e) => {
+    if (!sending){
+    setSending(true)
     e.preventDefault();
 
     if (formData && isFormValid()) {
@@ -93,17 +96,19 @@ const NewProfile = () => {
         });
       } catch (error) {
         console.error("Error al subir la imagen a Cloudinary:", error);
+      } finally {
+        setSending(false)
       }
     } else {
       console.error(
         "Error de validación: Todos los campos requeridos deben estar llenos"
       );
-    }
+    }}
   };
 
   return (
     <div className="container-profile">
-      <section className="new-profile-continer">
+      <section className="new-profile-continer shadow-custom">
         <div className="continer-empleado-vehiculooff  text-[#0D1544]">
           <form className="form" onSubmit={handleSubmit}>
             <div className="container-form">
@@ -252,7 +257,7 @@ const NewProfile = () => {
               type="submit"
               className="rounded-lg border bg-dark-blue border-bg-blue-500 bg-blue-500 px-5 py-2.5 text-center text-sm font-medium text-white shadow-sm transition-all hover:border-blue-700 hover:bg-blue-700 focus:ring focus:ring-blue-200 disabled:cursor-not-allowed disabled:border-blue-300 disabled:bg-blue-300"
             >
-              Confirmar
+              {sending?<span class="loaderSpinBtn"></span>:<span>Confirmar</span>}
             </button>
           </form>
         </div>

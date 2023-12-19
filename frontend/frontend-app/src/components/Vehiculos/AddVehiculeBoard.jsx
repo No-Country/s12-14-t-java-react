@@ -2,6 +2,7 @@ import { useForm } from 'react-hook-form'
 import Swal from 'sweetalert2'
 import { addVehicle } from '../../api/vehicleApi'
 import { postVehicle } from '../../services/fetchService'
+import { useState } from 'react'
 
 export const AddVehiculeBoard = () => {
   const {
@@ -11,8 +12,12 @@ export const AddVehiculeBoard = () => {
     reset
   } = useForm()
 
+  const [sending, setSending] = useState(false);
+
   const onSubmit = async data => {
+    if(!sending){
     try {
+      setSending(true)
       console.log(data)
       const response = await postVehicle(data)
       console.log('RESPONSE')
@@ -22,10 +27,12 @@ export const AddVehiculeBoard = () => {
     } catch (error) {
       console.log('ERROR')
       console.log(error.response.data)
-      Swal.fire(`Error al crear empleado! \n ${error.response.data.details[0]}`)
+      Swal.fire(`Error al crear vehiculo! \n ${error.response.data.details[0]}`)
+    } finally {
+      setSending(false)
     }
   }
-
+}
 
    // Verifica si hay errores en el formulario
    const isFormInvalid = Object.keys(errors).length > 0;
@@ -40,7 +47,7 @@ export const AddVehiculeBoard = () => {
       <div className='container w-full lg:w-[60%] py-3 px-5 mx-auto'>
         <form
           onSubmit={handleSubmit(onSubmit)}
-          className='w-full h-full rounded-[15px] shadow-custom py-7'
+          className='addVehicle w-full h-full rounded-[15px] shadow-custom py-7'
         >
           <div className='px-10'>
             <h1
@@ -562,7 +569,7 @@ export const AddVehiculeBoard = () => {
             type='submit'
             className='w-full btn btn-template-1'
             disabled={isFormInvalid}
-            >Agregar vehículo</button>
+            >{sending?<span class="loaderSpinBtn"></span>:<span>Agregar vehículo</span>}</button>
           </div>
         </form>
       </div>
