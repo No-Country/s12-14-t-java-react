@@ -36,6 +36,8 @@ export const Homepage = () => {
     startLogin({
       email: data.email,
       password: data.password
+    }).then(()=>{
+      setLoggin(false)
     })
   }})
 
