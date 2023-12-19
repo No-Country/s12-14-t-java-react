@@ -1,4 +1,4 @@
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import CardVehicleOnWorking from './CardVehicleOnWorking';
 import { useSelector } from 'react-redux';
 import { useVehicles } from './../../hooks/useVehicles';
@@ -7,12 +7,14 @@ const PanelVehiclesOnWorking = () => {
   
   const { getVehiclesActivated } = useVehicles();
 
+  const [loading, setLoading] = useState(false);
+
   useEffect(() => {
     const fetchData = async () => {
       await getVehiclesActivated(15);
     };
-
-    fetchData();
+    setLoading(true);
+    fetchData().then(()=>{setLoading(false)});
   }, []); 
 
   const {vehiclesOn, isLoadingVOn} = useSelector((state) => state.vehicles);
@@ -25,10 +27,9 @@ const PanelVehiclesOnWorking = () => {
 
         <div className='cards-container'>
           <div className='cards-carrusel cards-carrusel_wo'>
-            { 
-              vehiclesOn.map((vehicle, index) => (
+            {!loading?vehiclesOn.map((vehicle, index) => (
               <CardVehicleOnWorking vehicle={vehicle} key={index} />
-            ))}
+            )):<span class="loaderSpin"></span>}
           </div>
         </div>
       </div>

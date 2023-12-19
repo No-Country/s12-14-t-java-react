@@ -1,16 +1,18 @@
 import CardVehicleNotWorking from './CardVehicleNotWorking'
 import { useVehicles } from '../../hooks/useVehicles';
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import { useSelector } from 'react-redux/es/hooks/useSelector';
 const PanelVehiclesNotWorking = () => {
   const { getVehiclesNotWorking } = useVehicles();
 
+  const [loading, setLoading] = useState(false);
+
   useEffect(() => {
     const fetchData = async () => {
-      await getVehiclesNotWorking(6);
+      await getVehiclesNotWorking(15);
     };
-
-    fetchData();
+    setLoading(true);
+    fetchData().then(()=>{setLoading(false)});
   }, []); 
 
   const {vehiclesOff, isLoadingVOff} = useSelector((state) => state.vehicles);
@@ -21,10 +23,10 @@ const PanelVehiclesNotWorking = () => {
         <h2 className='section-vehicles__title'>Vehículos fuera de servicio</h2>
         <div className='cards-container'>
           <div className='cards-carrusel cards-carrusel_nw'>
-            { vehiclesOff.map((vehicle, index) => 
+            {!loading?vehiclesOff.map((vehicle, index) => 
             (
               <CardVehicleNotWorking  vehicle={vehicle} key={index} />
-            ))}
+            )):<span class="loaderSpin"></span>}
           </div>
         </div>
       </div>
