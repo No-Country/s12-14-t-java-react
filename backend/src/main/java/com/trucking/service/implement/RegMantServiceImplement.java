@@ -35,7 +35,7 @@ public class RegMantServiceImplement implements RegMantService {
         newRegMaint.setDate(newRegMantDto.getDate());
         newRegMaint.setDescription(newRegMantDto.getDescription());
         newRegMaint.setKm(Integer.valueOf(newRegMantDto.getKm()));
-        newRegMaint.setManType(newRegMaint.getManType());
+        newRegMaint.setManType(newRegMantDto.getManType());
         newRegMaint.setCost(Double.valueOf(cost));
 
         RegMaint regMaint = regMantRepository.save(newRegMaint);
