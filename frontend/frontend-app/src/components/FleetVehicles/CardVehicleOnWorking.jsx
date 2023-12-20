@@ -5,6 +5,7 @@ import { v4 as uuidv4 } from 'uuid'
 import { useVehicles } from '../../hooks/useVehicles'
 import { MaintenanceVehicleForm } from './MaintenanceVehicleForm'
 import { Modal, Button } from 'flowbite-react'
+import { useSelector } from 'react-redux'
 
 const CardVehicleOnWorking = props => {
   const { deleteVehicle } = useVehicles()
@@ -43,6 +44,7 @@ const CardVehicleOnWorking = props => {
   }
 
   const [motivo, setMotivo] = useState();
+  const user = useSelector(state => state.auth.user)
 
   const changeMotivo = (e) => {
     setMotivo(e.target.value)
@@ -61,14 +63,14 @@ const CardVehicleOnWorking = props => {
   return (
     <>
       <article className='card'>
-        <header className='bg-[#31429B] w-full flex flex-row justify-between items-center rounded-t-lg pl-3'>
+        <header className='bg-[#31429B] w-full h-[40px] flex flex-row justify-between items-center rounded-t-lg pl-3'>
           <p className='text-[#fff] text-[16px] font-semibold'>{props.vehicle.id}</p>
-          <div className='flex flex-row gap-1'>
+          {user.role==='OWNER'?<div className='flex flex-row gap-1'>
             {/* <a href='#'>{iconEdit}</a> */}
             <a href='#' className='px-3 pt-3 pb-2 group border-color' onClick={handleDelete}>
               {iconDelete}
             </a>
-          </div>
+          </div>:null}
         </header>
 
         <div className='w-full flex flex-row items-start justify-between bg-[#F0F8FF] px-3 py-2'>

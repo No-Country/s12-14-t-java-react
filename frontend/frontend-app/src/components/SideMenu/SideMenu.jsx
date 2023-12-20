@@ -54,14 +54,14 @@ const SideMenu = () => {
       isClickable: true,
       link: '/agregar-vehiculo'
     },
-    {
-      name: 'Registro mantenimiento',
-      icon: <PiNotepad />,
-      size: 'text-base',
-      spacing: 'mb-32',
-      isClickable: true,
-      link: '/registro-mantenimiento'
-    },
+    // {
+    //   name: 'Registro mantenimiento',
+    //   icon: <PiNotepad />,
+    //   size: 'text-base',
+    //   spacing: 'mb-32',
+    //   isClickable: true,
+    //   link: '/registro-mantenimiento'
+    // },
   ]
 
     const menuItemsMaint = [

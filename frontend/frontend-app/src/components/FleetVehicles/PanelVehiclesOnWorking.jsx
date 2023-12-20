@@ -27,7 +27,7 @@ const PanelVehiclesOnWorking = () => {
 
         <div className='cards-container'>
           <div className='cards-carrusel cards-carrusel_wo'>
-            {!loading ? (
+            {!loading||vehiclesOn.size!=0? (
               vehiclesOn.map((vehicle, index) => (
                 <CardVehicleOnWorking vehicle={vehicle} key={index} />
               ))

@@ -4,9 +4,10 @@ import { useEffect, useState } from 'react'
 import { v4 as uuidv4 } from 'uuid'
 import Swal from 'sweetalert2'
 import { useVehicles } from '../../hooks/useVehicles'
+import { useSelector } from 'react-redux'
 
 const CardVehicleNotWorking = ({vehicle}) => {
-
+  const user = useSelector(state => state.auth.user)
 
   const {deleteVehicle} =useVehicles();
   const handleDelete = async e => {
@@ -31,12 +32,12 @@ const CardVehicleNotWorking = ({vehicle}) => {
     <article className="card h-max-[250px] mb-3 overflow-hidden">
       <header className="bg-[#31429B] w-full h-9 flex flex-row justify-around  items-center">
       <p className='text-[#fff] text-[16px] font-semibold'>ID: {id}</p>
-        <div className='flex flex-row gap-1'>
+        {user.role==='OWNER'?<div className='flex flex-row gap-1'>
           {/* <a href='#'>{iconEdit}</a> */}
           <a href='#' className='px-3 pt-3 pb-2 group border-color' onClick={handleDelete}>
             {iconDelete}
           </a>
-        </div>
+        </div>:null}
       </header>
       <div className="w-full flex flex-row justify-start items-start p-3 bg-[#F0F8FF] rounded-b-[10px]">
         <div className="text-[15px] font-bold leading-6 text-[#0D1544] h-[180px]">
