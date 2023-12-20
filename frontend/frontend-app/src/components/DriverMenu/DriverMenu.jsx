@@ -43,7 +43,7 @@ const DriverMenu = () => {
       isClickable: true,
     },
     {
-      name: "Revisión diaria",
+      name: "Comenzar turno",
       icon: <PiListChecks />,
       size: "text-base",
       spacing: "mb-64",
@@ -51,7 +51,7 @@ const DriverMenu = () => {
     },
   ];
   const routeMapping = {
-    "Revisión diaria": "/panel-general-chofer",
+    "Comenzar turno": "/panel-general-chofer",
     Perfil: "/dashboard-datos-personales",
     "Modificar contraseña": "/modificar-contrasena-chofer",
   };
