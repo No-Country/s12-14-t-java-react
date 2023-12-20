@@ -43,6 +43,10 @@ const Revision = () => {
     console.log(selectedValue);
   };
 
+  const imageStyle = {
+    height: '400px'
+  }
+
   return (
     <div className='container w-full lg:w-[100%] py-3 px-5'>
     <div className='addVehicle w-full h-full rounded-[15px] shadow-custom px-6 py-7'>
@@ -54,7 +58,7 @@ const Revision = () => {
       <br></br>
       <br></br>
       <br></br>
-      <img src='../../../public/img/UC.jpg' alt='No Image' className='rounded-l-lg' />
+      <img  src='https://prmceam.ac.in/wp-content/uploads/2015/09/page-under-construction-300x217.jpg' alt='No Image' className='w-[80%] rounded-[15px]' />
 
 
       {/* <div className="p-4">
