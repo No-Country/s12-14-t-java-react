@@ -138,11 +138,32 @@ export const useVehicles = () => {
       })
 }
 
+const backMaintenanceVehicle = async info => {
+  console.log("Cambiando estado de vehiculo")
+  pageApi.post(`${import.meta.env.VITE_API_URL}/vehicle/activeVehi/${info.vehicle.id}`)
+  .then(response => {
+    console.log(response)
+    Swal.fire({
+      title: '¡Mantenimiento!',
+      text: 'El vehiculo ha vuelto al servicio.',
+      icon: 'success'
+    })
+    dispatch(deleteVehicles(info.vehicle.id))
+    getVehiclesActivated();
+  })
+    .catch(err => {
+      console.log(err)
+      Swal.fire(`Error al cambiar el estado del vehiculo!`)
+    })
+}
+
+
   return {
     getVehiclesActivated,
     getVehiclesNotWorking,
     deleteVehicle,
     deleteEmployee,
-    setMaintenanceVehicle
+    setMaintenanceVehicle,
+    backMaintenanceVehicle
   }
 }
