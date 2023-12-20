@@ -6,7 +6,7 @@ const CardMaintenance = ()=>{
         cursor-pointer hover:bg-light-blue-200 
         rounded-lg overflow-hidden 
         w-[70%] min-w-[320px] sm:w-[50%] md:w-[50%] lg:w-[30%]
-        2xl:w-[95%]">
+        2xl:w-[30%]">
         
             <header className="h-[40px] flex flex-row justify-center items-center
             text-[#2E4BDF] bg-[#F0F8FF] border-b border-[#2E4BDF]">

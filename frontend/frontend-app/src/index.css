@@ -97,7 +97,8 @@ html {
   box-sizing: border-box;
 }
 #root{
-  background: linear-gradient(0deg, rgba(2,0,36,1) 0%, rgba(255,255,255,1) 0%, rgba(228,230,242,1) 100%, rgba(193,198,225,1) 100%, rgba(228,230,242,1) 100%);
+  background-color: white;
+  /* background: linear-gradient(0deg, rgba(2,0,36,1) 0%, rgba(255,255,255,1) 0%, rgba(228,230,242,1) 100%, rgba(193,198,225,1) 100%, rgba(228,230,242,1) 100%); */
 }
 
 *,

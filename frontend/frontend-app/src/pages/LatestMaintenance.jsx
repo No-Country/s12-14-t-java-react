@@ -4,10 +4,10 @@ const LatestMaintenance=()=>{
     return (
         <>
             <MaintenanceMenu />
-
-            <main className=" flex flex-row justify-center items-center
+            
+            <main className="flex flex-row justify-center items-center
             p-6" >
-                <PanelMaintenance />
+                <PanelMaintenance version={"seccion"} />
             </main>
         </>
     )

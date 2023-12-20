@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import { useState, useEffect } from 'react';
 import { BsShieldLockFill } from "react-icons/bs";
 import { FaBars } from "react-icons/fa";
 import { VscLayoutPanelRight } from "react-icons/vsc";
