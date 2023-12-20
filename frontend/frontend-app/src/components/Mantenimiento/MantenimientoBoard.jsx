@@ -195,7 +195,7 @@ export const MantenimientoBoard = () => {
                 {errors.costo && <span className='error'>{errors.costo.message}</span>}
               </div>
 
-              <div className='relative'>
+              {/* <div className='relative'>
                 <label
                   htmlFor='example1'
                   className='block mb-1 text-base font-medium text-gray-700'
@@ -208,7 +208,7 @@ export const MantenimientoBoard = () => {
                   className='block w-full text-sm file:mr-4 file:rounded-md file:border-0 file:bg-blue-600 file:py-2.5 file:px-4 file:text-sm file:font-semibold file:text-white hover:file:bg-dark-blue-600 focus:outline-none disabled:pointer-events-none disabled:opacity-60'
                   placeholder='valsad'
                 />
-              </div>
+              </div> */}
             </div>
 
             <div>
