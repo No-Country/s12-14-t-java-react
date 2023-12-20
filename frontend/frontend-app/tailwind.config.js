@@ -4,7 +4,8 @@ export default {
   content: [
     './index.html',
     './src/**/*.{js,ts,jsx,tsx}',
-    './node_modules/react-tailwindcss-datepicker/dist/index.esm.js'
+    './node_modules/react-tailwindcss-datepicker/dist/index.esm.js',
+    './node_modules/flowbite-react/lib/esm/**/*.js'
   ],
   theme: {
     extend: {
@@ -73,7 +74,6 @@ export default {
     '2xl': '1512px'
     // => @media (min-width: 1512px) { ... }
   },
-  plugins: [],
+  plugins: [require('flowbite/plugin')],
   darkMode: 'false'
-  // plugins: [require('flowbite/plugin')]
 }

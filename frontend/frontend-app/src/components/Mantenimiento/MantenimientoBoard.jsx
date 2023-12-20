@@ -1,8 +1,8 @@
-import { useEffect, useState } from 'react';
+import { useEffect, useState } from 'react'
 import { SimpleDatePicker } from '../SimpleDatePicker'
-import { getActiveVehicles, getManTypes, postNewMant } from '../../services/fetchService';
-import { useForm } from 'react-hook-form';
-import Swal from 'sweetalert2';
+import { getActiveVehicles, getManTypes, postNewMant } from '../../services/fetchService'
+import { useForm } from 'react-hook-form'
+import Swal from 'sweetalert2'
 
 export const MantenimientoBoard = () => {
   const {
@@ -12,48 +12,48 @@ export const MantenimientoBoard = () => {
     reset
   } = useForm()
 
-  const [value, setValue] = useState();
-  const [vehicles, setVehicles] = useState([]);
-  const [manTypes, setManTypes] = useState([]);
-  const [sending, setSending] = useState(false);
-
+  const [value, setValue] = useState()
+  const [vehicles, setVehicles] = useState([])
+  const [manTypes, setManTypes] = useState([])
+  const [sending, setSending] = useState(false)
 
   useEffect(() => {
-    getActiveVehicles().then((response)=>{
-      console.log("Response:");
-      console.log(response.data);
-      setVehicles(response.data);
-    });
-    getManTypes().then((response)=>{
-      console.log("Response:");
-      console.log(response.data);
-      setManTypes(response.data);
+    getActiveVehicles().then(response => {
+      console.log('Response:')
+      console.log(response.data)
+      setVehicles(response.data)
     })
-  }, []);
+    getManTypes().then(response => {
+      console.log('Response:')
+      console.log(response.data)
+      setManTypes(response.data)
+    })
+  }, [])
 
   const onSubmit = async data => {
-    if (!sending){
-    try {
-      setSending(true)
-      data.date = value
-      data.bill = 'recibo'
-      console.log(data)
-      const response = await postNewMant(data)
-      console.log("RESPONSE")
-      console.log(response)
-      Swal.fire(`Registro de mantenimiento creado!`)
-      reset()
-    } catch (error) {
-      console.log("ERROR")
-      console.log(error.response.data)
-      try{
-        Swal.fire(`Error al crear empleado! \n ${error.response.data.details[0]}`)
+    if (!sending) {
+      try {
+        setSending(true)
+        data.date = value
+        data.bill = 'recibo'
+        console.log(data)
+        const response = await postNewMant(data)
+        console.log('RESPONSE')
+        console.log(response)
+        Swal.fire(`Registro de mantenimiento creado!`)
+        reset()
       } catch (error) {
-        Swal.fire(`Error desconocido`)
+        console.log('ERROR')
+        console.log(error.response.data)
+        try {
+          Swal.fire(`Error al crear empleado! \n ${error.response.data.details[0]}`)
+        } catch (error) {
+          Swal.fire(`Error desconocido`)
+        }
+      } finally {
+        setSending(false)
       }
-    }finally{
-      setSending(false)
-    }}
+    }
   }
 
   return (
@@ -83,9 +83,11 @@ export const MantenimientoBoard = () => {
                     <option disabled value={'DEFAULT'}>
                       Selecciona un Vehículo
                     </option>
-                    {vehicles.map((vehicle, index)=>
-                       (<option value={vehicle.id}>{vehicle.brand} {vehicle.model} ({vehicle.patent})</option>)
-                    )}
+                    {vehicles.map((vehicle, index) => (
+                      <option value={vehicle.id}>
+                        {vehicle.brand} {vehicle.model} ({vehicle.patent})
+                      </option>
+                    ))}
                   </select>
                   {errors.vehicle && <span className='error'>{errors.vehicle.message}</span>}
                 </div>
@@ -112,19 +114,19 @@ export const MantenimientoBoard = () => {
 
             <div className='grid gap-5 pt-10 lg:grid-cols-2'>
               <div className='relative z-20'>
-              <input
-                      type='date'
-                      id='date'
-                      className='block px-4 pb-2.5 pt-4 w-full text-sm text-gray-900 bg-transparent border-1 border-gray-300 appearance-none border-[#0D1544] hover:#31429B focus:outline-none peer'
-                      placeholder=''
-                      {...register('date', { required: 'Campo requerido' })}
-                    />
-                    <label
-                      htmlFor='dateVtv'
-                      className='left-3.5 absolute text-sm text-gray-500 duration-300 transform -translate-y-4 scale-75 top-2 z-10 origin-[0] bg-white px-1 peer-focus:px-1 peer-focus:text-blue-600 peer-focus:dark:text-#0d1544 peer-placeholder-shown:scale-100 peer-placeholder-shown:-translate-y-1/2 peer-placeholder-shown:top-[28px] pointer-events-none peer-focus:top-2 peer-focus:scale-75 peer-focus:-translate-y-4 start-1'
-                    >
-                      Fecha mantenimiento*
-                    </label>
+                <input
+                  type='date'
+                  id='date'
+                  className='block px-4 pb-2.5 pt-4 w-full text-sm text-gray-900 bg-transparent border-1 border-gray-300 appearance-none border-[#0D1544] hover:#31429B focus:outline-none peer'
+                  placeholder=''
+                  {...register('date', { required: 'Campo requerido' })}
+                />
+                <label
+                  htmlFor='dateVtv'
+                  className='left-3.5 absolute text-sm text-gray-500 duration-300 transform -translate-y-4 scale-75 top-2 z-10 origin-[0] bg-white px-1 peer-focus:px-1 peer-focus:text-blue-600 peer-focus:dark:text-#0d1544 peer-placeholder-shown:scale-100 peer-placeholder-shown:-translate-y-1/2 peer-placeholder-shown:top-[28px] pointer-events-none peer-focus:top-2 peer-focus:scale-75 peer-focus:-translate-y-4 start-1'
+                >
+                  Fecha mantenimiento*
+                </label>
               </div>
               {errors.dateMant && <span className='error'>{errors.dateMant.message}</span>}
               <div className='relative'>
@@ -144,9 +146,9 @@ export const MantenimientoBoard = () => {
                   <option disabled value='DEFAULT'>
                     Tipo de mantenimiento*
                   </option>
-                  {manTypes.map((manType, index)=>
-                       (<option value={manType.name}>{manType.name} </option>)
-                    )}
+                  {manTypes.map((manType, index) => (
+                    <option value={manType.name}>{manType.name} </option>
+                  ))}
                 </select>
                 {errors.manType && <span className='error'>{errors.manType.message}</span>}
               </div>
@@ -212,7 +214,11 @@ export const MantenimientoBoard = () => {
 
             <div>
               <button type='submit' className='h-[52px] block w-full mt-8 btn btn-template-1'>
-                {sending?<span class="loaderSpinBtn"></span>:<span>Registrar mantenimiento</span>}
+                {sending ? (
+                  <span className='loaderSpinBtn'></span>
+                ) : (
+                  <span>Registrar mantenimiento</span>
+                )}
               </button>
             </div>
           </form>

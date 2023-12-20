@@ -19,72 +19,59 @@
 .loaderSpinBtn {
   width: 24px;
   height: 24px;
-  border: 5px solid #FFF;
+  border: 5px solid #fff;
   border-bottom-color: #3d34c7;
   border-radius: 50%;
   display: inline-block;
   box-sizing: border-box;
   animation: rotation 1s linear infinite;
-  }
+}
 
-  @keyframes rotation {
+@keyframes rotation {
   0% {
-      transform: rotate(0deg);
+    transform: rotate(0deg);
   }
   100% {
-      transform: rotate(360deg);
+    transform: rotate(360deg);
   }
 }
 
 @keyframes mulShdSpin {
   0%,
   100% {
-    box-shadow: 0 -3em 0 0.2em, 
-    2em -2em 0 0em, 3em 0 0 -1em, 
-    2em 2em 0 -1em, 0 3em 0 -1em, 
-    -2em 2em 0 -1em, -3em 0 0 -1em, 
-    -2em -2em 0 0;
+    box-shadow: 0 -3em 0 0.2em, 2em -2em 0 0em, 3em 0 0 -1em, 2em 2em 0 -1em, 0 3em 0 -1em,
+      -2em 2em 0 -1em, -3em 0 0 -1em, -2em -2em 0 0;
   }
   12.5% {
-    box-shadow: 0 -3em 0 0, 2em -2em 0 0.2em, 
-    3em 0 0 0, 2em 2em 0 -1em, 0 3em 0 -1em, 
-    -2em 2em 0 -1em, -3em 0 0 -1em, 
-    -2em -2em 0 -1em;
+    box-shadow: 0 -3em 0 0, 2em -2em 0 0.2em, 3em 0 0 0, 2em 2em 0 -1em, 0 3em 0 -1em,
+      -2em 2em 0 -1em, -3em 0 0 -1em, -2em -2em 0 -1em;
   }
   25% {
-    box-shadow: 0 -3em 0 -0.5em, 
-    2em -2em 0 0, 3em 0 0 0.2em, 
-    2em 2em 0 0, 0 3em 0 -1em, 
-    -2em 2em 0 -1em, -3em 0 0 -1em, 
-    -2em -2em 0 -1em;
+    box-shadow: 0 -3em 0 -0.5em, 2em -2em 0 0, 3em 0 0 0.2em, 2em 2em 0 0, 0 3em 0 -1em,
+      -2em 2em 0 -1em, -3em 0 0 -1em, -2em -2em 0 -1em;
   }
   37.5% {
-    box-shadow: 0 -3em 0 -1em, 2em -2em 0 -1em,
-     3em 0em 0 0, 2em 2em 0 0.2em, 0 3em 0 0em, 
-     -2em 2em 0 -1em, -3em 0em 0 -1em, -2em -2em 0 -1em;
+    box-shadow: 0 -3em 0 -1em, 2em -2em 0 -1em, 3em 0em 0 0, 2em 2em 0 0.2em, 0 3em 0 0em,
+      -2em 2em 0 -1em, -3em 0em 0 -1em, -2em -2em 0 -1em;
   }
   50% {
-    box-shadow: 0 -3em 0 -1em, 2em -2em 0 -1em,
-     3em 0 0 -1em, 2em 2em 0 0em, 0 3em 0 0.2em, 
-     -2em 2em 0 0, -3em 0em 0 -1em, -2em -2em 0 -1em;
+    box-shadow: 0 -3em 0 -1em, 2em -2em 0 -1em, 3em 0 0 -1em, 2em 2em 0 0em, 0 3em 0 0.2em,
+      -2em 2em 0 0, -3em 0em 0 -1em, -2em -2em 0 -1em;
   }
   62.5% {
-    box-shadow: 0 -3em 0 -1em, 2em -2em 0 -1em,
-     3em 0 0 -1em, 2em 2em 0 -1em, 0 3em 0 0, 
-     -2em 2em 0 0.2em, -3em 0 0 0, -2em -2em 0 -1em;
+    box-shadow: 0 -3em 0 -1em, 2em -2em 0 -1em, 3em 0 0 -1em, 2em 2em 0 -1em, 0 3em 0 0,
+      -2em 2em 0 0.2em, -3em 0 0 0, -2em -2em 0 -1em;
   }
   75% {
-    box-shadow: 0em -3em 0 -1em, 2em -2em 0 -1em, 
-    3em 0em 0 -1em, 2em 2em 0 -1em, 0 3em 0 -1em, 
-    -2em 2em 0 0, -3em 0em 0 0.2em, -2em -2em 0 0;
+    box-shadow: 0em -3em 0 -1em, 2em -2em 0 -1em, 3em 0em 0 -1em, 2em 2em 0 -1em, 0 3em 0 -1em,
+      -2em 2em 0 0, -3em 0em 0 0.2em, -2em -2em 0 0;
   }
   87.5% {
-    box-shadow: 0em -3em 0 0, 2em -2em 0 -1em, 
-    3em 0 0 -1em, 2em 2em 0 -1em, 0 3em 0 -1em, 
-    -2em 2em 0 0, -3em 0em 0 0, -2em -2em 0 0.2em;
+    box-shadow: 0em -3em 0 0, 2em -2em 0 -1em, 3em 0 0 -1em, 2em 2em 0 -1em, 0 3em 0 -1em,
+      -2em 2em 0 0, -3em 0em 0 0, -2em -2em 0 0.2em;
   }
 }
-  
+
 html,
 body {
   font-family: 'Poppins', sans-serif;
@@ -96,8 +83,16 @@ body {
 html {
   box-sizing: border-box;
 }
-#root{
-  background: linear-gradient(0deg, rgba(2,0,36,1) 0%, rgba(255,255,255,1) 0%, rgba(228,230,242,1) 100%, rgba(193,198,225,1) 100%, rgba(228,230,242,1) 100%);
+
+#root {
+  background: linear-gradient(
+    0deg,
+    rgba(2, 0, 36, 1) 0%,
+    rgba(255, 255, 255, 1) 0%,
+    rgba(228, 230, 242, 1) 100%,
+    rgba(193, 198, 225, 1) 100%,
+    rgba(228, 230, 242, 1) 100%
+  );
 }
 
 *,
@@ -118,6 +113,18 @@ html {
     letter-spacing: 0.1px;
     font-weight: 500;
   }
+
+  .btn-template-2 {
+    @apply text-xl bg-[#F0F8FF] hover:bg-[#e3ebf2];
+    letter-spacing: 0.1px;
+    font-weight: 500;
+    color: #2e4bdf !important;
+    border: 1px solid #2e4bdf !important;
+  }
+}
+
+.bg-purple {
+  background: #8b9eff;
 }
 
 [multiple],
@@ -181,7 +188,10 @@ textarea:focus {
   /* max-height: 100vh; */
 }
 
-.addVehicle, .new-profile-continer, .container-new-vehicle, .empleados{
+.addVehicle,
+.new-profile-continer,
+.container-new-vehicle,
+.empleados {
   background-color: white;
 }
 
