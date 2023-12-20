@@ -44,11 +44,20 @@ const Revision = () => {
   };
 
   return (
+    <div className='container w-full lg:w-[100%] py-3 px-5'>
+    <div className='addVehicle w-full h-full rounded-[15px] shadow-custom px-6 py-7'>
+
     <section className="flex flex-col w-[100%]  items-center mt-5  ">
       <h1 className="Mostrar-title font-bold text-[#0D1544] lg:text-2xl md:text-2xl text-lg ml-0">
         Revisión diaria
       </h1>
-      <div className="p-4">
+      <br></br>
+      <br></br>
+      <br></br>
+      <img src='../../../public/img/UC.jpg' alt='No Image' className='rounded-l-lg' />
+
+
+      {/* <div className="p-4">
         <select
           className="border p-2"
           onChange={handleSelectChange}
@@ -65,8 +74,10 @@ const Revision = () => {
 
       <section className=" w-[328px]  sm:w-[630px] md:w-[898px] h-full p-5 shadow-lg grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 ">
         <CardRevision selectedVehicle={selectedVehicle} />
-      </section>
+      </section> */}
     </section>
+    </div>
+    </div>
   );
 };
 

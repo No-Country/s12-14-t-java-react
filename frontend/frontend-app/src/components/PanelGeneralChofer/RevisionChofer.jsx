@@ -104,11 +104,11 @@ const RevisionChofer = ({
           <div className="flex justify-center items-center">
             <div className="mt-24 mb-8 flex gap-2 items-center ">
               <button
-                className="text-white text-sm rounded-sm bg-blue-600 py-1 px-16"
+                className="text-white h-[52px] text-sm rounded-sm bg-blue-600 py-1 px-16"
                 type="button"
                 onClick={handleFinalizarMantenimiento}
               >
-                Finalizar mantenimiento
+                Finalizar revisión
               </button>
             </div>
           </div>

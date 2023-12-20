@@ -66,7 +66,7 @@ const SideMenu = () => {
 
     const menuItemsMaint = [
         { name: 'Panel de control', icon: <VscLayoutPanelRight />, size: 'text-base', spacing: 'mb-32', isClickable: true, link: '/mantenimiento-inicial'},
-        // { name: 'Revisión diaria', icon: <PiListChecks />, size: 'text-base', spacing: 'mb-4', isClickable: true, link: '/RevisionDiaria'},
+        { name: 'Revisión diaria', icon: <PiListChecks />, size: 'text-base', spacing: 'mb-4', isClickable: true, link: '/RevisionDiaria'},
         { name: 'Registro mantenimiento', icon: <PiNotepad />, size: 'text-base', spacing: 'mb-4', isClickable: true, link: '/registro-mantenimiento-man'},
         { name: 'Historial mantenimiento', icon: <CgList />, size: 'text-base', spacing: 'mb-20', isClickable: true, link: '/historial-mantenimiento'},
     ];

@@ -14,6 +14,10 @@ function PanelGeneral({ value }) {
     getActiveVehicles().then((vehicles)=>{
       setVehicles(vehicles.data)
       console.log(vehicles.data)
+      // setSwitchOn(true)
+      // setButtonRevision(false);
+      // setSelectStatus(true);
+      // setShowRevisionComponent(false); // Oculta el componente revisión al cambiar el switch
     })
 
   }, []);
