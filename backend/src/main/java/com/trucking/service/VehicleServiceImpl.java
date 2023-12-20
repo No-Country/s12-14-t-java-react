@@ -98,11 +98,12 @@ public class VehicleServiceImpl implements VehicleService {
     }
 
     @Override
-    public VehicleDto inactiveVehicle(Long id) {
+    public VehicleDto inactiveVehicle(Long id, String reason) {
         var vehicleById = vehicleRepository.findById(id).orElseThrow(() -> new IllegalArgumentException(
                 "Error al encontrar el vehiculo con el id " + id
         ));
         vehicleById.setAvailable(false);
+        vehicleById.setReason(reason);
         vehicleRepository.save(vehicleById);
         VehicleDto vehicleIna = new VehicleDto(
                 vehicleById.getId(),

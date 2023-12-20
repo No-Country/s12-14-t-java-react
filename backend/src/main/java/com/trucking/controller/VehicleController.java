@@ -1,5 +1,6 @@
 package com.trucking.controller;
 
+import com.trucking.dto.vehicle.ReasonDto;
 import com.trucking.dto.vehicle.VehicleDto;
 import com.trucking.security.dto.MsgDto;
 import com.trucking.security.exception.ValidationIntegrity;
@@ -57,9 +58,9 @@ public class VehicleController {
     }
 
     @PostMapping("/inactiveVehi/{id}")
-    public ResponseEntity<?> inactiveVehicle(@PathVariable Long id) {
+    public ResponseEntity<?> inactiveVehicle(@PathVariable Long id, @RequestBody ReasonDto reason) {
        try {
-           VehicleDto vehicleDto = vehicleService.inactiveVehicle(id);
+           VehicleDto vehicleDto = vehicleService.inactiveVehicle(id, reason.getReason());
            return ResponseEntity.status(HttpStatus.OK).body(vehicleDto);
        }catch (Exception e){
            return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(e.getMessage());
