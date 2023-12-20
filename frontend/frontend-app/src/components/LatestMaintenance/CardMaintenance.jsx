@@ -2,10 +2,11 @@ import arrowRight from "/img/arrowRight.svg";
 
 const CardMaintenance = ()=>{
     return (
-        <article className="cursor-pointer hover:bg-light-blue-200 
+        <article className="
+        cursor-pointer hover:bg-light-blue-200 
         rounded-lg overflow-hidden 
-        sm:w-[95%] sm:min-w-[308px] md:w-[30%] lg:w-[30%]
-        2xl:w-[95%]">
+        w-[70%] min-w-[320px] sm:w-[50%] md:w-[50%] lg:w-[30%]
+        2xl:w-[30%]">
         
             <header className="h-[40px] flex flex-row justify-center items-center
             text-[#2E4BDF] bg-[#F0F8FF] border-b border-[#2E4BDF]">

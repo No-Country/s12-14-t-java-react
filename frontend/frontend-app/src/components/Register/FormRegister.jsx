@@ -70,15 +70,15 @@ const FormRegister = () => {
           {...register('companyName', {
             required: {
               value: true,
-              message: 'El nombre de la empresa es obligatorio'
+              message: 'El nombre de la empresa es obligatorio.'
             },
             minLength: {
               value: 2,
-              message: 'El minimo de caracteres es 2'
+              message: 'El nombre de la empresa no es válido.'
             },
             maxLength: {
               value: 50,
-              message: 'El máximo de caracteres es 50'
+              message: 'El nombre de la empresa no es válido.'
             }
           })}
           onFocus={() => setSelected('companyName')}
@@ -94,7 +94,7 @@ const FormRegister = () => {
         />
       </div>
       {errors.companyName && (
-        <span className='text-[18px] text-[#fff] font-bold px-1 mt-2'>
+        <span className='error-message'>
           {errors.companyName.message}
         </span>
       )}
@@ -131,11 +131,11 @@ const FormRegister = () => {
             },
             minLength: {
               value: 2,
-              message: 'El minimo de caracteres es 2'
+              message: 'El nombre no es válido'
             },
             maxLength: {
               value: 50,
-              message: 'El máximo de caracteres es 50'
+              message: 'El nombre no es válido'
             },
             pattern: {
               value: /^[a-zA-Z0-9\s]+$/,
@@ -145,7 +145,7 @@ const FormRegister = () => {
         />
       </div>
       {errors.name && (
-        <span className='text-[18px] text-[#fff] font-bold px-1 mt-2'>{errors.name.message}</span>
+        <span className='error-message'>{errors.name.message}</span>
       )}
       <label
         className={`labelInput ` + (selected == 'lastName' ? `appear` : `none-appear`)}
@@ -178,25 +178,25 @@ const FormRegister = () => {
           {...register('lastName', {
             required: {
               value: true,
-              message: 'Los apellidos es un campo obligatorio'
+              message: 'El apellido es obligatorio'
             },
             minLength: {
               value: 2,
-              message: 'El minimo de caracteres es 2'
+              message: 'El apellido no es válido'
             },
             maxLength: {
               value: 50,
-              message: 'El máximo de caracteres es 50'
+              message: 'El apellido no es válido'
             },
             pattern: {
               value: /^[a-zA-Z0-9\s]+$/,
-              message: 'Los apellidos no son válidos'
+              message: 'El apellido no es válido'
             }
           })}
         />
       </div>
       {errors.lastName && (
-        <span className='text-[18px] text-[#fff] font-bold px-1 mt-2'>
+        <span className='error-message'>
           {errors.lastName.message}
         </span>
       )}
@@ -241,7 +241,7 @@ const FormRegister = () => {
         />
       </div>
       {errors.email && (
-        <span className='text-[18px] text-[#fff] font-bold px-1 mt-2'>{errors.email.message}</span>
+        <span className='error-message'>{errors.email.message}</span>
       )}
       <label
         className={`labelInput ` + (selected == 'password' ? `appear` : `none-appear`)}
@@ -274,30 +274,34 @@ const FormRegister = () => {
             },
             minLength: {
               value: 8,
-              message: 'La contraseña debe ser entre 8 y 12 caracteres'
+              message: 'La contraseña debe tener entre 8 y 12 caracteres y tener por lo menos una letra mayúscula, una minúscula, un número y un caracter especial'
             },
             maxLength: {
               value: 12,
-              message: 'La contraseña debe ser entre 8 y 12 caracteres'
+              message: 'La contraseña debe tener entre 8 y 12 caracteres y tener por lo menos una letra mayúscula, una minúscula, un número y un caracter especial'
             },
             pattern: {
               value: passwordRegex,
               message:
-                'La contraseña tiene entre  8 y 12 caracteres, al menos una letra mayúscula, una minúscula, un número y un caracter especial'
+                'La contraseña debe tener entre 8 y 12 caracteres y tener por lo menos una letra mayúscula, una minúscula, un número y un caracter especial'
             }
           })}
         />
       </div>
       {errors.password && (
-        <span className='text-[18px] text-[#fff] font-bold px-1 mt-2'>
+        <span className='error-message'>
           {errors.password.message}
         </span>
       )}
       {selected == 'password' && !errors.password ? (
-        <span className='text-[18px] text-[#2E4BDF] font-bold'>
-          La contraseña tiene entre 8 y 12 caracteres, al menos una letra mayúscula, una minúscula,
-          un número y un caracter especial
-        </span>
+        <div className='informative-message'>
+          <p>1. Entre 8 y 12 caracteres.</p>
+          <p>2. Al menos 1 mayúscula.</p>
+          <p>3. Al menos 1 minúscula.</p>
+          <p>4. Al menos 1 número.</p>
+          <p>5. Al menos 1 caracter especial. Listado aceptado: 
+          ! # $ % & &#40;  &#41; * +  - /? @ &#91;  \ &#93; ^ _ &#123; | &#125;  </p>
+        </div>
       ) : (
         <></>
       )}
@@ -337,7 +341,7 @@ const FormRegister = () => {
         />
       </div>
       {errors.confirmPassword && (
-        <span className='text-[18px] text-[#fff] font-bold px-1 mt-2'>
+        <span className='error-message'>
           {errors.confirmPassword.message}
         </span>
       )}

@@ -11,7 +11,8 @@ import DatosPersonalesChofer from "../components/DatosPersonalesChofer";
 import PanelGeneral from "../components/PanelGeneralChofer/PanelGeneral";
 import ModificarChofer from "../components/ModificarContrasenaChofer/ModificarContrasenaChofer";
 import RevisionDiaria from "../pages/RevisionDiaria";
-
+import HistoryMaintenance from "../pages/HistoryMaintenance";
+import DashBoardMantenimientoInicial from "../pages/DashboardMantenimientoInicial"
 export const ManagerRoutes = () => {
   return (
     <Routes>
@@ -19,14 +20,19 @@ export const ManagerRoutes = () => {
       <Route path="/crear-perfil" element={<DashboardNewProfile />} />
       <Route path="/mostrar-empleados" element={<Empleado />} />
       <Route path="/agregar-vehiculo" element={<AddVehicle />} />
+      {/* Ruta para historial de mantenimiento */}
+      <Route path="/historial-mantenimiento" element={<HistoryMaintenance />} />
       <Route
         path="/registro-mantenimiento"
         element={<RegistroMantenimiento />}
       />
+      <Route path="/mantenimiento-inicial" element={<DashBoardMantenimientoInicial/>} />
       <Route path="/eliminar-vehiculo" element={<EliminarVehiculo />} />
 
       {/* Ruta agregada para ultimos mantenimientos, dentro del panel de mantenimiento */}
-      <Route path="/latest-maintenance" element={<LatestMaintenance />} />
+      <Route path="/ultimos-mantenimientos" element={<LatestMaintenance />} />
+      
+
       <Route path="/modificar-contrasena" element={<DashboardGerente />} />
 
       <Route path="/dashboard" element={<DashboardVehicles />} />

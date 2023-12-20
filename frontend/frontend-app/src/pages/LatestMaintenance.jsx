@@ -1,11 +1,13 @@
 import PanelMaintenance from "../components/LatestMaintenance/PanelMaintenance";
-
+import MaintenanceMenu from "../components/MaintenanceMenu/MaintenanceMenu";
 const LatestMaintenance=()=>{
     return (
         <>
-            <main className="sm:w-full md:w-full  
-            flex flex-row justify-center items-center" >
-                <PanelMaintenance />
+            <MaintenanceMenu />
+            
+            <main className="flex flex-row justify-center items-center
+            p-6" >
+                <PanelMaintenance version={"seccion"} />
             </main>
         </>
     )

@@ -15,7 +15,7 @@ const PanelVehiclesNotWorking = () => {
     fetchData().then(()=>{setLoading(false)});
   }, []); 
 
-  const {vehiclesOff, isLoadingVOff} = useSelector((state) => state.vehicles);
+  const {vehiclesOff} = useSelector((state) => state.vehicles);
 
   return (
     <section className='w-full mt-3 section-vehicles section-vehicles-nw'>
@@ -26,7 +26,7 @@ const PanelVehiclesNotWorking = () => {
             {!loading?vehiclesOff.map((vehicle, index) => 
             (
               <CardVehicleNotWorking  vehicle={vehicle} key={index} />
-            )):<span class="loaderSpin"></span>}
+            )):<span className="loaderSpin"></span>}
           </div>
         </div>
       </div>

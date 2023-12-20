@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import { useState, useEffect } from 'react';
 import { BsShieldLockFill } from "react-icons/bs";
 import { FaBars } from "react-icons/fa";
 import { VscLayoutPanelRight } from "react-icons/vsc";
@@ -22,7 +22,7 @@ const MaintenanceMenu = () => {
         { name: 'Revisión diaria', icon: <PiListChecks />, size: 'text-base', spacing: 'mb-4', isClickable: true },
         { name: 'Últimos mantenimientos', icon: <TbCalendarTime />, size: 'text-base', spacing: 'mb-4', isClickable: true },
         { name: 'Registro mantenimiento', icon: <PiNotepad />, size: 'text-base', spacing: 'mb-4', isClickable: true },
-        { name: 'Historial mantenimiento', icon: <CgList />, size: 'text-base', spacing: 'mb-28', isClickable: true },
+        { name: 'Historial mantenimiento', icon: <CgList />, size: 'text-base', spacing: 'mb-20', isClickable: true },
         { name: 'Cerrar sesión', icon: <MdLogout />, size: 'text-base', spacing: 'mb-5', isClickable: true },
     ];
 
@@ -32,7 +32,7 @@ const MaintenanceMenu = () => {
 
     useEffect(() => {
         const handleResize = () => {
-            setIsMobile(window.innerWidth <= 360);
+            setIsMobile(window.innerWidth <= 768);
         };
 
         window.addEventListener('resize', handleResize);

@@ -70,3 +70,19 @@
   right: 1.5%;
   transform: translateY(27%);
 }
+.error-message {
+  font-size: 20px;
+  font-weight: 600;
+  margin-top: 8px;
+  padding: 4px;
+  color: #CB0000; /* Color del texto */
+  text-shadow: 1px 1px 12px #f6f5f5; /* Sombra ligera */
+}
+.informative-message{
+  font-size: 20px;
+  font-weight: 600;
+  margin-top: 8px;
+  padding: 4px;
+  color: #0D1544; /* Color del texto */
+  text-shadow: 1px 1px 12px #f6f5f5; /* Sombra ligera */
+}
