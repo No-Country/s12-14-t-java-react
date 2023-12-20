@@ -56,8 +56,7 @@ export const vehicles = createSlice({
       state.vehicles= state.vehicles.filter((vehicle)=>vehicle.id!=payload);
       state.vehiclesOn= state.vehiclesOn.filter((vehicle)=>vehicle.id!=payload);
       state.vehiclesOff= state.vehiclesOff.filter((vehicle)=>vehicle.id!=payload);
-
-    }
+    },
   }
 }  
 )

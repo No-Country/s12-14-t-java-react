@@ -9,6 +9,7 @@ import { Modal, Button } from 'flowbite-react'
 
 const CardVehicleOnWorking = props => {
   const { deleteVehicle } = useVehicles()
+  const { setMaintenanceVehicle } = useVehicles()
   const [openModal, setOpenModal] = useState(false)
 
   const handleDelete = async e => {
@@ -40,6 +41,22 @@ const CardVehicleOnWorking = props => {
     setOpenModal(true)
 
     // setIsChecked(!isChecked)
+  }
+
+  const [motivo, setMotivo] = useState();
+
+  const changeMotivo = (e) => {
+    setMotivo(e.target.value)
+  }
+
+  const disableVehicle = () => {
+    setOpenModal(false)
+    console.log("motivo" + motivo)
+    console.log("Disabling vehicle " + props.vehicle.id)
+    setMaintenanceVehicle({
+      vehicle: props.vehicle,
+      motivo: motivo
+      })
   }
 
   return (
@@ -107,6 +124,7 @@ const CardVehicleOnWorking = props => {
                 placeholder=''
                 name='motivo'
                 rows={5}
+                onChange={changeMotivo}
               />
               <label
                 htmlFor='description'
@@ -118,7 +136,7 @@ const CardVehicleOnWorking = props => {
           </div>
         </Modal.Body>
         <Modal.Footer className='bg-[#F0F8FF] flex-col'>
-          <Button className='w-full btn btn-template-1' onClick={() => setOpenModal(false)}>
+          <Button className='w-full btn btn-template-1' onClick={() => disableVehicle()}>
             Confirmar
           </Button>
           <Button className='w-full btn btn-template-2' onClick={() => setOpenModal(false)}>

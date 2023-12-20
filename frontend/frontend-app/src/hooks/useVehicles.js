@@ -3,7 +3,8 @@ import {
   startLoadingVehiclesOn,
   setVehiclesOn,
   startLoadingVehiclesOff,
-  setVehiclesOff
+  setVehiclesOff,
+  setVehicles
 } from '../store/vehicles/vehiclesSlice'
 import { pageApi } from '../api/PageApi'
 import { deleteVehicles } from '../store/vehicles/vehiclesSlice'
@@ -56,6 +57,7 @@ export const useVehicles = () => {
       // Puedes agregar acciones adicionales aquí, como mostrar un mensaje de error al usuario
     }
   }
+
   const deleteVehicle = async id => {
     Swal.fire({
       title: '¿Estás seguro de que quieres eliminar el vehiculo?',
@@ -117,7 +119,24 @@ export const useVehicles = () => {
     })
   }
 
-  const setMaintenanceVehicle = async id => {}
+  const setMaintenanceVehicle = async info => {
+    console.log("Cambiando estado de vehiculo")
+    pageApi.post(`${import.meta.env.VITE_API_URL}/vehicle/inactiveVehi/${info.vehicle.id}`, {'reason':info.motivo})
+    .then(response => {
+      console.log(response)
+      Swal.fire({
+        title: '¡Mantenimiento!',
+        text: 'El vehiculo ha sido puesto fuera de servicio.',
+        icon: 'success'
+      })
+      dispatch(deleteVehicles(info.vehicle.id))
+      getVehiclesNotWorking();
+    })
+      .catch(err => {
+        console.log(err)
+        Swal.fire(`Error al cambiar el estado del vehiculo!`)
+      })
+}
 
   return {
     getVehiclesActivated,
