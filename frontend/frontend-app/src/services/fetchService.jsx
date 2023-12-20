@@ -8,6 +8,11 @@ export const getInactiveVehicles = () => {
   return pageApi.get(`${import.meta.env.VITE_API_URL}/list/vehicle/getAllInactive?page=0&size=10`)
 }
 
+export const getMant = (id) => {
+  return pageApi.get(`${import.meta.env.VITE_API_URL}/reg-mant/byVehicle/${id}`)
+}
+
+
 export const getEmployees = () => {
   const config = {
     headers: {
