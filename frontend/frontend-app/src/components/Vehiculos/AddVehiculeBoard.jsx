@@ -12,30 +12,30 @@ export const AddVehiculeBoard = () => {
     reset
   } = useForm()
 
-  const [sending, setSending] = useState(false);
+  const [sending, setSending] = useState(false)
 
   const onSubmit = async data => {
-    if(!sending){
-    try {
-      setSending(true)
-      console.log(data)
-      const response = await postVehicle(data)
-      console.log('RESPONSE')
-      console.log(response)
-      Swal.fire(`Vehiculo creado!`)
-      reset()
-    } catch (error) {
-      console.log('ERROR')
-      console.log(error.response.data)
-      Swal.fire(`Error al crear vehiculo! \n ${error.response.data.details[0]}`)
-    } finally {
-      setSending(false)
+    if (!sending) {
+      try {
+        setSending(true)
+        console.log(data)
+        const response = await postVehicle(data)
+        console.log('RESPONSE')
+        console.log(response)
+        Swal.fire(`Vehiculo creado!`)
+        reset()
+      } catch (error) {
+        console.log('ERROR')
+        console.log(error.response.data)
+        Swal.fire(`Error al crear vehiculo! \n ${error.response.data.details[0]}`)
+      } finally {
+        setSending(false)
+      }
     }
   }
-}
 
-   // Verifica si hay errores en el formulario
-   const isFormInvalid = Object.keys(errors).length > 0;
+  // Verifica si hay errores en el formulario
+  const isFormInvalid = Object.keys(errors).length > 0
 
   const handleNumericInput = e => {
     e.target.value = e.target.value.replace(/\D/g, '') // Elimina todos los caracteres no numéricos
@@ -177,81 +177,81 @@ export const AddVehiculeBoard = () => {
               )}
 
               <div className='grid gap-5 lg:grid-cols-2'>
-              <div>
-            <div className='relative'>
-              <input
-                type='text'
-                id='brand'
-                className={`block px-4 pb-2.5 pt-4 w-full text-sm text-gray-900 bg-transparent border-1 border-gray-300 appearance-none border-[#0D1544] hover:#31429B focus:outline-none peer ${
-                  errors.brand ? 'border-red-500' : ''
-                }`}
-                placeholder=''
-                {...register('brand', {
-                  required: 'La marca es obligatoria',
-                  pattern: {
-                    value: /^[a-zA-ZÁÉÍÓÚÜÑáéíóúüñ0-9\s]+$/,
-                    message: 'La marca no es válida'
-                  },
-                  minLength: {
-                    value: 3,
-                    message: 'La marca debe tener al menos 3 caracteres'
-                  },
-                  maxLength: {
-                    value: 20,
-                    message: 'La marca debe tener como máximo 20 caracteres'
-                  }
-                })}
-              />
-              <label
-                htmlFor='brand'
-                className={`left-3.5 absolute text-sm text-gray-500 duration-300 transform -translate-y-4 scale-75 top-2 z-10 origin-[0] bg-white px-1 peer-focus:px-1 peer-focus:text-blue-600 peer-focus:dark:text-#0d1544 peer-placeholder-shown:scale-100 peer-placeholder-shown:-translate-y-1/2 peer-placeholder-shown:top-[28px] pointer-events-none peer-focus:top-2 peer-focus:scale-75 peer-focus:-translate-y-4 start-1`}
-              >
-                Marca del vehículo*
-              </label>
-            </div>
-            {errors.brand && <span className='error'>{errors.brand.message}</span>}
-          </div>
+                <div>
+                  <div className='relative'>
+                    <input
+                      type='text'
+                      id='brand'
+                      className={`block px-4 pb-2.5 pt-4 w-full text-sm text-gray-900 bg-transparent border-1 border-gray-300 appearance-none border-[#0D1544] hover:#31429B focus:outline-none peer ${
+                        errors.brand ? 'border-red-500' : ''
+                      }`}
+                      placeholder=''
+                      {...register('brand', {
+                        required: 'La marca es obligatoria',
+                        pattern: {
+                          value: /^[a-zA-ZÁÉÍÓÚÜÑáéíóúüñ0-9\s]+$/,
+                          message: 'La marca no es válida'
+                        },
+                        minLength: {
+                          value: 3,
+                          message: 'La marca debe tener al menos 3 caracteres'
+                        },
+                        maxLength: {
+                          value: 20,
+                          message: 'La marca debe tener como máximo 20 caracteres'
+                        }
+                      })}
+                    />
+                    <label
+                      htmlFor='brand'
+                      className={`left-3.5 absolute text-sm text-gray-500 duration-300 transform -translate-y-4 scale-75 top-2 z-10 origin-[0] bg-white px-1 peer-focus:px-1 peer-focus:text-blue-600 peer-focus:dark:text-#0d1544 peer-placeholder-shown:scale-100 peer-placeholder-shown:-translate-y-1/2 peer-placeholder-shown:top-[28px] pointer-events-none peer-focus:top-2 peer-focus:scale-75 peer-focus:-translate-y-4 start-1`}
+                    >
+                      Marca del vehículo*
+                    </label>
+                  </div>
+                  {errors.brand && <span className='error'>{errors.brand.message}</span>}
+                </div>
 
-          {/* Modelo del vehículo */}
-          <div>
-            <div className='relative'>
-              <input
-                type='text'
-                id='model'
-                className={`block px-4 pb-2.5 pt-4 w-full text-sm text-gray-900 bg-transparent border-1 border-gray-300 appearance-none border-[#0D1544] hover:#31429B focus:outline-none peer ${
-                  errors.model ? 'border-red-500' : ''
-                }`}
-                placeholder=''
-                {...register('model', { required: 'Campo requerido' })}
-              />
-              <label
-                htmlFor='model'
-                className={`left-3.5 absolute text-sm text-gray-500 duration-300 transform -translate-y-4 scale-75 top-2 z-10 origin-[0] bg-white px-1 peer-focus:px-1 peer-focus:text-blue-600 peer-focus:dark:text-#0d1544 peer-placeholder-shown:scale-100 peer-placeholder-shown:-translate-y-1/2 peer-placeholder-shown:top-[28px] pointer-events-none peer-focus:top-2 peer-focus:scale-75 peer-focus:-translate-y-4 start-1`}
-              >
-                Modelo*
-              </label>
-            </div>
-            {errors.model && <span className='error'>{errors.model.message}</span>}
-          </div>
+                {/* Modelo del vehículo */}
+                <div>
+                  <div className='relative'>
+                    <input
+                      type='text'
+                      id='model'
+                      className={`block px-4 pb-2.5 pt-4 w-full text-sm text-gray-900 bg-transparent border-1 border-gray-300 appearance-none border-[#0D1544] hover:#31429B focus:outline-none peer ${
+                        errors.model ? 'border-red-500' : ''
+                      }`}
+                      placeholder=''
+                      {...register('model', { required: 'Campo requerido' })}
+                    />
+                    <label
+                      htmlFor='model'
+                      className={`left-3.5 absolute text-sm text-gray-500 duration-300 transform -translate-y-4 scale-75 top-2 z-10 origin-[0] bg-white px-1 peer-focus:px-1 peer-focus:text-blue-600 peer-focus:dark:text-#0d1544 peer-placeholder-shown:scale-100 peer-placeholder-shown:-translate-y-1/2 peer-placeholder-shown:top-[28px] pointer-events-none peer-focus:top-2 peer-focus:scale-75 peer-focus:-translate-y-4 start-1`}
+                    >
+                      Modelo*
+                    </label>
+                  </div>
+                  {errors.model && <span className='error'>{errors.model.message}</span>}
+                </div>
               </div>
 
               <div className='grid gap-5 pt-10 lg:grid-cols-2'>
-              {/* Año del vehículo */}
-          <div className='relative'>
-            <label
-              htmlFor='year'
-              className={`left-3.5 absolute text-sm rounded text-gray-500 duration-300 transform -translate-y-4 scale-75 top-2 z-10 origin-[0] bg-white px-1 peer-focus:px-1 peer-focus:text-black peer-focus:dark:text-black peer-placeholder-shown:scale-100 peer-placeholder-shown:-translate-y-1/2 peer-placeholder-shown:top-[28px] pointer-events-none peer-focus:top-2 peer-focus:scale-75 peer-focus:-translate-y-4 start-1`}
-            >
-              Año del vehículo*
-            </label>
-            <select
-              id='year'
-              className={`block w-full px-4 text-sm text-gray-900 border border-gray-300 bg-gray-50 focus:ring-blue-500 focus:border-blue-500 min-h-[56px] ${
-                errors.year ? 'border-red-500' : ''
-              }`}
-              defaultValue={'DEFAULT'}
-              {...register('year', { required: 'Campo requerido' })}
-            >
+                {/* Año del vehículo */}
+                <div className='relative'>
+                  <label
+                    htmlFor='year'
+                    className={`left-3.5 absolute text-sm rounded text-gray-500 duration-300 transform -translate-y-4 scale-75 top-2 z-10 origin-[0] bg-white px-1 peer-focus:px-1 peer-focus:text-black peer-focus:dark:text-black peer-placeholder-shown:scale-100 peer-placeholder-shown:-translate-y-1/2 peer-placeholder-shown:top-[28px] pointer-events-none peer-focus:top-2 peer-focus:scale-75 peer-focus:-translate-y-4 start-1`}
+                  >
+                    Año del vehículo*
+                  </label>
+                  <select
+                    id='year'
+                    className={`block w-full px-4 text-sm text-gray-900 border border-gray-300 bg-gray-50 focus:ring-blue-500 focus:border-blue-500 min-h-[56px] ${
+                      errors.year ? 'border-red-500' : ''
+                    }`}
+                    defaultValue={'DEFAULT'}
+                    {...register('year', { required: 'Campo requerido' })}
+                  >
                     <option disabled value={'DEFAULT'}>
                       Selecciona un año
                     </option>
@@ -565,11 +565,9 @@ export const AddVehiculeBoard = () => {
           </div>
 
           <div className='px-10 mt-7'>
-            <button 
-            type='submit'
-            className='w-full btn btn-template-1'
-            disabled={isFormInvalid}
-            >{sending?<span class="loaderSpinBtn"></span>:<span>Agregar vehículo</span>}</button>
+            <button type='submit' className='w-full btn btn-template-1' disabled={isFormInvalid}>
+              {sending ? <span className='loaderSpinBtn'></span> : <span>Agregar vehículo</span>}
+            </button>
           </div>
         </form>
       </div>
