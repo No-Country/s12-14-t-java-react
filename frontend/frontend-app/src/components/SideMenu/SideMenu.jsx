@@ -9,6 +9,10 @@ import { MdLogout } from 'react-icons/md'
 import { NavLink } from 'react-router-dom'
 import { useDispatch, useSelector } from 'react-redux'
 import { onLogout } from '../../store/auth/authSlice'
+import { PiListChecks } from "react-icons/pi";
+import { CgList } from "react-icons/cg";
+import { TbCalendarTime } from "react-icons/tb";
+
 
 const SideMenu = () => {
   const dispatch = useDispatch()
@@ -50,14 +54,6 @@ const SideMenu = () => {
       isClickable: true,
       link: '/agregar-vehiculo'
     },
-    // {
-    //   name: 'Eliminar vehículos',
-    //   icon: <TbCarOff />,
-    //   size: 'text-base',
-    //   spacing: 'mb-4',
-    //   isClickable: true,
-    //   link: '/eliminar-vehiculo'
-    // },
     {
       name: 'Registro mantenimiento',
       icon: <PiNotepad />,
@@ -68,7 +64,14 @@ const SideMenu = () => {
     },
   ]
 
-  const menuItemsDriver = [
+    const menuItemsMaint = [
+        { name: 'Panel de control', icon: <VscLayoutPanelRight />, size: 'text-base', spacing: 'mb-32', isClickable: true, link: '/mantenimiento-inicial'},
+        // { name: 'Revisión diaria', icon: <PiListChecks />, size: 'text-base', spacing: 'mb-4', isClickable: true, link: '/RevisionDiaria'},
+        { name: 'Registro mantenimiento', icon: <PiNotepad />, size: 'text-base', spacing: 'mb-4', isClickable: true, link: '/registro-mantenimiento-man'},
+        { name: 'Historial mantenimiento', icon: <CgList />, size: 'text-base', spacing: 'mb-20', isClickable: true, link: '/historial-mantenimiento'},
+    ];
+
+const menuItemsDriver = [
     {
       name: 'Datos personales',
       icon: <PiNotepad />,
@@ -90,7 +93,11 @@ const SideMenu = () => {
       console.log("Menu chofer")
       setMenuItems(menuItemsDriver)
     }
-    const handleResize = () => {
+    if (user.role==="MAINTENANCE"){
+        console.log("Menu mant")
+        setMenuItems(menuItemsMaint)
+      }
+      const handleResize = () => {
       setIsMobile(window.innerWidth <= 360)
     }
 

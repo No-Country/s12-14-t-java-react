@@ -69,6 +69,7 @@ export const useAuthStore = () => {
       // console.log(data.user.name)
       data.user.role==='OWNER'?navigateTo(`/dashboard`)
       :data.user.role==='DRIVER'?navigateTo(`/dashboard-datos-personales`)
+      :data.user.role==='MAINTENANCE'?navigateTo(`/mantenimiento-inicial`)
       :null
     } catch (error) {
       console.log(error) 

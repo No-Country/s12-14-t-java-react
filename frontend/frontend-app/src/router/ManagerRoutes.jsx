@@ -4,6 +4,7 @@ import { DashboardNewProfile } from "../pages/DashboardNewProfile";
 import Empleado from "../components/Empleado/Empleado";
 import AddVehicle from "../pages/AddVehicle";
 import { RegistroMantenimiento } from "../pages/RegistroMantenimiento";
+import { RegistroMantenimientoMan } from "../pages/RegistroMantenimientoMan";
 import { EliminarVehiculo } from "../pages/EliminarVehiculo";
 import LatestMaintenance from "../pages/LatestMaintenance";
 import { DashboardGerente } from "../pages/DashboardGerente";
@@ -25,6 +26,10 @@ export const ManagerRoutes = () => {
       <Route
         path="/registro-mantenimiento"
         element={<RegistroMantenimiento />}
+      />
+      <Route
+        path="/registro-mantenimiento-man"
+        element={<RegistroMantenimientoMan />}
       />
       <Route path="/mantenimiento-inicial" element={<DashBoardMantenimientoInicial/>} />
       <Route path="/eliminar-vehiculo" element={<EliminarVehiculo />} />

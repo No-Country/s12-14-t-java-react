@@ -13,24 +13,18 @@ const PanelMaintenance =(props)=>{
         `;
     }
     console.log("version: ", version)
+
+    
     return (
-        <section className={`contorno 
-        mt-20 w-95% flex flex-col gap-3 justify-center items-center py-7
-        md:w-full md:flex md:flex-col md:gap-3 md:justify-center md:items-center md:mt-6
-        md:ml-[240px] lg:ml-[250px] 
-        ${estiloContenedor(version)} ${(version=='desktop')? 
-        'h-0 overflow-hidden 2xl:h-auto':''}`}>
-            <div className="w-full
+        <section className='flex flex-col lg:w-[25%] justify-start max-h-screen min-h-screen gap-5 py-3 pr-3 text-lg query-empleado'>
+        <div className="py-3 px-4  rounded-[15px] w-full shadow-custom empleados
+         w-full
             flex flex-col justify-center items-center">
                 <h1 className="text-[22px] font-bold text-center">Últimas revisiones</h1>
                 <div className={`w-full flex flex-row flex-wrap gap-5 justify-center items-center
                  md:w-full md:flex md:flex-row md:gap-4 md:justify-center md:items-center md:flex-wrap md:p-7
                  ${estiloHijo(version)}`}>
                     <CardMaintenance /> 
-                    <CardMaintenance />
-                    <CardMaintenance />
-                    <CardMaintenance />
-                    <CardMaintenance />
                     <CardMaintenance />
                     <CardMaintenance />
                     <CardMaintenance />
