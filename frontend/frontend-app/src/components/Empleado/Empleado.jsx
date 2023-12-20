@@ -75,6 +75,9 @@ const Empleado = () => {
             )):<div style={spinner}><span className="loaderSpin"></span></div>}
 
           </div>
+          <br></br>
+
+
           <button 
             type='submit'
             className='w-full btn btn-template-1'
