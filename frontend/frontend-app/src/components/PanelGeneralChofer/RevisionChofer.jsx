@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import Swal from "sweetalert2";
 
 const RevisionChofer = ({
   selectedVehicle,
@@ -20,14 +21,22 @@ const RevisionChofer = ({
     });
   };
 
+  const [sending, setSending] = useState(false)
+
   const handleFinalizarMantenimiento = () => {
     // Mostrar la alerta con la información
-    alert(`Información:
-            Vehículo: ${selectedVehicle}
-            Elementos verificados: ${checkedItems.join(", ")}
-            Descripción: ${description}`);
+    // alert(`Información:
+    //         Vehículo: ${selectedVehicle}
+    //         Elementos verificados: ${checkedItems.join(", ")}
+    //         Descripción: ${description}`);
+    setSending(true);
+    setTimeout(() => {
+      setSending(false)
+      Swal.fire('Revision enviada con exito!')
+      setRevisionCompleted(true); // oculto el componente de revisión
+    }, 2000);
 
-    setRevisionCompleted(true); // oculto el componente de revisión
+
   };
 
   return (
@@ -104,11 +113,15 @@ const RevisionChofer = ({
           <div className="flex justify-center items-center">
             <div className="mt-24 mb-8 flex gap-2 items-center ">
               <button
-                className="text-white h-[52px] text-sm rounded-sm bg-blue-600 py-1 px-16"
+                className="text-white w-[100%] h-[52px] text-sm rounded-sm bg-blue-600 py-1 px-16"
                 type="button"
                 onClick={handleFinalizarMantenimiento}
               >
-                Finalizar revisión
+                {sending ? (
+                  <span className='loaderSpinBtn'></span>
+                ) : (
+                  <span>Finalizar revision</span>
+                )}
               </button>
             </div>
           </div>

@@ -1,13 +1,17 @@
+import Swal from 'sweetalert2'
 import DriverMenu from './DriverMenu/DriverMenu'
 
 import { SimpleDatePicker } from './SimpleDatePicker'
 import { useRef, useState } from 'react'
+import { useNavigate } from 'react-router-dom'
+
 
 function DatosPersonalesChofer() {
   const InputRef1 = useRef(null)
   const InputRef2 = useRef(null)
   const [Name1, setName1] = useState('')
   const [Name2, setName2] = useState('')
+  const navigateTo = useNavigate()
 
   const handleFileChange1 = () => {
     const fileInput = InputRef1.current
@@ -17,6 +21,7 @@ function DatosPersonalesChofer() {
       setName1('')
     }
   }
+  const [sending, setSending] = useState(false)
 
   const handleFileChange2 = () => {
     const fileInput = InputRef2.current
@@ -31,6 +36,15 @@ function DatosPersonalesChofer() {
     height: '100px'
   }
 
+  const handleSendInfo = () => {
+    setSending(true);
+    setTimeout(() => {
+      setSending(false)
+      Swal.fire('Informacion enviada!')
+      navigateTo('/panel-general-chofer')
+    }, 2000);
+
+  }
 
     return (
         <>
@@ -101,10 +115,15 @@ function DatosPersonalesChofer() {
                 </div>
                 <div className='flex justify-center'>
                     <button
+                        onClick={handleSendInfo}
                         className={`ml-6 mt-80 mb-8 text-center w-[65%] h-10 rounded ${Name2 ? 'bg-blue-600' : 'bg-gray'
                             } text-white text-sm`}
                     >
-                        Guardar información
+                {sending ? (
+                  <span className='loaderSpinBtn'></span>
+                ) : (
+                  <span>Guardar información</span>
+                )}
                     </button>
                 </div>
 

@@ -15,38 +15,38 @@ const vehiculosLista = () => [
   {
     id: 2,
     driver: 'Carlos',
-    date: '19/12/2023',
+    date: '18/12/2023',
     lights: true,
-    breaks: false,
+    breaks: true,
     presion: true,
     oil: true,
-    description: 'Todo bien'
+    description: 'Frena poco'
   },
   {
     id: 3,
     driver: 'David',
-    date: '19/12/2023',
+    date: '17/12/2023',
     lights: true,
-    breaks: false,
-    presion: false,
+    breaks: true,
+    presion: true,
     oil: true,
     description: 'Fallan las gomas'
   },
   {
     id: 4,
     driver: 'Cris',
-    date: '19/12/2023',
+    date: '16/12/2023',
     lights: true,
     breaks: true,
-    presion: false,
+    presion: true,
     oil: true,
     description: 'Todo bien'
   },
   {
     id: 5,
     driver: 'Carlos',
-    date: '19/12/2023',
-    lights: false,
+    date: '15/12/2023',
+    lights: true,
     breaks: true,
     presion: true,
     oil: true,
@@ -55,7 +55,7 @@ const vehiculosLista = () => [
   {
     id: 6,
     driver: 'Juan',
-    date: '19/12/2023',
+    date: '14/12/2023',
     lights: true,
     breaks: true,
     presion: true,
