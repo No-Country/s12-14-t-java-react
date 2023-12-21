@@ -1,5 +1,37 @@
 import CardMaintenance from "./CardMaintenance";
 import './LatestMaintenance.css';
+
+const vehiculosLista = () => [
+    {
+      id: 30,
+      driver: 'Juan',
+      date: '19/12/2023',
+      tipo: 'Cambio de aceite y filtro',
+      costo: '$20.000'
+    },
+    {
+      id: 26,
+      driver: 'Juan',
+      date: '10/12/2023',
+      tipo: 'Alineacion de ruedas',
+      costo: '$5.000'
+    },
+    {
+      id: 28,
+      driver: 'Juan',
+      date: '5/12/2023',
+      tipo: 'Cambio de bateria',
+      costo: '$50.000'
+    },
+    {
+      id: 27,
+      driver: 'Juan',
+      date: '1/12/2023',
+      tipo: 'Mantenimiento de la transmicion',
+      costo: '$80.000'
+    }
+  ]
+
 const PanelMaintenance =(props)=>{
     const version=props.version;
     const estiloContenedor=(version)=>{
@@ -14,7 +46,8 @@ const PanelMaintenance =(props)=>{
     }
     console.log("version: ", version)
 
-    
+    const vehicles = vehiculosLista()
+
     return (
         <section className='flex flex-col lg:w-[25%] justify-start max-h-screen min-h-screen gap-5 py-3 pr-3 text-lg query-empleado'>
         <div className="py-3 px-4  rounded-[15px] w-full shadow-custom empleados
@@ -24,10 +57,9 @@ const PanelMaintenance =(props)=>{
                 <div className={`w-full flex flex-row flex-wrap gap-5 justify-center items-center
                  md:w-full md:flex md:flex-row md:gap-4 md:justify-center md:items-center md:flex-wrap md:p-7
                  ${estiloHijo(version)}`}>
-                    <CardMaintenance /> 
-                    <CardMaintenance />
-                    <CardMaintenance />
-                    <CardMaintenance />
+                {vehicles.map((v, index)=>{
+                   return (<CardMaintenance vehicle={v} key={index}/>) 
+                })}
                 </div>
             </div>
         </section>
