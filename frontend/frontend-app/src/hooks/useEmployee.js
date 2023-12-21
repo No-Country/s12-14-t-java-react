@@ -38,7 +38,7 @@ export const useEmployee = () => {
         config
       )
       .then((response) => {
-        console.log(`Elemento con ID ${id} eliminado con éxito.`);
+        console.log(`Elemento con ID ${id} eliminado con éxito.`, response);
       })
       .catch((error) => {
         console.error(
