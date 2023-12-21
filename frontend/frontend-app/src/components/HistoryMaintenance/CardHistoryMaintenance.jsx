@@ -6,7 +6,7 @@ const CardHistoryMaintenance =(props)=>{
         cursor-pointer hover:bg-light-blue-200 
         rounded-lg overflow-hidden 
         w-[70%] min-w-[320px] sm:w-[50%] md:w-[50%] lg:w-[30%]
-        2xl:w-[30%]">
+        2xl:w-[40%]">
         
             <header className=" h-[40px] flex flex-row 
             justify-center items-center
