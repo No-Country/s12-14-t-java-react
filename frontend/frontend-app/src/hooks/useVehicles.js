@@ -4,10 +4,9 @@ import {
   setVehiclesOn,
   startLoadingVehiclesOff,
   setVehiclesOff,
-  setVehicles
+  deleteVehicles
 } from '../store/vehicles/vehiclesSlice'
 import { pageApi } from '../api/PageApi'
-import { deleteVehicles } from '../store/vehicles/vehiclesSlice'
 import Swal from 'sweetalert2'
 
 export const useVehicles = () => {

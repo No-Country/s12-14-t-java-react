@@ -1,8 +1,12 @@
 import { useState } from 'react'
 import '../../styles/NewProfile.css'
+import { useSelector } from "react-redux";
+
 import { useAuthStore } from '../../hooks/useAuthStore'
+import { useEmployee } from "./../../hooks/useEmployee";
 
 const NewProfile = () => {
+  const {getEmployees} =useEmployee();
   const { RegisterNewEmployed, fileUpload } = useAuthStore()
   const [sending, setSending] = useState(false)
 
@@ -144,6 +148,7 @@ const NewProfile = () => {
             roleName: formData.roleName,
             photo: photo
           })
+          await getEmployees();
         } catch (error) {
           console.error('Error al subir la imagen a Cloudinary:', error)
         } finally {
