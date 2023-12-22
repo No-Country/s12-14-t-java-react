@@ -42,23 +42,19 @@ El sistema permite al usuario:
 
 #### Tecnologías
 
-[![Figma](https://img.shields.io/badge/Figma-000000.svg?style=for-the-badge&logo=Figma&logoColor=white)](https://www.figma.com/file/2oY81GBY08vo9Cee4FItFm/Veterinaria?type=design&node-id=1-2&mode=design&t=T1TaNO00BVzAYtAJ-0) ![Cloudinary](https://img.shields.io/badge/Cloudinary-%231563FF.svg?&style=for-the-badge&logo=google-cloud&logoColor=white)
+[![Figma](https://img.shields.io/badge/Figma-000000.svg?style=for-the-badge&logo=Figma&logoColor=white)]([https://www.figma.com/file/2oY81GBY08vo9Cee4FItFm/Veterinaria?type=design&node-id=1-2&mode=design&t=T1TaNO00BVzAYtAJ-0](https://www.figma.com/file/4Hl2nGFI94st5GbSs9Jfy9/Trucking?type=design&node-id=595%3A8008&mode=design&t=TPBBLUNUXVgQYv9K-1)) ![Cloudinary](https://img.shields.io/badge/Cloudinary-%231563FF.svg?&style=for-the-badge&logo=google-cloud&logoColor=white)
 
 #### Tareas
 
 -  Wireframes, prototipo y  kit UI desarrollado en Figma.
 -  Canva como herramienta de video y maquetado.
 
-#### Prototype: [Prototype](https://www.figma.com/proto/2oY81GBY08vo9Cee4FItFm/Veterinaria?type=design&node-id=117-4472&t=LLyi7ABzbZC2fce7-1&scaling=scale-down&page-id=1%3A2&starting-point-node-id=117%3A4472&mode=design)
-
-#### Mockup: [Mockup](https://www.figma.com/file/2oY81GBY08vo9Cee4FItFm/Veterinaria?type=design&node-id=1262-1227&mode=design&t=YWJQyhbtY363AAat-0)
 
 #### Designers
 
 |<img style="width: 200px" src="https://media.licdn.com/dms/image/D4D35AQFIzLTxChoeKQ/profile-framedphoto-shrink_400_400/0/1675819462626?e=1703757600&v=beta&t=CCuS-mkQjOOjgeMyBWrsIl0Oq9EOQyP2j3ivnnYUICA">                                                                 
 | :--: | :--: |
 |**Florencia Bonduel**|
-|florenciabonduel@gmail.com|
 | [![Behance](https://img.shields.io/badge/Behance-1769FF?style=for-the-badge&logo=Behance&logoColor=white)](https://www.behance.net/vaninarestelli) [![LinkedIn](https://img.shields.io/badge/LinkedIn-0A66C2?style=for-the-badge&logo=LinkedIn&logoColor=white)](https://www.linkedin.com/in/florencia-bonduel-5b2398226/) 
 
 <br></br>
