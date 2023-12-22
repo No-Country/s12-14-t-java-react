@@ -48,8 +48,8 @@ jobs:
       - name: Enter to the directory
         run: cd /home/lrpa/
 
-      - name: Permises docker 
-        run: sudo chmod 666 /var/run/docker.sock
+      #- name: Permises docker 
+        #run: sudo chmod 666 /var/run/docker.sock
 
       - name: Docker Instance Stop and remove
         run: docker rm -f s12-14-t-java-react
