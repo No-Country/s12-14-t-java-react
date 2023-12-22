@@ -55,7 +55,7 @@ El sistema permite al usuario:
 
 #### Designers
 
-|<img style="width: 300px" src="https://media.licdn.com/dms/image/D4D35AQFIzLTxChoeKQ/profile-framedphoto-shrink_400_400/0/1675819462626?e=1703757600&v=beta&t=CCuS-mkQjOOjgeMyBWrsIl0Oq9EOQyP2j3ivnnYUICA">                                                                 
+|<img style="width: 200px" src="https://media.licdn.com/dms/image/D4D35AQFIzLTxChoeKQ/profile-framedphoto-shrink_400_400/0/1675819462626?e=1703757600&v=beta&t=CCuS-mkQjOOjgeMyBWrsIl0Oq9EOQyP2j3ivnnYUICA">                                                                 
 | :--: | :--: |
 |**Florencia Bonduel**|
 |florenciabonduel@gmail.com|
