@@ -1,0 +1,14 @@
+.btn-renovar{
+    border: 1px solid #2E4BDF;
+}
+
+.horario-container{
+    box-shadow: 1px 1px 4px 0px rgba(0, 0, 0, 0.10);
+
+}
+
+.btn-reporte{
+    border: 1px solid #CB0000;
+    padding: 10px 24px 10px 16px;       
+    align-items: center;
+}

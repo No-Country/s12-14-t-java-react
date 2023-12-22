@@ -1,6 +1,6 @@
 import { Logo } from '../components/Logo'
 import { Link } from 'react-router-dom'
-import { useEffect } from 'react'
+import { useEffect, useState } from 'react'
 import { useAuthStore } from '../hooks/useAuthStore'
 import { useForm } from 'react-hook-form'
 import { HomeSlider } from '../components/HomeSlider/HomeSlider'
@@ -15,6 +15,8 @@ const loginFormFields = {
 const emailRegex = /^[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Z|a-z]{2,}$/
 
 export const Homepage = () => {
+  const [loggin, setLoggin] = useState(false)
+
   const { errorMessage, startLogin } = useAuthStore()
 
   const {
@@ -27,10 +29,16 @@ export const Homepage = () => {
   } = useForm(loginFormFields)
 
   const loginSubmit = handleSubmit(data => {
-    startLogin({
-      email: data.email,
-      password: data.password
-    })
+    if (!loggin) {
+      setLoggin(true)
+      console.log(data)
+      startLogin({
+        email: data.email,
+        password: data.password
+      }).then(() => {
+        setLoggin(false)
+      })
+    }
   })
 
   useEffect(() => {
@@ -82,35 +90,40 @@ export const Homepage = () => {
                 />
                 {errors.email && (
                   <span className='pl-2 mb-4 -mt-2 text-left text-white'>
-                    {errors.email.message}
+                    {errors?.email.message}
                   </span>
                 )}
                 <input
+                  {...register('password', {
+                    required: {
+                      value: true,
+                      message: 'Contraseña es requerido'
+                    },
+
+                    pattern: {
+                      value: true,
+                      message: 'La contraseña no es válido'
+                    }
+                  })}
                   type='password'
                   placeholder='Contraseña...'
                   className='mb-4 border-none rounded-lg'
                   name='password'
                   value={password}
                   onChange={onLoginInputChange}
-                  {...register('password', {
-                    required: {
-                      value: true,
-                      message: 'Contraseña es requerida'
-                    }
-                  })}
                 />
                 {errors.email && (
                   <span className='pl-2 mb-4 -mt-2 text-left text-white'>
-                    {errors.password.message}
+                    {errors?.password?.message}
                   </span>
                 )}
               </div>
 
-              <button className='block w-full mt-0 mb-4 btn btn-template-1' type='submit'>
-                Ingresar
+              <button className='block h-[52px] w-full mt-0 mb-4 btn btn-template-1' type='submit'>
+                {loggin ? <span className='loaderSpinBtn'></span> : <span>Ingresar</span>}
               </button>
 
-              <Link to='/register' className='btn btn-template-1'>
+              <Link to='/registro' className='btn btn-template-1'>
                 Registrarse
               </Link>
               <div className='pt-2 md:flex'>
@@ -158,4 +171,3 @@ export const Homepage = () => {
     </section>
   )
 }
-
