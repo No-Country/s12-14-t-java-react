@@ -1,0 +1,40 @@
+version: '3.8'
+services:
+  spring-trucking:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: trucking-nocountry
+    ports:
+      - "9698:9698"
+    depends_on:
+      - mysql-trucking
+    restart: always
+    networks:
+      spring-mysql-net:
+        aliases:
+          - trucking-nocountry-spring
+
+  mysql-trucking:
+    image: mysql:8.0.33
+    container_name: mysql-trucking
+    restart: unless-stopped
+    environment:
+      MYSQL_DATABASE: db_trucking
+      MYSQL_ROOT_PASSWORD: trucking2023
+    ports:
+      - "3323:3306"
+    volumes:
+      - db:/var/lib/mysql
+    networks:
+      spring-mysql-net:
+        aliases:
+          - trucking-nocountry-mysql
+
+networks:
+  spring-mysql-net:
+    name: spring-mysql-trucking
+    driver: bridge
+volumes:
+  db:
+
