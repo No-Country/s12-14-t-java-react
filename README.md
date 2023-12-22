@@ -143,7 +143,7 @@ El sistema permite al usuario:
 
 #### Technologies
 
-![Next.js](https://img.shields.io/badge/Next.js-000000?style=for-the-badge&logo=Next.js&logoColor=white) ![TypeScript](https://img.shields.io/badge/TypeScript-3178C6?style=for-the-badge&logo=TypeScript&logoColor=white) ![Tailwind](https://img.shields.io/badge/Tailwind-06B6D4?style=for-the-badge&logo=Tailwind%20CSS&logoColor=white)
+![React.js](https://img.shields.io/badge/Ract.js-000000?style=for-the-badge&logo=React&logoColor=white) ![Vite](https://img.shields.io/badge/Vite-045600?style=for-the-badge&logo=Vite&logoColor=white) ![TypeScript](https://img.shields.io/badge/Javascript-3178C6?style=for-the-badge&logo=JavaScript&logoColor=white) ![Tailwind](https://img.shields.io/badge/Tailwind-06B6D4?style=for-the-badge&logo=Tailwind%20CSS&logoColor=white) ![Axios](https://img.shields.io/badge/Axios-06B36D4?style=for-the-badge&logo=Axios%20CSS&logoColor=white) ![Redux](https://img.shields.io/badge/Redux-0B36D4?style=for-the-badge&logo=Redux%20CSS&logoColor=white)
 
 #### Tasks
 
