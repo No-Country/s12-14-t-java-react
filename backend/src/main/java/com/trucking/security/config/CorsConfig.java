@@ -69,7 +69,7 @@ public class CorsConfig {
         CorsConfiguration config = new CorsConfiguration();
         config.setAllowCredentials(true);
         config.addAllowedOrigin("http://localhost:5173");
-        config.addAllowedOrigin("http://localhost:3000/");
+        config.addAllowedOrigin("http://181.15.143.132:9896");
         config.addAllowedOrigin("http://149.50.131.109:9896");
         config.addAllowedOrigin("https://trucking-jebius.koyeb.app");
         config.addAllowedOrigin("https://s12-14-t-java-react-rho.vercel.app");
