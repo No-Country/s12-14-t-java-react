@@ -82,8 +82,6 @@ El sistema permite al usuario:
 
 #### Developers
 
-<div style="display: flex; flex-wrap: wrap; gap:20px">
-
 <div style="display:flex; gap:20px">
     <img style="width: 200px" src="https://media.licdn.com/dms/image/D4E03AQEayo3FdYrIdw/profile-displayphoto-shrink_800_800/0/1686776894638?e=1708560000&v=beta&t=nF_Ql4m3tV27cTa4w60i6SBv2JesSFd7wG0EWSKepYo">
     <div style="height:100%;align-items: center">
@@ -136,7 +134,6 @@ El sistema permite al usuario:
 
 </div>
 </div>
-</div>
 
 <br></br>
 <br></br>
@@ -158,8 +155,6 @@ El sistema permite al usuario:
 
 
 #### Developers
-
-<div style="display: flex; flex-wrap: wrap; gap:20px">
 
 <div style="display:flex; gap:20px">
     <img style="width: 200px" src="https://media.licdn.com/dms/image/D4E03AQESz8PfgdjqUw/profile-displayphoto-shrink_800_800/0/1677185379977?e=1708560000&v=beta&t=F84Mo9Y3P1upKs5yqp6lzLHaC6auMxFaHr_ETKnK7Xo">
@@ -253,7 +248,6 @@ El sistema permite al usuario:
 
 </div>
 </div>
-</div>
 <br></br>
 
 
@@ -279,8 +273,6 @@ El sistema permite al usuario:
 -  Exploratory testing.
 
 #### QA Analysts
-
-<div style="display: flex; flex-wrap: wrap; gap:20px">
 
 <div style="display:flex; gap:20px">
     <img style="width: 200px" src="https://media.licdn.com/dms/image/D4D35AQEjgBR4y1vM_A/profile-framedphoto-shrink_800_800/0/1641051688338?e=1703858400&v=beta&t=f7gGF_zv3L-XJzVULhRO2cEHb_GqEhRFRmXSwr_diHk">
@@ -317,7 +309,6 @@ El sistema permite al usuario:
 
 [![GitHub](https://img.shields.io/badge/GitHub-000?style=for-the-badge&logo=GitHub&logoColor=white)](https://github.com/juampypassa)
 
-</div>
 </div>
 </div>
 <br></br>
