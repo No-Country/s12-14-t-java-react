@@ -1,5 +1,5 @@
 # Trucking 
-![logo_trucking](https://github.com/No-Country/s12-14-t-java-react/assets/71164676/470b1adf-92b3-4099-9eb0-48f67330c35c)
+![logo_trucking](https://ik.imagekit.io/ljpa/Proyectos/logo_trucking.png)
 Trucking es una web app diseñada para que una empresa puede crear una cuenta y administrar su flota de vehículos, teniendo datos de uso y mantenimiento, que mejoran la eficiencia y reduce la tasa de fallas en las unidades, lo que representa para la empresa un ahorro de capital y mejora en el servicio
 ## Video
 [![YouTube](https://img.shields.io/badge/YouTube-FF0000?style=for-the-badge&logo=YouTube&logoColor=white)](https://www.youtube.com/watch?v=nGajJbYqKp4)
