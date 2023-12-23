@@ -216,30 +216,10 @@ El sistema permite al usuario:
 
 #### Developers
 
-|<img style="width: 150px" src="https://media.licdn.com/dms/image/D4E03AQEayo3FdYrIdw/profile-displayphoto-shrink_800_800/0/1686776894638?e=1708560000&v=beta&t=nF_Ql4m3tV27cTa4w60i6SBv2JesSFd7wG0EWSKepYo">|
-| :--------: |
-|[![LinkedIn](https://img.shields.io/badge/LinkedIn-0A66C2?style=for-the-badge&logo=LinkedIn&logoColor=white)](https://www.linkedin.com/in/luis-peche/) [![GitHub](https://img.shields.io/badge/GitHub-000?style=for-the-badge&logo=GitHub&logoColor=white)](https://github.com/Rpeche-pk) | 
-|**Luis Peche Aparcana**| 
-
-</br>
-
-|<img style="width: 150px" src="https://media.licdn.com/dms/image/D4D35AQHw0QZQnP9KGQ/profile-framedphoto-shrink_200_200/0/1695738700311?e=1703854800&v=beta&t=OlNTEjozjsIaoBt2Oar7_GRMftm9ghcrwgQZ6fw5D6w">|
-| :--------: |
-|[![LinkedIn](https://img.shields.io/badge/LinkedIn-0A66C2?style=for-the-badge&logo=LinkedIn&logoColor=white)](https://www.linkedin.com/in/juan-emilio-busalmen-50ba30220) [![GitHub](https://img.shields.io/badge/GitHub-000?style=for-the-badge&logo=GitHub&logoColor=white)](https://github.com/jebius76) | 
-|**Juan Emilio Busalmen**| 
-</br>
-
-|<img style="width: 150px" src="https://media.licdn.com/dms/image/D4D35AQHkzKRubqyxOw/profile-framedphoto-shrink_800_800/0/1691798665822?e=1703854800&v=beta&t=SgW-DFNesOBjsIYMteao92ITA_DY2FJUDca_I1PgNBg">|
-| :--------: |
-|[![LinkedIn](https://img.shields.io/badge/LinkedIn-0A66C2?style=for-the-badge&logo=LinkedIn&logoColor=white)](https://www.linkedin.com/in/johanacarrizo/) [![GitHub](https://img.shields.io/badge/GitHub-000?style=for-the-badge&logo=GitHub&logoColor=white)](https://github.com/JohanaCarrizo)| 
-|**Johana Carrizo**| 
-
-</br>
-
-| <img style="width: 200px" src="https://media.licdn.com/dms/image/D4E35AQF5crW3WTV8AA/profile-framedphoto-shrink_800_800/0/1666399893747?e=1703854800&v=beta&t=J2ClDKBnqVXTSRxBk6rrZVq55xLucgvXPr92GUJIdsQ">|
-| :--------: |
-|[![LinkedIn](https://img.shields.io/badge/LinkedIn-0A66C2?style=for-the-badge&logo=LinkedIn&logoColor=white)](https://www.linkedin.com/in/stephany-castro-salas/) [![GitHub](https://img.shields.io/badge/GitHub-000?style=for-the-badge&logo=GitHub&logoColor=white)](https://github.com/StephanyCS1/)| 
-|**Stephany Castro Salas**| 
+| <img style="width: 200px" src="https://media.licdn.com/dms/image/D4E03AQEayo3FdYrIdw/profile-displayphoto-shrink_800_800/0/1686776894638?e=1708560000&v=beta&t=nF_Ql4m3tV27cTa4w60i6SBv2JesSFd7wG0EWSKepYo"> | <img style="width: 150px" src="https://media.licdn.com/dms/image/D4D35AQHw0QZQnP9KGQ/profile-framedphoto-shrink_200_200/0/1695738700311?e=1703854800&v=beta&t=OlNTEjozjsIaoBt2Oar7_GRMftm9ghcrwgQZ6fw5D6w">| <img style="width: 150px" src="https://media.licdn.com/dms/image/D4D35AQHkzKRubqyxOw/profile-framedphoto-shrink_800_800/0/1691798665822?e=1703854800&v=beta&t=SgW-DFNesOBjsIYMteao92ITA_DY2FJUDca_I1PgNBg">|<img style="width: 200px" src="https://media.licdn.com/dms/image/D4E35AQF5crW3WTV8AA/profile-framedphoto-shrink_800_800/0/1666399893747?e=1703854800&v=beta&t=J2ClDKBnqVXTSRxBk6rrZVq55xLucgvXPr92GUJIdsQ">|
+| :-------: | :------: | :------------------------: | :--------------: |
+| [![LinkedIn](https://img.shields.io/badge/LinkedIn-0A66C2?style=for-the-badge&logo=LinkedIn&logoColor=white)](https://www.linkedin.com/in/luis-peche/) [![GitHub](https://img.shields.io/badge/GitHub-000?style=for-the-badge&logo=GitHub&logoColor=white)](https://github.com/Rpeche-pk)  |[![LinkedIn](https://img.shields.io/badge/LinkedIn-0A66C2?style=for-the-badge&logo=LinkedIn&logoColor=white)](https://www.linkedin.com/in/juan-emilio-busalmen-50ba30220) [![GitHub](https://img.shields.io/badge/GitHub-000?style=for-the-badge&logo=GitHub&logoColor=white)](https://github.com/jebius76) |[![LinkedIn](https://img.shields.io/badge/LinkedIn-0A66C2?style=for-the-badge&logo=LinkedIn&logoColor=white)](https://www.linkedin.com/in/johanacarrizo/) [![GitHub](https://img.shields.io/badge/GitHub-000?style=for-the-badge&logo=GitHub&logoColor=white)](https://github.com/JohanaCarrizo)|[![LinkedIn](https://img.shields.io/badge/LinkedIn-0A66C2?style=for-the-badge&logo=LinkedIn&logoColor=white)](https://www.linkedin.com/in/stephany-castro-salas/) [![GitHub](https://img.shields.io/badge/GitHub-000?style=for-the-badge&logo=GitHub&logoColor=white)](https://github.com/StephanyCS1/)|
+| **Luis Peche Aparcana** | **Juan Emilio Busalmen** | **Johana Carrizo** | **Stephany Castro Salas** |
 
 </br>
 
@@ -389,102 +369,19 @@ El sistema permite al usuario:
 
 #### Developers
 
-<div style="display:flex; gap:20px">
-    <img style="width: 200px" src="https://media.licdn.com/dms/image/D4E03AQESz8PfgdjqUw/profile-displayphoto-shrink_800_800/0/1677185379977?e=1708560000&v=beta&t=F84Mo9Y3P1upKs5yqp6lzLHaC6auMxFaHr_ETKnK7Xo">
-    <div style="height:100%;align-items: center">
-        <p><h3>Carolina Limay Oliva</h3></p>
+| <img style="width: 200px" src="https://media.licdn.com/dms/image/D4E03AQESz8PfgdjqUw/profile-displayphoto-shrink_800_800/0/1677185379977?e=1708560000&v=beta&t=F84Mo9Y3P1upKs5yqp6lzLHaC6auMxFaHr_ETKnK7Xo"> | <img style="width: 200px" src="https://media.licdn.com/dms/image/D4D35AQFzbnH5pm3UTw/profile-framedphoto-shrink_800_800/0/1687649939354?e=1703854800&v=beta&t=3eMImzOwHgyZc0L4Y71dd_PmEbKBJRQLybCiHTf5RrQ"> | <img style="width: 200px" src="https://media.licdn.com/dms/image/D4D35AQHXzPN9T1TILQ/profile-framedphoto-shrink_800_800/0/1680475698272?e=1703858400&v=beta&t=zhaByJjpYXRg8pPYhElZ28hHILb7wN7cjjuwrXovEP8"> |
+| :--------: | :-------: | :-------------------------: |
+| [![LinkedIn](https://img.shields.io/badge/LinkedIn-0A66C2?style=for-the-badge&logo=LinkedIn&logoColor=white)](https://www.linkedin.com/in/carolina-limay-oliva/) [![GitHub](https://img.shields.io/badge/GitHub-000?style=for-the-badge&logo=GitHub&logoColor=white)](https://github.com/Lunisa202) | [![LinkedIn](https://img.shields.io/badge/LinkedIn-0A66C2?style=for-the-badge&logo=LinkedIn&logoColor=white)](https://www.linkedin.com/in/carlos-valerio-91b697218) [![GitHub](https://img.shields.io/badge/GitHub-000?style=for-the-badge&logo=GitHub&logoColor=white)](https://github.com/CarlosV319) | [![LinkedIn](https://img.shields.io/badge/LinkedIn-0A66C2?style=for-the-badge&logo=LinkedIn&logoColor=white)](https://www.linkedin.com/in/lourdes-avalos-91a301255/) [![GitHub](https://img.shields.io/badge/GitHub-000?style=for-the-badge&logo=GitHub&logoColor=white)](https://github.com/Lourdes69) |
+| **Carolina Limay Oliva** | **Carlos Valerio** | **Lourdes Avalos** |
 
-[![LinkedIn](https://img.shields.io/badge/LinkedIn-0A66C2?style=for-the-badge&logo=LinkedIn&logoColor=white)](https://www.linkedin.com/in/carolina-limay-oliva/)
+</br>
 
-[![GitHub](https://img.shields.io/badge/GitHub-000?style=for-the-badge&logo=GitHub&logoColor=white)](https://github.com/Lunisa202)
+| <img style="width: 200px" src="https://media.licdn.com/dms/image/D4E03AQEI84fZA8Koyw/profile-displayphoto-shrink_800_800/0/1699055768532?e=1708560000&v=beta&t=nzv84G5wRVA0g_DyPGuzgCrox1LWlXaUYXFzMHClc4E"> | <img style="width: 200px" src="https://media.licdn.com/dms/image/D4E35AQFQi72qPhc_YQ/profile-framedphoto-shrink_800_800/0/1681434778768?e=1703858400&v=beta&t=YsBM8t2wEnHtUubJ9cOBxFUFCg7ESHdl3qJkcfL-WSs">| <img style="width: 200px" src="https://media.licdn.com/dms/image/D4D35AQHn4ygZgLudTA/profile-framedphoto-shrink_800_800/0/1674522526240?e=1703858400&v=beta&t=sRWzrTRUiIk7nHChb0viJvlQfRsmslTvgeNG-iu_PsU">|<img style="width: 200px" src="https://media.licdn.com/dms/image/D4E35AQEWJ88BsAk8mg/profile-framedphoto-shrink_800_800/0/1689196769965?e=1703858400&v=beta&t=DHZvgxIbJpMfOKRRx6eqL-qPJsCBYP8LERowInICJFA">|
+| :-------: | :------: | :------------------------: | :--------------: |
+| [![LinkedIn](https://img.shields.io/badge/LinkedIn-0A66C2?style=for-the-badge&logo=LinkedIn&logoColor=white)](https://www.linkedin.com/in/david-martinez-mata/) [![GitHub](https://img.shields.io/badge/GitHub-000?style=for-the-badge&logo=GitHub&logoColor=white)](https://github.com/dv-mata) |[![LinkedIn](https://img.shields.io/badge/LinkedIn-0A66C2?style=for-the-badge&logo=LinkedIn&logoColor=white)](https://www.linkedin.com/in/esmir-roque/) [![GitHub](https://img.shields.io/badge/GitHub-000?style=for-the-badge&logo=GitHub&logoColor=white)](https://github.com/castellano17)| [![LinkedIn](https://img.shields.io/badge/LinkedIn-0A66C2?style=for-the-badge&logo=LinkedIn&logoColor=white)](https://linkedin.com/in/cristian-daniel-toia) [![GitHub](https://img.shields.io/badge/GitHub-000?style=for-the-badge&logo=GitHub&logoColor=white)](https://github.com/cricritoia)|[![LinkedIn](https://img.shields.io/badge/LinkedIn-0A66C2?style=for-the-badge&logo=LinkedIn&logoColor=white)](https://www.linkedin.com/in/marcos-aravena/) [![GitHub](https://img.shields.io/badge/GitHub-000?style=for-the-badge&logo=GitHub&logoColor=white)](https://github.com/msaravena)|
+| **David Martinez** | **Esmir Roque Castellano** | **Cristian Toai** | **Marcos Aravena** |
 
-</div>
-</div>
-<br></br>
-
-
-<div style="display:flex; gap:20px">
-    <img style="width: 200px" src="https://media.licdn.com/dms/image/D4D35AQFzbnH5pm3UTw/profile-framedphoto-shrink_800_800/0/1687649939354?e=1703854800&v=beta&t=3eMImzOwHgyZc0L4Y71dd_PmEbKBJRQLybCiHTf5RrQ">
-    <div style="height:100%;align-items: center">
-        <p><h3>Carlos Valerio</h3></p>
-
-[![LinkedIn](https://img.shields.io/badge/LinkedIn-0A66C2?style=for-the-badge&logo=LinkedIn&logoColor=white)](https://www.linkedin.com/in/carlos-valerio-91b697218)
-
-[![GitHub](https://img.shields.io/badge/GitHub-000?style=for-the-badge&logo=GitHub&logoColor=white)](https://github.com/CarlosV319)
-
-</div>
-</div>
-<br></br>
-
-
-<div style="display:flex; gap:20px">
-    <img style="width: 200px" src="https://media.licdn.com/dms/image/D4D35AQHXzPN9T1TILQ/profile-framedphoto-shrink_800_800/0/1680475698272?e=1703858400&v=beta&t=zhaByJjpYXRg8pPYhElZ28hHILb7wN7cjjuwrXovEP8">
-    <div style="height:100%;align-items: center">
-        <p><h3>Lourdes Avalos</h3></p>
-
-[![LinkedIn](https://img.shields.io/badge/LinkedIn-0A66C2?style=for-the-badge&logo=LinkedIn&logoColor=white)](https://www.linkedin.com/in/lourdes-avalos-91a301255/)
-
-[![GitHub](https://img.shields.io/badge/GitHub-000?style=for-the-badge&logo=GitHub&logoColor=white)](https://github.com/Lourdes69)
-
-</div>
-</div>
-<br></br>
-
-<div style="display:flex; gap:20px">
-    <img style="width: 200px" src="https://media.licdn.com/dms/image/D4E03AQEI84fZA8Koyw/profile-displayphoto-shrink_800_800/0/1699055768532?e=1708560000&v=beta&t=nzv84G5wRVA0g_DyPGuzgCrox1LWlXaUYXFzMHClc4E">
-    <div style="height:100%;align-items: center">
-        <p><h3>David Martinez</h3></p>
-
-[![LinkedIn](https://img.shields.io/badge/LinkedIn-0A66C2?style=for-the-badge&logo=LinkedIn&logoColor=white)](https://www.linkedin.com/in/david-martinez-mata/)
-
-[![GitHub](https://img.shields.io/badge/GitHub-000?style=for-the-badge&logo=GitHub&logoColor=white)](https://github.com/dv-mata)
-
-</div>
-</div>
-<br></br>
-
-<div style="display:flex; gap:20px">
-    <img style="width: 200px" src="https://media.licdn.com/dms/image/D4E35AQFQi72qPhc_YQ/profile-framedphoto-shrink_800_800/0/1681434778768?e=1703858400&v=beta&t=YsBM8t2wEnHtUubJ9cOBxFUFCg7ESHdl3qJkcfL-WSs">
-    <div style="height:100%;align-items: center">
-        <p><h3>Esmir Roque Castellano</h3></p>
-
-[![LinkedIn](https://img.shields.io/badge/LinkedIn-0A66C2?style=for-the-badge&logo=LinkedIn&logoColor=white)](https://www.linkedin.com/in/esmir-roque/
-)
-
-[![GitHub](https://img.shields.io/badge/GitHub-000?style=for-the-badge&logo=GitHub&logoColor=white)](https://github.com/castellano17)
-
-</div>
-</div>
-<br></br>
-
-<div style="display:flex; gap:20px">
-    <img style="width: 200px" src="https://media.licdn.com/dms/image/D4D35AQHn4ygZgLudTA/profile-framedphoto-shrink_800_800/0/1674522526240?e=1703858400&v=beta&t=sRWzrTRUiIk7nHChb0viJvlQfRsmslTvgeNG-iu_PsU">
-    <div style="height:100%;align-items: center">
-        <p><h3>Cristian Toia</h3></p>
-
-[![LinkedIn](https://img.shields.io/badge/LinkedIn-0A66C2?style=for-the-badge&logo=LinkedIn&logoColor=white)](https://linkedin.com/in/cristian-daniel-toia)
-
-[![GitHub](https://img.shields.io/badge/GitHub-000?style=for-the-badge&logo=GitHub&logoColor=white)](https://github.com/cricritoia)
-
-</div>
-</div>
-<br></br>
-
-<div style="display:flex; gap:20px">
-    <img style="width: 200px" src="https://media.licdn.com/dms/image/D4E35AQEWJ88BsAk8mg/profile-framedphoto-shrink_800_800/0/1689196769965?e=1703858400&v=beta&t=DHZvgxIbJpMfOKRRx6eqL-qPJsCBYP8LERowInICJFA">
-    <div style="height:100%;align-items: center">
-        <p><h3>Marcos Aravena</h3></p>
-
-[![LinkedIn](https://img.shields.io/badge/LinkedIn-0A66C2?style=for-the-badge&logo=LinkedIn&logoColor=white)](https://www.linkedin.com/in/marcos-aravena/)
-
-[![GitHub](https://img.shields.io/badge/GitHub-000?style=for-the-badge&logo=GitHub&logoColor=white)](https://github.com/msaravena)
-
-</div>
-</div>
-<br></br>
-
-
-
+</br>
 
 ## QA/ Testing/ PM
 ### QA / Testing & PM
@@ -507,41 +404,7 @@ El sistema permite al usuario:
 
 #### QA Analysts
 
-<div style="display:flex; gap:20px">
-    <img style="width: 200px" src="https://media.licdn.com/dms/image/D4D35AQEjgBR4y1vM_A/profile-framedphoto-shrink_800_800/0/1641051688338?e=1703858400&v=beta&t=f7gGF_zv3L-XJzVULhRO2cEHb_GqEhRFRmXSwr_diHk">
-    <div style="height:100%;align-items: center">
-        <p><h3>Cintia Redondas</h3></p>
-
-[![LinkedIn](https://img.shields.io/badge/LinkedIn-0A66C2?style=for-the-badge&logo=LinkedIn&logoColor=white)](https://www.linkedin.com/in/cintiaredondas/)
-
-[![GitHub](https://img.shields.io/badge/GitHub-000?style=for-the-badge&logo=GitHub&logoColor=white)](https://github.com/juampypassa)
-
-</div>
-</div>
-<br></br>
-
-<div style="display:flex; gap:20px">
-    <img style="width: 200px" src="https://media.licdn.com/dms/image/D4D35AQGq3GpJDW9fWg/profile-framedphoto-shrink_800_800/0/1696451800823?e=1703858400&v=beta&t=Y3Z1exTy4QT8SeriLrgrZVJjoKwWxXO60WT_230TIqA">
-    <div style="height:100%;align-items: center">
-        <p><h3>Dante Fontana</h3></p>
-
-[![LinkedIn](https://img.shields.io/badge/LinkedIn-0A66C2?style=for-the-badge&logo=LinkedIn&logoColor=white)](https://www.linkedin.com/in/maurifl/)
-
-[![GitHub](https://img.shields.io/badge/GitHub-000?style=for-the-badge&logo=GitHub&logoColor=white)](https://github.com/maurifl)
-
-</div>
-</div>
-<br></br>
-
-<div style="display:flex; gap:20px">
-    <img style="width: 200px" src="https://media.licdn.com/dms/image/D4D35AQHquf5f8bFsBw/profile-framedphoto-shrink_800_800/0/1691228949146?e=1703858400&v=beta&t=N2ShUibMakJPXEC_ly8Yl9lhr6I2v5P3JVgmAl0C3c4">
-    <div style="height:100%;align-items: center">
-        <p><h3>Juan Pablo Passadore</h3></p>
-
-[![LinkedIn](https://img.shields.io/badge/LinkedIn-0A66C2?style=for-the-badge&logo=LinkedIn&logoColor=white)](https://www.linkedin.com/in/juan-pablo-passadore-denis-105349116)
-
-[![GitHub](https://img.shields.io/badge/GitHub-000?style=for-the-badge&logo=GitHub&logoColor=white)](https://github.com/juampypassa)
-
-</div>
-</div>
-<br></br>
+|<img style="width: 200px" src="https://media.licdn.com/dms/image/D4D35AQEjgBR4y1vM_A/profile-framedphoto-shrink_800_800/0/1641051688338?e=1703858400&v=beta&t=f7gGF_zv3L-XJzVULhRO2cEHb_GqEhRFRmXSwr_diHk"> | <img style="width: 200px" src="https://media.licdn.com/dms/image/D4D35AQGq3GpJDW9fWg/profile-framedphoto-shrink_800_800/0/1696451800823?e=1703858400&v=beta&t=Y3Z1exTy4QT8SeriLrgrZVJjoKwWxXO60WT_230TIqA">| <img style="width: 200px" src="https://media.licdn.com/dms/image/D4D35AQHquf5f8bFsBw/profile-framedphoto-shrink_800_800/0/1691228949146?e=1703858400&v=beta&t=N2ShUibMakJPXEC_ly8Yl9lhr6I2v5P3JVgmAl0C3c4"> |
+| :--------: | :-------: | :-------------------------: |
+| [![LinkedIn](https://img.shields.io/badge/LinkedIn-0A66C2?style=for-the-badge&logo=LinkedIn&logoColor=white)](https://www.linkedin.com/in/cintiaredondas/) [![GitHub](https://img.shields.io/badge/GitHub-000?style=for-the-badge&logo=GitHub&logoColor=white)](https://github.com/juampypassa)| [![LinkedIn](https://img.shields.io/badge/LinkedIn-0A66C2?style=for-the-badge&logo=LinkedIn&logoColor=white)](https://www.linkedin.com/in/maurifl/) [![GitHub](https://img.shields.io/badge/GitHub-000?style=for-the-badge&logo=GitHub&logoColor=white)](https://github.com/maurifl) | [![LinkedIn](https://img.shields.io/badge/LinkedIn-0A66C2?style=for-the-badge&logo=LinkedIn&logoColor=white)](https://www.linkedin.com/in/juan-pablo-passadore-denis-105349116) [![GitHub](https://img.shields.io/badge/GitHub-000?style=for-the-badge&logo=GitHub&logoColor=white)](https://github.com/juampypassa)|
+| **Cintia Redondas** | **Dante Fontana** | **Juan Pablo Passadore** |
