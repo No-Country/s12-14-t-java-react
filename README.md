@@ -1,6 +1,6 @@
 # Trucking 
 ![logo_trucking](https://ik.imagekit.io/ljpa/Proyectos/logo_trucking.png)
-Trucking es una web app diseñada para que una empresa puede crear una cuenta y administrar su flota de vehículos, teniendo datos de uso y mantenimiento, que mejoran la eficiencia y reduce la tasa de fallas en las unidades, lo que representa para la empresa un ahorro de capital y mejora en el servicio
+Trucking is a web application tailored for companies seeking to efficiently manage their vehicle fleet. By creating an account, companies gain access to comprehensive data on vehicle usage and maintenance. This not only enhances operational efficiency but also minimizes the failure rate of the units, resulting in significant cost savings for the company. Through effective management, Trucking not only preserves capital but also elevates the overall service quality.
 ## Video
 [![YouTube](https://img.shields.io/badge/YouTube-FF0000?style=for-the-badge&logo=YouTube&logoColor=white)](https://www.youtube.com/watch?v=nGajJbYqKp4)
 
@@ -8,24 +8,26 @@ Trucking es una web app diseñada para que una empresa puede crear una cuenta y 
 
 https://s12-14-t-java-react.vercel.app/
 
-## Características
+## Features
 
-El sistema permite al usuario:
+Trucking allows the user to:
 
--  Garantizar un seguimiento eficiente y preventivo de los mantenimientos de la flota de vehículos, optimizando la seguridad, confiabilidad y rendimiento de cada unidad.
+-  Ensure efficient and preventive tracking of fleet vehicle maintenance, optimizing the safety, reliability, and performance of each unit.
 
--  Facilitar la revision diaria de los vehiculos y reporte de fallas por parte de los choferes.
+-  Keep a precise and detailed record of the hours worked by each driver, facilitating human resources management, regulatory compliance, and operational efficiency.
+
+-  Provide drivers with easy and quick access to a dedicated chatbot, offering a seamless communication channel for inquiries, updates, and support.
+
+-  Our web application offers the flexibility to create distinct profiles for various roles within the company, enabling tailored access and functionality based on specific responsibilities for a more personalized and efficient user experience.
+
+-  Managers and maintenance chiefs have access to specified dashboards specifically designed to address the unique requirements of their roles, providing a comprehensive view of data relevant to their responsibilities.
+
+## Documentation
+
+[Documentation]( https://bump.sh/maipevi/doc/nocountry)
 
 
--  Llevar un registro preciso y detallado de las horas trabajadas por cada conductor, facilitando la gestión de recursos humanos, el cumplimiento normativo y la eficiencia operativa.
-
-
-## Documentación
-
-[Documentación]( https://bump.sh/maipevi/doc/nocountry)
-
-
-## Agradecimientos
+## Acknowledgements
 
  - [NoCountry](https://www.nocountry.tech/)
  
@@ -34,14 +36,14 @@ El sistema permite al usuario:
 
 ### UX/UI
 
-#### Tecnologías
+#### Technologies
 
 [![Figma](https://img.shields.io/badge/Figma-000000.svg?style=for-the-badge&logo=Figma&logoColor=white)]([https://www.figma.com/file/2oY81GBY08vo9Cee4FItFm/Veterinaria?type=design&node-id=1-2&mode=design&t=T1TaNO00BVzAYtAJ-0](https://www.figma.com/file/4Hl2nGFI94st5GbSs9Jfy9/Trucking?type=design&node-id=595%3A8008&mode=design&t=TPBBLUNUXVgQYv9K-1)) ![Cloudinary](https://img.shields.io/badge/Cloudinary-%231563FF.svg?&style=for-the-badge&logo=google-cloud&logoColor=white)
 
-#### Tareas
+#### Task
 
--  Wireframes, prototipo y  kit UI desarrollado en Figma.
--  Canva como herramienta de video y maquetado.
+-  Wireframes, prototype and UI kit developed in Figma.
+-  Canva as video tool and mockups.
 
 
 #### Designers
@@ -356,7 +358,7 @@ El sistema permite al usuario:
 ```
 #### Technologies
 
-![React.js](https://img.shields.io/badge/Ract.js-000000?style=for-the-badge&logo=React&logoColor=white) ![Vite](https://img.shields.io/badge/Vite-045600?style=for-the-badge&logo=Vite&logoColor=white) ![TypeScript](https://img.shields.io/badge/Javascript-3178C6?style=for-the-badge&logo=JavaScript&logoColor=white) ![Tailwind](https://img.shields.io/badge/Tailwind-06B6D4?style=for-the-badge&logo=Tailwind%20CSS&logoColor=white) ![Axios](https://img.shields.io/badge/Axios-06B36D4?style=for-the-badge&logo=Axios%20CSS&logoColor=white) ![Redux](https://img.shields.io/badge/Redux-0B36D4?style=for-the-badge&logo=Redux%20CSS&logoColor=white)
+![React.js](https://img.shields.io/badge/React.js-000000?style=for-the-badge&logo=React&logoColor=white) ![Vite](https://img.shields.io/badge/Vite-045600?style=for-the-badge&logo=Vite&logoColor=white) ![TypeScript](https://img.shields.io/badge/Javascript-3178C6?style=for-the-badge&logo=JavaScript&logoColor=white) ![Tailwind](https://img.shields.io/badge/Tailwind-06B6D4?style=for-the-badge&logo=Tailwind%20CSS&logoColor=white) ![Axios](https://img.shields.io/badge/Axios-06B36D4?style=for-the-badge&logo=Axios%20CSS&logoColor=white) ![Redux](https://img.shields.io/badge/Redux-0B36D4?style=for-the-badge&logo=Redux%20CSS&logoColor=white)
 
 #### Tasks
 
@@ -384,7 +386,7 @@ El sistema permite al usuario:
 </br>
 
 ## QA/ Testing/ PM
-### QA / Testing & PM
+
 
 #### Technologies
 
