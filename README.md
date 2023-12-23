@@ -1,9 +1,5 @@
-
-![Logo](https://media.discordapp.net/attachments/1182397263750893579/1187044447515590656/trucking.png?ex=6595744a&is=6582ff4a&hm=8ab5b59b843c514275dbd4db43010c4150327d74f91d45560dcf8096e8566ee2&=&format=webp&quality=lossless&width=591&height=591)
-
-
 # Trucking 
-
+![logo_trucking](https://github.com/No-Country/s12-14-t-java-react/assets/71164676/470b1adf-92b3-4099-9eb0-48f67330c35c)
 Trucking es una web app diseñada para que una empresa puede crear una cuenta y administrar su flota de vehículos, teniendo datos de uso y mantenimiento, que mejoran la eficiencia y reduce la tasa de fallas en las unidades, lo que representa para la empresa un ahorro de capital y mejora en el servicio
 ## Video
 [![YouTube](https://img.shields.io/badge/YouTube-FF0000?style=for-the-badge&logo=YouTube&logoColor=white)](https://www.youtube.com/watch?v=nGajJbYqKp4)
@@ -11,8 +7,6 @@ Trucking es una web app diseñada para que una empresa puede crear una cuenta y 
 ## Deploy
 
 https://s12-14-t-java-react.vercel.app/
-
-
 
 ## Características
 
@@ -52,12 +46,12 @@ El sistema permite al usuario:
 
 #### Designers
 
-|<img style="width: 200px" src="https://media.licdn.com/dms/image/D4D35AQFIzLTxChoeKQ/profile-framedphoto-shrink_400_400/0/1675819462626?e=1703757600&v=beta&t=CCuS-mkQjOOjgeMyBWrsIl0Oq9EOQyP2j3ivnnYUICA">                                                                 
-| :--: | :--: |
-|**Florencia Bonduel**|
-| [![Behance](https://img.shields.io/badge/Behance-1769FF?style=for-the-badge&logo=Behance&logoColor=white)](https://www.behance.net/vaninarestelli) [![LinkedIn](https://img.shields.io/badge/LinkedIn-0A66C2?style=for-the-badge&logo=LinkedIn&logoColor=white)](https://www.linkedin.com/in/florencia-bonduel-5b2398226/) 
+|<img style="width: 150px" src="https://media.licdn.com/dms/image/D4D35AQFIzLTxChoeKQ/profile-framedphoto-shrink_400_400/0/1675819462626?e=1703757600&v=beta&t=CCuS-mkQjOOjgeMyBWrsIl0Oq9EOQyP2j3ivnnYUICA">|
+| :--------: |
+|[![Behance](https://img.shields.io/badge/Behance-1769FF?style=for-the-badge&logo=Behance&logoColor=white)](https://www.behance.net/vaninarestelli) [![LinkedIn](https://img.shields.io/badge/LinkedIn-0A66C2?style=for-the-badge&logo=LinkedIn&logoColor=white)](https://www.linkedin.com/in/florencia-bonduel-5b2398226/) | 
+|**Florencia Bonduel**| 
 
-<br></br>
+</br>
 
 ## Backend
 ```
@@ -222,61 +216,32 @@ El sistema permite al usuario:
 
 #### Developers
 
-<div style="display:flex; gap:20px">
-    <img style="width: 200px" src="https://media.licdn.com/dms/image/D4E03AQEayo3FdYrIdw/profile-displayphoto-shrink_800_800/0/1686776894638?e=1708560000&v=beta&t=nF_Ql4m3tV27cTa4w60i6SBv2JesSFd7wG0EWSKepYo">
-    <div style="height:100%;align-items: center">
-        <p><h3>Luis Peche Aparcana</h3></p>
+|<img style="width: 150px" src="https://media.licdn.com/dms/image/D4E03AQEayo3FdYrIdw/profile-displayphoto-shrink_800_800/0/1686776894638?e=1708560000&v=beta&t=nF_Ql4m3tV27cTa4w60i6SBv2JesSFd7wG0EWSKepYo">|
+| :--------: |
+|[![LinkedIn](https://img.shields.io/badge/LinkedIn-0A66C2?style=for-the-badge&logo=LinkedIn&logoColor=white)](https://www.linkedin.com/in/luis-peche/) [![GitHub](https://img.shields.io/badge/GitHub-000?style=for-the-badge&logo=GitHub&logoColor=white)](https://github.com/Rpeche-pk) | 
+|**Luis Peche Aparcana**| 
 
-[![LinkedIn](https://img.shields.io/badge/LinkedIn-0A66C2?style=for-the-badge&logo=LinkedIn&logoColor=white)](https://www.linkedin.com/in/luis-peche/)
+</br>
 
-[![GitHub](https://img.shields.io/badge/GitHub-000?style=for-the-badge&logo=GitHub&logoColor=white)](https://github.com/Rpeche-pk)
+|<img style="width: 150px" src="https://media.licdn.com/dms/image/D4D35AQHw0QZQnP9KGQ/profile-framedphoto-shrink_200_200/0/1695738700311?e=1703854800&v=beta&t=OlNTEjozjsIaoBt2Oar7_GRMftm9ghcrwgQZ6fw5D6w">|
+| :--------: |
+|[![LinkedIn](https://img.shields.io/badge/LinkedIn-0A66C2?style=for-the-badge&logo=LinkedIn&logoColor=white)](https://www.linkedin.com/in/juan-emilio-busalmen-50ba30220) [![GitHub](https://img.shields.io/badge/GitHub-000?style=for-the-badge&logo=GitHub&logoColor=white)](https://github.com/jebius76) | 
+|**Juan Emilio Busalmen**| 
+</br>
 
-</div>
-</div>
-<br></br>
+|<img style="width: 150px" src="https://media.licdn.com/dms/image/D4D35AQHkzKRubqyxOw/profile-framedphoto-shrink_800_800/0/1691798665822?e=1703854800&v=beta&t=SgW-DFNesOBjsIYMteao92ITA_DY2FJUDca_I1PgNBg">|
+| :--------: |
+|[![LinkedIn](https://img.shields.io/badge/LinkedIn-0A66C2?style=for-the-badge&logo=LinkedIn&logoColor=white)](https://www.linkedin.com/in/johanacarrizo/) [![GitHub](https://img.shields.io/badge/GitHub-000?style=for-the-badge&logo=GitHub&logoColor=white)](https://github.com/JohanaCarrizo)| 
+|**Johana Carrizo**| 
 
-<div style="display:flex; gap:20px">
-    <img style="width: 200px" src="https://media.licdn.com/dms/image/D4D35AQHw0QZQnP9KGQ/profile-framedphoto-shrink_200_200/0/1695738700311?e=1703854800&v=beta&t=OlNTEjozjsIaoBt2Oar7_GRMftm9ghcrwgQZ6fw5D6w">
-    <div style="height:100%;align-items: center">
-        <p><h3>Juan Emilio Busalmen</h3></p>
+</br>
 
-[![LinkedIn](https://img.shields.io/badge/LinkedIn-0A66C2?style=for-the-badge&logo=LinkedIn&logoColor=white)](https://www.linkedin.com/in/juan-emilio-busalmen-50ba30220)
+| <img style="width: 200px" src="https://media.licdn.com/dms/image/D4E35AQF5crW3WTV8AA/profile-framedphoto-shrink_800_800/0/1666399893747?e=1703854800&v=beta&t=J2ClDKBnqVXTSRxBk6rrZVq55xLucgvXPr92GUJIdsQ">|
+| :--------: |
+|[![LinkedIn](https://img.shields.io/badge/LinkedIn-0A66C2?style=for-the-badge&logo=LinkedIn&logoColor=white)](https://www.linkedin.com/in/stephany-castro-salas/) [![GitHub](https://img.shields.io/badge/GitHub-000?style=for-the-badge&logo=GitHub&logoColor=white)](https://github.com/StephanyCS1/)| 
+|**Stephany Castro Salas**| 
 
-[![GitHub](https://img.shields.io/badge/GitHub-000?style=for-the-badge&logo=GitHub&logoColor=white)](https://github.com/jebius76)
-
-</div>
-</div>
-<br></br>
-
-
-
-<div style="display:flex; gap:20px">
-    <img style="width: 200px" src="https://media.licdn.com/dms/image/D4D35AQHkzKRubqyxOw/profile-framedphoto-shrink_800_800/0/1691798665822?e=1703854800&v=beta&t=SgW-DFNesOBjsIYMteao92ITA_DY2FJUDca_I1PgNBg">
-    <div style="height:100%;align-items: center">
-        <p><h3>Johana Carrizo</h3></p>
-
-[![LinkedIn](https://img.shields.io/badge/LinkedIn-0A66C2?style=for-the-badge&logo=LinkedIn&logoColor=white)](https://www.linkedin.com/in/johanacarrizo/)
-
-[![GitHub](https://img.shields.io/badge/GitHub-000?style=for-the-badge&logo=GitHub&logoColor=white)](https://github.com/JohanaCarrizo)
-
-</div>
-</div>
-<br></br>
-
-<div style="display:flex; gap:20px">
-    <img style="width: 200px" src="https://media.licdn.com/dms/image/D4E35AQF5crW3WTV8AA/profile-framedphoto-shrink_800_800/0/1666399893747?e=1703854800&v=beta&t=J2ClDKBnqVXTSRxBk6rrZVq55xLucgvXPr92GUJIdsQ">
-    <div style="height:100%;align-items: center">
-        <p><h3>Stephany Castro Salas</h3></p>
-
-[![LinkedIn](https://img.shields.io/badge/LinkedIn-0A66C2?style=for-the-badge&logo=LinkedIn&logoColor=white)](https://www.linkedin.com/in/stephany-castro-salas/)
-
-[![GitHub](https://img.shields.io/badge/GitHub-000?style=for-the-badge&logo=GitHub&logoColor=white)](https://github.com/StephanyCS1/)
-
-</div>
-</div>
-
-<br></br>
-<br></br>
+</br>
 
 ## Frontend
 ```
