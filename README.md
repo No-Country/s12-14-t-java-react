@@ -219,13 +219,12 @@ Trucking allows the user to:
 ![SpringBoot](https://img.shields.io/badge/spring_boot-339933?style=for-the-badge&logo=Spring&logoColor=white) ![MySql](https://img.shields.io/badge/Mysql-1769FF?style=for-the-badge&logo=mysql&logoColor=white)
 #### Tasks
 
--  Development of Rest Api with NodeJs and Express.
--  Validations with Express Validator.
--  MongoDb Database.
--  Creating filters with Mongoose
--  Users validation with JWT and Google.
--  For email notifications Nodemailer.
--  Deployed on Railway.
+-  Development of Rest Api with Java and Spring Boot.
+-  Validations with Hybernate Validator.
+-  MySql Database.
+-  Users validation with JWT and Spring Security.
+-  For email notifications Spring Mail.
+-  Deployed on Koyeb.
 
 #### Developers
 
@@ -371,10 +370,10 @@ Trucking allows the user to:
 
 #### Tasks
 
--  Development of the view through dynamic components with TypeScript and Next.js.
--  Creating the linked routes of the page using Nextjs. Axios and Nextjs to control and submit form data.
+-  Development of the view through dynamic components with Javascript and React.js.
+-  Creating the linked routes of the page using React.js. Axios and Reactjs to control and submit form data.
 -  Obtaining and uploading images with Cloudinary.
--  Tailwind CSS componentes with DaisyUI
+-  Tailwind CSS componentes.
 -  Deployment on Vercel.
 
 
