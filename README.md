@@ -34,6 +34,20 @@ Trucking allows the user to:
 
 ## Team
 
+### PM (Project Manager)
+#### Task 
+- Specify the quality of each deliverable part
+- Estimate the resources and timelines needed
+- Develop and implement a project plan and processes.
+- Managing and motivating the team
+- Managing risks, issues and changes that may occur in the project
+- Monitor progress
+  
+|<img style="width: 200px" src="https://media.licdn.com/dms/image/D4D35AQEjgBR4y1vM_A/profile-framedphoto-shrink_800_800/0/1641051688338?e=1703858400&v=beta&t=f7gGF_zv3L-XJzVULhRO2cEHb_GqEhRFRmXSwr_diHk">|
+| :--------: |
+|[![LinkedIn](https://img.shields.io/badge/LinkedIn-0A66C2?style=for-the-badge&logo=LinkedIn&logoColor=white)](https://www.linkedin.com/in/cintiaredondas/) [![GitHub](https://img.shields.io/badge/GitHub-000?style=for-the-badge&logo=GitHub&logoColor=white)](https://github.com/juampypassa)| 
+|**Cintia Redondas**| 
+
 ### UX/UI
 
 #### Technologies
@@ -45,15 +59,12 @@ Trucking allows the user to:
 -  Wireframes, prototype and UI kit developed in Figma.
 -  Canva as video tool and mockups.
 
-
 #### Designers
 
 |<img style="width: 150px" src="https://media.licdn.com/dms/image/D4D35AQFIzLTxChoeKQ/profile-framedphoto-shrink_400_400/0/1675819462626?e=1703757600&v=beta&t=CCuS-mkQjOOjgeMyBWrsIl0Oq9EOQyP2j3ivnnYUICA">|
 | :--------: |
 |[![Behance](https://img.shields.io/badge/Behance-1769FF?style=for-the-badge&logo=Behance&logoColor=white)](https://www.behance.net/vaninarestelli) [![LinkedIn](https://img.shields.io/badge/LinkedIn-0A66C2?style=for-the-badge&logo=LinkedIn&logoColor=white)](https://www.linkedin.com/in/florencia-bonduel-5b2398226/) | 
 |**Florencia Bonduel**| 
-
-</br>
 
 ## Backend
 ```
@@ -223,8 +234,6 @@ Trucking allows the user to:
 |[![LinkedIn](https://img.shields.io/badge/LinkedIn-0A66C2?style=for-the-badge&logo=LinkedIn&logoColor=white)](https://www.linkedin.com/in/luis-peche/) [![GitHub](https://img.shields.io/badge/GitHub-000?style=for-the-badge&logo=GitHub&logoColor=white)](https://github.com/Rpeche-pk) |[![LinkedIn](https://img.shields.io/badge/LinkedIn-0A66C2?style=for-the-badge&logo=LinkedIn&logoColor=white)](https://www.linkedin.com/in/juan-emilio-busalmen-50ba30220) [![GitHub](https://img.shields.io/badge/GitHub-000?style=for-the-badge&logo=GitHub&logoColor=white)](https://github.com/jebius76)|[![LinkedIn](https://img.shields.io/badge/LinkedIn-0A66C2?style=for-the-badge&logo=LinkedIn&logoColor=white)](https://www.linkedin.com/in/johanacarrizo/) [![GitHub](https://img.shields.io/badge/GitHub-000?style=for-the-badge&logo=GitHub&logoColor=white)](https://github.com/JohanaCarrizo)|[![LinkedIn](https://img.shields.io/badge/LinkedIn-0A66C2?style=for-the-badge&logo=LinkedIn&logoColor=white)](https://www.linkedin.com/in/stephany-castro-salas/) [![GitHub](https://img.shields.io/badge/GitHub-000?style=for-the-badge&logo=GitHub&logoColor=white)](https://github.com/StephanyCS1/)|
 | **Luis Peche Aparcana** | **Juan Emilio Busalmen** | **Johana Carrizo** | **Stephany Castro Salas** |
 
-</br>
-
 ## Frontend
 ```
 └── 📁frontend
@@ -376,16 +385,13 @@ Trucking allows the user to:
 | [![LinkedIn](https://img.shields.io/badge/LinkedIn-0A66C2?style=for-the-badge&logo=LinkedIn&logoColor=white)](https://www.linkedin.com/in/carolina-limay-oliva/) [![GitHub](https://img.shields.io/badge/GitHub-000?style=for-the-badge&logo=GitHub&logoColor=white)](https://github.com/Lunisa202) | [![LinkedIn](https://img.shields.io/badge/LinkedIn-0A66C2?style=for-the-badge&logo=LinkedIn&logoColor=white)](https://www.linkedin.com/in/carlos-valerio-91b697218) [![GitHub](https://img.shields.io/badge/GitHub-000?style=for-the-badge&logo=GitHub&logoColor=white)](https://github.com/CarlosV319) | [![LinkedIn](https://img.shields.io/badge/LinkedIn-0A66C2?style=for-the-badge&logo=LinkedIn&logoColor=white)](https://www.linkedin.com/in/lourdes-avalos-91a301255/) [![GitHub](https://img.shields.io/badge/GitHub-000?style=for-the-badge&logo=GitHub&logoColor=white)](https://github.com/Lourdes69) |
 | **Carolina Limay Oliva** | **Carlos Valerio** | **Lourdes Avalos** |
 
-</br>
 
 | <img style="width: 200px" src="https://media.licdn.com/dms/image/D4E03AQEI84fZA8Koyw/profile-displayphoto-shrink_800_800/0/1699055768532?e=1708560000&v=beta&t=nzv84G5wRVA0g_DyPGuzgCrox1LWlXaUYXFzMHClc4E"> | <img style="width: 200px" src="https://media.licdn.com/dms/image/D4E35AQFQi72qPhc_YQ/profile-framedphoto-shrink_800_800/0/1681434778768?e=1703858400&v=beta&t=YsBM8t2wEnHtUubJ9cOBxFUFCg7ESHdl3qJkcfL-WSs">| <img style="width: 200px" src="https://media.licdn.com/dms/image/D4D35AQHn4ygZgLudTA/profile-framedphoto-shrink_800_800/0/1674522526240?e=1703858400&v=beta&t=sRWzrTRUiIk7nHChb0viJvlQfRsmslTvgeNG-iu_PsU">|<img style="width: 200px" src="https://media.licdn.com/dms/image/D4E35AQEWJ88BsAk8mg/profile-framedphoto-shrink_800_800/0/1689196769965?e=1703858400&v=beta&t=DHZvgxIbJpMfOKRRx6eqL-qPJsCBYP8LERowInICJFA">|
 | :-------: | :------: | :------------------------: | :--------------: |
 | [![LinkedIn](https://img.shields.io/badge/LinkedIn-0A66C2?style=for-the-badge&logo=LinkedIn&logoColor=white)](https://www.linkedin.com/in/david-martinez-mata/) [![GitHub](https://img.shields.io/badge/GitHub-000?style=for-the-badge&logo=GitHub&logoColor=white)](https://github.com/dv-mata) |[![LinkedIn](https://img.shields.io/badge/LinkedIn-0A66C2?style=for-the-badge&logo=LinkedIn&logoColor=white)](https://www.linkedin.com/in/esmir-roque/) [![GitHub](https://img.shields.io/badge/GitHub-000?style=for-the-badge&logo=GitHub&logoColor=white)](https://github.com/castellano17)| [![LinkedIn](https://img.shields.io/badge/LinkedIn-0A66C2?style=for-the-badge&logo=LinkedIn&logoColor=white)](https://linkedin.com/in/cristian-daniel-toia) [![GitHub](https://img.shields.io/badge/GitHub-000?style=for-the-badge&logo=GitHub&logoColor=white)](https://github.com/cricritoia)|[![LinkedIn](https://img.shields.io/badge/LinkedIn-0A66C2?style=for-the-badge&logo=LinkedIn&logoColor=white)](https://www.linkedin.com/in/marcos-aravena/) [![GitHub](https://img.shields.io/badge/GitHub-000?style=for-the-badge&logo=GitHub&logoColor=white)](https://github.com/msaravena)|
 | **David Martinez** | **Esmir Roque Castellano** | **Cristian Toai** | **Marcos Aravena** |
 
-</br>
-
-## QA/ Testing/ PM
+## QA/ Testing
 
 
 #### Technologies
